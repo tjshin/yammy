@@ -15,6 +15,8 @@
 <!-- 내용 시작 -->
 <tiles:insertAttribute name="body"/>
 <!-- 내용 끝 -->
+
+<%-- <tiles:insertAttribute name="footer"/> --%>
  
 </body>
 </html>

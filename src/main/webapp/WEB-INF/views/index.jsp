@@ -11,24 +11,13 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
 
-<style>
-img {
-	display: inline;
-}
 
-
-}
-</style>
 </head>
 <body>
 
-	<div class="container">
-		<p>
-			<a href="./contents/mainlist/1">SHOP NOW</a>
-		</p>
-	</div>
-
-
-
+<p style="color:red;">글자 색깔 - 빨강</p>
+        <p style="color:rgb(255, 0, 0);">글자색 - 빨강</p>
+        <p style="color:#FF0000;">글자색 - 빨강</p>
+        <p style="color:green;">글자색 - 초록</p>
 </body>
 </html>

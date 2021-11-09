@@ -32,15 +32,6 @@
         </function-signature> 
     </function> 
     
-    <function>  
-        <description>직업명을 출력</description> 
-        <name>jobname</name>  
-        <function-class>                   
-            com.study.utility.Utility 
-        </function-class> 
-        <function-signature>    
-            java.lang.String getCodeValue( java.lang.String ) 
-        </function-signature> 
-    </function> 
+    
      
 </taglib>
