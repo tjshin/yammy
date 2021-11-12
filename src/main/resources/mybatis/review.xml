@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.review.ReviewMapper">
+
+<insert id="create" parameterType="com.study.review.ReviewDTO">
+	insert into review(
+	hugino, id, sikid, stadium,
+	htitle, hcontents, star)
+	values((select nvl(max(hugino),0)+1 from review),
+	        #{id},
+	        #{sikid},
+	        #{stadium},
+	        #{htitle},
+	        #{hcontents},
+	        #{star})
+</insert>
+
+<select id="total" parameterType="Map" resultType="int">
+	select count(*) from review r inner join member m
+	on r.id = m.id
+	<where>
+		<choose>
+			<when test="col=='nick'">
+				m.nick like '%'||#{word}||'%'
+			</when>
+			<when test="col=='htitle'">
+				htitle like '%'||#{word}||'%'
+			</when>
+			<when test="col=='hcontents'">
+				hcontents = #{word}
+			</when>
+			<when test="col=='title_content'">
+				htitle like '%'||#{word}||'%'
+				or
+				hcontents like
+				'%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+</select>
+
+<select id="list" parameterType="Map"
+		resultType="com.study.review.ReviewDTO">
+	select hugino, nick, sikid, stadium,
+			htitle, hcontents, star, r
+	from (
+	select hugino, nick, sikid, stadium,
+			htitle, hcontents, star, rownum r
+	from (
+	select hugino, member.nick nick, sikid, stadium,
+			htitle, hcontents, star
+	from review inner join member
+	on review.id = member.id
+	<where>
+		<choose>
+			<when test="col=='nick'">
+				member.nick like '%'||#{word}||'%'
+			</when>
+			<when test="col=='htitle'">
+				htitle like '%'||#{word}||'%'
+			</when>
+			<when test="col=='hcontents'">
+				hcontents = #{word}
+			</when>
+			<when test="col=='title_content'">
+				htitle like '%'||#{word}||'%'
+				or
+				hcontents like
+				'%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+	order by hugino desc
+	)
+	<![CDATA[       
+    	)where r >= #{sno} and r <= #{eno}
+    ]]>
+</select>
+
+</mapper>

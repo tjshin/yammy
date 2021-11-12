@@ -1,7 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+
+
+
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -16,15 +20,15 @@
 	<link href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="./bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="./css/misc.css">
-	<link rel="stylesheet" href="./css/blue-scheme.css">
+	<link rel="stylesheet" href="${root }/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="${root }/css/misc.css">
+	<link rel="stylesheet" href="${root }/css/blue-scheme.css">
 	
 	<!-- JavaScripts -->
-	<script src="./js/jquery-1.10.2.min.js"></script>
-	<script src="./js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="${root }/js/jquery-1.10.2.min.js"></script>
+	<script src="${root }/js/jquery-migrate-1.2.1.min.js"></script>
 
-	<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="${root }/images/favicon.ico" type="image/x-icon" />
     
 
 </head>
@@ -34,7 +38,7 @@
 
     <div class="responsive_menu">
         <ul class="main_menu">
-            <li><a href="#">Home</a></li>
+            <li><a href="${root }/">Home</a></li>
             <li><a href="#">구장별 게시판</a>
             	<ul>
             		<li><a href="#">잠실(LG/두산)</a></li>
@@ -51,11 +55,11 @@
             
             <li><a href="#">공지사항</a></li>
             <li><a href="#">티켓양도</a></li>
-            <li><a href="#">경기장 주변 맛집</a>
+            <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
                 <ul>
-                    <li><a href="#">지도에서 보기</a></li>
-                    <li><a href="#">리뷰 목록</a></li>
-                    <li><a href="#">리뷰 등록</a></li>
+                    <li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
+                    <li><a href="${root }/review/list">리뷰 목록</a></li>
+                    <li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
                     
                 </ul>
             </li>
@@ -65,7 +69,7 @@
     </div> <!-- /.responsive_menu -->
 
 
-	<header class="site-header clearfix">
+	<div class="site-header clearfix">
 		<div class="container">
 
 			<div class="row">
@@ -73,8 +77,8 @@
 				<div class="col-md-12">
 
 					<div class="pull-left logo">
-						<a href="#">
-							<img src="./images/logo.png" alt="Medigo by templatemo">
+						<a href="${root }/"">
+							<img src="${root }/images/logo.png" alt="Medigo by templatemo">
 						</a>
 					</div>	<!-- /.logo -->
 
@@ -82,7 +86,7 @@
 
 						<nav class="main-nav visible-md visible-lg">
 							<ul class="sf-menu">
-								<li class="active"><a href="#">Home</a></li>
+								<li class="active"><a href="${root }/"">Home</a></li>
 					            <li><a href="#">구장별 게시판</a>
 					            	<ul>
 					            		<li><a href="#">잠실(LG/두산)</a></li>
@@ -99,11 +103,11 @@
 					            
 					            <li><a href="#">공지사항</a></li>
                                 <li><a href="#">티켓양도</a></li>
-                                <li><a href="#">경기장 주변 맛집</a>
+                                <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 					            	<ul>
-					            		<li><a href="#">지도에서 보기</a></li>
-                                        <li><a href="#">리뷰 목록</a></li>
-                                        <li><a href="#">리뷰 등록</a></li>
+					            		<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
+                                        <li><a href="${root}/review/list">리뷰 목록</a></li>
+                                        <li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
                                         
 					            	</ul>
 					            </li>
@@ -126,11 +130,11 @@
 			</div> <!-- /.row -->
 
 		</div> <!-- /.container -->
-	</header> <!-- /.site-header -->
+	</div> <!-- /.site-header -->
 
     <!-- Scripts -->
-	<script src="./js/min/plugins.min.js"></script>
-	<script src="./js/min/medigo-custom.min.js"></script>
+	<script src="${root }/js/min/plugins.min.js"></script>
+	<script src="${root }/js/min/medigo-custom.min.js"></script>
 
 
 

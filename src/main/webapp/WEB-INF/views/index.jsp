@@ -14,10 +14,7 @@
 
 </head>
 <body>
-
-<p style="color:red;">글자 색깔 - 빨강</p>
-        <p style="color:rgb(255, 0, 0);">글자색 - 빨강</p>
-        <p style="color:#FF0000;">글자색 - 빨강</p>
-        <p style="color:green;">글자색 - 초록</p>
+<div class="first-widget parallax"></div>
+    <div>바디에요</div>
 </body>
 </html>
