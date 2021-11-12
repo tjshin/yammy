@@ -3,6 +3,8 @@ package com.study.review;
 import java.util.List;
 import java.util.Map;
 
+import com.study.sikdang.SikdangDTO;
+
 public interface ReviewMapper {
 
 	int create(ReviewDTO dto);
@@ -10,5 +12,11 @@ public interface ReviewMapper {
 	int total(Map map);
 
 	List<ReviewDTO> list(Map map);
+
+	ReviewDTO read(int hugino);
+
+	int update(ReviewDTO dto);
+
+	SikdangDTO detail(String sikid);
 
 }

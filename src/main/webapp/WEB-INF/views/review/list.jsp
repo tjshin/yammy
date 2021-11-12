@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
+<c:set var="readurl1" value="${root}/review/read?hugino=" />
+<c:set var="readurl2" value="&col=${col }&word=${word }&nowPage=${nowPage }"/>
 
 <!DOCTYPE html>
 <html>
@@ -48,9 +50,11 @@
 
 		<br>
 
-		<form class="form-inline" action="./list">
+		<form class="form-inline" action="${root}/review/list">
 			<div class="form-group">
 				<select class="form-control" name="col">
+					<option value="sikname" <c:if test="${col=='sikname'}"> selected </c:if>
+						>식당 상호명</option>
 					<option value="nick" <c:if test="${col=='nick'}"> selected </c:if>
 						>닉네임</option>
 					<option value="htitle" <c:if test="${col=='htitle'}"> selected </c:if>
@@ -66,7 +70,7 @@
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Enter 검색어" name="word" value="${word}">
 			</div>
-			<button type="submit" class="btn btn-default">검색</button>
+			<button type="submit" class="mainBtn">검색</button>
 
 		</form>
 		
@@ -95,12 +99,26 @@
 <!-- 								</a> -->
 <!-- 							</div> -->
 							<div class="blog-content">
-								<span class="meta-date"><a href="#">2021년 5월 5일</a></span>
-								<span class="meta-comments"><a href="#">댓글: 99</a></span>
-								<span class="meta-author"><a href="#">${dto.nick }</a></span>
-								<h3><a href="${root}/review/read">${dto.htitle }</a></h3>
-								<p class="light-text">리뷰 내용 미리보기 1</p>
-								<p><a href="${root}/review/read">자세히 보기...</a></p>
+								<span class="meta-date">${dto.hdate }</span>
+								<span class="meta-comments">댓글: 댓글 기능 추가해라</span>
+								<span class="meta-author">닉네임: &nbsp;<a href="#">${dto.nick }</a></span>
+								<span>/</span>
+								
+								<c:if test="${dto.stadium == 1}"><span>서울 잠실</span></c:if>
+								<c:if test="${dto.stadium == 2}"><span>서울 고척</span></c:if>
+								<c:if test="${dto.stadium == 3}"><span>인천</span></c:if>
+								<c:if test="${dto.stadium == 4}"><span>수원</span></c:if>
+								<c:if test="${dto.stadium == 5}"><span>대전</span></c:if>
+								<c:if test="${dto.stadium == 6}"><span>광주</span></c:if>
+								<c:if test="${dto.stadium == 7}"><span>대구</span></c:if>
+								<c:if test="${dto.stadium == 8}"><span>창원</span></c:if>
+								<c:if test="${dto.stadium == 9}"><span>부산 사직</span></c:if>
+								
+								<h3><a href="${readurl1}${dto.hugino}${readurl2}">
+								${dto.htitle }</a></h3>
+								<p class="light-text">방문한 식당:&nbsp;<a href="${dto.sikurl }" target="_blank">${dto.sikname }</a></p>
+								<p><a href="${readurl1}${dto.hugino}${readurl2}">
+								리뷰 자세히 보기...</a></p>
 							</div> <!-- /.blog-content -->
 						</div> <!-- /.post-blog -->
 						</c:forEach>

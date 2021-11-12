@@ -82,7 +82,7 @@
 	
 <div class="map_wrap" style="width: 90%; margin: 0 auto;">
 <br><br>
-    <div id="map" style="width:100%;height:600px;position:relative;overflow:hidden;"></div>
+    <div id="map" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
 
    
 </div>
@@ -246,7 +246,7 @@ function getListItem(index, places) {
       '<input type="hidden" name="sikphone" value="' + places.phone + '">' +
       '<input type="hidden" name="roadadd" value="' + places.road_address_name + '">' +
       '<input type="hidden" name="jibunadd" value="' + places.address_name + '">' +
-      '<input type="hidden" name="url" value="' + places.place_url + '">' +
+      '<input type="hidden" name="sikurl" value="' + places.place_url + '">' +
       '<input type="hidden" name="cox" value="' + places.x + '">' +
       '<input type="hidden" name="coy" value="' + places.y + '">' +
       '<button class="mainBtn">' + places.place_name +

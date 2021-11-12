@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.study.sikdang.SikdangDTO;
+
 @Service("com.study.review.ReviewServiceImpl")
 public class ReviewServiceImpl implements ReviewService {
 	
@@ -31,6 +33,24 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewDTO> list(Map map) {
 		// TODO Auto-generated method stub
 		return mapper.list(map);
+	}
+
+	@Override
+	public ReviewDTO read(int hugino) {
+		// TODO Auto-generated method stub
+		return mapper.read(hugino);
+	}
+
+	@Override
+	public int update(ReviewDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.update(dto);
+	}
+
+	@Override
+	public SikdangDTO detail(String sikid) {
+		// TODO Auto-generated method stub
+		return mapper.detail(sikid);
 	}
 
 }

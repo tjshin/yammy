@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create" parameterType="com.study.sikdang.SikdangDTO">
 	insert into sikdang(
 	sikid, sikname, sikphone, roadadd,
-	jibunadd, url, cox, coy)
+	jibunadd, sikurl, cox, coy)
 	values(#{sikid}, #{sikname}, #{sikphone}, #{roadadd},
-	#{jibunadd}, #{url}, #{cox}, #{coy})
+	#{jibunadd}, #{sikurl}, #{cox}, #{coy})
 </insert>
 
 <select id="checkId" parameterType="String" resultType="int">

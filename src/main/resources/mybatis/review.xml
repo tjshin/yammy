@@ -9,21 +9,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create" parameterType="com.study.review.ReviewDTO">
 	insert into review(
 	hugino, id, sikid, stadium,
-	htitle, hcontents, star)
+	htitle, hcontents, star, hdate)
 	values((select nvl(max(hugino),0)+1 from review),
 	        #{id},
 	        #{sikid},
 	        #{stadium},
 	        #{htitle},
 	        #{hcontents},
-	        #{star})
+	        #{star},
+	        sysdate)
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">
-	select count(*) from review r inner join member m
+	select count(*)
+	from review r inner join member m
 	on r.id = m.id
+	inner join sikdang s
+	on r.sikid = s.sikid
 	<where>
 		<choose>
+			<when test="col=='sikname'">
+				s.sikname like '%'||#{word}||'%'
+			</when>
 			<when test="col=='nick'">
 				m.nick like '%'||#{word}||'%'
 			</when>
@@ -31,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				htitle like '%'||#{word}||'%'
 			</when>
 			<when test="col=='hcontents'">
-				hcontents = #{word}
+				hcontents like '%'||#{word}||'%'
 			</when>
 			<when test="col=='title_content'">
 				htitle like '%'||#{word}||'%'
@@ -45,26 +52,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" parameterType="Map"
 		resultType="com.study.review.ReviewDTO">
-	select hugino, nick, sikid, stadium,
-			htitle, hcontents, star, r
+	select hugino, nick, sikid, sikname,
+			sikurl, stadium, htitle, hcontents, star, hdate, r
 	from (
-	select hugino, nick, sikid, stadium,
-			htitle, hcontents, star, rownum r
+	select hugino, nick, sikid, sikname,
+			sikurl, stadium, htitle, hcontents, star, hdate, rownum r
 	from (
-	select hugino, member.nick nick, sikid, stadium,
-			htitle, hcontents, star
-	from review inner join member
-	on review.id = member.id
+	select hugino, m.nick nick, review.sikid sikid, s.sikname sikname,
+			s.sikurl sikurl, stadium, htitle, hcontents, star, hdate
+	from review inner join member m
+	on review.id = m.id
+	inner join sikdang s
+	on review.sikid = s.sikid
 	<where>
 		<choose>
+			<when test="col=='sikname'">
+				s.sikname like '%'||#{word}||'%'
+			</when>
 			<when test="col=='nick'">
-				member.nick like '%'||#{word}||'%'
+				m.nick like '%'||#{word}||'%'
 			</when>
 			<when test="col=='htitle'">
 				htitle like '%'||#{word}||'%'
 			</when>
 			<when test="col=='hcontents'">
-				hcontents = #{word}
+				hcontents like '%'||#{word}||'%'
 			</when>
 			<when test="col=='title_content'">
 				htitle like '%'||#{word}||'%'
@@ -79,6 +91,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<![CDATA[       
     	)where r >= #{sno} and r <= #{eno}
     ]]>
+</select>
+
+<select id="read" parameterType="int" resultType="com.study.review.ReviewDTO">
+	select hugino, m.nick nick, review.sikid sikid, s.sikname sikname,
+	        s.sikurl sikurl, stadium, htitle, hcontents, star, hdate
+	from review inner join member m
+	on review.id = m.id
+	inner join sikdang s
+	on review.sikid = s.sikid
+	where hugino = #{hugino}
+</select>
+
+<update id="update" parameterType="com.study.review.ReviewDTO">
+	update review
+	set htitle = #{htitle}, hcontents = #{htitle},
+	    stadium = #{stadium}, star = #{star}
+	where hugino = #{hugino}
+</update>
+
+<select id="detail" parameterType="String"
+	resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+	where sikid = #{sikid}
 </select>
 
 </mapper>

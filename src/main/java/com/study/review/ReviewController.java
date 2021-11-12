@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.study.sikdang.SikdangDTO;
 import com.study.utility.Utility;
 
 @Controller
@@ -63,7 +66,14 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/review/read")
-	public String reviewRead() {
+	public String reviewRead(int hugino, Model model) {
+		
+		ReviewDTO dto = service.read(hugino);
+		String hcontents = dto.getHcontents().replaceAll("\r\n", "<br>");
+		dto.setHcontents(hcontents);
+		
+		model.addAttribute("dto", dto);
+		
 		return "/review/read";
 	}
 	
@@ -86,6 +96,32 @@ public class ReviewController {
 	@GetMapping("/review/create")
 	public String reviewCreate() {
 		return "/review/create";
+	}
+	
+	@GetMapping("/review/update")
+	public String update(int hugino, Model model) {
+		
+		ReviewDTO dto = service.read(hugino);
+		SikdangDTO sdto = service.detail(dto.getSikid());
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("sdto", sdto);
+		
+		return "/review/update";
+		
+	}
+	
+	@PostMapping("/review/update")
+	public String update(ReviewDTO dto, HttpServletRequest request,
+						RedirectAttributes redirect) {
+		if (service.update(dto) > 0) {
+			redirect.addAttribute("col", request.getParameter("col"));
+			redirect.addAttribute("word", request.getParameter("word"));
+			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+			return "redirect:/review/list";
+		} else {
+			return "/review/error";
+		}
 	}
 
 

@@ -10,7 +10,7 @@ public class SikdangDTO {
 	private String sikphone;
 	private String roadadd;
 	private String jibunadd;
-	private String url;
+	private String sikurl;
 	private String cox;
 	private String coy;
 

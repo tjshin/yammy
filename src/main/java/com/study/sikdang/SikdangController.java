@@ -36,7 +36,7 @@ public class SikdangController {
 		dto.setSikphone(request.getParameter("sikphone"));
 		dto.setRoadadd(request.getParameter("roadadd"));
 		dto.setJibunadd(request.getParameter("jibunadd"));
-		dto.setUrl(request.getParameter("url"));
+		dto.setSikurl(request.getParameter("sikurl"));
 		dto.setCox(request.getParameter("cox"));
 		dto.setCoy(request.getParameter("coy"));
 		

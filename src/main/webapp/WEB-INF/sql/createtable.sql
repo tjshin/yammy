@@ -17,15 +17,73 @@ CREATE TABLE MEMBER (
 );
 
 
-CREATE TABLE TICKET (
-       ticketno             NUMBER(10) NOT NULL,
-       tickettitle          VARCHAR2(500) NULL,
+CREATE TABLE SIKDANG (
+       sikid                VARCHAR2(50) NOT NULL,
+       sikname              VARCHAR2(100) NULL,
+       jibunadd             VARCHAR2(200) NULL,
+       sikurl               VARCHAR2(200) NULL,
+       sikphone             VARCHAR2(20) NULL,
+       coy                  VARCHAR2(50) NULL,
+       cox                  VARCHAR2(50) NULL,
+       roadadd              VARCHAR2(200) NULL,
+       PRIMARY KEY (sikid)
+);
+
+
+CREATE TABLE REVIEW (
+       hugino               NUMBER(10) NOT NULL,
+       htitle               VARCHAR2(500) NULL,
+       hcontents            VARCHAR2(4000) NULL,
+       hdate                DATE NULL,
+       sikid                VARCHAR2(50) NOT NULL,
+       star                 NUMBER(1) NULL,
        stadium              NUMBER(2) NULL,
-       ticketcontents       VARCHAR2(4000) NULL,
-       filename             VARCHAR2(100) NULL,
        id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (ticketno), 
+       PRIMARY KEY (hugino), 
+       FOREIGN KEY (sikid)
+                             REFERENCES SIKDANG, 
        FOREIGN KEY (id)
+                             REFERENCES MEMBER
+);
+
+
+CREATE TABLE REVIEWREPLY (
+       hugireno             NUMBER(10) NOT NULL,
+       hrecontents          VARCHAR2(300) NULL,
+       hredate              DATE NULL,
+       hugino               NUMBER(10) NOT NULL,
+       id                   VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (hugireno), 
+       FOREIGN KEY (id)
+                             REFERENCES MEMBER, 
+       FOREIGN KEY (hugino)
+                             REFERENCES REVIEW
+);
+
+
+CREATE TABLE NOTICE (
+       noticeno             NUMBER(10) NOT NULL,
+       ntitle               VARCHAR2(500) NULL,
+       ncontents            VARCHAR2(4000) NULL,
+       nview                NUMBER(5) NULL,
+       ndate                DATE NULL,
+       id                   VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (noticeno), 
+       FOREIGN KEY (id)
+                             REFERENCES MEMBER
+);
+
+
+CREATE TABLE MESSAGE (
+       messageno            NUMBER(10) NOT NULL,
+       mcontents            VARCHAR2(4000) NULL,
+       receid               VARCHAR2(50) NOT NULL,
+       mdate                DATE NULL,
+       sendid               VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (messageno), 
+       FOREIGN KEY (receid)
+                             REFERENCES MEMBER, 
+       FOREIGN KEY (sendid)
                              REFERENCES MEMBER
 );
 
@@ -44,23 +102,20 @@ CREATE TABLE BBS (
 );
 
 
-CREATE TABLE BBSLIKE (
-       bcnt                 NUMBER(5) NULL,
-       id                   VARCHAR2(50) NOT NULL,
+CREATE TABLE TEAMBBS (
+       tbno                 NUMBER(2) NOT NULL,
        bbsno                NUMBER(10) NOT NULL,
-       PRIMARY KEY (bbsno), 
+       PRIMARY KEY (tbno), 
        FOREIGN KEY (bbsno)
-                             REFERENCES BBS, 
-       FOREIGN KEY (id)
-                             REFERENCES MEMBER
+                             REFERENCES BBS
 );
 
 
 CREATE TABLE REPLY (
        reno                 NUMBER(10) NOT NULL,
        bbsno                NUMBER(10) NOT NULL,
-       recontents           VARCHAR2(200) NULL,
-       id                   VARCHAR2(50) NULL,
+       recontents           VARCHAR2(300) NULL,
+       id                   VARCHAR2(50) NOT NULL,
        redate               DATE NULL,
        PRIMARY KEY (reno), 
        FOREIGN KEY (id)
@@ -82,66 +137,27 @@ CREATE TABLE REPLYLIKE (
 );
 
 
-CREATE TABLE TEAMBBS (
-       tbno                 NUMBER(2) NOT NULL,
-       bbsno                NUMBER(10) NOT NULL,
-       PRIMARY KEY (tbno), 
-       FOREIGN KEY (bbsno)
-                             REFERENCES BBS
-);
-
-
-CREATE TABLE MESSAGE (
-       messageno            NUMBER(10) NOT NULL,
-       mcontents            VARCHAR2(4000) NULL,
-       receid               VARCHAR2(50) NULL,
-       mdate                DATE NULL,
-       sendid               VARCHAR2(50) NULL,
-       PRIMARY KEY (messageno), 
-       FOREIGN KEY (receid)
-                             REFERENCES MEMBER, 
-       FOREIGN KEY (sendid)
-                             REFERENCES MEMBER
-);
-
-
-CREATE TABLE NOTICE (
-       noticeno             NUMBER(10) NOT NULL,
-       ntitle               VARCHAR2(500) NULL,
-       ncontents            VARCHAR2(4000) NULL,
-       nview                NUMBER(5) NULL,
-       ndate                DATE NULL,
+CREATE TABLE BBSLIKE (
+       bcnt                 NUMBER(5) NULL,
        id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (noticeno), 
+       bbsno                NUMBER(10) NOT NULL,
+       PRIMARY KEY (bbsno), 
+       FOREIGN KEY (bbsno)
+                             REFERENCES BBS, 
        FOREIGN KEY (id)
                              REFERENCES MEMBER
 );
 
 
-CREATE TABLE SIKDANG (
-       sikid                VARCHAR2(50) NOT NULL,
-       sikname              VARCHAR2(100) NULL,
-       jibunadd             VARCHAR2(200) NULL,
-       url                  VARCHAR2(200) NULL,
-       sikphone             VARCHAR2(20) NULL,
-       coy                  VARCHAR2(50) NULL,
-       cox                  VARCHAR2(50) NULL,
-       roadadd              VARCHAR2(200) NULL,
-       PRIMARY KEY (sikid)
-);
-
-
-CREATE TABLE REVIEW (
-       hugino               NUMBER(10) NOT NULL,
-       htitle               VARCHAR2(500) NULL,
-       hcontents            VARCHAR2(4000) NULL,
-       sikid                VARCHAR2(50) NOT NULL,
-       star                 NUMBER(1) NULL,
+CREATE TABLE TICKET (
+       ticketno             NUMBER(10) NOT NULL,
+       tickettitle          VARCHAR2(500) NULL,
+       ticketdate           DATE NULL,
        stadium              NUMBER(2) NULL,
+       ticketcontents       VARCHAR2(4000) NULL,
+       filename             VARCHAR2(100) NULL,
        id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (hugino), 
-       FOREIGN KEY (sikid)
-                             REFERENCES SIKDANG, 
+       PRIMARY KEY (ticketno), 
        FOREIGN KEY (id)
                              REFERENCES MEMBER
 );

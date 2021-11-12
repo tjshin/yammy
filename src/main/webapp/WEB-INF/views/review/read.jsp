@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
+<c:set var="listurl" value="${root }/review/list?col=${param.col}&word=${param.word}&nowPage=${param.nowPage}"/>
+<c:set var="urlhelper" value="&col=${param.col}&word=${param.word}&nowPage=${param.nowPage}"/>
 
 <!DOCTYPE html>
 <html>
@@ -8,6 +10,30 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>review read test</title>
+    
+    <script type="text/javascript">
+	function update() {
+		var url = "${root}/review/update";
+		url += "?hugino=${dto.hugino}";
+		url += "&col=${param.col}";
+		url += "&word=${param.word}";
+		url += "&nowPage=${param.nowPage}";
+
+		location.href = url;
+	}
+	
+	function delete() {
+		var url = "${root}/review/delete";
+		url += "?hugino=${dto.hugino}";
+		url += "&col=${param.col}";
+		url += "&word=${param.word}";
+		url += "&nowPage=${param.nowPage}";
+		
+		location.href = url;
+	}
+	
+</script>
+    
 </head>
 <body>
 
@@ -33,7 +59,8 @@
                     <a href="${root }/sikdang/map_main" class="main-button accent-color">
                         <i class="icon-button fa fa-arrow-left"></i>
 						&nbsp;&nbsp; 지도로 돌아가기</a>
-                    <a href="${root }/review/list" class="main-button accent-color">
+                    <a href="${listurl }"
+                    class="main-button accent-color">
                         <i class="icon-button fa fa-arrow-left"></i>
 						&nbsp;&nbsp; 목록으로 돌아가기
                     </a>
@@ -50,16 +77,27 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="post-blog">
-							<div class="blog-image">
-								<img src="images/includes/blog2.jpg" alt="">
-							</div> <!-- /.blog-image -->
+							
 							<div class="blog-content">
-								<span class="meta-date"><a href="#">날짜</a></span>
-								<span class="meta-comments"><a href="#blog-comments">댓글 수: #</a></span>
-								<span class="meta-author"><a href="#blog-author">글쓴이 이름</a></span>
-								<h3>리뷰 제목</h3>
+								<span class="meta-date">${dto.hdate }</span>
+								<span class="meta-comments">댓글 수: 댓글 기능 추가해라</span>
+								<span class="meta-author"><a href="#blog-author">${dto.nick }</a></span>
+								<span>/</span>
 								
-								<p>리뷰 내용 ckeditor ckfinder 적용해야함</p>
+								<c:if test="${dto.stadium == 1}"><span>서울 잠실</span></c:if>
+								<c:if test="${dto.stadium == 2}"><span>서울 고척</span></c:if>
+								<c:if test="${dto.stadium == 3}"><span>인천</span></c:if>
+								<c:if test="${dto.stadium == 4}"><span>수원</span></c:if>
+								<c:if test="${dto.stadium == 5}"><span>대전</span></c:if>
+								<c:if test="${dto.stadium == 6}"><span>광주</span></c:if>
+								<c:if test="${dto.stadium == 7}"><span>대구</span></c:if>
+								<c:if test="${dto.stadium == 8}"><span>창원</span></c:if>
+								<c:if test="${dto.stadium == 9}"><span>부산 사직</span></c:if>
+								
+								<h3>${dto.htitle }</h3>
+								<div class="panel-heading"></div>
+								<div class="panel-body">
+								<p>${dto.hcontents }</p></div>
 								<div class="tag-items">
                                     <span class="small-text">Tags:</span>
                                     <a href="#" rel="tag">태그 누르면</a>
@@ -73,11 +111,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-author" class="clearfix">
-                            <a href="#" class="blog-author-img pull-left">
-                                <img src="../template/images/includes/author.png" alt="">
-                            </a>
+                            
                             <div class="blog-author-info">
-                                <h4 class="author-name"><a href="#">글쓴이 이름</a></h4>
+                                <h4 class="author-name"><a href="#">${dto.nick }</a></h4>
                                 <p>프로필에는 어떤 내용을 노출시킬까요?</p>
                             </div>
                         </div>
@@ -87,12 +123,12 @@
                 <div class="row">
                     <br>
                     <div class="col-md-12">
-                        <a href="${root }/review/list" class="main-button accent-color">리뷰 목록</a>
+                        <a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
                         (등록은 interceptor로 로그인 유도하게)
                         <a href="${root }/sikdang/map_search" class="main-button accent-color">리뷰 등록</a>
                         (수정과 삭제 버튼을 회원id 활용해 글쓴 사람만 볼 수 있게)
-                        <a href="${root }/review/update" class="main-button accent-color">리뷰 수정</a>
-                        <a href="${root }/review/delete" class="main-button accent-color">리뷰 삭제</a>
+                        <a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}" class="main-button accent-color">리뷰 수정</a>
+                        <a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}" class="main-button accent-color">리뷰 삭제</a>
                     </div>
                 </div>
 
@@ -168,6 +204,8 @@
                     </div> <!-- /.col-md-12 -->
                 </div> <!-- /.row -->
 			</div> <!-- /.col-md-8 -->
+			</div>
+			</div>
 
 </body>
 </html>

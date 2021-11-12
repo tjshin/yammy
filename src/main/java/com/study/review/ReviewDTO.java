@@ -13,5 +13,8 @@ public class ReviewDTO {
 	private int stadium;
 	private String id;
 	private String nick;
+	private String hdate;
+	private String sikname;
+	private String sikurl;
 
 }
