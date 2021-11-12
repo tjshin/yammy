@@ -19,4 +19,7 @@ public interface ReviewService {
 
 	SikdangDTO detail(String sikid);
 
+	int delete(int hugino);
+
+
 }

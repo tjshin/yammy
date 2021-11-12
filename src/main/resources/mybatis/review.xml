@@ -116,4 +116,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where sikid = #{sikid}
 </select>
 
+<delete id="delete" parameterType="int">
+	delete from review
+	where hugino = #{hugino}
+</delete>
+
 </mapper>

@@ -53,4 +53,12 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.detail(sikid);
 	}
 
+	@Override
+	public int delete(int hugino) {
+		// TODO Auto-generated method stub
+		return mapper.delete(hugino);
+	}
+
+	
+
 }

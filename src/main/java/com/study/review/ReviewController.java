@@ -1,5 +1,6 @@
 package com.study.review;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -113,8 +114,28 @@ public class ReviewController {
 	
 	@PostMapping("/review/update")
 	public String update(ReviewDTO dto, HttpServletRequest request,
-						RedirectAttributes redirect) {
+						RedirectAttributes redirect) throws IOException {
 		if (service.update(dto) > 0) {
+			redirect.addAttribute("col", request.getParameter("col"));
+			redirect.addAttribute("word", request.getParameter("word"));
+			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+			return "redirect:/review/list";
+		} else {
+			return "/review/error";
+		}
+	}
+	
+	@GetMapping("/review/delete")
+	public String delete(int hugino) {
+		return "/review/delete";
+	}
+	
+	@PostMapping("/review/delete")
+	public String delete (int hugino, HttpServletRequest request,
+			RedirectAttributes redirect) {
+		
+		if(service.delete(hugino) > 0) {
+		
 			redirect.addAttribute("col", request.getParameter("col"));
 			redirect.addAttribute("word", request.getParameter("word"));
 			redirect.addAttribute("nowPage", request.getParameter("nowPage"));

@@ -65,3 +65,6 @@ update review
 set htitle='수정 테스트입니다.', hcontents='내용 수정 테스트입니다.',
     stadium='3', star='3'
 where hugino='11';
+
+delete from review
+where hugino = '11';

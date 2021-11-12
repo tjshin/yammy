@@ -19,4 +19,6 @@ public interface ReviewMapper {
 
 	SikdangDTO detail(String sikid);
 
+	int delete(int hugino);
+
 }

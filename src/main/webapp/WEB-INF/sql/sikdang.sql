@@ -12,8 +12,8 @@ CREATE TABLE SIKDANG (
        PRIMARY KEY (sikid)
 );
 
-alter table sikdang
-rename column url to sikurl;
+select * from sikdang
+where sikid = '9927879';
 
 
 
