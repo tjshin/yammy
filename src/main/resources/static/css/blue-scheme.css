@@ -409,6 +409,14 @@ a.main-button.accent-color:hover {
   background-color: #31373a;
 }
 
+a.main-button.accent-color2 {
+  background-color: grey;
+  color: white;
+}
+a.main-button.accent-color2:hover {
+  background-color: #31373a;
+}
+
 .icon-button {
   margin-left: 15px;
 }

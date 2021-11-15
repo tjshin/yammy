@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.study.member.MemberMapper">  <!-- 이 안에서만 영향이 있는 쿼리문 -->
+	
+
+	 <select id="total" parameterType="Map" resultType="int">
+                        select count(*) from member
+         <where>
+                <choose>
+                        <when test="col=='mname'">
+                                mname like '%'||#{word}||'%'
+                        </when>
+                        <when test="col=='id'">
+                                id like '%'||#{word}||'%'
+                        </when>
+                        <when test="col=='email'">
+                                email like '%'||#{word}||'%'
+                        </when>
+                </choose>
+          </where>
+    </select> 
+    
+    
+	<select id="mypage" parameterType="String" resultType="com.study.member.MemberDTO">
+		select id, mname, nick, email, phone, filename, postcode, address1, address2, point, favteam
+		from member
+		where id = #{id}  
+	</select>
+	
+	<select id="btotal" parameterType="Map" resultType="int">
+    select count(*) from bbs
+    <where>
+              <choose>
+              	<when test="col=='btitle'">
+                      btitle like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='bcontents'">
+                      bcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='btitle_bcontents'">
+                     btitle like '%'||#{word}||'%'
+                     or
+                     bcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+  </select>
+	
+	<select id="bbs" parameterType="Map" resultType="com.study.member.BbsDTO">
+		select bbsno, bcate, btitle, id, bview, to_char(bdate, 'yyyy-mm-dd') bdate, r
+		from(                                                                                        
+    		select bbsno, bcate, btitle, id, bview, bdate, rownum r    
+    		from (                                                                                                                                                                    
+	 			select bbsno, bcate, btitle, id, bview, bdate           
+	 			from bbs
+    <where>
+              <choose>
+              	<when test="col=='btitle'">
+                      btitle like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='bcontents'">
+                      bcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='btitle_bcontents'">
+                     btitle like '%'||#{word}||'%'
+                     or
+                     bcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+		    order by bbsno desc
+		    )
+   	 )
+    <![CDATA[
+	 where r>=#{sno} and r <=#{eno}
+	]]> 
+	</select>
+	
+
+	
+	
+	
+	<select id="list" parameterType="Map" resultType="com.study.member.MemberDTO">
+                select id, mname, nick, email, phone, address1, address2, postcode, filename, r
+                from(
+						select id, mname, nick, email, phone, address1, address2, postcode, filename, rownum r
+                        from(
+                                select id, mname, nick, email, phone, address1, address2, postcode, filename
+                                from member
+                                <where>
+                                        <choose>
+                                                <when test="col=='mname'">
+                                                        mname like '%'||#{word}||'%'
+                                                </when>
+                                                <when test="col=='id'">
+                                                        id like '%'||#{word}||'%'
+                                                </when>
+                                                <when test="col=='email'">
+                                                        email like '%'||#{word}||'%'
+                                                </when>
+                                        </choose>
+                                </where>
+                                order by id desc
+                        )
+        <![CDATA[       
+                )where r >= #{sno} and r <= #{eno}
+        ]]>     
+    </select>
+	
+	
+	
+	
+	<update id="updateFile" parameterType="Map">
+                update member
+                set filename = #{filename}
+                where id = #{id}
+    </update>
+	
+	
+	
+	
+	<update id="update" parameterType="com.study.member.MemberDTO">
+                update member
+                set phone = #{phone},
+                nick = #{nick},
+                email = #{email},
+                postcode = #{postcode},
+                address1 = #{address1},
+                address2 = #{address2},
+                favteam = #{favteam}
+                where id = #{id}
+    </update>
+        
+        
+        
+	<select id="read" parameterType="String" resultType="com.study.member.MemberDTO">
+                select *
+                from member
+                where id = #{id}
+    </select>
+	
+	<select id="getGrade" parameterType="String" resultType="String">
+		select grade from member
+        where id = #{id}
+	</select>
+	
+	
+	<select id="loginCheck" parameterType="Map" resultType="int">
+		select count(*) from member
+        where id = #{id}
+        and password = #{password}
+	</select>
+	
+	
+	
+	<select id="duplicatedId" parameterType="String"  resultType="int">
+		select count(*)  
+		from member  
+		where id=#{id}
+	</select>
+	
+	<select id="duplicatedEmail" parameterType="String" resultType="int">
+		select count(*)  
+		from member  
+		where email=#{email}
+	</select>
+	
+	
+	<insert id="create" parameterType="com.study.member.MemberDTO">
+                insert into member(id, password, mname, nick, phone, email, postcode, address1, address2, filename, grade, point, favteam)
+                values(#{id}, #{password},#{mname}, #{nick}, #{phone}, #{email}, #{postcode}, #{address1}, #{address2}, #{filename}, 'H', 0, #{favteam})
+    </insert>
+    
+    <insert id="kakaoCreate" parameterType="com.study.member.MemberDTO">
+                insert into member(id, password, mname, email, grade, filename)
+                values(#{id}, #{password},#{mname},#{email}, 'KH', 'member.jpg')
+    </insert>
+    
+    <insert id="googleCreate" parameterType="com.study.member.MemberDTO">
+                insert into member(id, password, nick, mname, email, grade, filename)
+                values(#{id}, #{password},#{nick}, #{mname},#{email}, 'GH', 'member.jpg')
+    </insert>
+
+</mapper>

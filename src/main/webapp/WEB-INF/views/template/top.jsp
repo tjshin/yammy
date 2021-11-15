@@ -3,7 +3,6 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
 
-
 <!DOCTYPE html>
 <html>
 
@@ -74,19 +73,25 @@
 
 			<div class="row">
 
-				<div class="col-md-12">
+				<div class="col-md-15">
 
 					<div class="pull-left logo">
-						<a href="${root }/"">
+
+						<a href="${root }/">
+
 							<img src="${root }/images/logo.png" alt="Medigo by templatemo">
 						</a>
+						
+						
 					</div>	<!-- /.logo -->
+					
 
 					<div class="main-navigation pull-right">
-
+						
 						<nav class="main-nav visible-md visible-lg">
+						
 							<ul class="sf-menu">
-								<li class="active"><a href="${root }/"">Home</a></li>
+								<li class="active"><a href="${root }/">Home</a></li>
 					            <li><a href="#">구장별 게시판</a>
 					            	<ul>
 					            		<li><a href="#">잠실(LG/두산)</a></li>
@@ -101,7 +106,7 @@
 					            	</ul>
 					            </li>
 					            
-					            <li><a href="#">공지사항</a></li>
+					            <li><a href="${root }/notice/list">공지사항</a></li>
                                 <li><a href="#">티켓양도</a></li>
                                 <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 					            	<ul>
@@ -111,13 +116,33 @@
                                         
 					            	</ul>
 					            </li>
-                                <li><a href="#">내 정보</a></li>
-                                <li><a href="#">1:1 문의(챗봇)</a></li>
+                                <li><a href="${root }/member/mypage">내 정보</a></li>
+                                <li><a href="${root }/chatbot/chatting">1:1 문의(챗봇)</a></li>
+    <c:choose>
+
+    <c:when test="${empty sessionScope.id }">
+    	<li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </c:when>
+    <c:when test="${sessionScope.id == 'admin' && sessionScope.grade == 'A '}">
+    	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:when>
+
+    <c:otherwise>
+    	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:otherwise>
+    </c:choose> 
+   
+                                
+                                
+                               
 							</ul> <!-- /.sf-menu -->
 						</nav> <!-- /.main-nav -->
 
 						<!-- This one in here is responsive menu for tablet and mobiles -->
-					    <div class="responsive-navigation visible-sm visible-xs">
+					    <div class="responsive-navigation visible-sm visible-xs" id="except">
 					        <a href="#nogo" class="menu-toggle-btn">
 					            <i class="fa fa-bars"></i>
 					        </a>
@@ -140,44 +165,7 @@
 
 
 
-    <!--상단메뉴-->
-    <!-- <div class="container-fluid">
-        <nav class="navbar navbar-inverse" style="background-color: #b47c27;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="${root}/">YAMMY 야미</a>
-                </div>
-                
-                
-                <ul class="nav navbar-nav navbar-right">
-                    <c:choose>
-                        <c:when test="${empty sessionScope.id }">
-                            <li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign
-                                    Up</a></li>
-                            <li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span>
-                                    Login</a></li>
-                        </c:when>
-                        <c:when test="${not empty sessionScope.id && sessionScope.grade == 'A'}">
-                            
-                            <li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a>
-                            </li>
-                            <li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>
-                                    로그아웃</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            
-                            <li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a>
-                            </li>
-                            <li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>
-                                    로그아웃</a></li>
-                        </c:otherwise>
-                    </c:choose>
 
-                </ul>
-            </div>
-        </nav>
-
-    </div> -->
 </body>
 
 </html>
