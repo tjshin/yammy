@@ -19,6 +19,7 @@
 <body>
 <div class = "first-widget parallax"> </div>
 
+
 <div> 
 <button type="button" class="btn btn-default" onclick="location.href='/message/sendlist'" >보낸쪽지함</button>
 <button type="button" class="btn btn-default" onclick="location.href='/message/recelist'" >받는쪽지함</button>
@@ -26,6 +27,7 @@
 
 
     <div>바디에요</div>
+
 
 
 </body>

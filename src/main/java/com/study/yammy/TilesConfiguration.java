@@ -15,6 +15,7 @@ public class TilesConfiguration {
       //해당 경로에 tiles.xml 파일을 넣음
       configurer.setDefinitions(new String[]{
     		  "classpath:/tiles/tiles.xml",
+    		  "classpath:/tiles/tiles_bbs.xml",
     		  "classpath:/tiles/tiles_message.xml",
     		  "classpath:/tiles/tiles_member.xml",
     		  "classpath:/tiles/tiles_sikdang.xml",
@@ -22,6 +23,7 @@ public class TilesConfiguration {
     		  "classpath:/tiles/tiles_chatbot.xml",
     		  "classpath:/tiles/tiles_notice.xml"
     		  });
+      
       configurer.setCheckRefresh(true);
       return configurer;
   }

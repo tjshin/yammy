@@ -1,12 +1,10 @@
 package com.study.member;
 
+import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
-
-
-import lombok.Data;
-
 @Data // lombok을 사용하는 annotation
+
 public class MemberDTO {
 	private String id;
 	private String mname;

@@ -35,11 +35,12 @@
 
 
     <div class="responsive_menu">
+        <!-- 모바일버전 -->
         <ul class="main_menu">
             <li><a href="${root }/">Home</a></li>
             <li><a href="#">구장별 게시판</a>
             	<ul>
-            		<li><a href="#">잠실(LG/두산)</a></li>
+            		<li><a href="/bbs/list">잠실(LG/두산)</a></li>
                     <li><a href="#">고척(키움)</a></li>
                     <li><a href="#">인천(SSG)</a></li>
                     <li><a href="#">수원(KT)</a></li>
@@ -68,9 +69,11 @@
 
 
 
+
 	<header class="site-header clearfix"> <!-- static-info-project -->
 
 	<div class="site-header clearfix">
+
 
 		<div class="container">
 
@@ -163,7 +166,6 @@
     <!-- Scripts -->
 	<script src="${root }/js/min/plugins.min.js"></script>
 	<script src="${root }/js/min/medigo-custom.min.js"></script>
-
 
 </body>
 

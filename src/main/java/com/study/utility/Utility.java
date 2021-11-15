@@ -153,6 +153,10 @@ public class Utility {
 
 		return str.toString();
 	}
+	
+	
+	
+	
 
 	// paging url 추가
 	public static String paging(int totalRecord, int nowPage, int recordPerPage, String col, String word, String url) {
