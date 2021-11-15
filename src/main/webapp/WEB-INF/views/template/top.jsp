@@ -62,7 +62,7 @@
                     
                 </ul>
             </li>
-            <li><a href="#">내 정보</a></li>
+            <li><a href="${root }/member/mypage">내 정보</a></li>
             <li><a href="#">1:1 문의(챗봇)</a></li>
         </ul> <!-- /.main_menu -->
     </div> <!-- /.responsive_menu -->

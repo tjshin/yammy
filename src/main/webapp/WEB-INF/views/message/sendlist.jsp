@@ -143,13 +143,13 @@
 
 							<tr>
 								<td><input name="RowCheck" type="checkbox" value="${dto.messageno}"/></td>
-								<td><a href="javascript:read('${dto.messageno}')">${dto.receid}</a>
+								<td>${dto.receid}
 
 									<c:if test="${util:newImg(fn:substring(dto.mdate,0,10)) }">
 										<!--<img src="./imagetest/new.gif">  --> <!-- shop/WebMvcConfiguration 추가해야함 -->
 										 <img src="${root }/images/new.gif">  
 									</c:if></td>
-								<td>${dto.mcontents}</td>
+								<td><a href="javascript:read('${dto.messageno}')">${dto.mcontents}</a></td>
 								<td>${dto.mdate}</td>
 
 							</tr>

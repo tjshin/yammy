@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,10 +27,10 @@ public class BbsContorller {
 
 	// create
 	@GetMapping("/bbs/create")
-	public String create(Model model) {
+	public String create(Model model, HttpSession session) {
 
 		// id 테스트용도 ***********************
-		String id = "admin"; // 추후 세션에 저장된 아이디 값으로 등록
+		String id = (String)session.getAttribute("id"); // 추후 세션에 저장된 아이디 값으로 등록
 		model.addAttribute("id", id);
 
 		return "/bbs/create";

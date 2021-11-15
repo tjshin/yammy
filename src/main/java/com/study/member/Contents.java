@@ -10,7 +10,7 @@ public class Contents {
     public static synchronized String getUploadDir() {
         String path = "";
         if (File.separator.equals("\\")) {
-            path = "C:/AIstudy/ai_team2/yammy/bin/main/static/member";
+            path = "C:/AIstudy/ai_team2_clone/yammy/bin/main/static/member";
             System.out.println("Windows 10: " + path);
             
         } else {

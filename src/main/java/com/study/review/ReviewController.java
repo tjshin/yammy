@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -80,11 +81,11 @@ public class ReviewController {
 	
 
 	@PostMapping("/review/create")
-	public String reviewCreate(ReviewDTO dto, HttpServletRequest request) {
+	public String reviewCreate(ReviewDTO dto, HttpServletRequest request, HttpSession session) {
 		
 		dto.setSikid(request.getParameter("sikid"));
 		
-		String id = "tester";
+		String id = (String)session.getAttribute("id");
 		dto.setId(id);
 		
 		if (service.create(dto) > 0) {

@@ -358,6 +358,7 @@ public class MemberController {
                  String grade = service.getGrade(id);
                  session.setAttribute("id", id);
                  session.setAttribute("grade", grade);
+                 System.out.println(id);
                  
                  Cookie cookie = null;
                  String c_id = request.getParameter("c_id");  
@@ -527,7 +528,7 @@ public class MemberController {
             int cnt = service.updateFile(map);
             
             if(cnt==1) {
-                    return "redirect:./mypage";
+                    return "redirect:/member/mypage";
             }else {
                     return "./error";
             }
@@ -617,7 +618,7 @@ public class MemberController {
 	   String id = (String)session.getAttribute("id");
 	 
 	  if(id==null) {
-	       return "redirect: ./login/";
+	       return "redirect:/member/login/";
 	  }else {
 		  	
 		    String col = Utility.checkNull(request.getParameter("col"));

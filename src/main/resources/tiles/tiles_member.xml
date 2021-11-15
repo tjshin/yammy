@@ -28,14 +28,7 @@
     <put-attribute name="body"
       value="/WEB-INF/views/member/find.jsp" />
   </definition>
-  
-  
-  
-  <definition name="/home" extends="main">
-    <put-attribute name="title" value="기본페이지"></put-attribute>
-    <put-attribute name="body"
-      value="/WEB-INF/views/index.jsp" />
-  </definition>
+ 
   
   
   

@@ -89,10 +89,10 @@ public class MessageContorller {
 	
 	//reply
 	@GetMapping("/message/reply")
-	  public String reply(Model model) {
+	  public String reply(Model model, HttpSession session) {
 		
 		//id 테스트용도 ***********************
-		  String sendid = "tlsxowls"; //추후 세션에 저장된 아이디 값으로 등록 
+		  String sendid = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
 		model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
 	    return "/message/reply";
 	  }
@@ -111,11 +111,12 @@ public class MessageContorller {
 
 	//create
 	@GetMapping("/message/create")
-	  public String create(Model model) {
+	  public String create(Model model, HttpSession session) {
 		
 		//id 테스트용도 ***********************
-		String sendid = "tlsxowls"; //추후 세션에 저장된 아이디 값으로 등록 
+		String sendid = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
 		model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
+		System.out.println(sendid);
 		
 	    return "/message/create";
 	  }
@@ -173,10 +174,11 @@ public class MessageContorller {
 	
 	//받은쪽지함리스트
 	 @RequestMapping("/message/recelist")
-	  public String recelist(HttpServletRequest request) {
+	  public String recelist(HttpServletRequest request, HttpSession session) {
 	   
 		 //id 테스트용도 ***********************
-		  String receid = "tlsxowls";
+		  String receid = (String)session.getAttribute("id");
+		  
 		  
 		 
 		 
@@ -231,10 +233,11 @@ public class MessageContorller {
 	 //보낸쪽지함리스트
 	 
 	 @RequestMapping("/message/sendlist")
-	  public String sendlist(HttpServletRequest request) {
+	  public String sendlist(HttpServletRequest request, HttpSession session) {
 	   
 		//id 테스트용도 ***********************
-		  String sendid = "tlsxowls";
+		  String sendid = (String)session.getAttribute("id");
+		  
 		  
 		 
 		 
