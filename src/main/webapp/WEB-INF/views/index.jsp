@@ -14,10 +14,9 @@
 
 </head>
 <body>
-	
- 	<div class="first-widget parallax"></div>
- 	
- 	${sessionScope.id}
- 	${sessionScope.grade}
+
+<div class="first-widget parallax"></div>
+    <div>바디에요</div>
+
 </body>
 </html>
