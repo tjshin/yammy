@@ -36,7 +36,6 @@ public class MessageContorller {
             
         String[] ajaxMsg = request.getParameterValues("valueArr");
         int size = ajaxMsg.length;
-        System.out.print("값:"+ajaxMsg);
         for(int i=0; i<size; i++) {
         	service.checkdelete(Integer.parseInt(ajaxMsg[i]));
         }
