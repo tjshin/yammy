@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -16,15 +18,15 @@
 	<link href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="./bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="./css/misc.css">
-	<link rel="stylesheet" href="./css/blue-scheme.css">
+	<link rel="stylesheet" href="${root }/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="${root }/css/misc.css">
+	<link rel="stylesheet" href="${root }/css/blue-scheme.css">
 	
 	<!-- JavaScripts -->
-	<script src="./js/jquery-1.10.2.min.js"></script>
-	<script src="./js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="${root }/js/jquery-1.10.2.min.js"></script>
+	<script src="${root }/js/jquery-migrate-1.2.1.min.js"></script>
 
-	<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="${root }/images/favicon.ico" type="image/x-icon" />
     
 
 </head>
@@ -33,11 +35,12 @@
 
 
     <div class="responsive_menu">
+        <!-- 모바일버전 -->
         <ul class="main_menu">
             <li><a href="#">Home</a></li>
             <li><a href="#">구장별 게시판</a>
             	<ul>
-            		<li><a href="#">잠실(LG/두산)</a></li>
+            		<li><a href="/bbs/list">잠실(LG/두산)</a></li>
                     <li><a href="#">고척(키움)</a></li>
                     <li><a href="#">인천(SSG)</a></li>
                     <li><a href="#">수원(KT)</a></li>
@@ -65,7 +68,8 @@
     </div> <!-- /.responsive_menu -->
 
 
-	<header class="site-header clearfix">
+	<header class="site-header clearfix"> 
+	<!--피시버전-->
 		<div class="container">
 
 			<div class="row">
@@ -74,7 +78,7 @@
 
 					<div class="pull-left logo">
 						<a href="#">
-							<img src="./images/logo.png" alt="Medigo by templatemo">
+							<img src="${root }/images/logo.png" alt="Medigo by templatemo">
 						</a>
 					</div>	<!-- /.logo -->
 
@@ -129,8 +133,8 @@
 	</header> <!-- /.site-header -->
 
     <!-- Scripts -->
-	<script src="./js/min/plugins.min.js"></script>
-	<script src="./js/min/medigo-custom.min.js"></script>
+	<script src="${root }/js/min/plugins.min.js"></script>
+	<script src="${root }/js/min/medigo-custom.min.js"></script>
 
 
 

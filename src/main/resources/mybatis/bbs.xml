@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.bbs.BbsMapper">
+
+
+<!-- 등록 -->
+  <insert id="create" parameterType="com.study.bbs.BbsDTO">
+ 	INSERT INTO bbs(bbsno, btitle, bcontents, bview, bcate,  bdate, id)
+    VALUES((select nvl(max(bbsno),0)+1 from bbs), #{btitle}, #{bcontents},  0, #{bcate}, SYSTIMESTAMP, 'admin' )
+  </insert> 
+ 
+ <!--리스트  -->
+	 
+<select id="list" parameterType="Map" resultType="com.study.bbs.BbsDTO">
+  select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, r, bcname
+    from (
+    select bbsno, btitle, nick, bdate, bview, bcontents,  rownum r, bcname
+    from (
+    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcategory.bcatename as bcname
+    
+    from bbs 
+    inner join bcategory
+     on bbs.bcate = bcategory.bcate
+           
+     inner join member
+    on bbs.id = member.id
+
+	
+        ORDER BY bbsno DESC
+
+		)
+		)
+		<![CDATA[       
+       where r >= #{sno} and r <= #{eno}
+         ]]>
+
+  
+</select>
+  <select id="total" resultType="int" parameterType="Map">
+    select count(*) from bbs
+   <where>
+    <choose>
+                  <when test="col=='wname'">
+                      bname like ('%',#{word},'%')
+                  </when>
+                  <when test="col=='title'">
+                      btitle like ('%',#{word},'%')
+                  </when>
+                  <when test="col=='content'">
+                      bcontent like ('%',#{word},'%')
+                  </when>
+                  <when test="col=='title_content'">
+                     btitle like ('%',#{word},'%')
+                     or
+                     bcontent like ('%',#{word},'%')
+                  </when>
+              </choose>
+           </where>
+  </select>
+
+ <!-- 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM bbs
+    WHERE bbsno=#{bbsno}
+  </delete>
+
+  <select id="read" resultType="com.study.bbs.BbsDTO">
+     select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, bcate, r
+    from (
+    select bbsno, btitle, nick, bdate, bview, bcontents, bcate, rownum r
+    from (
+    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcate
+           
+    from bbs inner join member
+    on bbs.id = member.id
+    WHERE bbsno=#{bbsno}
+    ))
+  </select>
+<!-- 조회수 증가 -->
+  <update id="upbview" parameterType="int">
+    update bbs              
+    set bview = bview + 1 
+    where bbsno = #{bbsno}         
+  </update>
+  
+  	<select id="getCategory" resultType="Map">
+		select bcate, bcatename from bcategory
+		where bcategrpno is null
+	</select>
+  
+
+
+
+
+<select id="bestlist" parameterType="Map" resultType="com.study.bbs.BbsDTO">
+  select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, r, bcname
+    from (
+    select bbsno, btitle, nick, bdate, bview, bcontents,  rownum r, bcname
+    from (
+    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcategory.bcatename as bcname
+    
+    from bbs 
+    inner join bcategory
+     on bbs.bcate = bcategory.bcate
+           
+     inner join member
+    on bbs.id = member.id
+   
+   where bview >= 10
+   
+       ORDER BY bbsno DESC
+
+		)
+		)
+		<![CDATA[       
+       where r >= #{sno} and r <= #{eno}
+         ]]>
+
+  
+</select>
+
+
+  </mapper>
