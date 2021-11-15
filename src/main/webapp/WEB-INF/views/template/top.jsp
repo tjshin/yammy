@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -16,15 +18,15 @@
 	<link href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="./bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="./css/misc.css">
-	<link rel="stylesheet" href="./css/blue-scheme.css">
+	<link rel="stylesheet" href="${root }/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="${root }/css/misc.css">
+	<link rel="stylesheet" href="${root }/css/blue-scheme.css">
 	
 	<!-- JavaScripts -->
-	<script src="./js/jquery-1.10.2.min.js"></script>
-	<script src="./js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="${root }/js/jquery-1.10.2.min.js"></script>
+	<script src="${root }/js/jquery-migrate-1.2.1.min.js"></script>
 
-	<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="${root }/images/favicon.ico" type="image/x-icon" />
     
 
 </head>
@@ -65,7 +67,7 @@
     </div> <!-- /.responsive_menu -->
 
 
-	<header class="site-header clearfix">
+	<header class="site-header clearfix"> <!-- static-info-project -->
 		<div class="container">
 
 			<div class="row">
@@ -74,7 +76,7 @@
 
 					<div class="pull-left logo">
 						<a href="#">
-							<img src="./images/logo.png" alt="Medigo by templatemo">
+							<img src="${root }/images/logo.png" alt="Medigo by templatemo">
 						</a>
 					</div>	<!-- /.logo -->
 
@@ -129,51 +131,9 @@
 	</header> <!-- /.site-header -->
 
     <!-- Scripts -->
-	<script src="./js/min/plugins.min.js"></script>
-	<script src="./js/min/medigo-custom.min.js"></script>
+	<script src="${root }/js/min/plugins.min.js"></script>
+	<script src="${root }/js/min/medigo-custom.min.js"></script>
 
-
-
-
-
-    <!--상단메뉴-->
-    <!-- <div class="container-fluid">
-        <nav class="navbar navbar-inverse" style="background-color: #b47c27;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="${root}/">YAMMY 야미</a>
-                </div>
-                
-                
-                <ul class="nav navbar-nav navbar-right">
-                    <c:choose>
-                        <c:when test="${empty sessionScope.id }">
-                            <li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign
-                                    Up</a></li>
-                            <li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span>
-                                    Login</a></li>
-                        </c:when>
-                        <c:when test="${not empty sessionScope.id && sessionScope.grade == 'A'}">
-                            
-                            <li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a>
-                            </li>
-                            <li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>
-                                    로그아웃</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            
-                            <li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a>
-                            </li>
-                            <li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>
-                                    로그아웃</a></li>
-                        </c:otherwise>
-                    </c:choose>
-
-                </ul>
-            </div>
-        </nav>
-
-    </div> -->
 </body>
 
 </html>

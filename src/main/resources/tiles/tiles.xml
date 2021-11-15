@@ -10,6 +10,7 @@
 		<put-attribute name="header"
 			value="/WEB-INF/views/template/top.jsp" />
 	</definition>
+	
 
 	<definition name="/home" extends="main">
 		<put-attribute name="title" value="기본페이지"></put-attribute>

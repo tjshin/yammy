@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+
+ <definition name="/message/sdelete" extends="main">
+    <put-attribute name="title" value="보낸쪽지삭제"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/sdelete.jsp" />
+  </definition>
+
+
+ <definition name="/message/rdelete" extends="main">
+    <put-attribute name="title" value="받은쪽지삭제"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/rdelete.jsp" />
+  </definition>
+
+ <definition name="/message/reply" extends="main">
+    <put-attribute name="title" value="쪽지보내기"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/reply.jsp" />
+  </definition>
+  
+  
+ <definition name="/message/create" extends="main">
+    <put-attribute name="title" value="쪽지보내기"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/create.jsp" />
+  </definition>
+
+ <definition name="/message/recelist" extends="main">
+    <put-attribute name="title" value="받은메세지목록"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/recelist.jsp" />
+  </definition>
+
+
+<definition name="/message/sendlist" extends="main">
+    <put-attribute name="title" value="보낸메세지목록"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/sendlist.jsp" />
+  </definition>
+  
+  
+  <definition name="/message/receread" extends="main">
+    <put-attribute name="title" value="받은메세지"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/receread.jsp" />
+  </definition>
+  
+  
+    <definition name="/message/sendread" extends="main">
+    <put-attribute name="title" value="받은메세지"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/sendread.jsp" />
+  </definition>
+
+
+</tiles-definitions>
