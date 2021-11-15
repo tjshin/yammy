@@ -1,6 +1,7 @@
 package com.study.yammy;
  
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
@@ -15,7 +16,12 @@ public class TilesConfiguration {
       configurer.setDefinitions(new String[]{
     		  "classpath:/tiles/tiles.xml",
     		  "classpath:/tiles/tiles_bbs.xml",
-    		  "classpath:/tiles/tiles_message.xml"
+    		  "classpath:/tiles/tiles_message.xml",
+    		  "classpath:/tiles/tiles_member.xml",
+    		  "classpath:/tiles/tiles_sikdang.xml",
+    		  "classpath:/tiles/tiles_review.xml",
+    		  "classpath:/tiles/tiles_chatbot.xml",
+    		  "classpath:/tiles/tiles_notice.xml"
     		  });
       
       configurer.setCheckRefresh(true);

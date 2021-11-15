@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.notice.NoticeMapper">
+
+
+<!-- 등록 -->
+  <insert id="create" parameterType="com.study.notice.NoticeDTO">
+    insert into notice(noticeno, ntitle, ncontents, nview, ndate, id)
+    values((select nvl(max(noticeno), 0)+1 from notice), #{ntitle}, #{ncontents}, 0, sysdate, #{id})
+  </insert> 
+  
+  
+  	
+<!-- 목록 -->
+  <select id="list" parameterType="Map" resultType="com.study.notice.NoticeDTO">
+    select noticeno, ntitle, id, nview, to_char(ndate, 'yyyy-mm-dd') ndate, r
+		from(                                                                                        
+    		select noticeno, ntitle, id, nview, ndate, rownum r       
+    		from (                                                                                                                                                                    
+	 			select noticeno, ntitle, id, nview, ndate           
+	 			from notice
+    <where>
+              <choose>
+                  <when test="col=='id'">
+                      id like '%'||#{word}||'%'
+                  </when>
+                  <when test="col=='ntitle'">
+                      ntitle like '%'||#{word}||'%'
+                  </when>
+                  <when test="col=='ncontents'">
+                      ncontents like '%'||#{word}||'%'
+                  </when>
+                  <when test="col=='ntitle_ncontents'">
+                     ntitle like '%'||#{word}||'%'
+                     or
+                     ncontents like '%'||#{word}||'%'
+                  </when>
+              </choose>
+           </where>
+		    order by noticeno desc
+		    )
+   	 )
+    <![CDATA[
+	 where r>=#{sno} and r <=#{eno}
+	]]> 
+  </select>
+  
+  
+  
+  
+<!--total-->
+  <select id="total" resultType="int" parameterType="Map">
+    select count(*) from notice
+    <where>
+              <choose>
+                  <when test="col=='id'">
+                      id like '%'||#{word}||'%'
+                  </when>
+                  <when test="col=='ntitle'">
+                      ntitle like '%'||#{word}||'%'
+                  </when>
+                  <when test="col=='ncontents'">
+                      ncontents like '%'||#{word}||'%'
+                  </when>
+                  <when test="col=='ntitle_ncontents'">
+                     ntitle like '%'||#{word}||'%'
+                     or
+                     ncontents like '%'||#{word}||'%'
+                  </when>
+              </choose>
+           </where>
+  </select>
+  
+  
+  
+  <!-- 조회수 증가 -->
+  <update id="upCnt" parameterType="int">
+    update notice              
+    set nview = nview + 1 
+    where noticeno = #{noticeno}         
+  </update>
+  
+  
+  
+  <!-- 조회 -->
+  <select id="read" parameterType="int" resultType="com.study.notice.NoticeDTO">
+    select noticeno, ntitle, ncontents, id, nview, ndate
+    from notice
+    where noticeno = #{noticeno}
+  </select>
+ 
+ 
+ 
+  <!-- 수정 -->
+  <update id="update"  parameterType="com.study.notice.NoticeDTO">
+    update notice
+    set ntitle=#{ntitle}, ncontents=#{ncontents}, id=#{id}
+    where noticeno=#{noticeno}
+  </update>
+ 
+ 
+ 
+ 
+  <!-- 삭제 -->
+  <delete id="delete" parameterType="int">
+    delete from notice
+    where noticeno=#{noticeno}
+  </delete>
+  
+  
+  
+</mapper>

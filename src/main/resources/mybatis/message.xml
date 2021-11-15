@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.message.MessageMapper">
+
+
+
+ <!-- 체크 삭제 -->
+  <delete id="checkdelete" parameterType="int">
+    DELETE FROM message
+    WHERE messageno=#{messageno}
+  </delete>
+
+
+
+
+ <!-- 삭제 -->
+  <delete id="sdelete" parameterType="int">
+    DELETE FROM message
+    WHERE messageno=#{messageno}
+  </delete>
+
+<delete id="rdelete" parameterType="int">
+    DELETE FROM message
+    WHERE messageno=#{messageno}
+  </delete> 
+
+
+<!-- 등록 -->
+  <insert id="create" parameterType="com.study.message.MessageDTO">
+ 	INSERT INTO message(messageno, sendid , receid, mcontents, mdate)
+    VALUES((select nvl(max(messageno),0)+1 from message),#{sendid}, #{receid}, #{mcontents}, SYSTIMESTAMP)
+  </insert> 
+
+
+
+
+ <!-- receread 조회 -->
+  <select id="sendread" resultType="com.study.message.MessageDTO">
+    SELECT messageno, receid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate
+    FROM message
+    WHERE messageno=#{messageno}
+  </select>
+
+
+
+ <!-- receread 조회 -->
+  <select id="receread" resultType="com.study.message.MessageDTO">
+    SELECT messageno, sendid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate
+    FROM message
+    WHERE messageno=#{messageno}
+  </select>
+
+
+
+
+<!--stotal-->
+  <select id="stotal" resultType="int" parameterType="Map">
+    select count(*) from message
+    <where>
+    	sendid = #{sendid}
+    	<choose>
+    			<when test="col=='receid'">
+				AND	receid like '%'||#{word}||'%'
+				</when>
+    	</choose>
+    </where>
+  </select>
+  
+  
+  <!--rtotal-->
+  <select id="rtotal" resultType="int" parameterType="Map">
+    select count(*) from message
+    <where>
+    	receid = #{receid}
+    	<choose>
+    			<when test="col=='sendid'">
+				 AND	sendid like '%'||#{word}||'%'
+				</when>
+    	</choose>
+    </where>
+  </select>
+  
+  
+  <!-- 받은 메세지 목록 -->
+  <select id="recelist" parameterType="Map" resultType="com.study.message.MessageDTO">
+    SELECT messageno, sendid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate,r
+	FROM (
+		select messageno, sendid, mcontents, mdate, rownum r
+		from(
+			select messageno, sendid, mcontents, mdate from message
+			<where>
+			receid = #{receid}
+      		<choose>
+				<when test="col=='sendid'">
+					AND sendid like '%'||#{word}||'%'
+				</when>
+			</choose>  			      
+       </where>
+       ORDER BY messageno DESC
+		)
+		)
+		<![CDATA[       
+       where r >= #{sno} and r <= #{eno}
+         ]]>
+	 
+
+  </select>
+  
+  <!-- 보낸 메세지 목록 -->
+  <select id="sendlist" parameterType="Map" resultType="com.study.message.MessageDTO">
+    SELECT messageno, receid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate,r
+	FROM (
+		select messageno, receid, mcontents, mdate, rownum r
+		from(
+			select messageno, receid, mcontents, mdate from message
+			<where> 
+			sendid = #{sendid}
+      		<choose>
+				<when test="col=='receid'">
+				and	receid like '%'||#{word}||'%'
+				</when>
+			</choose>     
+							   
+		    </where>
+		     ORDER BY messageno DESC
+		    )
+		)
+		<![CDATA[       
+       where r >= #{sno} and r <= #{eno}
+         ]]>
+
+  </select>
+  
+  
+ 
+	
+</mapper>

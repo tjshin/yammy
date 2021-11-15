@@ -1,2 +1,15 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/chatbot/chatting.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/agreement.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/createForm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/list.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/loginForm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/mypage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/read.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/updateFileForm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/member/updateForm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/notice/createForm.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/notice/list.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/notice/read.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/notice/updateForm.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/template/top.jsp=UTF-8
