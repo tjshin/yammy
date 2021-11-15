@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.review.ReviewMapper">
+
+<insert id="create" parameterType="com.study.review.ReviewDTO">
+	insert into review(
+	hugino, id, sikid, stadium,
+	htitle, hcontents, star, hdate)
+	values((select nvl(max(hugino),0)+1 from review),
+	        #{id},
+	        #{sikid},
+	        #{stadium},
+	        #{htitle},
+	        #{hcontents},
+	        #{star},
+	        sysdate)
+</insert>
+
+<select id="total" parameterType="Map" resultType="int">
+	select count(*)
+	from review r inner join member m
+	on r.id = m.id
+	inner join sikdang s
+	on r.sikid = s.sikid
+	<where>
+		<choose>
+			<when test="col=='sikname'">
+				s.sikname like '%'||#{word}||'%'
+			</when>
+			<when test="col=='nick'">
+				m.nick like '%'||#{word}||'%'
+			</when>
+			<when test="col=='htitle'">
+				htitle like '%'||#{word}||'%'
+			</when>
+			<when test="col=='hcontents'">
+				hcontents like '%'||#{word}||'%'
+			</when>
+			<when test="col=='title_content'">
+				htitle like '%'||#{word}||'%'
+				or
+				hcontents like
+				'%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+</select>
+
+<select id="list" parameterType="Map"
+		resultType="com.study.review.ReviewDTO">
+	select hugino, nick, sikid, sikname,
+			sikurl, stadium, htitle, hcontents, star, hdate, r
+	from (
+	select hugino, nick, sikid, sikname,
+			sikurl, stadium, htitle, hcontents, star, hdate, rownum r
+	from (
+	select hugino, m.nick nick, review.sikid sikid, s.sikname sikname,
+			s.sikurl sikurl, stadium, htitle, hcontents, star, hdate
+	from review inner join member m
+	on review.id = m.id
+	inner join sikdang s
+	on review.sikid = s.sikid
+	<where>
+		<choose>
+			<when test="col=='sikname'">
+				s.sikname like '%'||#{word}||'%'
+			</when>
+			<when test="col=='nick'">
+				m.nick like '%'||#{word}||'%'
+			</when>
+			<when test="col=='htitle'">
+				htitle like '%'||#{word}||'%'
+			</when>
+			<when test="col=='hcontents'">
+				hcontents like '%'||#{word}||'%'
+			</when>
+			<when test="col=='title_content'">
+				htitle like '%'||#{word}||'%'
+				or
+				hcontents like
+				'%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+	order by hugino desc
+	)
+	<![CDATA[       
+    	)where r >= #{sno} and r <= #{eno}
+    ]]>
+</select>
+
+<select id="read" parameterType="int" resultType="com.study.review.ReviewDTO">
+	select hugino, m.nick nick, review.sikid sikid, s.sikname sikname,
+	        s.sikurl sikurl, stadium, htitle, hcontents, star, hdate
+	from review inner join member m
+	on review.id = m.id
+	inner join sikdang s
+	on review.sikid = s.sikid
+	where hugino = #{hugino}
+</select>
+
+<update id="update" parameterType="com.study.review.ReviewDTO">
+	update review
+	set htitle = #{htitle}, hcontents = #{htitle},
+	    stadium = #{stadium}, star = #{star}
+	where hugino = #{hugino}
+</update>
+
+<select id="detail" parameterType="String"
+	resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+	where sikid = #{sikid}
+</select>
+
+<delete id="delete" parameterType="int">
+	delete from review
+	where hugino = #{hugino}
+</delete>
+
+</mapper>

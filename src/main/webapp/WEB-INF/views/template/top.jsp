@@ -3,7 +3,7 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -36,7 +36,7 @@
 
     <div class="responsive_menu">
         <ul class="main_menu">
-            <li><a href="#">Home</a></li>
+            <li><a href="${root }/">Home</a></li>
             <li><a href="#">구장별 게시판</a>
             	<ul>
             		<li><a href="#">잠실(LG/두산)</a></li>
@@ -53,11 +53,11 @@
             
             <li><a href="#">공지사항</a></li>
             <li><a href="#">티켓양도</a></li>
-            <li><a href="#">경기장 주변 맛집</a>
+            <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
                 <ul>
-                    <li><a href="#">지도에서 보기</a></li>
-                    <li><a href="#">리뷰 목록</a></li>
-                    <li><a href="#">리뷰 등록</a></li>
+                    <li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
+                    <li><a href="${root }/review/list">리뷰 목록</a></li>
+                    <li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
                     
                 </ul>
             </li>
@@ -67,24 +67,34 @@
     </div> <!-- /.responsive_menu -->
 
 
+
 	<header class="site-header clearfix"> <!-- static-info-project -->
+
+	<div class="site-header clearfix">
+
 		<div class="container">
 
 			<div class="row">
 
-				<div class="col-md-12">
+				<div class="col-md-15">
 
 					<div class="pull-left logo">
-						<a href="#">
+
+						<a href="${root }/">
+
 							<img src="${root }/images/logo.png" alt="Medigo by templatemo">
 						</a>
+						
+						
 					</div>	<!-- /.logo -->
+					
 
 					<div class="main-navigation pull-right">
-
+						
 						<nav class="main-nav visible-md visible-lg">
+						
 							<ul class="sf-menu">
-								<li class="active"><a href="#">Home</a></li>
+								<li class="active"><a href="${root }/">Home</a></li>
 					            <li><a href="#">구장별 게시판</a>
 					            	<ul>
 					            		<li><a href="#">잠실(LG/두산)</a></li>
@@ -99,23 +109,43 @@
 					            	</ul>
 					            </li>
 					            
-					            <li><a href="#">공지사항</a></li>
+					            <li><a href="${root }/notice/list">공지사항</a></li>
                                 <li><a href="#">티켓양도</a></li>
-                                <li><a href="#">경기장 주변 맛집</a>
+                                <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 					            	<ul>
-					            		<li><a href="#">지도에서 보기</a></li>
-                                        <li><a href="#">리뷰 목록</a></li>
-                                        <li><a href="#">리뷰 등록</a></li>
+					            		<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
+                                        <li><a href="${root}/review/list">리뷰 목록</a></li>
+                                        <li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
                                         
 					            	</ul>
 					            </li>
-                                <li><a href="#">내 정보</a></li>
-                                <li><a href="#">1:1 문의(챗봇)</a></li>
+                                <li><a href="${root }/member/mypage">내 정보</a></li>
+                                <li><a href="${root }/chatbot/chatting">1:1 문의(챗봇)</a></li>
+    <c:choose>
+
+    <c:when test="${empty sessionScope.id }">
+    	<li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </c:when>
+    <c:when test="${sessionScope.id == 'admin' && sessionScope.grade == 'A '}">
+    	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:when>
+
+    <c:otherwise>
+    	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:otherwise>
+    </c:choose> 
+   
+                                
+                                
+                               
 							</ul> <!-- /.sf-menu -->
 						</nav> <!-- /.main-nav -->
 
 						<!-- This one in here is responsive menu for tablet and mobiles -->
-					    <div class="responsive-navigation visible-sm visible-xs">
+					    <div class="responsive-navigation visible-sm visible-xs" id="except">
 					        <a href="#nogo" class="menu-toggle-btn">
 					            <i class="fa fa-bars"></i>
 					        </a>
@@ -128,11 +158,12 @@
 			</div> <!-- /.row -->
 
 		</div> <!-- /.container -->
-	</header> <!-- /.site-header -->
-
+	</div> <!-- /.site-header -->
+</header>
     <!-- Scripts -->
 	<script src="${root }/js/min/plugins.min.js"></script>
 	<script src="${root }/js/min/medigo-custom.min.js"></script>
+
 
 </body>
 
