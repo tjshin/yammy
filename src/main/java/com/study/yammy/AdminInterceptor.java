@@ -18,7 +18,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		String grade = Utility.checkNull((String) session.getAttribute("grade"));
 		System.out.println("session.getAttribute(\"grade\"): " + grade);
 		System.out.println("preHandle executed.");
-		if (grade.length() != 0 && grade.compareTo("A") <= 0) { // 접근 가능, 요청 페이지 처리,회원이거나 회원보다 높은 권한
+		if (grade.length() != 0 && grade.compareTo("A ") <= 0) { // 접근 가능, 요청 페이지 처리,회원이거나 회원보다 높은 권한
 			System.out.println("접속 권한 있음: " + grade);
 			return true; // 요청 페이지로 계속 진행
 		} else {
