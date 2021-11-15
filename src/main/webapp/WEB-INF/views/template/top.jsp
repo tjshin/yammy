@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -68,7 +67,11 @@
     </div> <!-- /.responsive_menu -->
 
 
+
+	<header class="site-header clearfix"> <!-- static-info-project -->
+
 	<div class="site-header clearfix">
+
 		<div class="container">
 
 			<div class="row">
@@ -156,14 +159,10 @@
 
 		</div> <!-- /.container -->
 	</div> <!-- /.site-header -->
-
+</header>
     <!-- Scripts -->
 	<script src="${root }/js/min/plugins.min.js"></script>
 	<script src="${root }/js/min/medigo-custom.min.js"></script>
-
-
-
-
 
 
 </body>
