@@ -17,14 +17,14 @@
 
   
   <definition name="/member/mypage" extends="main">
-    <put-attribute name="title" value="나의 페이지"></put-attribute>
+    <put-attribute name="title" value="마이페이지"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/mypage.jsp" />
   </definition>
   
   
     <definition name="/member/find" extends="main">
-    <put-attribute name="title" value="아이디 비번 찾기"></put-attribute>
+    <put-attribute name="title" value="계정 찾기"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/find.jsp" />
   </definition>

@@ -36,9 +36,7 @@
 
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-	<script>
-        
-      </script>
+	
 
 <style>
 	#remember{
@@ -61,26 +59,17 @@
 								<div class="form-group" >
 								  <label class="control-label col-sm-2" for="id">Email</label>
 								  <div class="col-sm-4">
-									<input type="text"  class="form-control" id="id" placeholder="Email을 입력하세요" 
-									 name="id" required="required" style="text-align:center;">
+									<input type="text"  class="form-control" id="email" placeholder="Email을 입력하세요" 
+									 name="email" required="required">
 								  </div>
 								</div><br/>
 								
-									<a href="#" onClick="loginPost()" class="main-button accent-color">확인</a>
-									<a href="/member/agree" class="main-button accent-color">뒤로</a><br/><br/>
+									<a href="#"  class="main-button accent-color">확인</a>
+									<a href="#" class="main-button accent-color">뒤로</a><br/><br/>
 
 									
-									<div class="form-inline">
-									<label>
-									<a href="https://kauth.kakao.com/oauth/authorize?client_id=b39f6433b5558171ad972ddc2bea324a&redirect_uri=http://localhost:8000/member/login/kakao/callback&response_type=code">
-									<img src="${root }/images/kakao_login_button.jpg" style="height:40px;width:auto;"></a>
-									</label><br/>
-									<label>
-									<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-									</label>
-									</div>
-									</div>
-								  </div>
+								
+								
 								  </form>
 								</div>
 							  
@@ -89,12 +78,7 @@
 		        	</div> <!-- /.col-md-12 -->
 		        </div> <!-- /.row -->
 		    </div> <!-- /.container -->
-	    </div> <!-- /.parallax-overlay -->
 	</section> <!-- /#homeIntro -->
-	
-		<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
 
 
 </body>

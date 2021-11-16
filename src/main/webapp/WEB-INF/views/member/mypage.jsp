@@ -58,9 +58,9 @@
           <P>응원구단 : ${mdto.favteam }</P>
         </div>
         <div class="col-sm-offset-0 col-sm-20">
-		<a href="#" class="main-button accent-color">받은 쪽지함</a>
-		<a href="#" class="main-button accent-color">보낸 쪽지함</a>
-		<a href="#" class="main-button accent-color2">쪽지 쓰기</a>
+		<a href="${root }/message/recelist" class="main-button accent-color">받은 쪽지함</a>
+		<a href="${root }/message/sendlist" class="main-button accent-color">보낸 쪽지함</a>
+		<a href="${root }/message/create" class="main-button accent-color2">쪽지 쓰기</a>
 		</div>
         </div>
         </div>

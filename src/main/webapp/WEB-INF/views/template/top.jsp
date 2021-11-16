@@ -64,6 +64,22 @@
             </li>
             <li><a href="${root }/member/mypage">내 정보</a></li>
             <li><a href="#">1:1 문의(챗봇)</a></li>
+            <c:choose>
+
+    <c:when test="${empty sessionScope.id }">
+    	<li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </c:when>
+    <c:when test="${sessionScope.grade == 'A '}">
+    	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:when>
+
+    <c:otherwise>
+    	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:otherwise>
+    </c:choose> 
         </ul> <!-- /.main_menu -->
     </div> <!-- /.responsive_menu -->
 
@@ -130,7 +146,7 @@
     	<li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
     	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
-    <c:when test="${sessionScope.id == 'admin' && sessionScope.grade == 'A '}">
+    <c:when test="${sessionScope.grade == 'A '}">
     	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </c:when>
