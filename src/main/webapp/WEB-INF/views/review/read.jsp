@@ -11,28 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>review read test</title>
     
-    <script type="text/javascript">
-	function update() {
-		var url = "${root}/review/update";
-		url += "?hugino=${dto.hugino}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		url += "&nowPage=${param.nowPage}";
-
-		location.href = url;
-	}
-	
-	function delete() {
-		var url = "${root}/review/delete";
-		url += "?hugino=${dto.hugino}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		url += "&nowPage=${param.nowPage}";
-		
-		location.href = url;
-	}
-	
-</script>
+ 
     
 </head>
 <body>

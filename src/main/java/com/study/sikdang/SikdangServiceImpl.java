@@ -1,5 +1,7 @@
 package com.study.sikdang;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class SikdangServiceImpl implements SikdangService {
 	public int checkId(String sikid) {
 		// TODO Auto-generated method stub
 		return mapper.checkId(sikid);
+	}
+
+	@Override
+	public List<SikdangDTO> list() {
+		// TODO Auto-generated method stub
+		return mapper.list();
 	}
 
 }

@@ -12,10 +12,17 @@ CREATE TABLE SIKDANG (
        PRIMARY KEY (sikid)
 );
 
-select * from sikdang
-where sikid = '9927879';
+select * from sikdang;
 
-
+select sikid, sikname, sikphone, roadadd, jibunadd, sikurl, cox, coy, r
+from (
+select sikid, sikname, sikphone, roadadd, jibunadd, sikurl, cox, coy, rownum r
+from (
+select sikid, sikname, sikphone, roadadd, jibunadd, sikurl, cox, coy
+from sikdang
+)
+)
+order by r;
 
 insert into sikdang(sikid, sikname, sikphone, roadadd, jibunadd,
                     url, cox, coy)

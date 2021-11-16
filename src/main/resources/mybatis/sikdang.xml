@@ -20,4 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where sikid = #{sikid}
 </select>
 
+<select id="list" resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+</select>
+
 </mapper>

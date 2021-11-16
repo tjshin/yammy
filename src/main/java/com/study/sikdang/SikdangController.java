@@ -1,5 +1,7 @@
 package com.study.sikdang;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SikdangController {
@@ -19,7 +20,13 @@ public class SikdangController {
 	
 
 	@GetMapping("/sikdang/map_main")
-	public String mapMain() {
+	public String mapMain(HttpServletRequest request) {
+		
+		List <SikdangDTO> list = service.list();
+		request.setAttribute("list", list);
+		
+		
+		
 		return "/sikdang/map_main";
 	}
 	
