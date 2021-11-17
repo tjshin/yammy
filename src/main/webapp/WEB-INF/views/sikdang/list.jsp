@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>sikdang db list test</title>
+    
 </head>
 <body>
 
@@ -67,6 +68,8 @@
 				<input type="text" class="form-control" placeholder="Enter 검색어" name="word" value="${word}">
 			</div>
 			<button type="submit" class="mainBtn">검색</button>
+			<button type="button" class="mainBtn"
+				onclick="location.href='${root }/admin/sikdang/create'">DB 등록</button>
 
 		</form>
 		

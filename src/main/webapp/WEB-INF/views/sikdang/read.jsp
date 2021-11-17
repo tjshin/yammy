@@ -45,7 +45,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<a href="${listurl }" class="main-button accent-color"> <i
-						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; DB 목록으로 돌아가기
 					</a>
 
 				</div>
@@ -112,7 +112,8 @@
 					<br>
 					<div class="col-md-12">
 						<a href="${listurl}" class="main-button accent-color">DB 목록</a>
-						<a href="#"	class="main-button accent-color">DB 등록</a>
+						<a href="${root }/admin/sikdang/create"
+								class="main-button accent-color">DB 등록</a>
 						<a href="${root }/admin/sikdang/delete?sikid=${dto.sikid}${urlhelper}"
 								class="main-button accent-color">DB 삭제</a>
 						

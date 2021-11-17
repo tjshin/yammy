@@ -45,7 +45,7 @@ public class SikdangController {
 			return "/sikdang/map_search";
 		}
 	}
-		
+			
 	@PostMapping("/sikdang/create")
 	public String sikdangCreate(SikdangDTO dto, HttpServletRequest request,
 			 Model model) {
@@ -113,6 +113,41 @@ public class SikdangController {
 		request.setAttribute("paging", paging);
 		
 		return "/admin/sikdang/list";
+	}
+	
+
+	@GetMapping("/admin/sikdang/create")
+	public String adminCreate(HttpSession session) {
+		return "/admin/sikdang/create";
+	}
+	
+	@PostMapping("/admin/sikdang/create")
+	public String adminCreate(SikdangDTO dto, HttpServletRequest request,
+			 Model model) {
+					
+		dto.setSikid(request.getParameter("sikid"));
+		dto.setSikname(request.getParameter("sikname"));
+		dto.setSikphone(request.getParameter("sikphone"));
+		dto.setRoadadd(request.getParameter("roadadd"));
+		dto.setJibunadd(request.getParameter("jibunadd"));
+		dto.setSikurl(request.getParameter("sikurl"));
+		dto.setCox(request.getParameter("cox"));
+		dto.setCoy(request.getParameter("coy"));
+				
+		if (service.checkId(dto.getSikid()) > 0) {
+			
+			return "redirect:/admin/sikdang/list";
+			
+		} else {
+			
+			if (service.create(dto) > 0) {
+				return "redirect:/admin/sikdang/list";
+			} else {
+				return "/sikdang/error";
+			}
+			
+		}
+		
 	}
 	
 	@GetMapping("/admin/sikdang/read")
