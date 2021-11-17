@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.study.review.ReviewDTO;
 import com.study.utility.Utility;
 
 @Controller
@@ -111,6 +113,36 @@ public class SikdangController {
 		request.setAttribute("paging", paging);
 		
 		return "/admin/sikdang/list";
+	}
+	
+	@GetMapping("/admin/sikdang/read")
+	public String reviewRead(String sikid, Model model) {
+		
+		SikdangDTO dto = service.read(sikid);
+		
+		model.addAttribute("dto", dto);
+		
+		return "/admin/sikdang/read";
+	}
+	
+	@GetMapping("/admin/sikdang/delete")
+	public String delete(String sikid) {
+		return "/admin/sikdang/delete";
+	}
+	
+	@PostMapping("/admin/sikdang/delete")
+	public String delete(String sikid, HttpServletRequest request,
+			RedirectAttributes redirect) {
+		
+		if(service.delete(sikid) > 0) {
+			redirect.addAttribute("col", request.getParameter("col"));
+			redirect.addAttribute("word", request.getParameter("word"));
+			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+			return "redirect:/admin/sikdang/list";
+		} else {
+			return "/sikdang/error";
+		}
+		
 	}
 	
 }

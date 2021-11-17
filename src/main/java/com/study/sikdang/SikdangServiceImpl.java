@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.study.review.ReviewDTO;
+
 @Service("com.study.sikdang.SikdangServiceImpl")
 public class SikdangServiceImpl implements SikdangService {
 	
@@ -40,6 +42,18 @@ public class SikdangServiceImpl implements SikdangService {
 	public List<SikdangDTO> adminlist(Map map) {
 		// TODO Auto-generated method stub
 		return mapper.adminlist(map);
+	}
+
+	@Override
+	public int delete(String sikid) {
+		// TODO Auto-generated method stub
+		return mapper.delete(sikid);
+	}
+
+	@Override
+	public SikdangDTO read(String sikid) {
+		// TODO Auto-generated method stub
+		return mapper.read(sikid);
 	}
 
 }

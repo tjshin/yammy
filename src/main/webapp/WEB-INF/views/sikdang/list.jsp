@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
-<c:set var="readurl1" value="${root}/admin/sikdang/read?hugino=" />
-<c:set var="readurl2" value="&col=${col }&word=${word }&nowPage=${nowPage }"/>
+<c:set var="readurl" value="${root}/admin/sikdang/read?sikid=" />
+<c:set var="urlhelper" value="&col=${col }&word=${word }&nowPage=${nowPage }"/>
 
 <!DOCTYPE html>
 <html>
@@ -76,9 +76,9 @@
 		    <tr>
 		    <th>식당 ID (kakao)</th>
 		    <th>상호명</th>
-		    <th>URL</th>
+		    <th>kakao URL</th>
 		    <th>작성된 리뷰</th>
-		    <th>수정/삭제</th>
+		    <th>삭제</th>
 		    </tr>
 		    </thead>
 		    <tbody>
@@ -95,19 +95,18 @@
 		    
 		    <td>${dto.sikid}</td>
 		    <td>
-		    <a href="#">${dto.sikname}</a>
+		    <a href="${readurl }${dto.sikid}${urlhelper}">${dto.sikname}</a>
 		    </td>
 		    <td>
 		    <a href="${dto.sikurl }" target="_blank">${dto.sikurl}</a>
 		    </td>
-		    <td>${dto.reviewcnt }</td>
-		    <td> <a href="#">
-		          수정 아이콘
-		        </a>
-		        /
-		        <a href="#">
-		          삭제 아이콘
-		        </a>
+		    <td><a href="${root }/review/list?col=sikname&word=${dto.sikname}&nowPage=1"
+		    		>${dto.reviewcnt }</a></td>
+		    <td>
+		        <a href="${root }/admin/sikdang/delete?sikid=${dto.sikid}${urlhelper}"
+		        ><img src="${root }/images/trash-alt-solid.svg"
+		        alt="DB에서 삭제합니다."
+		        style="width:20px;height:20px;"></a>
 		    </td>
 		    </tr>
 		    </c:forEach>

@@ -81,6 +81,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<![CDATA[       
     	where r >= #{sno} and r <= #{eno}
     ]]>
-    </select>
+</select>
+
+<delete id="delete" parameterType="String">
+	delete from sikdang
+	where sikid = #{sikid}
+</delete>
+
+<select id="read" parameterType="String" resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+	where sikid = #{sikid}
+</select>
     
 </mapper>
