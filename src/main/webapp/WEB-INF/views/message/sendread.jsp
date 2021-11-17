@@ -29,11 +29,19 @@
             url += "&word=${param.word}";
             location.href = url;
                     }
+       
+       
+      
+       function  ticketdetailM(){
+           var url = "${root }/ticket/detail?ticketno=${dto.meticketno}";
+          
+           location.href = url;
+                   }
+       
+       
     </script>
-  
+ 
 </head>
-
-
 
 
 <body>
@@ -61,6 +69,10 @@
 				
 				<button type="button" class="btn" onclick="deleteM()">삭제</button>
 				<button type="button" class="btn" onclick="listM()">목록</button>
+				
+				<c:if test = "${dto.meticketno gt 0}"> 
+				<button type="button" class="btn" onclick="ticketdetailM()">해당 게시물 이동</button>
+				</c:if>
 		</div>
 	</div>
 	<script src="js/min/plugins.min.js"></script>

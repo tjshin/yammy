@@ -6,7 +6,8 @@ import java.util.Map;
 public interface MessageService {
 
 
-	void checkdelete(int messgeno); 
+	void scheckdelete(int messgeno); 
+	void rcheckdelete(int messgeno); 
 	
 	int sdelete(int messageno);
 	int rdelete(int messageno);
@@ -17,8 +18,8 @@ public interface MessageService {
 	List<MessageDTO> recelist(Map map);	
 	List<MessageDTO> sendlist(Map map);
 	 
-	 MessageDTO receread(int messageno);
-	 MessageDTO sendread(int messageno);
+	 MessageDTO read(int messageno);
+	
 	 
 	 int stotal(Map map);
 	 int rtotal(Map map);

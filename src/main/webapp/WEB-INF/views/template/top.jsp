@@ -53,7 +53,7 @@
             </li>
             
             <li><a href="#">공지사항</a></li>
-            <li><a href="#">티켓양도</a></li>
+            <li><a href="${root }/ticket/list">티켓양도</a></li>
             <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
                 <ul>
                     <li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
@@ -113,7 +113,7 @@
 					            </li>
 					            
 					            <li><a href="${root }/notice/list">공지사항</a></li>
-                                <li><a href="#">티켓양도</a></li>
+                                <li><a href="${root }/ticket/list">티켓양도</a></li>
                                 <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 					            	<ul>
 					            		<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
@@ -130,7 +130,7 @@
     	<li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
     	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
-    <c:when test="${sessionScope.id == 'admin' && sessionScope.grade == 'A '}">
+    <c:when test="${sessionScope.grade == 'A '}">
     	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </c:when>
