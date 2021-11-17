@@ -96,21 +96,39 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/review/create")
-	public String reviewCreate() {
-		return "/review/create";
+	public String reviewCreate(HttpServletRequest request, HttpSession session) {
+		
+		String id = (String)session.getAttribute("id");
+		String sikid = request.getParameter("sikid");
+		
+		if(id==null) {
+			return "redirect:/member/login";
+		} else if (sikid==null){
+			return "redirect:/sikdang/map_search";		
+		} else {
+			return "/review/create";
+		}
 	}
 	
 	@GetMapping("/review/update")
-	public String update(int hugino, Model model) {
+	public String update(int hugino, Model model, HttpSession session) {
 		
 		ReviewDTO dto = service.read(hugino);
 		SikdangDTO sdto = service.detail(dto.getSikid());
 		
-		model.addAttribute("dto", dto);
-		model.addAttribute("sdto", sdto);
+		String sessionid = (String)session.getAttribute("id");
+		String recordid = dto.getId();
 		
-		return "/review/update";
-		
+		if(sessionid==null) {
+			return "redirect:/member/login";
+		} else if(sessionid.equals(recordid)) {
+			model.addAttribute("dto", dto);
+			model.addAttribute("sdto", sdto);
+			
+			return "/review/update";		
+		} else {			
+			return "/review/error";	
+		}
 	}
 	
 	@PostMapping("/review/update")
@@ -127,8 +145,18 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/review/delete")
-	public String delete(int hugino) {
-		return "/review/delete";
+	public String delete(int hugino, HttpSession session) {
+		
+		String sessionid = (String)session.getAttribute("id");
+		String recordid = service.read(hugino).getId();
+		
+		if(sessionid==null) {
+			return "redirect:/member/login";
+		} else if (sessionid.equals(recordid)) {
+			return "/review/delete";
+		} else {
+			return "/review/error";
+		}
 	}
 	
 	@PostMapping("/review/delete")
@@ -144,6 +172,11 @@ public class ReviewController {
 		} else {
 			return "/review/error";
 		}
+	}
+	
+	@GetMapping("/review/error")
+	public String error() {
+		return "/review/error";
 	}
 
 

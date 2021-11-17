@@ -3,6 +3,7 @@ package com.study.sikdang;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,13 +32,19 @@ public class SikdangController {
 	}
 	
 	@GetMapping("/sikdang/map_search")
-	public String mapSearch() {
-		return "/sikdang/map_search";
+	public String mapSearch(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		if(id==null) {
+			return "redirect:/member/login";
+		} else {
+			return "/sikdang/map_search";
+		}
 	}
 		
 	@PostMapping("/sikdang/create")
-	public String sikdangCreate(SikdangDTO dto, HttpServletRequest request, Model model) {
-				
+	public String sikdangCreate(SikdangDTO dto, HttpServletRequest request,
+			 Model model) {
+					
 		dto.setSikid(request.getParameter("sikid"));
 		dto.setSikname(request.getParameter("sikname"));
 		dto.setSikphone(request.getParameter("sikphone"));
@@ -62,6 +69,7 @@ public class SikdangController {
 			}
 			
 		}
+		
 	}
 	
 }
