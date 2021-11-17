@@ -1,6 +1,7 @@
 package com.study.sikdang;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,18 @@ public class SikdangServiceImpl implements SikdangService {
 	public List<SikdangDTO> list() {
 		// TODO Auto-generated method stub
 		return mapper.list();
+	}
+
+	@Override
+	public int total(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.total(map);
+	}
+
+	@Override
+	public List<SikdangDTO> adminlist(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.adminlist(map);
 	}
 
 }

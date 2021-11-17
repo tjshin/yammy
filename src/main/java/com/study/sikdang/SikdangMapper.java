@@ -1,6 +1,7 @@
 package com.study.sikdang;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SikdangMapper {
 
@@ -9,5 +10,9 @@ public interface SikdangMapper {
 	int checkId(String sikid);
 
 	List<SikdangDTO> list();
+
+	int total(Map map);
+
+	List<SikdangDTO> adminlist(Map map);
 
 }

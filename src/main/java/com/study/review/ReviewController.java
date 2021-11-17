@@ -83,13 +83,14 @@ public class ReviewController {
 	@PostMapping("/review/create")
 	public String reviewCreate(ReviewDTO dto, HttpServletRequest request, HttpSession session) {
 		
-		dto.setSikid(request.getParameter("sikid"));
-		
+		String sikid = request.getParameter("sikid");		
 		String id = (String)session.getAttribute("id");
+		dto.setSikid(sikid);
 		dto.setId(id);
-		
+				
 		if (service.create(dto) > 0) {
-			return "redirect:/review/list";
+			service.reviewcntUp(sikid);
+			return "redirect:/review/list";			
 		} else {
 			return "/review/error";
 		}
@@ -163,8 +164,10 @@ public class ReviewController {
 	public String delete (int hugino, HttpServletRequest request,
 			RedirectAttributes redirect) {
 		
+		String sikid = service.read(hugino).getSikid();
+				
 		if(service.delete(hugino) > 0) {
-		
+			service.reviewcntDn(sikid);
 			redirect.addAttribute("col", request.getParameter("col"));
 			redirect.addAttribute("word", request.getParameter("word"));
 			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
@@ -175,9 +178,8 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/review/error")
-	public String error() {
+	public String reviewError() {
 		return "/review/error";
 	}
-
 
 }

@@ -60,6 +60,11 @@ public class MemberController {
 		return "/home";  //tiles(jsp) 
 	}
 	
+	@GetMapping("/errorMsg")
+	public String error() {
+		return "/errorMsg";
+	}
+	
 	@GetMapping("/member/find")
 	public String find() {
 		return "/member/find";
@@ -569,7 +574,7 @@ public class MemberController {
             response.getOutputStream().close();
     } 
 	
-	@RequestMapping("/admin/list")
+	@RequestMapping("/admin/member/list")
     public String list(HttpServletRequest request) {
             // 검색관련------------------------
             String col = Utility.checkNull(request.getParameter("col"));

@@ -16,5 +16,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/sikdang/map_search.jsp" />
 	</definition>
-	
+
+	<definition name="/admin/sikdang/list" extends="main">
+		<put-attribute name="title" value="식당 DB 목록"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/sikdang/list.jsp" />
+	</definition>
 </tiles-definitions>

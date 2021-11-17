@@ -6,16 +6,6 @@
 <tiles-definitions>
 
 
-
-  <!-- main -->
-  <definition name="main"
-    template="/WEB-INF/views/template/template.jsp">
-    <put-attribute name="header"
-      value="/WEB-INF/views/template/top.jsp" />
-  </definition>
-  
-
-  
   <definition name="/member/mypage" extends="main">
     <put-attribute name="title" value="나의 페이지"></put-attribute>
     <put-attribute name="body"
@@ -79,7 +69,7 @@
   
   
   
-  <definition name="/admin/list" extends="main">
+  <definition name="/admin/member/list" extends="main">
     <put-attribute name="title" value="회원 목록"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/list.jsp" />

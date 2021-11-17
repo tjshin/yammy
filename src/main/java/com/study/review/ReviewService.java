@@ -21,5 +21,9 @@ public interface ReviewService {
 
 	int delete(int hugino);
 
+	int reviewcntUp(String sikid);
+
+	int reviewcntDn(String sikid);
+
 
 }
