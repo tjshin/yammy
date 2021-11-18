@@ -8,6 +8,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.study.member.ReviewDTO;
+
 
 
 //Service 인터페이스 구현 클래스
@@ -113,5 +115,17 @@ public class MemberServiceImpl implements MemberService {
 	public int memberDelete(String id) {
 		// TODO Auto-generated method stub
 		return mapper.memberDelete(id);
+	}
+
+	@Override
+	public int rtotal(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.rtotal(map);
+	}
+
+	@Override
+	public List<ReviewDTO> review(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.review(map);
 	}
 }

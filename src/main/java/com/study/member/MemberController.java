@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -654,24 +653,29 @@ public class MemberController {
 		    map.put("id", id);
 			
 		    int btotal = service.btotal(map);
+		    int rtotal = service.rtotal(map);
 		    
 		    System.out.println("btotal:"+btotal);
 		 
 		    String mpaging = Utility.mpaging(btotal, nowPage, recordPerPage, col, word);
+		    String rpaging = Utility.mpaging(rtotal, nowPage, recordPerPage, col, word);
 //		    System.out.println("paging : "+paging);
 		    
 		    request.setAttribute("nowPage", nowPage);
 		    request.setAttribute("col", col);
 		    request.setAttribute("word", word);
 		    request.setAttribute("mpaging", mpaging);
+		    request.setAttribute("rpaging", rpaging);
 		    
 	       MemberDTO mdto = service.mypage(id);
 	       List<BbsDTO> bdto = service.bbs(map);
+	       List<ReviewDTO> rdto = service.review(map);
 	       
 //	       System.out.println(bdto);
 	       
 	       model.addAttribute("mdto", mdto);
 	       model.addAttribute("bdto", bdto);
+	       model.addAttribute("rdto", rdto);
 	      
 	   return "/member/mypage";
 	  }
