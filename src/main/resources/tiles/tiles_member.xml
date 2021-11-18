@@ -5,22 +5,23 @@
  
 <tiles-definitions>
 
-
   <definition name="/member/mypage" extends="main">
-    <put-attribute name="title" value="나의 페이지"></put-attribute>
+    <put-attribute name="title" value="마이페이지"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/mypage.jsp" />
-  </definition>
+  </definition>  
   
+  <definition name="/admin/member/delete" extends="main">
+    <put-attribute name="title" value="회원 탈퇴"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/member/deleteForm.jsp" />
+  </definition>
   
     <definition name="/member/find" extends="main">
-    <put-attribute name="title" value="아이디 비번 찾기"></put-attribute>
+    <put-attribute name="title" value="계정 찾기"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/find.jsp" />
-  </definition>
- 
-  
-  
+  </definition>  
   
   <definition name="/member/agree" extends="main">
     <put-attribute name="title" value="회원약관"></put-attribute>
@@ -28,22 +29,17 @@
       value="/WEB-INF/views/member/agreement.jsp" />
   </definition>
   
-  
-  
   <definition name="/member/create" extends="main">
     <put-attribute name="title" value="회원가입"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/createForm.jsp" />
   </definition>
-  
-  
+    
   <definition name="/member/update" extends="main">
     <put-attribute name="title" value="회원정보 수정"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/updateForm.jsp" />
   </definition>	
-  
-  
   
   <definition name="/member/login" extends="main">
     <put-attribute name="title" value="로그인"></put-attribute>
@@ -51,15 +47,11 @@
       value="/WEB-INF/views/member/loginForm.jsp" />
   </definition>
  
- 
- 
  <definition name="/member/read" extends="main">
     <put-attribute name="title" value="회원정보"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/read.jsp" />
   </definition>
-  
-  
   
   <definition name="/member/updateFile" extends="main">
     <put-attribute name="title" value="사진 수정"></put-attribute>
@@ -67,16 +59,10 @@
       value="/WEB-INF/views/member/updateFileForm.jsp" />
   </definition>
   
-  
-  
   <definition name="/admin/member/list" extends="main">
     <put-attribute name="title" value="회원 목록"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/list.jsp" />
   </definition>
-  
-  
- 
- 
  
 </tiles-definitions>

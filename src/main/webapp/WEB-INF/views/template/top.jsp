@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>top test</title>
 
     
@@ -28,6 +31,32 @@
 
 	<link rel="shortcut icon" href="${root }/images/favicon.ico" type="image/x-icon" />
     
+    
+    <!-- Kakao logout -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+    <script>Kakao.init('36bbb9f15e74a9580efcc6a8255f4dd8');</script>
+
+
+
+<script>
+
+
+function signOut() {
+	if(gapi.auth2 != undefined){
+	 	var auth2 = gapi.auth2.getAuthInstance();
+   		 auth2.signOut().then(function () {
+    	  console.log('User signed out.');
+    });
+   		 auth2.disconnect();
+	}
+
+	
+	location.href= "/member/logout"
+  }
+  
+
+</script>
 
 </head>
 
@@ -40,7 +69,7 @@
             <li><a href="${root }/">Home</a></li>
             <li><a href="#">구장별 게시판</a>
             	<ul>
-            		<li><a href="/bbs/list">잠실(LG/두산)</a></li>
+            		<li><a href="${root }/bbs/list">잠실(LG/두산)</a></li>
                     <li><a href="#">고척(키움)</a></li>
                     <li><a href="#">인천(SSG)</a></li>
                     <li><a href="#">수원(KT)</a></li>
@@ -52,7 +81,7 @@
             	</ul>
             </li>
             
-            <li><a href="#">공지사항</a></li>
+            <li><a href="${root }/notice/list">공지사항</a></li>
             <li><a href="#">티켓양도</a></li>
             <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
                 <ul>
@@ -63,7 +92,38 @@
                 </ul>
             </li>
             <li><a href="${root }/member/mypage">내 정보</a></li>
-            <li><a href="#">1:1 문의(챗봇)</a></li>
+            <li><a href="${root }/chatbot/chatting">1:1 문의(챗봇)</a></li>
+            <c:choose>
+
+    <c:when test="${empty sessionScope.id }">
+    	<li><a href="${root}/member/agree"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </c:when>
+    <c:when test="${sessionScope.grade == 'A '}">
+    							<li><a href="#">관리자 메뉴</a>
+					            	<ul>
+					            		<li><a href="${root}/admin/member/list"><span class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
+                                        <li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>                           
+					            	</ul>
+					            </li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:when>
+
+	<c:when test="${sessionScope.grade == 'KH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a id="kakaoLogout" href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+	</c:when>
+	
+	<c:when test="${sessionScope.grade == 'GH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="#" onclick="signOut()"><span class="g-signin2"></span> Logout</a></li>
+	</c:when>
+	
+    <c:otherwise>
+    	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </c:otherwise>
+    </c:choose> 
         </ul> <!-- /.main_menu -->
     </div> <!-- /.responsive_menu -->
 
@@ -79,7 +139,7 @@
 
 			<div class="row">
 
-				<div class="col-md-15">
+				<div class="row">
 
 					<div class="pull-left logo">
 
@@ -131,9 +191,28 @@
     	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
     <c:when test="${sessionScope.grade == 'A '}">
-    	<li><a href="${root}/admin/member/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+
+    	
+    							<li><a href="#">관리자 메뉴</a>
+					            	<ul>
+					            		<li><a href="${root}/admin/member/list"><span class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
+                                        <li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>                           
+					            	</ul>
+					            </li>
+					            
+
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </c:when>
+    
+    <c:when test="${sessionScope.grade == 'KH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a id="kakaoLogout" href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+	</c:when>
+	
+	<c:when test="${sessionScope.grade == 'GH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
+	</c:when>
 
     <c:otherwise>
     	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>

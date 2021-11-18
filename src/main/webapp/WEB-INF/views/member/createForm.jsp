@@ -268,7 +268,7 @@
               <label class="control-label col-sm-2" for="sample6_postcode">우편번호</label>
               <div class="col-sm-1">          
                 <input type="text" class="form-control" 
-                 name="postcode" id="sample6_postcode">
+                 name="postcode" id="sample6_postcode">	
               </div>
               
               <button type="button" class="btn btn-default col-sm-2"

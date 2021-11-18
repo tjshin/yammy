@@ -38,4 +38,6 @@ public interface MemberService {
 	List<BbsDTO> bbs(Map map);
 
 	int btotal(Map map);
+
+	int memberDelete(String id);
 }

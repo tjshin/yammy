@@ -10,7 +10,8 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
-<title>total error page</title>
+<title>error</title>
+
 <script type="text/javascript">
 	function goback() {
 		window.history.back();
@@ -24,11 +25,10 @@
             <div class="container pageTitle">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
+
                         <h2 class="page-title">에러</h2>
                     </div> <!-- /.col-md-6 -->
-                    <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 에러</span>
-                    </div> <!-- /.col-md-6 -->
+      
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
         </div> <!-- /.parallax-overlay -->
@@ -39,7 +39,9 @@
             <div class="row">
                 <div class="col-md-12">
                 
+
                 <h2>잘못된 접근입니다</h2>
+
 					<div class="form-group">
 						<div>
 							<button class="mainBtn" type="reset" onclick="goback();">

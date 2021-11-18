@@ -58,9 +58,9 @@
           <P>응원구단 : ${mdto.favteam }</P>
         </div>
         <div class="col-sm-offset-0 col-sm-20">
-		<a href="#" class="main-button accent-color">받은 쪽지함</a>
-		<a href="#" class="main-button accent-color">보낸 쪽지함</a>
-		<a href="#" class="main-button accent-color2">쪽지 쓰기</a>
+		<a href="${root }/message/recelist" class="main-button accent-color">받은 쪽지함</a>
+		<a href="${root }/message/sendlist" class="main-button accent-color">보낸 쪽지함</a>
+		<a href="${root }/message/create" class="main-button accent-color2">쪽지 쓰기</a>
 		</div>
         </div>
         </div>
@@ -75,7 +75,7 @@
 
                 <div class="post-blog">
                     <div class="blog-content">
-                    <h3 style="">내가 쓴 글</h3>
+                    <h3 style="">내가 쓴 게시물</h3>
                     
                     <form class="form-inline" action="${root }/member/mypage">
          <div class="form-group">
@@ -108,6 +108,8 @@
     <th>제목</th>
     <th>등록날짜</th>
     <th>조회수</th>
+    <th>수정</th>
+    <th>삭제</th>
     </tr>
    </thead>
    
@@ -130,6 +132,8 @@
     </td>
     <td>${bdto.bdate}</td>
     <td>${bdto.bview}</td>
+    <td style="font-size:20px;"><a href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
+    <td style="font-size:20px;"><a href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
    </tr>
    </c:forEach>
    </c:otherwise>

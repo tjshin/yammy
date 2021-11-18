@@ -6,6 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="com.study.member.MemberMapper">  <!-- 이 안에서만 영향이 있는 쿼리문 -->
 	
+	
+	<delete id="memberDelete" parameterType="String" >
+    delete from member
+    where id=#{id}
+  </delete>
+	
+	
 
 	 <select id="total" parameterType="Map" resultType="int">
                         select count(*) from member
@@ -25,11 +32,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select> 
     
     
+    
+    
+    
+    
+    
 	<select id="mypage" parameterType="String" resultType="com.study.member.MemberDTO">
 		select id, mname, nick, email, phone, filename, postcode, address1, address2, point, favteam
 		from member
 		where id = #{id}  
 	</select>
+	
+	
+	
+	
 	
 	<select id="btotal" parameterType="Map" resultType="int">
     select count(*) from bbs
@@ -49,6 +65,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
               </choose>
            </where>
   </select>
+	
+	
+	
+	
+	
 	
 	<select id="bbs" parameterType="Map" resultType="com.study.member.BbsDTO">
 		select bbsno, bcate, btitle, id, bview, to_char(bdate, 'yyyy-mm-dd') bdate, r
@@ -176,8 +197,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <insert id="kakaoCreate" parameterType="com.study.member.MemberDTO">
-                insert into member(id, password, mname, email, grade, filename)
-                values(#{id}, #{password},#{mname},#{email}, 'KH', 'member.jpg')
+                insert into member(id, password, mname, nick, email, grade, filename)
+                values(#{id}, #{password},#{mname}, #{nick}, #{email}, 'KH', 'member.jpg')
     </insert>
     
     <insert id="googleCreate" parameterType="com.study.member.MemberDTO">
