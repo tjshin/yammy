@@ -20,21 +20,10 @@
 <div class = "first-widget parallax"> </div>
 
 
-<div> 
-<button type="button" class="btn btn-default" onclick="location.href='/message/sendlist'" >보낸쪽지함</button>
-<button type="button" class="btn btn-default" onclick="location.href='/message/recelist'" >받는쪽지함</button>
-</div>
-
-
-    <div>바디에요</div>
     <section class="cta clearfix">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<a href="${root }/admin/sikdang/list" class="main-button accent-color">식당db관리 페이지(임시)<i
-						class="icon-button fa fa-arrow-right"></i></a>
-				</div>
-				<!-- /.col-md-12 -->
+				
 			</div>
 			<!-- /.row -->
 		</div>
@@ -45,7 +34,5 @@
 
 
 </body>
-
-
 
 </html>
