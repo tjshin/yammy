@@ -29,7 +29,7 @@ public class MessageContorller {
 	
 	
 	
-	 //***************************************************************************************************************************************
+	
 	//ticketmessage
 	@GetMapping("/message/ticketmessage")
 	  public String ticketmessage(Model model, HttpSession session ,HttpServletRequest request) {
@@ -64,7 +64,7 @@ public class MessageContorller {
 		    	
 			      return "redirect:/message/sendlist";
 			    } else {
-			      return "/error";
+			      return "/message/error";
 				 }
 			
 		}else {
@@ -72,12 +72,12 @@ public class MessageContorller {
 		    	
 		      return "redirect:/message/sendlist";
 		    } else {
-		      return "/error";
+		      return "/message/error";
 		    }
 		}
 	  }
 
-	 //***************************************************************************************************************************************
+	
 	
 	
 	//에러페이지 
@@ -94,7 +94,7 @@ public class MessageContorller {
     //recelist 선택 삭제 (비동기)
     @RequestMapping("/rcheckdelete")
     public String rcheckdelete(HttpServletRequest request) {
-            
+           
         String[] ajaxMsg = request.getParameterValues("valueArr");
         int size = ajaxMsg.length;
         for(int i=0; i<size; i++) {
@@ -199,7 +199,7 @@ public class MessageContorller {
 		    	System.out.println(dto.getMcontents());
 		      return "redirect:/message/sendlist";
 		    } else {
-		      return "/error";
+		      return "/message/error";
 		    }
 		 
 		  }
@@ -224,10 +224,10 @@ public class MessageContorller {
 	@PostMapping("/message/create")
 	public String create(MessageDTO dto ) {
 	    if (service.create(dto) == 1) {
-	    	System.out.println(dto.getMcontents());
+	    	
 	      return "redirect:/message/sendlist";
 	    } else {
-	      return "/error";
+	      return "/message/error";
 	    }
 	 
 	  }

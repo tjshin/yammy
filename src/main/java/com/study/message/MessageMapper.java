@@ -10,8 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MessageMapper {
 
 	
-	
-	
 	void rcheckdelete(int messgeno); 
 	void scheckdelete(int messgeno); 
 	

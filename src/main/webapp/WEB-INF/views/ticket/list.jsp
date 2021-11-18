@@ -54,7 +54,7 @@
 	</div>
 		<button class="btn btn-info">검색</button>
 		<button class="btn btn-default" type="button" 
-		onclick="location.href='#'">등록</button>
+		onclick="location.href='${root }/ticket/create'">등록</button>
 
 </form>
 
@@ -75,19 +75,19 @@
 
             <a href="${root }/ticket/detail?ticketno=${dto.ticketno}">
             <p>
-            <img src="${root }/ticket/${dto.filename}" class="img-thumbnail"  width="236" height="306">
+            <img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="306">
             </p>
             </a>
 			<!-- 스크립트 주석 /contents/storage/${dto.filename }     -->
             
        		<div class ="txt_line">
 
-					<p>
-						<b>${dto.stadium}</b><br>
-						${dto.tickettitle}<br>
-						${dto.nick}
+					
+					<p><b>${dto.stadium}</b> </br> ${dto.tickettitle}</p>
+					<p align="right" style ="color: #ff8c00" >${dto.nick}</p>
+					
 					 
-					</p>
+					
 			</div>
             </div>
             </c:forEach>
@@ -98,15 +98,11 @@
             <div class="col-sm-3">
             
             <a href="${root }/ticket/detail?ticketno=${dto.ticketno}">
-            <p><img src="${root }/ticket/${dto.filename}" class="img-thumbnail"  width="236" height="306"></p></a>
+            <p><img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="306"></p></a>
            <div class ="txt_line">
 
-					<p>
-						<b>${dto.stadium}</b><br>
-						${dto.tickettitle}<br>
-						${dto.nick}
-					 
-					</p>
+					<p><b>${dto.stadium}</b> </br> ${dto.tickettitle}</p>
+					<p align="right" style ="color: #ff8c00">${dto.nick}</p>
 			
 			</div>
             </div>

@@ -5,6 +5,37 @@
 
 <tiles-definitions>
 
+
+  <definition name="/ticket/delete" extends="main">
+    <put-attribute name="title" value="게시물 삭제"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/ticket/delete.jsp" />
+  </definition>
+
+
+  <definition name="/ticket/update" extends="main">
+    <put-attribute name="title" value="게시물 수정"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/ticket/update.jsp" />
+  </definition>
+
+
+<definition name="/ticket/updateFile" extends="main">
+    <put-attribute name="title" value="사진 수정"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/ticket/updateFile.jsp" />
+  </definition>
+
+
+
+	<definition name="/ticket/create" extends="main">
+    <put-attribute name="title" value="티켓 등록"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/ticket/create.jsp" />
+  </definition>
+
+
+
 	<definition name="/ticket/list" extends="main">
     <put-attribute name="title" value="티켓양도게시판"></put-attribute>
     <put-attribute name="body"

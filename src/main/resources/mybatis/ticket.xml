@@ -8,13 +8,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+ <delete id="delete" parameterType="int">
+    DELETE FROM ticket
+    WHERE ticketno=#{ticketno}
+  </delete> 
+
+
+
+
+<update id="updateFile" parameterType="Map">
+		update ticket
+		set filename = #{filename}
+		where ticketno = #{ticketno}
+	</update>
+	
+	<update id="update"
+		parameterType="com.study.ticket.TicketDTO">
+		update ticket
+		set stadium =#{stadium},
+		tickettitle = #{tickettitle},
+		ticketcontents = #{ticketcontents}
+		where ticketno =#{ticketno}
+	</update>
+
+	
+
+	<insert id="create"
+		parameterType="com.study.ticket.TicketDTO">
+		insert into ticket (ticketno, tickettitle, ticketdate, stadium, ticketcontents, filename, id)
+		values((select nvl(max(ticketno),0)+1 from ticket), #{tickettitle}, 
+		sysdate, #{stadium}, #{ticketcontents}, #{filename} ,#{id})	
+	</insert>
 
  <select id="detail" parameterType="int" resultType="com.study.ticket.TicketDTO">
-       select ticketno, tickettitle, nick, to_char(ticketdate,'yyyy-mm-dd HH24:MI:SS') ticketdate, stadium, ticketcontents, filename ,id ,r
+       select ticketno, tickettitle, nick, to_char(ticketdate,'yyyy-mm-dd HH24:MI:SS') ticketdate, stadium, ticketcontents, filename ,id ,mfilename ,r
 		from (
-			select ticketno, tickettitle, nick, ticketdate, stadium, ticketcontents, filename,id, rownum r
+			select ticketno, tickettitle, nick, ticketdate, stadium, ticketcontents, filename, id, mfilename, rownum r
 			from(
-				select ticketno, tickettitle, m.nick nick, ticketdate, stadium, ticketcontents, t.filename filename, t.id id
+				select ticketno, tickettitle, m.nick nick, ticketdate, stadium, ticketcontents, t.filename filename, t.id id  ,m.filename mfilename
 				from ticket t  inner join member m
 				on t.id =m.id )
 				)

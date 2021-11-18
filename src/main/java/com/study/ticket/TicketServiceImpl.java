@@ -29,6 +29,30 @@ public class TicketServiceImpl implements TicketService {
 		// TODO Auto-generated method stub
 		return mapper.detail(ticketno);
 	}
+
+	@Override
+	public int create(TicketDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.create(dto);
+	}
+
+	@Override
+	public int updateFile(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.updateFile(map);
+	}
+
+	@Override
+	public int update(TicketDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.update(dto);
+	}
+
+	@Override
+	public int delete(int ticketno) {
+		// TODO Auto-generated method stub
+		return mapper.delete(ticketno);
+	}
 	
 	
 

@@ -26,12 +26,12 @@
 <div class = first-widget>  </div>
 <div class="container">
  
-<h2 class="col-sm-offset-2 col-sm-10">받은 쪽지 삭제</h2>
+<h2 class="col-sm-offset-2 col-sm-10">게시물 삭제</h2>
 <form class="form-horizontal" 
-      action="${root }/message/rdelete"
+      action="${root }/ticket/delete"
       method="post"
       >
-  <input type="hidden" name="messageno" value="${param.messageno}">
+  <input type="hidden" name="ticketno" value="${param.ticketno}">
   
   
   <div class="form-group">

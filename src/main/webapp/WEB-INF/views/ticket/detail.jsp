@@ -26,7 +26,7 @@ function createM(){
     <div class="container">
         <div class="row">
         <div class="col-sm-3">
-        <img class="img-rounded" src="${root }/ticket/default.jpg" style="width:729px">
+        <img class="img-rounded" src="/ticket/storage/${dto.filename}" style="width:729px">
                                 
         </div>
         </div>
@@ -37,7 +37,7 @@ function createM(){
     
         <div class="row">
         <span>
-    <img class="img-circle" src="${root }/member/member.jpg"  style="width: 80px">
+    <img class="img-circle" src="/member/storage/${dto.mfilename}"  style="width: 80px">
                  <!--                     프로필 이미지 경로 변경 -->            
         </span>
     
