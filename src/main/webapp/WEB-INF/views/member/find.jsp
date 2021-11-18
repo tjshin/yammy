@@ -48,8 +48,8 @@
 <body>
 	<section id="homeIntro" class="parallax first-widget">
 	    <div class="parallax-overlay">
-		    <div class="container home-intro-content">
-		    <h2>계정 찾기</h2>
+		    <div class="container home-intro-content" >
+		    <h2>Email 본인 확인</h2>
 		    <br/>
 		        <div class="row">
 		        	<div class="col-md-12">
@@ -57,9 +57,16 @@
 		        		<div class="container">
 							  <form id="form" class="form-horizontal" action="/member/findProc" method="post" >
 								<div class="form-group" >
+								  <label class="control-label col-sm-2" for="mname">이름</label>
+								  <div class="col-sm-4" >
+									<input type="text"  class="form-control" id="mname" placeholder="이름을 입력하세요." 
+									 name="mname" required="required">
+								  </div>
+								</div><br/>
+								<div class="form-group" >
 								  <label class="control-label col-sm-2" for="id">Email</label>
-								  <div class="col-sm-4">
-									<input type="text"  class="form-control" id="email" placeholder="Email을 입력하세요" 
+								  <div class="col-sm-4" >
+									<input type="text"  class="form-control" id="email" placeholder="Email을 입력하세요." 
 									 name="email" required="required">
 								  </div>
 								</div><br/>

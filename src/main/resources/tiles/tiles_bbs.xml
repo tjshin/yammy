@@ -4,12 +4,6 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<!-- main -->
-	<definition name="main"
-		template="/WEB-INF/views/template/template.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/template/top.jsp" />
-	</definition>
 
 	<definition name="/bbs/list" extends="main">
 		<put-attribute name="title" value="게시판페이지"></put-attribute>

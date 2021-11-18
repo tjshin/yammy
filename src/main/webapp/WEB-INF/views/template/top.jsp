@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>top test</title>
 
     
@@ -28,6 +31,32 @@
 
 	<link rel="shortcut icon" href="${root }/images/favicon.ico" type="image/x-icon" />
     
+    
+    <!-- Kakao logout -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+    <script>Kakao.init('36bbb9f15e74a9580efcc6a8255f4dd8');</script>
+
+
+
+<script>
+
+
+function signOut() {
+	if(gapi.auth2 != undefined){
+	 	var auth2 = gapi.auth2.getAuthInstance();
+   		 auth2.signOut().then(function () {
+    	  console.log('User signed out.');
+    });
+   		 auth2.disconnect();
+	}
+
+	
+	location.href= "/member/logout"
+  }
+  
+
+</script>
 
 </head>
 
@@ -71,10 +100,25 @@
     	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
     <c:when test="${sessionScope.grade == 'A '}">
-    	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+    							<li><a href="#">관리자 메뉴</a>
+					            	<ul>
+					            		<li><a href="${root}/admin/member/list"><span class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
+                                        <li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>                           
+					            	</ul>
+					            </li>
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </c:when>
 
+	<c:when test="${sessionScope.grade == 'KH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a id="kakaoLogout" href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+	</c:when>
+	
+	<c:when test="${sessionScope.grade == 'GH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="#" onclick="signOut()"><span class="g-signin2"></span> Logout</a></li>
+	</c:when>
+	
     <c:otherwise>
     	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -95,7 +139,7 @@
 
 			<div class="row">
 
-				<div class="col-md-15">
+				<div class="row">
 
 					<div class="pull-left logo">
 
@@ -147,9 +191,26 @@
     	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
     <c:when test="${sessionScope.grade == 'A '}">
-    	<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+    	
+    							<li><a href="#">관리자 메뉴</a>
+					            	<ul>
+					            		<li><a href="${root}/admin/member/list"><span class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
+                                        <li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>                           
+					            	</ul>
+					            </li>
+					            
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </c:when>
+    
+    <c:when test="${sessionScope.grade == 'KH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a id="kakaoLogout" href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+	</c:when>
+	
+	<c:when test="${sessionScope.grade == 'GH'}">
+		<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    	<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
+	</c:when>
 
     <c:otherwise>
     	<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>

@@ -5,22 +5,20 @@
  
 <tiles-definitions>
 
-
-
-  <!-- main -->
-  <definition name="main"
-    template="/WEB-INF/views/template/template.jsp">
-    <put-attribute name="header"
-      value="/WEB-INF/views/template/top.jsp" />
-  </definition>
-  
-
   
   <definition name="/member/mypage" extends="main">
     <put-attribute name="title" value="마이페이지"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/member/mypage.jsp" />
   </definition>
+  
+  
+  <definition name="/admin/member/delete" extends="main">
+    <put-attribute name="title" value="회원 탈퇴"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/member/deleteForm.jsp" />
+  </definition>
+  
   
   
     <definition name="/member/find" extends="main">

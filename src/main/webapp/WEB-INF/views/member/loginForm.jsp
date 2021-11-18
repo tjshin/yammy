@@ -96,7 +96,19 @@
 
         }
         
-        
+        function onEnterLogin(){
+
+			var keyCode = window.event.keyCode;
+
+			if (keyCode == 13) {
+
+				loginPost();
+
+			}
+
+		} 
+
+       
       </script>
 
 <style>
@@ -106,7 +118,7 @@
 </style>
 
 </head>
-<body>
+<body onkeydown="javascript:onEnterLogin();">
 	<section id="homeIntro" class="parallax first-widget">
 	    <div class="parallax-overlay">
 		    <div class="container home-intro-content">

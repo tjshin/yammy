@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -97,13 +98,24 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/admin/notice/update")
-	public String update(int noticeno, Model model) {
-		model.addAttribute("dto", service.read(noticeno));
+	public String update(int noticeno, Model model, HttpSession session) {
+		
+		NoticeDTO dto = service.read(noticeno);
+		
+		String sessionid = (String) session.getAttribute("id");
+		String recordId = dto.getId();
+		
+		if(sessionid.equals(recordId)){
+		model.addAttribute("dto", dto);
 		return "/notice/update";
+		}else {
+			return "/error";
+		}
 	}
 	
 	@PostMapping("/admin/notice/update")
 	public String update(NoticeDTO dto) {
+		
 		
 		   service.update(dto);
 
@@ -117,11 +129,19 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/admin/notice/delete")
-	public String delete(int noticeno) {
-
-		service.delete(noticeno);
+	public String delete(int noticeno, HttpSession session) {
+		NoticeDTO dto = service.read(noticeno);
 		
-		      return "redirect:/notice/list";	    
+		String sessionid = (String) session.getAttribute("id");
+		String recordId = dto.getId();
+		
+		if(sessionid.equals(recordId)){
+		service.delete(noticeno);
+		return "redirect:/notice/list";
+		}else {
+		return "redirect:/error";
+		}
+		      	    
 	}
 	
 }

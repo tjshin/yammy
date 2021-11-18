@@ -75,7 +75,7 @@
 
                 <div class="post-blog">
                     <div class="blog-content">
-                    <h3 style="">내가 쓴 글</h3>
+                    <h3 style="">내가 쓴 게시물</h3>
                     
                     <form class="form-inline" action="${root }/member/mypage">
          <div class="form-group">
@@ -108,6 +108,8 @@
     <th>제목</th>
     <th>등록날짜</th>
     <th>조회수</th>
+    <th>수정</th>
+    <th>삭제</th>
     </tr>
    </thead>
    
@@ -130,6 +132,8 @@
     </td>
     <td>${bdto.bdate}</td>
     <td>${bdto.bview}</td>
+    <td style="font-size:20px;"><a href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
+    <td style="font-size:20px;"><a href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
    </tr>
    </c:forEach>
    </c:otherwise>
