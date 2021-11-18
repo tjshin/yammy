@@ -16,5 +16,35 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/sikdang/map_search.jsp" />
 	</definition>
+
+	<definition name="/admin/sikdang/list" extends="main">
+		<put-attribute name="title" value="식당 DB 목록"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/sikdang/list.jsp" />
+	</definition>
+	
+	<definition name="/admin/sikdang/create" extends="main">
+		<put-attribute name="title" value="식당 DB 생성"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/sikdang/create.jsp" />
+	</definition>
+	
+	<definition name="/admin/sikdang/read" extends="main">
+		<put-attribute name="title" value="식당 DB 조회"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/sikdang/read.jsp" />
+	</definition>
+	
+	<definition name="/admin/sikdang/delete" extends="main">
+		<put-attribute name="title" value="식당 DB 제거"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/sikdang/delete.jsp" />
+	</definition>
+	
+	<definition name="/sikdang/error" extends="main">
+		<put-attribute name="title" value="식당 DB 에러"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/sikdang/error.jsp" />
+	</definition>
 	
 </tiles-definitions>

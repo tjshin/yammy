@@ -13,13 +13,13 @@
 
   
   <definition name="/home" extends="main">
-    <put-attribute name="title" value="기본페이지"></put-attribute>
+    <put-attribute name="title" value="기본 페이지"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/index.jsp" />
-  </definition>
-  
- <definition name="/errorMsg" extends="main">
-    <put-attribute name="title" value="Error"></put-attribute>
+  </definition>  
+
+  <definition name="/errorMsg" extends="main">
+    <put-attribute name="title" value="에러 페이지"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/error.jsp" />
   </definition>

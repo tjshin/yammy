@@ -60,16 +60,15 @@ public class MemberController {
 		return "/home";  //tiles(jsp) 
 	}
 	
-	@GetMapping("/member/find")
-	public String find() {
-		return "/member/find";
-	}
-	
 	@GetMapping("/errorMsg")
 	public String error() {
 		return "/errorMsg";
 	}
 	
+	@GetMapping("/member/find")
+	public String find() {
+		return "/member/find";
+	}
 	
 	@RequestMapping("/member/login/google/callback")
 	public String loginGoogleCallback(HttpServletRequest request, HttpSession session) {

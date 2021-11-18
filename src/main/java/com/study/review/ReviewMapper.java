@@ -21,4 +21,8 @@ public interface ReviewMapper {
 
 	int delete(int hugino);
 
+	int reviewcntUp(String sikid);
+
+	int reviewcntDn(String sikid);
+
 }

@@ -9,16 +9,37 @@ CREATE TABLE SIKDANG (
        coy                  VARCHAR2(50) NULL,
        cox                  VARCHAR2(50) NULL,
        roadadd              VARCHAR2(200) NULL,
+       reviewcnt            NUMBER(10,0) NULL,
        PRIMARY KEY (sikid)
 );
 
-select * from sikdang
-where sikid = '9927879';
+select * from sikdang;
 
+alter table sikdang add reviewcnt number(10) null;
+
+update sikdang set reviewcnt = 0;
+
+update sikdang set reviewcnt =
+(select count(hugino)       
+from sikdang s inner join review
+on s.sikid = review.sikid
+where s.sikid='9927879')
+where sikid='9927879';
+
+
+select sikid, sikname, sikphone, roadadd, jibunadd, sikurl, cox, coy, r
+from (
+select sikid, sikname, sikphone, roadadd, jibunadd, sikurl, cox, coy, rownum r
+from (
+select sikid, sikname, sikphone, roadadd, jibunadd, sikurl, cox, coy
+from sikdang
+)
+)
+where r >=21 and r<=30;
 
 
 insert into sikdang(sikid, sikname, sikphone, roadadd, jibunadd,
-                    url, cox, coy)
+                    url, cox, coy, reviewcnt)
 values('26884143',
        '하남돼지집 대치은마점',
        '02-562-6888',
@@ -26,5 +47,10 @@ values('26884143',
        '서울 강남구 대치동 989-5',
        'http://place.map.kakao.com/26884143',
        '127.06206251070869',
-       '37.49870676012346'
-       );
+       '37.49870676012346',
+       0);
+       
+select count(*)
+from sikdang;
+
+

@@ -69,7 +69,7 @@ function signOut() {
             <li><a href="${root }/">Home</a></li>
             <li><a href="#">구장별 게시판</a>
             	<ul>
-            		<li><a href="/bbs/list">잠실(LG/두산)</a></li>
+            		<li><a href="${root }/bbs/list">잠실(LG/두산)</a></li>
                     <li><a href="#">고척(키움)</a></li>
                     <li><a href="#">인천(SSG)</a></li>
                     <li><a href="#">수원(KT)</a></li>
@@ -81,7 +81,7 @@ function signOut() {
             	</ul>
             </li>
             
-            <li><a href="#">공지사항</a></li>
+            <li><a href="${root }/notice/list">공지사항</a></li>
             <li><a href="#">티켓양도</a></li>
             <li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
                 <ul>
@@ -92,7 +92,7 @@ function signOut() {
                 </ul>
             </li>
             <li><a href="${root }/member/mypage">내 정보</a></li>
-            <li><a href="#">1:1 문의(챗봇)</a></li>
+            <li><a href="${root }/chatbot/chatting">1:1 문의(챗봇)</a></li>
             <c:choose>
 
     <c:when test="${empty sessionScope.id }">
@@ -191,6 +191,7 @@ function signOut() {
     	<li><a href="${root}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </c:when>
     <c:when test="${sessionScope.grade == 'A '}">
+
     	
     							<li><a href="#">관리자 메뉴</a>
 					            	<ul>
@@ -199,6 +200,7 @@ function signOut() {
 					            	</ul>
 					            </li>
 					            
+
     	<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </c:when>
     

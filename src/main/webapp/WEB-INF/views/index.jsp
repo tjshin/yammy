@@ -27,6 +27,20 @@
 
 
     <div>바디에요</div>
+    <section class="cta clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="${root }/admin/sikdang/list" class="main-button accent-color">식당db관리 페이지(임시)<i
+						class="icon-button fa fa-arrow-right"></i></a>
+				</div>
+				<!-- /.col-md-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- /.cta -->
 
 
 
