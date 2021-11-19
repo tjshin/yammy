@@ -28,27 +28,112 @@ public class MessageContorller {
 	private MessageService service;
 	
 	
+	
+	
+	//ticketmessage
+	@GetMapping("/message/ticketmessage")
+	  public String ticketmessage(Model model, HttpSession session ,HttpServletRequest request) {
+		
+		//id 테스트용도 
+				String sendid = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+				int ticketno = Integer.parseInt(request.getParameter("ticketno"));
+				
+				
+				if(sendid == null){
+					return "redirect:/member/login";
+				} else {
+					model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
+					model.addAttribute("ticketno", ticketno);			
+				    return "/message/ticketmessage";
+				}
+	  }
+	
+	@PostMapping("/message/ticketmessage")
+	public String ticketmessage(MessageDTO dto ,HttpServletRequest request ) {
+	    
+	int ticketno = Integer.parseInt(request.getParameter("ticketno"));
+	
+		if(ticketno >0) {
+			int meticketno  =ticketno;
+			
+			
+			dto.setMeticketno(meticketno);
+			
+			
+			if (service.create(dto) == 1) {
+		    	
+			      return "redirect:/message/sendlist";
+			    } else {
+			      return "/message/error";
+				 }
+			
+		}else {
+			if (service.create(dto) == 1) {
+		    	
+		      return "redirect:/message/sendlist";
+		    } else {
+		      return "/message/error";
+		    }
+		}
+	  }
+
+	
+	
+	
+	//에러페이지 
+	@GetMapping("/message/error")
+	  public String error() {
+	 
+		
+	    return "/message/error";
+	  }
 	//체크박스 delete
 	
+	
+
     //recelist 선택 삭제 (비동기)
-    @RequestMapping("/checkdelete")
-    public String checkdelete(HttpServletRequest request) {
+    @RequestMapping("/rcheckdelete")
+    public String rcheckdelete(HttpServletRequest request) {
+           
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.rcheckdelete(Integer.parseInt(ajaxMsg[i]));
+        }
+        return "/message/recelist";
+    }
+    
+    @RequestMapping("/scheckdelete")
+    public String scheckdelete(HttpServletRequest request) {
             
         String[] ajaxMsg = request.getParameterValues("valueArr");
         int size = ajaxMsg.length;
         for(int i=0; i<size; i++) {
-        	service.checkdelete(Integer.parseInt(ajaxMsg[i]));
+        	service.scheckdelete(Integer.parseInt(ajaxMsg[i]));
         }
+        
+        
         return "/message/recelist";
     }
 	
 	
 	//그냥 삭제
 	@GetMapping("/message/rdelete")
-	  public String rdelete() {
+	  public String rdelete(int messageno , HttpSession session) {
 	 
-	 
-	    return "/message/rdelete";
+		String sessionid = (String)session.getAttribute("id");
+        String recordid = service.read(messageno).getReceid();
+        
+        if(sessionid==null) {
+            return "redirect:/member/login";
+        } else if(sessionid.equals(recordid)) {
+            //원하는 액션
+
+        	return "/message/rdelete";
+        } else {
+            return "error path";
+        }
+	    
 	  }
 	  
 	  @PostMapping("/message/rdelete")
@@ -65,11 +150,22 @@ public class MessageContorller {
 	  }
 	  
 	  @GetMapping("/message/sdelete")
-	  public String sdelete() {
+	  public String sdelete(int messageno , HttpSession session) {
 	 
-	 
-	    return "/message/sdelete";
+		  String sessionid = (String)session.getAttribute("id");
+	        String recordid = service.read(messageno).getReceid();
+	        
+	        if(sessionid==null) {
+	            return "redirect:/member/login";
+	        } else if(sessionid.equals(recordid)) {
+	            //원하는 액션
+
+	        	return "/message/sdelete";
+	        } else {
+	            return "/message/error";
+	        }
 	  }
+	  
 	  
 	  @PostMapping("/message/sdelete")
 	  public String sdelete(HttpServletRequest request, int messageno) {
@@ -88,25 +184,25 @@ public class MessageContorller {
 	
 	
 	//reply
-	@GetMapping("/message/reply")
-	  public String reply(Model model, HttpSession session) {
+		@GetMapping("/message/reply")
+		  public String reply(Model model, HttpSession session) {
+			
+			//id 테스트용도 ***********************
+			String sendid = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+			model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
+		    return "/message/reply";
+		  }
 		
-		//id 테스트용도 ***********************
-		  String sendid = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
-		model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
-	    return "/message/reply";
-	  }
-	
-	@PostMapping("/message/reply")
-	public String reply(MessageDTO dto ) {
-	    if (service.create(dto) == 1) {
-	    	System.out.println(dto.getMcontents());
-	      return "redirect:/message/recelist";
-	    } else {
-	      return "/error";
-	    }
-	 
-	  }
+		@PostMapping("/message/reply")
+		public String reply(MessageDTO dto ) {
+		    if (service.create(dto) == 1) {
+		    	System.out.println(dto.getMcontents());
+		      return "redirect:/message/sendlist";
+		    } else {
+		      return "/message/error";
+		    }
+		 
+		  }
 	
 
 	//create
@@ -115,19 +211,23 @@ public class MessageContorller {
 		
 		//id 테스트용도 ***********************
 		String sendid = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
-		model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
-		System.out.println(sendid);
+		if(sendid == null){
+			return "redirect:/member/login";
+		} else {
+			model.addAttribute("sendid", sendid); //param 으로 view 데이터 전달 
+						
+		    return "/message/create";
+		}
 		
-	    return "/message/create";
 	  }
 	
 	@PostMapping("/message/create")
 	public String create(MessageDTO dto ) {
 	    if (service.create(dto) == 1) {
-	    	System.out.println(dto.getMcontents());
+	    	
 	      return "redirect:/message/sendlist";
 	    } else {
-	      return "/error";
+	      return "/message/error";
 	    }
 	 
 	  }
@@ -138,10 +238,19 @@ public class MessageContorller {
 	
 	//sendread
 	@GetMapping("/message/sendread")
-	  public String sendread(int messageno,Model model) {
+	  public String sendread(int messageno, Model model ,HttpSession session ,HttpServletRequest request ) {
 	    
-	    
-	    MessageDTO dto = service.sendread(messageno);
+		
+		 String sendid = (String)session.getAttribute("id");
+		  
+		  if(sendid==null) {
+		       return "redirect:/member/login/";
+		  }else {
+		
+		//request.setAttribute() 와 비슷하게 컨트롤 -> jsp 로 넘겨준다.	 
+		model.addAttribute("ticketno", request.getParameter("ticketno"));
+			  
+	    MessageDTO dto = service.read(messageno);
 	    
 	    String content = dto.getMcontents().replaceAll("\r\n", "<br>");
 	    
@@ -151,14 +260,19 @@ public class MessageContorller {
 	    
 	    return "/message/sendread";
 	  }
+	}
 	
 	
 	//reread 
 	@GetMapping("/message/receread")
-	  public String receread(int messageno,Model model) {
+	  public String receread(int messageno,Model model , HttpSession session) {
 	    
-	    
-	    MessageDTO dto = service.receread(messageno);
+		 String receid = (String)session.getAttribute("id");
+		  
+		  if(receid==null) {
+		       return "redirect:/member/login/";
+		  }else {
+	    MessageDTO dto = service.read(messageno);
 	    
 	    String content = dto.getMcontents().replaceAll("\r\n", "<br>");
 	    
@@ -168,6 +282,7 @@ public class MessageContorller {
 	    
 	    return "/message/receread";
 	  }
+	}
 	
 	
 	
@@ -179,7 +294,9 @@ public class MessageContorller {
 		 //id 테스트용도 ***********************
 		  String receid = (String)session.getAttribute("id");
 		  
-		  
+		  if(receid==null) {
+		       return "redirect:/member/login/";
+		  }else {
 		 
 		 
 		String col = Utility.checkNull(request.getParameter("col"));
@@ -200,7 +317,7 @@ public class MessageContorller {
 	    int sno = ((nowPage - 1) * recordPerPage) +1 ;
 	    int eno = nowPage * recordPerPage; // 확인
 	 
-	    Map map = new HashMap();
+	    Map map = new HashMap(); // DB에 넘겨주는 개념 => 마이바티스 : parameterType="Map" 
 	    map.put("col", col);
 	    map.put("word", word);
 	    map.put("sno", sno);
@@ -216,6 +333,7 @@ public class MessageContorller {
 	    
 	    
 	    // request에 Model사용 결과 담는다
+	    
 	    request.setAttribute("list", list);
 	    request.setAttribute("nowPage", nowPage);
 	    request.setAttribute("col", col);
@@ -227,6 +345,7 @@ public class MessageContorller {
 		
 	    // view페이지 리턴
 	    return "/message/recelist";
+		}
 	  }
 	 
 	 
@@ -238,9 +357,9 @@ public class MessageContorller {
 		//id 테스트용도 ***********************
 		  String sendid = (String)session.getAttribute("id");
 		  
-		  
-		 
-		 
+		  if(sendid==null) {
+		       return "redirect:/member/login/";
+		  }else {
 		 
 		String col = Utility.checkNull(request.getParameter("col"));
 	    String word = Utility.checkNull(request.getParameter("word"));
@@ -264,6 +383,7 @@ public class MessageContorller {
 	    
 	    //MAP -> DB에 넘겨주는 개념 => 마이바티스 : parameterType="Map" 
 	    Map map = new HashMap();
+	    
 	    map.put("col", col);
 	    map.put("word", word);
 	    map.put("sno", sno);
@@ -291,4 +411,5 @@ public class MessageContorller {
 	    return "/message/sendlist";
 	  }
 	 
+	 }	  
 }

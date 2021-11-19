@@ -10,9 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MessageMapper {
 
 	
-	
-	
-	void checkdelete(int messgeno); 
+	void rcheckdelete(int messgeno); 
+	void scheckdelete(int messgeno); 
 	
 	int sdelete(int messageno);
 	int rdelete(int messageno);
@@ -23,8 +22,8 @@ public interface MessageMapper {
 	 List<MessageDTO> recelist(Map map);
 	 List<MessageDTO> sendlist(Map map);
 	 
-	 MessageDTO receread(int messageno);
-	 MessageDTO sendread(int messageno);
+	 MessageDTO read(int messageno);
+
 	 
 	 
 	 

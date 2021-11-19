@@ -86,7 +86,7 @@ function signOut() {
 				</ul></li>
 
 			<li><a href="${root }/notice/list">공지사항</a></li>
-			<li><a href="#">티켓양도</a></li>
+			<li><a href="${root }/ticket/list">티켓양도</a></li>
 			<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 				<ul>
 					<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
@@ -186,7 +186,7 @@ function signOut() {
 										</ul></li>
 
 									<li><a href="${root }/notice/list">공지사항</a></li>
-									<li><a href="#">티켓양도</a></li>
+									<li><a href="${root }/ticket/list">티켓양도</a></li>
 									<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 										<ul>
 											<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
@@ -230,7 +230,7 @@ function signOut() {
 											<li><a href="${root}/member/update"><span
 													class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
 											<li><a href="#" onclick="signOut()"><span
-													class=class="g-signin2"></span> Logout</a></li>
+													class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>
@@ -273,6 +273,7 @@ function signOut() {
 		<!-- /.site-header -->
 	</header>
 	<!-- Scripts -->
+
 	<script src="${root }/js/min/plugins.min.js"></script>
 	<script src="${root }/js/min/medigo-custom.min.js"></script>
 

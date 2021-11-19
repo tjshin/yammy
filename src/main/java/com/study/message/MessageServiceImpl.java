@@ -37,17 +37,6 @@ public class MessageServiceImpl implements MessageService {
 		return mapper.recelist(map);
 	}
 
-	@Override
-	public MessageDTO receread(int messageno) {
-		// TODO Auto-generated method stub
-		return mapper.receread(messageno);
-	}
-
-	@Override
-	public MessageDTO sendread(int messageno) {
-		// TODO Auto-generated method stub
-		return mapper.sendread(messageno);
-	}
 
 	@Override
 	public int create(MessageDTO dto) {
@@ -74,10 +63,23 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public void checkdelete(int messgeno) {
+	public void rcheckdelete(int messgeno) {
 		// TODO Auto-generated method stub
-		 mapper.checkdelete(messgeno);
+		 mapper.rcheckdelete(messgeno);
 		
+	}
+	
+	@Override
+	public void scheckdelete(int messgeno) {
+		// TODO Auto-generated method stub
+		 mapper.scheckdelete(messgeno);
+		
+	}
+
+	@Override
+	public MessageDTO read(int messageno) {
+		// TODO Auto-generated method stub
+		return mapper.read(messageno);
 	}
 
 
