@@ -94,8 +94,13 @@ function signOut() {
 					<li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
 
 				</ul></li>
-			<li><a href="${root }/member/mypage">내 정보</a></li>
-			<li><a href="${root }/chatbot/chatting">1:1 문의(챗봇)</a></li>
+			
+												<li><a href="#">My Page</a>
+												<ul>
+													<li><a href="${root}/member/mypage"><span class="glyphicon glyphicon-list"></span>회원정보</a></li>
+													<li><a href="${root}/member/update">회원정보 수정</a></li>
+												</ul></li>
+			<li><a href="${root }/chatbot/chatting">1:1 문의</a></li>
 			<c:choose>
 
 				<c:when test="${empty sessionScope.id }">
@@ -105,7 +110,7 @@ function signOut() {
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</c:when>
 				<c:when test="${sessionScope.grade == 'A '}">
-					<li><a href="#">관리자 메뉴</a>
+					<li><a href="#">관리자</a>
 						<ul>
 							<li><a href="${root}/admin/member/list"><span
 									class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
@@ -116,21 +121,18 @@ function signOut() {
 				</c:when>
 
 				<c:when test="${sessionScope.grade == 'KH'}">
-					<li><a href="${root}/member/update"><span
-							class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
 					<li><a id="kakaoLogout" href="${root}/member/logout"><span
 							class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 				</c:when>
 
 				<c:when test="${sessionScope.grade == 'GH'}">
-					<li><a href="${root}/member/update"><span
-							class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-					<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
+
+					<li><a href="#" onclick="signOut()"><span class="g-signin2"></span> Logout</a></li>
+
 				</c:when>
 
 				<c:otherwise>
-					<li><a href="${root}/member/update"><span
-							class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+					
 					<li><a href="${root}/member/logout"><span
 							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				</c:otherwise>
@@ -172,6 +174,7 @@ function signOut() {
 
 								<ul class="sf-menu">
 									<li class="active"><a href="${root }/">Home</a></li>
+									<li></li><li></li><li></li>
 									<li><a href="#">구장별 게시판</a>
 										<ul>
 											<li><a href="#">잠실(LG/두산)</a></li>
@@ -194,8 +197,14 @@ function signOut() {
 											<li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
 
 										</ul></li>
-									<li><a href="${root }/member/mypage">내 정보</a></li>
-									<li><a href="${root }/chatbot/chatting">1:1 문의(챗봇)</a></li>
+										<li><a href="#">My Page</a>
+												<ul>
+													<li><a href="${root}/member/mypage"><span class="glyphicon glyphicon-list"></span>회원정보</a></li>
+													<li><a href="${root}/member/update">회원정보 수정</a></li>
+												</ul></li>
+									
+									
+									<li><a href="${root }/chatbot/chatting">1:1 문의</a></li>
 									<c:choose>
 
 										<c:when test="${empty sessionScope.id }">
@@ -204,40 +213,36 @@ function signOut() {
 											<li><a href="${root}/member/login"><span
 													class="glyphicon glyphicon-log-in"></span> Login</a></li>
 										</c:when>
+										
+										
 										<c:when test="${sessionScope.grade == 'A '}">
-
-
-											<li><a href="#">관리자 메뉴</a>
+											<li><a href="#">관리자</a>
 												<ul>
 													<li><a href="${root}/admin/member/list"><span
 															class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
 													<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 												</ul></li>
-
-
 											<li><a href="${root}/member/logout"><span
 													class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 										</c:when>
 
+
+
 										<c:when test="${sessionScope.grade == 'KH'}">
-											<li><a href="${root}/member/update"><span
-													class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-											<li><a id="kakaoLogout" href="${root}/member/logout"><span
-													class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+											<li></li><li></li><li></li><li></li><li></li>
+											<li><a id="kakaoLogout" href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 										</c:when>
 
+
+
 										<c:when test="${sessionScope.grade == 'GH'}">
-											<li><a href="${root}/member/update"><span
-													class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-											<li><a href="#" onclick="signOut()"><span
-													class=class="g-signin2"></span> Logout</a></li>
+										<li></li><li></li><li></li><li></li><li></li>
+											<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>
-											<li><a href="${root}/member/update"><span
-													class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-											<li><a href="${root}/member/logout"><span
-													class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+										
+											<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 										</c:otherwise>
 									</c:choose>
 

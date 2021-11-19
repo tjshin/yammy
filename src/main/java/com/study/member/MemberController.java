@@ -626,13 +626,15 @@ public class MemberController {
 	  }else {
 		  	
 		    String col = Utility.checkNull(request.getParameter("col"));
-			String word = Utility.checkNull(request.getParameter("word"));
+			String bword = Utility.checkNull(request.getParameter("bword"));
+			String rword = Utility.checkNull(request.getParameter("rword"));
+			String tword = Utility.checkNull(request.getParameter("tword"));
 			
-			System.out.println("col:"+col);
-			System.out.println("word:"+word);
 			
 			if(col.equals("total")) {
-				word = "";
+				bword = "";
+				rword = "";
+				tword = "";
 			}
 			
 			int nowPage = 1;
@@ -646,46 +648,56 @@ public class MemberController {
 			int sno = ((nowPage-1) * recordPerPage) + 1;
 			int eno = nowPage * recordPerPage;
 			
-			Map map = new HashMap();
-			map.put("col", col);
-		    map.put("word", word);
-		    map.put("sno", sno);
-		    map.put("eno", eno);
-		    map.put("id", id);
-			
-		    int btotal = service.btotal(map);
-		    int rtotal = service.rtotal(map);
-		    
-		    
-		    int trecordPerPage = 8;
+			int trecordPerPage = 8;
 			int tsno = ((nowPage-1) * trecordPerPage) + 1;
 			int teno = nowPage * trecordPerPage;
 			
-			Map tmap = new HashMap();
+			Map bmap = new HashMap();
+			bmap.put("col", col);
+		    bmap.put("bword", bword);
+		    bmap.put("sno", sno);
+		    bmap.put("eno", eno);
+		    bmap.put("id", id);
+		    
+		    System.out.println("bword:"+bword);
+		    
+		    Map rmap = new HashMap();
+			rmap.put("col", col);
+		    rmap.put("rword", rword);
+		    rmap.put("sno", sno);
+		    rmap.put("eno", eno);
+		    rmap.put("id", id);
+		    
+		    Map tmap = new HashMap();
 			tmap.put("col", col);
-		    tmap.put("word", word);
+		    tmap.put("tword", tword);
 		    tmap.put("tsno", tsno);
 		    tmap.put("teno", teno);
 		    tmap.put("id", id);
-		    
+			
+		    int btotal = service.btotal(bmap);
+		    int rtotal = service.rtotal(rmap);
 		    int ttotal = service.ttotal(tmap);
 		    
-		 
-		    String mpaging = Utility.mpaging(btotal, nowPage, recordPerPage, col, word);
-		    String rpaging = Utility.mpaging(rtotal, nowPage, recordPerPage, col, word);
-		    String tpaging = Utility.mpaging(ttotal, nowPage, trecordPerPage, col, word);
+		    System.out.println("btotal:"+btotal);
+		    
+		    String bpaging = Utility.mpaging(btotal, nowPage, recordPerPage, col, bword);
+		    String rpaging = Utility.mpaging(rtotal, nowPage, recordPerPage, col, rword);
+		    String tpaging = Utility.mpaging(ttotal, nowPage, trecordPerPage, col, tword);
 //		    System.out.println("paging : "+paging);
 		    
 		    request.setAttribute("nowPage", nowPage);
 		    request.setAttribute("col", col);
-		    request.setAttribute("word", word);
-		    request.setAttribute("mpaging", mpaging);
+		    request.setAttribute("bword", bword);
+		    request.setAttribute("rword", rword);
+		    request.setAttribute("tword", tword);
+		    request.setAttribute("mpaging", bpaging);
 		    request.setAttribute("rpaging", rpaging);
 		    request.setAttribute("tpaging", tpaging);
 		    
 	       MemberDTO mdto = service.mypage(id);
-	       List<BbsDTO> bdto = service.bbs(map);
-	       List<ReviewDTO> rdto = service.review(map);
+	       List<BbsDTO> bdto = service.bbs(bmap);
+	       List<ReviewDTO> rdto = service.review(rmap);
 	       List<TicketDTO> tdto = service.ticket(tmap);
 	       
 //	       System.out.println(bdto);
@@ -695,7 +707,7 @@ public class MemberController {
 	       model.addAttribute("rdto", rdto);
 	       model.addAttribute("tdto", tdto);
 	       
-	       System.out.println(tdto);
+//	       System.out.println(tdto);
 	      
 	   return "/member/mypage";
 	  }
