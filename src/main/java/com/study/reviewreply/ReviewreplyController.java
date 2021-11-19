@@ -44,9 +44,9 @@ public class ReviewreplyController {
 		@RequestParam("col") String col,
 		@RequestParam("word") String word) {
 			int total = service.total(hugino);
-			String url = "read";
+			String url = "/review/read";
 			int recordPerPage = 5;
-			String paging = Utility.rpaging(total, nowPage, recordPerPage, col, word, url, nPage, hugino);
+			String paging = Utility.reviewrpaging(total, nowPage, recordPerPage, col, word, url, nPage, hugino);
 			
 			return new ResponseEntity<>(paging, HttpStatus.OK);
 	}

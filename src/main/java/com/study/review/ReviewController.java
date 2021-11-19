@@ -30,7 +30,7 @@ public class ReviewController {
 	
 	@Autowired
 	@Qualifier("com.study.reviewreply.ReviewreplyServiceImpl")
-	private ReviewreplyService rservice;
+	private ReviewreplyService reviewrservice;
 	
 	@RequestMapping("/review/list")
 	public String reviewList(HttpServletRequest request) {
@@ -68,8 +68,8 @@ public class ReviewController {
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
-		
-		request.setAttribute("rservice", rservice);
+		//댓글 관련
+		request.setAttribute("reviewrservice", reviewrservice);
 		
 		return "/review/list";
 	}
@@ -82,7 +82,7 @@ public class ReviewController {
 		dto.setHcontents(hcontents);
 		
 		model.addAttribute("dto", dto);
-		
+		//댓글 시작
 		int nPage = 1;
         if (request.getParameter("nPage") != null) {
                 nPage = Integer.parseInt(request.getParameter("nPage"));
@@ -98,7 +98,8 @@ public class ReviewController {
         map.put("nPage", nPage);
 
         model.addAllAttributes(map);
-		
+        request.setAttribute("reviewrservice", reviewrservice);
+		//댓글 끝
 		return "/review/read";
 	}
 	
