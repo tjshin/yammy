@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
-<title>review delete test</title>
+<title>sikdang error page</title>
 <script type="text/javascript">
 	function goback() {
 		window.history.back();
@@ -24,10 +24,10 @@
             <div class="container pageTitle">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
-                        <h2 class="page-title">리뷰 삭제</h2>
+                        <h2 class="page-title">식당 DB 에러</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 리뷰 삭제</span>
+                        <span class="page-location">Home / 식당 DB 에러</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -39,28 +39,14 @@
             <div class="row">
                 <div class="col-md-12">
                 
-                <h2>리뷰 삭제</h2>
-				<form class="form-horizontal" action="/review/delete" method="post">
-					<input type="hidden" name="hugino" value="${param.hugino}">
-					<input type='hidden' name="col" value="${param.col}">
-					<input type='hidden' name="word" value="${param.word}">
-					<input type='hidden' name="nowPage" value="${param.nowPage}">
-					<div>
-					삭제하면 복구할 수 없습니다<br><br>
-					</div>
-		
+                <h2>잘못된 접근입니다</h2>
 					<div class="form-group">
 						<div>
-							<button class="mainBtn" type="submit">삭제</button>
 							<button class="mainBtn" type="reset" onclick="goback();">
 							돌아가기</button>   
 							
 						</div>
 					</div>
-					
-				</form>    
-				             
-						
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
         </div> <!-- /.container -->

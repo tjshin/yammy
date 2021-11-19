@@ -93,11 +93,7 @@
 					
 					
 						<div class="post-blog">
-<!-- 							<div class="blog-image"> -->
-<%-- 								<a href="${root}/review/read"> --%>
-<!-- 									<img src="../template/images/includes/blog1.jpg" alt=""> -->
-<!-- 								</a> -->
-<!-- 							</div> -->
+
 							<div class="blog-content">
 								<span class="meta-date">${dto.hdate }</span>
 								<span class="meta-comments">댓글: 댓글 기능 추가해라</span>

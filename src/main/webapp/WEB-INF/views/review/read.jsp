@@ -11,28 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>review read test</title>
     
-    <script type="text/javascript">
-	function update() {
-		var url = "${root}/review/update";
-		url += "?hugino=${dto.hugino}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		url += "&nowPage=${param.nowPage}";
-
-		location.href = url;
-	}
-	
-	function delete() {
-		var url = "${root}/review/delete";
-		url += "?hugino=${dto.hugino}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		url += "&nowPage=${param.nowPage}";
-		
-		location.href = url;
-	}
-	
-</script>
+ 
     
 </head>
 <body>
@@ -123,12 +102,16 @@
                 <div class="row">
                     <br>
                     <div class="col-md-12">
-                        <a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
-                        (등록은 interceptor로 로그인 유도하게)
-                        <a href="${root }/sikdang/map_search" class="main-button accent-color">리뷰 등록</a>
-                        (수정과 삭제 버튼을 회원id 활용해 글쓴 사람만 볼 수 있게)
-                        <a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}" class="main-button accent-color">리뷰 수정</a>
-                        <a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}" class="main-button accent-color">리뷰 삭제</a>
+                    		<a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
+                    	<c:if test="${sessionScope.id !=null }">
+                       		<a href="${root }/sikdang/map_search" class="main-button accent-color">리뷰 등록</a>                        
+                       	</c:if>
+                       	<c:if test="${sessionScope.id !=null && sessionScope.id == dto.id}">
+                       		<a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}"
+                       		class="main-button accent-color">리뷰 수정</a>
+                       		<a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}"
+                       		class="main-button accent-color">리뷰 삭제</a>                       
+                       	</c:if>
                     </div>
                 </div>
 

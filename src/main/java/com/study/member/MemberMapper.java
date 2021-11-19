@@ -37,4 +37,6 @@ public interface MemberMapper {
 	int googleCreate(MemberDTO dto);
 
 	List<BbsDTO> bbs(Map map);
+
+	int memberDelete(String id);
 }

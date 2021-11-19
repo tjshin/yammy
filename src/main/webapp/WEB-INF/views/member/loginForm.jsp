@@ -96,7 +96,19 @@
 
         }
         
-        
+        function onEnterLogin(){
+
+			var keyCode = window.event.keyCode;
+
+			if (keyCode == 13) {
+
+				loginPost();
+
+			}
+
+		} 
+
+       
       </script>
 
 <style>
@@ -106,7 +118,7 @@
 </style>
 
 </head>
-<body>
+<body onkeydown="javascript:onEnterLogin();">
 	<section id="homeIntro" class="parallax first-widget">
 	    <div class="parallax-overlay">
 		    <div class="container home-intro-content">
@@ -115,7 +127,7 @@
 		        <div class="row">
 		        	<div class="col-md-12">
 		        		
-		        		<div class="container">
+		        		<div class="container" >
 							  <form id="form" class="form-horizontal" action="/member/login" method="post">
 								<div class="form-group">
 								  <label class="control-label col-sm-2" for="id">ID</label>
@@ -165,12 +177,10 @@
 		        	</div> <!-- /.col-md-12 -->
 		        </div> <!-- /.row -->
 		    </div> <!-- /.container -->
-	    </div> <!-- /.parallax-overlay -->
+	  
 	</section> <!-- /#homeIntro -->
 	
-		<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
+
 
 
 </body>

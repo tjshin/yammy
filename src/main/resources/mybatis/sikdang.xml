@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create" parameterType="com.study.sikdang.SikdangDTO">
 	insert into sikdang(
 	sikid, sikname, sikphone, roadadd,
-	jibunadd, sikurl, cox, coy)
+	jibunadd, sikurl, cox, coy, reviewcnt)
 	values(#{sikid}, #{sikname}, #{sikphone}, #{roadadd},
-	#{jibunadd}, #{sikurl}, #{cox}, #{coy})
+	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, 0)
 </insert>
 
 <select id="checkId" parameterType="String" resultType="int">
@@ -20,4 +20,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where sikid = #{sikid}
 </select>
 
+<select id="list" resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+</select>
+
+<select id="total" parameterType="Map" resultType="int">
+	select count(*)
+	from sikdang
+	<where>
+		<choose>
+			<when test="col=='sikid'">
+				sikid like '%'||#{word}||'%'
+			</when>
+			<when test="col=='sikname'">
+				sikname like '%'||#{word}||'%'
+			</when>
+			<when test="col=='sikphone'">
+				sikphone like '%'||#{word}||'%'
+			</when>			
+			<when test="col=='address'">
+				roadadd like '%'||#{word}||'%'
+				or
+				jibunadd like '%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+</select>
+
+<select id="adminlist" parameterType="Map"
+		resultType="com.study.sikdang.SikdangDTO">
+	select sikid, sikname, sikphone, roadadd, jibunadd,
+			sikurl, cox, coy, reviewcnt, r
+	from (
+	select sikid, sikname, sikphone, roadadd, jibunadd,
+			sikurl, cox, coy, reviewcnt, rownum r
+	from (
+	select sikid, sikname, sikphone, roadadd, jibunadd,
+			sikurl, cox, coy, reviewcnt
+	from sikdang
+	<where>
+		<choose>
+			<when test="col=='sikid'">
+				sikid like '%'||#{word}||'%'
+			</when>
+			<when test="col=='sikname'">
+				sikname like '%'||#{word}||'%'
+			</when>
+			<when test="col=='sikphone'">
+				sikphone like '%'||#{word}||'%'
+			</when>			
+			<when test="col=='address'">
+				roadadd like '%'||#{word}||'%'
+				or
+				jibunadd like '%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+	)
+	)
+	<![CDATA[       
+    	where r >= #{sno} and r <= #{eno}
+    ]]>
+</select>
+
+<delete id="delete" parameterType="String">
+	delete from sikdang
+	where sikid = #{sikid}
+</delete>
+
+<select id="read" parameterType="String" resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+	where sikid = #{sikid}
+</select>
+    
 </mapper>

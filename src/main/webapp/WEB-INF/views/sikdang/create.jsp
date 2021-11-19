@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>식당 검색하기</title>
+    <title>관리자용 식당 DB 생성</title>
     <link href="${root }/css/map_search.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -17,10 +17,10 @@
             <div class="container pageTitle">
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
-                        <h2 class="page-title">식당 검색, 추가</h2>
+                        <h2 class="page-title">식당 DB 생성</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 식당 검색, 추가</span>
+                        <span class="page-location">Home / 식당 DB 생성</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -31,12 +31,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="${root }/sikdang/map_main" class="main-button accent-color">
+                    <a href="${root }/admin/sikdang/list" class="main-button accent-color">
                         <i class="icon-button fa fa-arrow-left"></i>
-                        &nbsp;&nbsp; 전체 지도로 돌아가기</a>
-                    <a href="${root }/review/list" class="main-button accent-color">
-                        <i class="icon-button fa fa-arrow-left"></i>
-                        &nbsp;&nbsp; 리뷰 목록으로 돌아가기
+                        &nbsp;&nbsp; DB 목록으로 돌아가기
                     </a>
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
@@ -64,7 +61,7 @@
     </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=763a821d2c1a10416e3b6d12208ed9c0&libraries=services"></script>
-<script type="text/javascript" src="${root }/js/map_search.js">
+<script type="text/javascript" src="${root }/js/sikdang_create.js">
 // 	이 javascript 파일은 키워드로 장소를 검색하는 카카오 API 예제를 수정했습니다.
 // 	키워드로 식당을 검색하고, 목록에서 해당 식당의 버튼을 누르면 
 // 	API로부터 식당 정보를 프로젝트 DB에 레코드로 저장하고,

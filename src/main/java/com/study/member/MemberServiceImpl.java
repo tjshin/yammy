@@ -108,4 +108,10 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.btotal(map);
 	}
+
+	@Override
+	public int memberDelete(String id) {
+		// TODO Auto-generated method stub
+		return mapper.memberDelete(id);
+	}
 }

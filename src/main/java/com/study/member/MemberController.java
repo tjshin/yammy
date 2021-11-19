@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -40,7 +41,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.notice.NoticeDTO;
 //import com.study.notice.NoticeDTO;
 //import com.study.member.Contents;
 import com.study.utility.Utility;
@@ -60,11 +60,15 @@ public class MemberController {
 		return "/home";  //tiles(jsp) 
 	}
 	
+	@GetMapping("/errorMsg")
+	public String error() {
+		return "/errorMsg";
+	}
+	
 	@GetMapping("/member/find")
 	public String find() {
 		return "/member/find";
 	}
-	
 	
 	@RequestMapping("/member/login/google/callback")
 	public String loginGoogleCallback(HttpServletRequest request, HttpSession session) {
@@ -204,6 +208,7 @@ public class MemberController {
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
 		dto.setMname(mname);
+		dto.setNick(mname);
 		dto.setPassword(password);
 		dto.setEmail(email);
 		
@@ -218,7 +223,9 @@ public class MemberController {
 		//DB에 insert
 		if(cnt == 0) {
 			service.kakaoCreate(dto);
+			
 			String grade = service.getGrade(id);
+			System.out.println("grade : "+grade);
 			session.setAttribute("id", id);
 			session.setAttribute("mname", mname);
 			session.setAttribute("grade", grade);
@@ -245,6 +252,52 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	
+	@RequestMapping("/member/logout/kakao/callback")
+	public String logoutKakaoCallback(HttpSession session) {
+		
+		String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+		String token = (String) session.getAttribute("token");
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            
+            conn.setRequestProperty("Authorization", "Bearer " + token);
+            int responseCode = conn.getResponseCode();
+            System.out.println("responseCode : " + responseCode);
+ 
+            if(responseCode ==400)
+                throw new RuntimeException("카카오 로그아웃 도중 오류 발생");
+            
+            
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            
+            String br_line = "";
+            String result = "";
+            while ((br_line = br.readLine()) != null) {
+                result += br_line;
+            }
+            System.out.println("결과");
+            System.out.println(result);
+        }catch(IOException e) {
+            
+        }
+        
+        session.invalidate();  //세션 삭제
+		
+		return "redirect:/";
+	}
+	
+	
+	@RequestMapping("/member/logout")
+    public String logout(HttpSession session) {
+		
+            session.invalidate();  //세션 삭제
+            
+            return "redirect:/";
+    }
+
 	@GetMapping("/member/agree")
 	public String agree() {
 		return "/member/agree";
@@ -389,82 +442,9 @@ public class MemberController {
      }
 	}
 	
-//	@PostMapping("/member/logout/kakao/callback")
-//	public String logoutKakaoCallback() {
-//		return "/member/logout";
-//	}
-	
-	@RequestMapping("/member/logout")
-    public String logout(HttpSession session) {
-		
-			String grade = (String) session.getAttribute("grade");
-			String token = (String) session.getAttribute("token");
-			
-			System.out.println(grade);
-			System.out.println(token);
-			
-			if(grade == "KH") {
-				System.out.println("로그아웃 준비");
-				String reqURL ="https://kapi.kakao.com/v1/user/unlink";
-		        try {
-		            URL url = new URL(reqURL);
-		    		
-		            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		            conn.setRequestMethod("POST");
-		    		conn.setRequestProperty("Authorization","Bearer " + token);
-		            
-		            int responseCode = conn.getResponseCode();
-		            System.out.println("responseCode : " + responseCode);
-		 
-		            if(responseCode ==400)
-		                throw new RuntimeException("카카오 로그아웃 도중 오류 발생");
-		            
-		            
-		            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		            
-		            String br_line = "";
-		            String result = "";
-		            while ((br_line = br.readLine()) != null) {
-		                result += br_line;
-		            }
-		            System.out.println("결과"+result);
-		        }catch(IOException e) {
-		            
-		        }
-				
-				
-//		        try {
-//		        	String reqURL ="https://kauth.kakao.com/oauth/logout?client_id=50749d73349bbd242c92152b3bde6677&logout_redirect_uri=http://localhost8000";
-//		            URL url = new URL(reqURL);
-//		    		
-//		            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//		            conn.setRequestMethod("GET");
-//		    		conn.setRequestProperty("Authorization","Bearer " + token);
-//		            
-//		            int responseCode = conn.getResponseCode();
-//		            System.out.println("responseCode : " + responseCode);
-//		 
-//		            if(responseCode ==400)
-//		                throw new RuntimeException("카카오 로그아웃 도중 오류 발생");
-//		            
-//		            
-//		            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//		            
-//		            String br_line = "";
-//		            String result = "";
-//		            while ((br_line = br.readLine()) != null) {
-//		                result += br_line;
-//		            }
-//		            System.out.println("결과"+result);
-//		        }catch(IOException e) {
-//		            
-//		        }
 
-			}
-            session.invalidate();  //세션 삭제
-            
-            return "redirect:/";
-    }
+	
+
 	
 	
 	
@@ -569,7 +549,7 @@ public class MemberController {
             response.getOutputStream().close();
     } 
 	
-	@RequestMapping("/admin/list")
+	@RequestMapping("/admin/member/list")
     public String list(HttpServletRequest request) {
             // 검색관련------------------------
             String col = Utility.checkNull(request.getParameter("col"));
@@ -612,6 +592,29 @@ public class MemberController {
             return "/admin/list";
             
     }
+	
+	@GetMapping("/admin/member/delete")
+	public String memberDelete() {
+		
+		return "/admin/member/delete";
+		
+	}
+	
+	@PostMapping("/admin/member/delete")
+	public String memberDeleteProc(HttpServletRequest request) {
+		String id = (String)request.getParameter("id");
+		
+//		System.out.println("id:"+id);
+		
+		int cnt = service.memberDelete(id);
+		
+		if(cnt>0) {
+		return "redirect:/admin/member/list";
+		}else {
+			return "/error";
+		}
+		
+	}
 	
 	@RequestMapping("/member/mypage")
 	public String mypage(HttpSession session, Model model, HttpServletRequest request) {
