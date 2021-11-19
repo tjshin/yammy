@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.study.reviewreply.ReviewreplyService;
 import com.study.sikdang.SikdangDTO;
 import com.study.utility.Utility;
 
@@ -26,6 +27,10 @@ public class ReviewController {
 	@Autowired
 	@Qualifier("com.study.review.ReviewServiceImpl")
 	private ReviewService service;
+	
+	@Autowired
+	@Qualifier("com.study.reviewreply.ReviewreplyServiceImpl")
+	private ReviewreplyService rservice;
 	
 	@RequestMapping("/review/list")
 	public String reviewList(HttpServletRequest request) {
@@ -64,17 +69,35 @@ public class ReviewController {
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
 		
+		request.setAttribute("rservice", rservice);
+		
 		return "/review/list";
 	}
 	
 	@GetMapping("/review/read")
-	public String reviewRead(int hugino, Model model) {
+	public String reviewRead(int hugino, Model model, HttpServletRequest request) {
 		
 		ReviewDTO dto = service.read(hugino);
 		String hcontents = dto.getHcontents().replaceAll("\r\n", "<br>");
 		dto.setHcontents(hcontents);
 		
 		model.addAttribute("dto", dto);
+		
+		int nPage = 1;
+        if (request.getParameter("nPage") != null) {
+                nPage = Integer.parseInt(request.getParameter("nPage"));
+        }
+        int recordPerPage = 5;
+
+        int sno = ((nPage - 1) * recordPerPage) + 1;
+        int eno = nPage * recordPerPage;
+
+        Map map = new HashMap();
+        map.put("sno", sno);
+        map.put("eno", eno);
+        map.put("nPage", nPage);
+
+        model.addAllAttributes(map);
 		
 		return "/review/read";
 	}
