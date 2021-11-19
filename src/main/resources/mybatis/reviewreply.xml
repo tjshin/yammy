@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.reviewreply.ReviewreplyMapper">
+
+	<select id="list" parameterType="Map"
+		resultType="com.study.reviewreply.ReviewreplyDTO">
+		select hugireno, hrecontents, hredate,
+				hugino, id, nick, r
+		from (
+		select hugireno, hrecontents, hredate,
+				hugino, id, nick, rownum r
+		from (
+		select hugireno, hrecontents, hredate,
+				hugino, rr.id id, m.nick nick
+		from reviewreply rr inner join member m
+		on rr.id = m.id
+		where hugino = #{hugino}
+		order by hugireno desc
+		)
+		)
+		<![CDATA[
+		where r >= #{sno} and r <= #{eno}
+		]]>
+	</select>
+	
+	<select id="total" resultType="int" parameterType="int">
+		select count(*) from reviewreply
+		where hugino = #{hugino}
+	</select>
+	
+	<insert id="create" parameterType="com.study.reviewreply.ReviewreplyDTO">
+		insert into reviewreply (hugireno, hrecontents, hredate,
+								 hugino, id)	
+		values ((select nvl(max(hugireno), 0) + 1 from reviewreply),
+				#{hrecontents}, sysdate, #{hugino}, #{id})
+	</insert>
+	
+</mapper>

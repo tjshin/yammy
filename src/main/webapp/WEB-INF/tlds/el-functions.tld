@@ -23,12 +23,12 @@
     
     <function>  
         <description>댓글 갯수</description> 
-        <name>rcount</name>  
+        <name>reviewrcount</name>  
         <function-class>                   
             com.study.utility.Utility 
         </function-class> 
         <function-signature>    
-            int rcount( int, com.study.model.ReplyMapper ) 
+            int reviewrcount( int, com.study.reviewreply.ReviewreplyService ) 
         </function-signature> 
     </function> 
     
