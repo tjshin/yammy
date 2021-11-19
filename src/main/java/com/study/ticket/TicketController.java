@@ -23,6 +23,8 @@ import com.study.utility.Utility;
 @Controller
 public class TicketController {
 
+	
+	//test
 	@Autowired
 	@Qualifier("com.study.ticket.TicketServiceImpl")
 	private TicketService service;
@@ -39,7 +41,7 @@ public class TicketController {
       if(id==null) {
           return "redirect:/member/login";
       } else if(id.equals(dto.getId())) {
-          //원하는 액션
+          //�썝�븯�뒗 �븸�뀡
 
       	return "/ticket/delete";
       } else {
@@ -56,7 +58,7 @@ public class TicketController {
 	   cnt = service.delete(ticketno);
 	   
 	   
-	    return "redirect:/ticket/list"; // 마이페이지 경로 바꾸기 
+	    return "redirect:/ticket/list"; // 留덉씠�럹�씠吏� 寃쎈줈 諛붽씀湲� 
 	   
 	 
 	  }
@@ -79,14 +81,14 @@ public class TicketController {
 	public String update(@PathVariable("ticketno") int ticketno , HttpSession session ,Model model) {
 
 		
-		String id = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+		String id = (String)session.getAttribute("id"); //異뷀썑 �꽭�뀡�뿉 ���옣�맂 �븘�씠�뵒 媛믪쑝濡� �벑濡� 
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
 		
 		TicketDTO dto = service.detail(ticketno);
 		
-		if(dto.getId().equals(id) ) { //아이디 검사
+		if(dto.getId().equals(id) ) { //�븘�씠�뵒 寃��궗
 			return "/ticket/update";
 		}else
 		model.addAttribute("dto", dto);
@@ -105,16 +107,16 @@ public class TicketController {
 			{
 		//String basePath = new ClassPathResource("/static/pstorage").getFile().getAbsolutePath();
 		String basePath = Ticket.getUploadDir();
-		if (oldfile != null && !oldfile.equals("default1.jpg")) { // 원본파일 삭제 default1 기본임 
+		if (oldfile != null && !oldfile.equals("default1.jpg")) { // �썝蹂명뙆�씪 �궘�젣 default1 湲곕낯�엫 
 			Utility.deleteFile(basePath, oldfile);
 		}
 
-		// pstorage에 변경 파일 저장
+		// pstorage�뿉 蹂�寃� �뙆�씪 ���옣
 		Map map = new HashMap();
 		map.put("ticketno", ticketno);
 		map.put("filename", Utility.saveFileSpring(filenameMF, basePath));
 
-		// 디비에 파일명 변경
+		// �뵒鍮꾩뿉 �뙆�씪紐� 蹂�寃�
 		int cnt = service.updateFile(map);
 
 		if (cnt == 1) {
@@ -128,7 +130,7 @@ public class TicketController {
 	public String updateFileForm(@PathVariable("ticketno") int ticketno, @PathVariable("oldfile") String oldfile,
 			Model model , HttpSession session) {
 		
-		String id = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+		String id = (String)session.getAttribute("id"); //異뷀썑 �꽭�뀡�뿉 ���옣�맂 �븘�씠�뵒 媛믪쑝濡� �벑濡� 
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
@@ -137,8 +139,8 @@ public class TicketController {
 
 			TicketDTO dto = service.detail(ticketno);
 
-			if(dto.getId().equals(id) ) { //아이디 검사
-			model.addAttribute("id", id); //param 으로 view 데이터 전달 
+			if(dto.getId().equals(id) ) { //�븘�씠�뵒 寃��궗
+			model.addAttribute("id", id); //param �쑝濡� view �뜲�씠�꽣 �쟾�떖 
 			model.addAttribute("ticketno", ticketno);
 			model.addAttribute("oldfile", oldfile);
 
@@ -158,12 +160,12 @@ public class TicketController {
 	@GetMapping("/ticket/create")
 	  public String create(Model model, HttpSession session) {
 		
-		//id 테스트용도 ***********************
-		String id = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+		//id �뀒�뒪�듃�슜�룄 ***********************
+		String id = (String)session.getAttribute("id"); //異뷀썑 �꽭�뀡�뿉 ���옣�맂 �븘�씠�뵒 媛믪쑝濡� �벑濡� 
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
-			model.addAttribute("id", id); //param 으로 view 데이터 전달 
+			model.addAttribute("id", id); //param �쑝濡� view �뜲�씠�꽣 �쟾�떖 
 						
 		    return "/ticket/create";
 		}
@@ -220,7 +222,7 @@ public class TicketController {
 		
 		
 		
-		// 검색관련------------------------
+		// 寃��깋愿��젴------------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
 
@@ -228,14 +230,14 @@ public class TicketController {
 			word = "";
 		}
 
-		// 페이지관련-----------------------
-		int nowPage = 1;// 현재 보고있는 페이지
+		// �럹�씠吏�愿��젴-----------------------
+		int nowPage = 1;// �쁽�옱 蹂닿퀬�엳�뒗 �럹�씠吏�
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
-		int recordPerPage = 8;// 한페이지당 보여줄 레코드갯수
+		int recordPerPage = 8;// �븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶媛��닔
 
-		// DB에서 가져올 순번-----------------
+		// DB�뿉�꽌 媛��졇�삱 �닚踰�-----------------
 		int sno = ((nowPage - 1) * recordPerPage) + 1;
 		int eno = nowPage * recordPerPage;
 
@@ -253,7 +255,7 @@ public class TicketController {
 		System.out.println("total:"+total);
 		String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
 
-		// request에 Model사용 결과 담는다
+		// request�뿉 Model�궗�슜 寃곌낵 �떞�뒗�떎
 		request.setAttribute("list", list);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("col", col);

@@ -19,16 +19,6 @@
 <body>
 <div class = "first-widget parallax"> </div>
 
-
-<<<<<<< HEAD
-<div> 
-<button type="button" class="btn btn-default" onclck="location.href='/message/sendlist'" >보낸쪽지함</button>
-<button type="button" class="btn btn-default" onclick="location.href='/message/recelist'" >받는쪽지함</button>
-</div>
-
-
-    <div>바디에요</div>
-=======
     <section class="cta clearfix">
 		<div class="container">
 			<div class="row">
@@ -39,9 +29,6 @@
 		<!-- /.container -->
 	</section>
 	<!-- /.cta -->
->>>>>>> master
-
-
 
 </body>
 
