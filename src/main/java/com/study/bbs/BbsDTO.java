@@ -13,4 +13,7 @@ public class BbsDTO {
 	private String id;
 private String nick; 
 private String bcname;
+
+private String bbscate;
+
 }

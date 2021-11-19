@@ -10,9 +10,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
+
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
+<meta name="google-signin-client_id"
+	content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <title>top test</title>
 
 
@@ -34,34 +37,29 @@
 <script src="${root }/js/jquery-1.10.2.min.js"></script>
 <script src="${root }/js/jquery-migrate-1.2.1.min.js"></script>
 
-
-
-
 <!-- Kakao logout -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<script>Kakao.init('36bbb9f15e74a9580efcc6a8255f4dd8');</script>
+<script>
+	Kakao.init('36bbb9f15e74a9580efcc6a8255f4dd8');
+</script>
 
 
 
 <script>
+	function signOut() {
+		if (gapi.auth2 != undefined) {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function() {
+				console.log('User signed out.');
+			});
+			auth2.disconnect();
+		}
 
-
-function signOut() {
-	if(gapi.auth2 != undefined){
-	 	var auth2 = gapi.auth2.getAuthInstance();
-   		 auth2.signOut().then(function () {
-    	  console.log('User signed out.');
-    });
-   		 auth2.disconnect();
+		location.href = "/member/logout"
 	}
-
-	
-	location.href= "/member/logout"
-  }
-  
-
 </script>
+
 
 </head>
 
@@ -74,19 +72,21 @@ function signOut() {
 			<li><a href="${root }/">Home</a></li>
 			<li><a href="#">구장별 게시판</a>
 				<ul>
-					<li><a href="${root }/bbs/list">잠실(LG/두산)</a></li>
-					<li><a href="#">고척(키움)</a></li>
-					<li><a href="#">인천(SSG)</a></li>
-					<li><a href="#">수원(KT)</a></li>
-					<li><a href="#">대전(한화)</a></li>
-					<li><a href="#">광주(KIA)</a></li>
-					<li><a href="#">대구(삼성)</a></li>
-					<li><a href="#">창원(NC)</a></li>
-					<li><a href="#">사직(롯데)</a></li>
+
+					<li><a href="${root }/bbs/list/jamsil}">잠실(LG/두산)</a></li>
+					<li><a href="${root }/bbs/list/gocheok}">고척(키움)</a></li>
+					<li><a href="${root }/bbs/list/incheon}">인천(SSG)</a></li>
+					<li><a href="${root }/bbs/list/suwon}">수원(KT)</a></li>
+					<li><a href="${root }/bbs/list/daejeon}">대전(한화)</a></li>
+					<li><a href="${root }/bbs/list/gwangju}">광주(KIA)</a></li>
+					<li><a href="${root }/bbs/list/daegu}">대구(삼성)</a></li>
+					<li><a href="${root }/bbs/list/changwon}">창원(NC)</a></li>
+					<li><a href="${root }/bbs/list/busan}">사직(롯데)</a></li>
 				</ul></li>
 
 			<li><a href="${root }/notice/list">공지사항</a></li>
 			<li><a href="${root }/ticket/list">티켓양도</a></li>
+
 			<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 				<ul>
 					<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
@@ -94,12 +94,13 @@ function signOut() {
 					<li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
 
 				</ul></li>
-			
-												<li><a href="#">My Page</a>
-												<ul>
-													<li><a href="${root}/member/mypage"><span class="glyphicon glyphicon-list"></span>회원정보</a></li>
-													<li><a href="${root}/member/update">회원정보 수정</a></li>
-												</ul></li>
+
+			<li><a href="#">My Page</a>
+				<ul>
+					<li><a href="${root}/member/mypage"><span
+							class="glyphicon glyphicon-list"></span>회원정보</a></li>
+					<li><a href="${root}/member/update">회원정보 수정</a></li>
+				</ul></li>
 			<li><a href="${root }/chatbot/chatting">1:1 문의</a></li>
 			<c:choose>
 
@@ -127,16 +128,18 @@ function signOut() {
 
 				<c:when test="${sessionScope.grade == 'GH'}">
 
-					<li><a href="#" onclick="signOut()"><span class="g-signin2"></span> Logout</a></li>
+					<li><a href="#" onclick="signOut()"><span
+							class="g-signin2"></span> Logout</a></li>
 
 				</c:when>
 
 				<c:otherwise>
-					
+
 					<li><a href="${root}/member/logout"><span
 							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				</c:otherwise>
 			</c:choose>
+
 		</ul>
 		<!-- /.main_menu -->
 	</div>
@@ -155,12 +158,14 @@ function signOut() {
 
 				<div class="row">
 
+
 					<div class="row">
 
 						<div class="pull-left logo">
 
 							<a href="${root }/"> <img src="${root }/images/yammylogo.png"
 								alt="야구에 미치다 yammy">
+
 							</a>
 
 
@@ -174,22 +179,24 @@ function signOut() {
 
 								<ul class="sf-menu">
 									<li class="active"><a href="${root }/">Home</a></li>
-									<li></li><li></li><li></li>
+
 									<li><a href="#">구장별 게시판</a>
 										<ul>
-											<li><a href="#">잠실(LG/두산)</a></li>
-											<li><a href="#">고척(키움)</a></li>
-											<li><a href="#">인천(SSG)</a></li>
-											<li><a href="#">수원(KT)</a></li>
-											<li><a href="#">대전(한화)</a></li>
-											<li><a href="#">광주(KIA)</a></li>
-											<li><a href="#">대구(삼성)</a></li>
-											<li><a href="#">창원(NC)</a></li>
-											<li><a href="#">사직(롯데)</a></li>
+											<li><a href="${root }/bbs/list/jamsil}">잠실(LG/두산)</a></li>
+											<li><a href="${root }/bbs/list/gocheok}">고척(키움)</a></li>
+											<li><a href="${root }/bbs/list/incheon}">인천(SSG)</a></li>
+											<li><a href="${root }/bbs/list/suwon}">수원(KT)</a></li>
+											<li><a href="${root }/bbs/list/daejeon}">대전(한화)</a></li>
+											<li><a href="${root }/bbs/list/gwangju}">광주(KIA)</a></li>
+											<li><a href="${root }/bbs/list/daegu}">대구(삼성)</a></li>
+											<li><a href="${root }/bbs/list/changwon}">창원(NC)</a></li>
+											<li><a href="${root }/bbs/list/busan}">사직(롯데)</a></li>
 										</ul></li>
+
 
 									<li><a href="${root }/notice/list">공지사항</a></li>
 									<li><a href="${root }/ticket/list">티켓양도</a></li>
+
 									<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 										<ul>
 											<li><a href="${root }/sikdang/map_main">지도에서 보기</a></li>
@@ -197,14 +204,17 @@ function signOut() {
 											<li><a href="${root }/sikdang/map_search">리뷰 등록</a></li>
 
 										</ul></li>
-										<li><a href="#">My Page</a>
-												<ul>
-													<li><a href="${root}/member/mypage"><span class="glyphicon glyphicon-list"></span>회원정보</a></li>
-													<li><a href="${root}/member/update">회원정보 수정</a></li>
-												</ul></li>
-									
-									
+
+									<li><a href="#">My Page</a>
+										<ul>
+											<li><a href="${root}/member/mypage"><span
+													class="glyphicon glyphicon-list"></span>회원정보</a></li>
+											<li><a href="${root}/member/update">회원정보 수정</a></li>
+										</ul></li>
+
+
 									<li><a href="${root }/chatbot/chatting">1:1 문의</a></li>
+
 									<c:choose>
 
 										<c:when test="${empty sessionScope.id }">
@@ -213,8 +223,8 @@ function signOut() {
 											<li><a href="${root}/member/login"><span
 													class="glyphicon glyphicon-log-in"></span> Login</a></li>
 										</c:when>
-										
-										
+
+
 										<c:when test="${sessionScope.grade == 'A '}">
 											<li><a href="#">관리자</a>
 												<ul>
@@ -222,27 +232,42 @@ function signOut() {
 															class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
 													<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 												</ul></li>
+
 											<li><a href="${root}/member/logout"><span
 													class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 										</c:when>
 
-
-
 										<c:when test="${sessionScope.grade == 'KH'}">
-											<li></li><li></li><li></li><li></li><li></li>
-											<li><a id="kakaoLogout" href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li><a id="kakaoLogout" href="${root}/member/logout"><span
+													class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 										</c:when>
 
 
 
 										<c:when test="${sessionScope.grade == 'GH'}">
-										<li></li><li></li><li></li><li></li><li></li>
-											<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li><a href="#" onclick="signOut()"><span
+													class=class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>
-										<li></li><li></li><li></li><li></li><li></li>
-											<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li><a href="${root}/member/logout"><span
+													class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
 										</c:otherwise>
 									</c:choose>
 

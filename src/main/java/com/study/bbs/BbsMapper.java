@@ -20,7 +20,7 @@ public interface BbsMapper {
 
 	int delete(int bbsno);
 
-	void upbview(int noticeno);
+	void upbview(int bbsno);
 
 	int update(BbsDTO bbsDTO);
 

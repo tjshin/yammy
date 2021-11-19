@@ -6,51 +6,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.study.reply.ReplyMapper">
 
-<delete id="rdelete" parameterType="int">
-	delete from reply
-	where bbsno = #{bbsno}
-</delete>
-<select id="list" parameterType="Map" resultType="com.study.reply.ReplyDTO">
-select reno, recontents, to_char(redate,'yyyy-mm-dd') redate, id, bbsno, r
+<!-- <delete id="bdelete" parameterType="int"> -->
+<!-- 	delete from reply -->
+<!-- 	where bbsno = #{bbsno} -->
+<!-- </delete> -->
+
+
+
+<select id="rlist" parameterType="Map" resultType="com.study.reply.ReplyDTO">
+select reno, recontents, to_char(redate,'yyyy-mm-dd') redate, nick, bbsno, r
 FROM(
-        select reno, recontents, redate, id, bbsno, rownum r
+        select reno, recontents, redate, nick, bbsno, rownum r
         FROM(
-                select reno, recontents, redate, id, bbsno
+                select reno, recontents, redate, member.nick nick, bbsno
                 from REPLY
-                where bbsno = #{bbsno}
+           inner join member
+    on REPLY.id = member.id
+            
                 order by reno DESC
            )
 <![CDATA[
 )WHERE r >= #{sno} and r <= #{eno}
 ]]>
+
 </select>
 
-<select id="total" resultType="int" parameterType="int">
-select count(*) from reply
-where bbsno=#{bbsno}
-</select>
+  <select id="retotal" resultType="int" parameterType="Map">
+    select count(*) from reply
 
-<insert id="create" parameterType="com.study.reply.ReplyDTO">
- insert into reply(reno, recontents, redate, id, bbsno)
- values((select nvl(max(reno),0)+1 from reply),
-        #{recontents}, sysdate, #{id}, #{bbsno}
-        ) 
-</insert>
+  </select>
+
+<!-- <insert id="create" parameterType="com.study.reply.ReplyDTO"> -->
+<!--  insert into reply(reno, rerecontents, redate, id, bbsno) -->
+<!--  values((select nvl(max(reno),0)+1 from reply), -->
+<!--         #{recontents}, sysdate, #{id}, #{bbsno} -->
+<!--         )  -->
+<!-- </insert> -->
  
-<select id="read" parameterType="int" resultType="com.study.reply.ReplyDTO">
- select * from reply
- where reno = #{reno}
-</select>
+<!-- <select id="read" parameterType="int" resultType="com.study.reply.ReplyDTO"> -->
+<!--  select * from reply -->
+<!--  where reno = #{reno} -->
+<!-- </select> -->
 
-<update id="update" parameterType="com.study.reply.ReplyDTO">
-update reply
-set recontents = #{recontents}
-where reno = #{reno}
+<!-- <update id="update" parameterType="com.study.reply.ReplyDTO"> -->
+<!-- update reply -->
+<!-- set recontents = #{recontents} -->
+<!-- where reno = #{reno} -->
  
-</update>
+<!-- </update> -->
 
-<delete id="delete" parameterType="int">
-delete from REPLY
-where reno = #{reno}
-</delete>
+<!-- <delete id="delete" parameterType="int"> -->
+<!-- delete from REPLY -->
+<!-- where reno = #{reno} -->
+<!-- </delete> -->
 </mapper>

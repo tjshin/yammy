@@ -3,7 +3,8 @@ package com.study.reply;
 import java.util.List;
 import java.util.Map;
 
-public interface ReplyMapper {
+public interface ReplyService
+{
 
 	int create(ReplyDTO dto);
 
@@ -11,5 +12,7 @@ public interface ReplyMapper {
 
 	List<ReplyDTO> rlist(Map map);
 	
-	
+
+
+
 }

@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 등록 -->
   <insert id="create" parameterType="com.study.bbs.BbsDTO">
- 	INSERT INTO bbs(bbsno, btitle, bcontents, bview, bcate,  bdate, id)
-    VALUES((select nvl(max(bbsno),0)+1 from bbs), #{btitle}, #{bcontents},  0, #{bcate}, SYSTIMESTAMP, 'admin' )
+ 	INSERT INTO bbs(bbsno, btitle, bcontents, bview, bcate,  bdate, id, bbscate)
+    VALUES((select nvl(max(bbsno),0)+1 from bbs), #{btitle}, #{bcontents},  0, #{bcate}, SYSTIMESTAMP, 'admin', #{bbscate} )
   </insert> 
  
  <!--리스트  -->
@@ -69,11 +69,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </delete>
 
   <select id="read" resultType="com.study.bbs.BbsDTO">
-     select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, bcate, r
+     select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, bcate, r, id
     from (
-    select bbsno, btitle, nick, bdate, bview, bcontents, bcate, rownum r
+    select bbsno, btitle, nick, bdate, bview, bcontents, bcate, rownum r, id
     from (
-    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcate
+    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcate, member.id id
            
     from bbs inner join member
     on bbs.id = member.id
@@ -121,7 +121,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          ]]>
 
   
+
 </select>
+<update id="update" parameterType="com.study.bbs.BbsDTO">
+
+		update bbs
+		<set>
+			btitle = #{btitle},
+			bcontents = #{bcontents},
+			
+		</set>
+		where bbsno = #{bbsno}
+
+	</update>
+
+
+
+
+
+
+	<!-- 동일 게시글 추천 여부 검색 -->
+	<select id="likecheck" parameterType="map" resultType="int">
+		select count(*) from bbslike where bbsno = #{bbsno} and id = #{id}
+	</select>
+	
+	<!-- 게시글 추천 -->
+	<insert id="likeupdate" parameterType="map">
+		insert into bbslike values(#{bbsno}, #{id})
+	</insert>
+	
+	<!-- 게시글 추천 취소 -->
+	<delete id="likedelete" parameterType="map">
+		delete from bbslike where bbsno = #{bbsno} and id = #{id}
+	</delete>
+	
+	<!-- 게시글 추천수 -->
+	<select id="likecount" parameterType="int" resultType="int">
+		select count(*) from bbslike where bbsno = #{bbsno}
+	</select>
+
+
+ <update id="uplike" parameterType="int">
+    update bbslike         
+    set bcnt = bcnt + 1 
+    where bbsno = #{bbsno}         
+  </update>
+
 
 
   </mapper>
