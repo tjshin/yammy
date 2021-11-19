@@ -4,7 +4,6 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<!-- main -->
 
 	<definition name="/bbs/list" extends="main">
 		<put-attribute name="title" value="게시판페이지"></put-attribute>
@@ -41,14 +40,5 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/bbs/bestlist.jsp" />
 	</definition>
-
-	<definition name="/bbs/reed" extends="main">
-		<put-attribute name="title" value="수정페이지"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/bbs/reed.jsp" />
-	</definition>
-
-
-
 
 </tiles-definitions>

@@ -13,5 +13,6 @@ public class SikdangDTO {
 	private String sikurl;
 	private String cox;
 	private String coy;
+	private int reviewcnt;
 
 }

@@ -5,6 +5,21 @@
        
 <tiles-definitions>
 
+
+ <definition name="/message/ticketmessage" extends="main">
+    <put-attribute name="title" value="티켓양도 쪽지 "></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/ticketmessage.jsp" />
+  </definition>
+
+ <definition name="/message/error" extends="main">
+    <put-attribute name="title" value="에러페이지"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/error.jsp" />
+  </definition>
+
+
+
  <definition name="/message/sdelete" extends="main">
     <put-attribute name="title" value="보낸쪽지삭제"></put-attribute>
     <put-attribute name="body"
@@ -19,7 +34,7 @@
   </definition>
 
  <definition name="/message/reply" extends="main">
-    <put-attribute name="title" value="쪽지보내기"></put-attribute>
+    <put-attribute name="title" value="답장보내기"></put-attribute>
     <put-attribute name="body"
       value="/WEB-INF/views/message/reply.jsp" />
   </definition>

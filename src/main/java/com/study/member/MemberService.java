@@ -5,6 +5,8 @@ import java.util.List;
 
 import java.util.Map;
 
+import com.study.member.ReviewDTO;
+
 
 
 public interface MemberService {
@@ -38,4 +40,14 @@ public interface MemberService {
 	List<BbsDTO> bbs(Map map);
 
 	int btotal(Map map);
+
+	int memberDelete(String id);
+
+	int rtotal(Map map);
+
+	List<ReviewDTO> review(Map map);
+
+	int ttotal(Map map);
+
+	List<TicketDTO> ticket(Map map);
 }

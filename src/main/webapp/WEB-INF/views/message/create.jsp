@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
     
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="root" value="${pageContext.request.contextPath }" />    
     
 <!DOCTYPE html>
@@ -12,14 +13,19 @@
         
  function checkIn(f){
          if (f.receid.value == ""){
-              alert("º¸³¾»ç¶÷À» ÀÔ·ÂÇÏ¼¼¿ä");
+              alert("ë³´ë‚¼ì‚¬ëŒì„ ì…ë ¥í•˜ì„¸ìš”");
               f.receid.focus()
               return false;
          }
          if (f.mcontents.value == ""){
-              alert("³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+              alert("ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”");
               f.mcontents.focus();
               return false;
+         }
+         
+         if (f.receid.value== f.sendid.value){
+        	 alert("ë°œì‹ ì , ìˆ˜ì‹ ìê°€ ë™ì¼ í•˜ì—¬ ìª½ì§€ë¥¼ ë³´ë‚¼ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+        	 return false;
          }
     
         
@@ -27,13 +33,13 @@
  
  <%
 	request.setCharacterEncoding("UTF-8");
-String sendid= request.getParameter("sendid"); //ÄÁÆ®·Ñ·¯(model.addAttribute("sendid", sendid);) ÁöÁ¤ÇÑ sendid °ªÀ»  view ÆäÀÌÁö·Î °¡Á®¿Â´Ù.
+String sendid= request.getParameter("sendid"); //ì»¨íŠ¸ë¡¤ëŸ¬(model.addAttribute("sendid", sendid);) ì§€ì •í•œ sendid ê°’ì„  view í˜ì´ì§€ë¡œ ê°€ì ¸ì˜¨ë‹¤.
 %>
 
 
 </script>
 
-<title>ÂÊÁö ÇÏ±â</title>
+<title>ìª½ì§€ í•˜ê¸°</title>
 
 </head>
 
@@ -41,31 +47,32 @@ String sendid= request.getParameter("sendid"); //ÄÁÆ®·Ñ·¯(model.addAttribute("se
 
 <div class = first-widget>  </div>
 <div class="container">
-    <h1 class="col-sm-offset-2 col-sm-10">ÂÊÁö º¸³»±â</h1>
+    <h1 class="col-sm-offset-2 col-sm-10">ìª½ì§€ ë³´ë‚´ê¸°</h1>
     <form class="form-horizontal" 
         action="${root }/message/create"
         method="post"
         onsubmit="return checkIn(this)">
     
+    	
     	 <div class="form-group">
-        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">º¸³»´Â »ç¶÷</label>
+        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">ë³´ë‚´ëŠ” ì‚¬ëŒ</label>
         <div class="col-sm-8">
-       <input type="text" name="sendid" id="sendid" class="form-control" value="${sendid}" readonly> <!--·Î±×ÀÎ¾ÆÀÌµğ = sendid ÀÔ´Ï´Ù. -->
+       <input type="text" name="sendid" id="sendid" class="form-control" value="${sendid}" readonly> <!--ë¡œê·¸ì¸ì•„ì´ë”” = sendid ì…ë‹ˆë‹¤. -->
        		
         </div>
         </div>
     
     
         <div class="form-group">
-        <label class="control-label col-sm-2" for="receid" style="color: black; font-weight: bolder;">¹Ş´Â »ç¶÷</label>
+        <label class="control-label col-sm-2" for="receid" style="color: black; font-weight: bolder;">ë°›ëŠ” ì‚¬ëŒ</label>
         <div class="col-sm-8">
             
-            <input type="text" name="receid" id="receid" class="form-control"> <!--read ºÎºĞ¿¡¼­ ÀÛ¼ºÀÚ id °ªÀ» º¸³»ÁØ´Ù. -->
+            <input type="text" name="receid" id="receid" class="form-control"> <!--read ë¶€ë¶„ì—ì„œ ì‘ì„±ì id ê°’ì„ ë³´ë‚´ì¤€ë‹¤. -->
         </div>
         </div>
     
         <div class="form-group">
-        <label class="control-label col-sm-2" for="mcontents" style="color: black; font-weight: bolder;">³»¿ë</label>
+        <label class="control-label col-sm-2" for="mcontents" style="color: black; font-weight: bolder;">ë‚´ìš©</label>
         <div class="col-sm-8">
         <textarea rows="12" cols="7" id="mcontents" name="mcontents" class="form-control"></textarea>
         </div>
@@ -73,15 +80,15 @@ String sendid= request.getParameter("sendid"); //ÄÁÆ®·Ñ·¯(model.addAttribute("se
            
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">º¸³»±â</button>
-        <button type="reset" class="btn">Ãë¼Ò</button>
+        <button class="btn btn-primary">ë³´ë‚´ê¸°</button>
+        <button type="reset" class="btn">ì·¨ì†Œ</button>
         </div>
     </div>
     </form>
     </div>
 
 
-<!-- body ºÎºĞ ³¡ -->
+<!-- body ë¶€ë¶„ ë -->
     <!-- Scripts -->
 	<script src="js/min/plugins.min.js"></script>
 	<script src="js/min/medigo-custom.min.js"></script>

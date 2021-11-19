@@ -29,22 +29,44 @@
 
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 	
-	<script type="text/javascript">
-	function update() {
-		location.href = "/member/update";
-	}
-	function delete() {
-		location.href = "/member/delete";
-	}
+<style>
+        #often{
+            font-size:20px;
+        }
+	
+	#a{
+  padding: 12px 15px;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
 
-	function list() {
-		var url = "list";
-		url += "?nowPage=${param.nowPage}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		location.href = url;
-	}
-</script>
+	#a{
+  background-color: #00a8d6;
+  color: white;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  
+}
+	#a:hover {
+  background-color: #31373a;
+  transition: all ease 0.5s 0s;
+}
+    </style>
 
 </head>
 <body>
@@ -53,7 +75,7 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">${mname} 님의 마이페이지</h2>
+						<h2 class="page-title">${dto.mname} 님의 회원정보</h2>
 					</div> <!-- /.col-md-6 -->
 					
 				</div> <!-- /.row -->
@@ -62,12 +84,12 @@
 	</div> <!-- /.pageTitle -->
 	
     <div class="container">
-
+	<form>
         <h2 class="col-sm-offset-2 col-sm-10"></h2>
          <table class="table table-bordered">
          <tr>
              <td colspan="2" style="text-align: center">
-                 <img src="${root }/member/storage/${dto.filename}" 
+                 <img src="${root }/member/${dto.filename}" 
                  width="250px" height="250px" class="img-rounded" >
              </td>
          </tr>
@@ -109,18 +131,17 @@
 
          
          </table>
+         </form>
          <div style="text-align: center">
-         <button class="btn btn-default" onclick="update()">정보수정</button>
-         <button class="btn btn-default" onclick="delete()">회원탈퇴</button>
-         <button class="btn btn-default" onclick="list()">회원목록</button>
+         <a id="a" href="${root }/member/update?id=${dto.id}">정보수정</a>
+         <a id="a" href="${root }/admin/member/delete?id=${dto.id}">회원탈퇴</a>
+         <a id="a" href="#" onclick="history.back()">회원목록</a>
          </div>
          
          <br>
          
         </div>
-	<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
+
 
 
 </body>

@@ -3,6 +3,7 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="readurl1" value="${root}/review/read?hugino=" />
 <c:set var="readurl2" value="&col=${col }&word=${word }&nowPage=${nowPage }"/>
+<%@ taglib prefix="util" uri="/ELFunctions"%>
 
 <!DOCTYPE html>
 <html>
@@ -93,14 +94,11 @@
 					
 					
 						<div class="post-blog">
-<!-- 							<div class="blog-image"> -->
-<%-- 								<a href="${root}/review/read"> --%>
-<!-- 									<img src="../template/images/includes/blog1.jpg" alt=""> -->
-<!-- 								</a> -->
-<!-- 							</div> -->
+
 							<div class="blog-content">
 								<span class="meta-date">${dto.hdate }</span>
-								<span class="meta-comments">댓글: 댓글 기능 추가해라</span>
+								<c:set var="reviewrcount" value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
+								<span class="meta-comments">댓글: ${reviewrcount }</span>
 								<span class="meta-author">닉네임: &nbsp;<a href="#">${dto.nick }</a></span>
 								<span>/</span>
 								

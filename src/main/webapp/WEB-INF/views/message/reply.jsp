@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
@@ -15,9 +14,14 @@
  function checkIn(f){
        
          if (f.mcontents.value == ""){
-              alert("³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+              alert("ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”");
               f.mcontents.focus();
               return false;
+         }
+         
+         if (f.receid.value== f.sendid.value){
+        	 alert("ë°œì‹ ì , ìˆ˜ì‹ ìê°€ ë™ì¼ í•˜ì—¬ ìª½ì§€ë¥¼ ë³´ë‚¼ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+        	 return false;
          }
     
         
@@ -35,7 +39,7 @@
 
 </script>
 
-<title>ÂÊÁö ÇÏ±â</title>
+<title>ìª½ì§€ í•˜ê¸°</title>
 
 </head>
 
@@ -43,29 +47,29 @@
 
 <div class = first-widget>  </div>
 <div class="container">
-    <h1 class="col-sm-offset-2 col-sm-10">´äÀå º¸³»±â</h1>
+    <h1 class="col-sm-offset-2 col-sm-10">ë‹µì¥ ë³´ë‚´ê¸°</h1>
     <form class="form-horizontal" 
         action="${root }/message/reply"
         method="post"
         onsubmit="return checkIn(this)">
     
     	 <div class="form-group">
-        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">º¸³½ »ç¶÷</label>
+        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">ë³´ë‚¸ ì‚¬ëŒ</label>
         <div class="col-sm-8">
-            <input type="text" name="sendid" id="sendid" class="form-control" value="${sendid}" readonly> <!--·Î±×ÀÎ¾ÆÀÌµğ = sendid ÀÔ´Ï´Ù. -->
+            <input type="text" name="sendid" id="sendid" class="form-control" value="${sendid}" readonly> <!--ë¡œê·¸ì¸ì•„ì´ë”” = sendid ì…ë‹ˆë‹¤. -->
         </div>
         </div>
     
     
         <div class="form-group">
-        <label class="control-label col-sm-2" for="receid" style="color: black; font-weight: bolder;">¹Ş´Â »ç¶÷</label>
+        <label class="control-label col-sm-2" for="receid" style="color: black; font-weight: bolder;">ë°›ëŠ” ì‚¬ëŒ</label>
         <div class="col-sm-8">
-            <input type="text" name="receid" id="receid" class="form-control" value="${param.receid}" readonly> <!--read ºÎºĞ¿¡¼­  ÆÄ¶ó¹ÌÅÍ·Î º¸³½ (º¸³½»ç¶÷ ¾ÆÀÌµğ)¸¦ °¡Á®¿Â´Ù. (º¸³½»ç¶÷¿¡°Ô ´äÀå) -->
+            <input type="text" name="receid" id="receid" class="form-control" value="${param.receid}" readonly> <!--read ë¶€ë¶„ì—ì„œ  íŒŒë¼ë¯¸í„°ë¡œ ë³´ë‚¸ (ë³´ë‚¸ì‚¬ëŒ ì•„ì´ë””)ë¥¼ ê°€ì ¸ì˜¨ë‹¤. (ë³´ë‚¸ì‚¬ëŒì—ê²Œ ë‹µì¥) -->
         </div>
         </div>
     
         <div class="form-group">
-        <label class="control-label col-sm-2" for="mcontents" style="color: black; font-weight: bolder;">³»¿ë</label>
+        <label class="control-label col-sm-2" for="mcontents" style="color: black; font-weight: bolder;">ë‚´ìš©</label>
         <div class="col-sm-8">
         <textarea rows="12" cols="7" id="mcontents" name="mcontents" class="form-control"></textarea>
         </div>
@@ -73,8 +77,8 @@
            
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">º¸³»±â</button>
-        <button type="reset" class="btn" onclick="goBack();">Ãë¼Ò</button>
+        <button class="btn btn-primary">ë³´ë‚´ê¸°</button>
+        <button type="reset" class="btn" onclick="goBack();">ì·¨ì†Œ</button>
         </div>
     </div>
     </form>

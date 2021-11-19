@@ -3,6 +3,7 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <c:set var="listurl" value="${root }/review/list?col=${param.col}&word=${param.word}&nowPage=${param.nowPage}"/>
 <c:set var="urlhelper" value="&col=${param.col}&word=${param.word}&nowPage=${param.nowPage}"/>
+<%@ taglib prefix="util" uri="/ELFunctions"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,28 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>review read test</title>
     
-    <script type="text/javascript">
-	function update() {
-		var url = "${root}/review/update";
-		url += "?hugino=${dto.hugino}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		url += "&nowPage=${param.nowPage}";
+ <script>
 
-		location.href = url;
-	}
-	
-	function delete() {
-		var url = "${root}/review/delete";
-		url += "?hugino=${dto.hugino}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		url += "&nowPage=${param.nowPage}";
-		
-		location.href = url;
-	}
-	
-</script>
+ </script>
     
 </head>
 <body>
@@ -80,7 +62,8 @@
 							
 							<div class="blog-content">
 								<span class="meta-date">${dto.hdate }</span>
-								<span class="meta-comments">댓글 수: 댓글 기능 추가해라</span>
+								<c:set var="reviewrcount" value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
+								<span class="meta-comments">댓글 수: ${reviewrcount }</span>
 								<span class="meta-author"><a href="#blog-author">${dto.nick }</a></span>
 								<span>/</span>
 								
@@ -123,12 +106,16 @@
                 <div class="row">
                     <br>
                     <div class="col-md-12">
-                        <a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
-                        (등록은 interceptor로 로그인 유도하게)
-                        <a href="${root }/sikdang/map_search" class="main-button accent-color">리뷰 등록</a>
-                        (수정과 삭제 버튼을 회원id 활용해 글쓴 사람만 볼 수 있게)
-                        <a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}" class="main-button accent-color">리뷰 수정</a>
-                        <a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}" class="main-button accent-color">리뷰 삭제</a>
+                    		<a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
+                    	<c:if test="${sessionScope.id !=null }">
+                       		<a href="${root }/sikdang/map_search" class="main-button accent-color">리뷰 등록</a>                        
+                       	</c:if>
+                       	<c:if test="${sessionScope.id !=null && sessionScope.id == dto.id}">
+                       		<a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}"
+                       		class="main-button accent-color">리뷰 수정</a>
+                       		<a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}"
+                       		class="main-button accent-color">리뷰 삭제</a>                       
+                       	</c:if>
                     </div>
                 </div>
 
@@ -136,45 +123,23 @@
 				<div class="row">
 					<div class="col-md-12">
                         <div id="blog-comments" class="blog-post-comments">
-                            <h3>댓글 수: #</h3>
-                            <div class="blog-comments-content">
+                            <h3>댓글 수: ${reviewrcount }</h3>
+                            <div class="blog-comments-content list-group">
                                 <div class="media">
-                                    <div class="pull-left">
-                                        <img class="media-object" src="images/includes/comment1.jpg" alt="">
-                                    </div>
+                                    
                                     <div class="media-body">
                                         <div class="media-heading">
                                         	<h4>Linda Wilson</h4> 
                                         	<a href="#"><span>4 weeks ago</span><span>Reply</span></a>
                                         </div>
                                         <p>Lorem ipsum dolor sit amet lorem, elit. Sequi, nam magni repellendus! <span class="label label-primary">New</span></p>
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <img class="media-object" src="images/includes/comment2.jpg" alt="">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="media-heading">
-		                                        	<h4>Stephen</h4> 
-		                                        	<a href="#"><span>5 weeks ago</span><span>Reply</span></a>
-		                                        </div>
-                                                <p>Temporibus, ea, praesentium eaque totam vel quos laboriosam quia sit dolore at consequatur beatae aliquam debitis porro quasi cupiditate quod!</p>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
-                                </div>
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <img class="media-object" src="images/includes/comment3.jpg" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="media-heading">
-                                        	<h4>Marco New</h4> 
-                                        	<a href="#"><span>6 weeks ago</span><span>Reply</span></a>
-                                        </div>
-                                        <p>Enim, iste numquam inventore reiciendis libero quidem quos voluptate? Thank you for visiting templatemo.</p>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div> <!-- /.blog-comments-content -->
+                            
+                            <div class="comments-footer">1234paging</div>
+                            
                         </div> <!-- /.blog-post-comments -->
                     </div> <!-- /.col-md-12 -->
 				</div> <!-- /.row -->
@@ -183,22 +148,21 @@
                         <div class="comment-form">
                             <h3>댓글 남기기</h3>
                             <div class="widget-inner">
-                            	<form action="#" method="post">
                                 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p>
-                                            <label for="comment">댓글 내용:</label>
-                                            <textarea name="comment" id="comment" rows="5"></textarea>
+                                            <label for="hrecontents">댓글 내용:</label>
+                                            <textarea name="hrecontents" rows="5"></textarea>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="mainBtn" type="submit" name="submit" value="댓글 등록" id="submit">
+                                        <input class="mainBtn" type="button" name="submit" value="댓글 등록" id="mainBtn">
                                     </div>
                                 </div>
-                                </form>
+                                
                             </div> <!-- /.widget-inner -->
                         </div> <!-- /.widget-main -->
                     </div> <!-- /.col-md-12 -->
@@ -206,6 +170,20 @@
 			</div> <!-- /.col-md-8 -->
 			</div>
 			</div>
+<script type="text/javascript">
+var hugino = "${dto.hugino}";
+var sno = "${sno}";
+var eno = "${eno}";
+var nPage = "${nPage}";
+var nowPage = "${param.nowPage}";
+var colx = "${param.col}";
+var wordx = "${param.word}";
+var id = "${sessionScope.id}";
+</script>	
+<script type="text/javascript" src="${root}/js/reviewreply/revreply.js"></script>
+		
+<script type="text/javascript" src="${root}/js/reviewreply/replyprocess.js"></script>
+			
 
 </body>
 </html>

@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-12">
                 
-                <h2>상품 삭제</h2>
+                <h2>리뷰 삭제</h2>
 				<form class="form-horizontal" action="/review/delete" method="post">
 					<input type="hidden" name="hugino" value="${param.hugino}">
 					<input type='hidden' name="col" value="${param.col}">
