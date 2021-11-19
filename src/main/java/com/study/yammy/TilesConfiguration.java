@@ -21,7 +21,8 @@ public class TilesConfiguration {
     		  "classpath:/tiles/tiles_sikdang.xml",
     		  "classpath:/tiles/tiles_review.xml",
     		  "classpath:/tiles/tiles_chatbot.xml",
-    		  "classpath:/tiles/tiles_notice.xml"
+    		  "classpath:/tiles/tiles_notice.xml",
+    		  "classpath:/tiles/tiles_ticket.xml"
     		  });
       
       configurer.setCheckRefresh(true);

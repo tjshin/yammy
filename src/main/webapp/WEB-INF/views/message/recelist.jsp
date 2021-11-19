@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="util" uri="/ELFunctions"%>
@@ -60,7 +60,7 @@
      
      // 체크 이후 삭제 버튼 클릭시
      function deleteValue(){
-			var url = "/checkdelete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+			var url = "/rcheckdelete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 			var valueArr = new Array();
 		    var list = $("input[name='RowCheck']");
 		    for(var i = 0; i < list.length; i++){
@@ -72,7 +72,7 @@
 		    	alert("선택된 글이 없습니다.");
 		    }
 		    else{
-				var chk = confirm("정말 삭제하시겠습니까?");				 
+		    	if(confirm("정말 삭제하시겠습니까?")){			 
 				$.ajax({
 				    url : url,                    // 전송 URL
 				    type : 'POST',                // GET or POST 방식
@@ -90,6 +90,10 @@
 	                    }
 	                }
 				});
+		    }
+ 				else{
+ 					alert("취소되었습니다.");
+ 				}
 			}
 		}
      
@@ -98,16 +102,13 @@
   
 </head>
 
-
-
-
 <body>
 
 <div class = first-widget>  </div>
 
 	<div class="container">
 		<h2>받은 쪽지 함</h2>
-		<div class="form-inline">
+		<form class="form-inline" action="${root }/message/recelist">
 
 			<div class="form-group">
 				<select class="form-control" name="col">
@@ -128,7 +129,8 @@
 			<button type="button" class="btn btn-default" onclick="createM()">쪽지 보내기</button>
 			<button type="button" class="btn btn-danger" onclick="deleteValue();" >쪽지 삭제</button>
 			
-		</div>
+		</form>
+	
 		<table class="table table-striped">
 			<thead>
 				<tr>

@@ -146,7 +146,7 @@ public class Utility {
 
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
-			str.append("<li><A href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>다음</A></li>");
+			str.append("<li><a href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>다음</a></li>");
 		}
 		str.append("</ul>");
 		str.append("</div>");

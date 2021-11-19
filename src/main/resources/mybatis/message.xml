@@ -9,47 +9,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
  <!-- 체크 삭제 -->
-  <delete id="checkdelete" parameterType="int">
-    DELETE FROM message
+  <update id="rcheckdelete" parameterType="int"> 
+ 	UPDATE message
+    SET  rconfirm= 'N'
     WHERE messageno=#{messageno}
-  </delete>
+  </update>
+  
+   <update id="scheckdelete" parameterType="int"> 
+ 	UPDATE message
+    SET  sconfirm= 'N'
+    WHERE messageno=#{messageno}
+  </update>
 
 
 
 
  <!-- 삭제 -->
-  <delete id="sdelete" parameterType="int">
-    DELETE FROM message
+  <update id="sdelete" parameterType="int">
+ 	UPDATE message
+    SET  sconfirm= 'N'
     WHERE messageno=#{messageno}
-  </delete>
+  </update>
 
-<delete id="rdelete" parameterType="int">
-    DELETE FROM message
+<update id="rdelete" parameterType="int">
+   	UPDATE message
+    SET  rconfirm= 'N'
     WHERE messageno=#{messageno}
-  </delete> 
+  </update> 
 
 
 <!-- 등록 -->
   <insert id="create" parameterType="com.study.message.MessageDTO">
- 	INSERT INTO message(messageno, sendid , receid, mcontents, mdate)
-    VALUES((select nvl(max(messageno),0)+1 from message),#{sendid}, #{receid}, #{mcontents}, SYSTIMESTAMP)
+ 	INSERT INTO message(messageno, sendid , receid, mcontents, mdate , meticketno)
+    VALUES((select nvl(max(messageno),0)+1 from message),#{sendid}, #{receid}, #{mcontents}, SYSTIMESTAMP ,#{meticketno})
   </insert> 
 
 
-
-
- <!-- receread 조회 -->
-  <select id="sendread" resultType="com.study.message.MessageDTO">
-    SELECT messageno, receid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate
-    FROM message
-    WHERE messageno=#{messageno}
-  </select>
-
-
-
- <!-- receread 조회 -->
-  <select id="receread" resultType="com.study.message.MessageDTO">
-    SELECT messageno, sendid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate
+   <!-- read 조회 -->
+  <select id="read" resultType="com.study.message.MessageDTO">
+    SELECT messageno, sendid,receid, mcontents, to_char(mdate,'yyyy-mm-dd HH24:MI:SS') mdate ,meticketno
     FROM message
     WHERE messageno=#{messageno}
   </select>
@@ -61,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="stotal" resultType="int" parameterType="Map">
     select count(*) from message
     <where>
-    	sendid = #{sendid}
+    	sendid = #{sendid} and sconfirm = 'Y' 
     	<choose>
     			<when test="col=='receid'">
 				AND	receid like '%'||#{word}||'%'
@@ -75,10 +73,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="rtotal" resultType="int" parameterType="Map">
     select count(*) from message
     <where>
-    	receid = #{receid}
+    	receid = #{receid} and rconfirm = 'Y'
     	<choose>
     			<when test="col=='sendid'">
-				 AND	sendid like '%'||#{word}||'%'
+				 AND sendid like '%'||#{word}||'%'
 				</when>
     	</choose>
     </where>
@@ -93,10 +91,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from(
 			select messageno, sendid, mcontents, mdate from message
 			<where>
-			receid = #{receid}
+			receid = #{receid} and rconfirm = 'Y'
       		<choose>
 				<when test="col=='sendid'">
-					AND sendid like '%'||#{word}||'%'
+					and sendid like '%'||#{word}||'%'
 				</when>
 			</choose>  			      
        </where>
@@ -106,9 +104,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[       
        where r >= #{sno} and r <= #{eno}
          ]]>
-	 
-
   </select>
+  
   
   <!-- 보낸 메세지 목록 -->
   <select id="sendlist" parameterType="Map" resultType="com.study.message.MessageDTO">
@@ -118,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from(
 			select messageno, receid, mcontents, mdate from message
 			<where> 
-			sendid = #{sendid}
+			sendid = #{sendid} and sconfirm = 'Y'
       		<choose>
 				<when test="col=='receid'">
 				and	receid like '%'||#{word}||'%'

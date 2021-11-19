@@ -9,4 +9,7 @@ public class MessageDTO {
 	private String sendid;
 	private String receid;
 	private String mdate;
+	private String rconfrim;
+	private String sconfrim;
+	private int meticketno;
 }
