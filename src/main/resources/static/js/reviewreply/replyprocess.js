@@ -11,7 +11,12 @@ let param = "nPage=" + nPage;
     param += "&col=" + colx;
     param += "&word=" + wordx;
     param += "&nowPage=" + nowPage;
-
+    
+var modifyButton = "<button type='button' id='modifyBtn' class='btn pull-right' data-toggle='modal' style='background-color:transparent;'>"
+					+ modifyimage + "</button>";
+var deleteButton = "<button type='button' id='removeBtn' class='btn pull-right' data-toggle='modal' style='background-color:transparent;'>"
+					+ deleteimage + "</button>";
+    
 const replyService = new ReplyService();
 
 function showList() {
@@ -21,14 +26,18 @@ function showList() {
       let str = ""
 
       for (var i = 0; i < list.length ; i++) {
+		
         str += "<div class='media' data-hugireno='" + list[i].hugireno + "'>";
-        str += "<div class='media-body'>";
+        
+        if(sessionid != null && sessionid == list[i].id) {
+			str += deleteButton;
+			str += modifyButton;			
+		}
+        
+        str += "<div class='media-body'>";        
         str += "<div class='media-heading'><h4>" + list[i].nick + "</h4>";
         str += "<span>" + list[i].hredate + "</span>";
-        str += "<span>&nbsp;&nbsp;</span>";
-        str += "<div id='removeBtn' name='removeBtn' data-hugireno='" + list[i].hugireno + "'>";
-        str += "<button id='removeBtn' class='pull-right' style='background-color:transparent;'>";
-        str += deleteimage + "</button></div></div><p>";
+        str += "<span>&nbsp;&nbsp;</span></div><p>";
         str += replaceAll(list[i].hrecontents, '\n', '<br>') + "</p></div></div>";
       }
 
@@ -52,9 +61,11 @@ function showPage(){
 }
 
 let modal = $(".modal");
-let media = $(".media");
+let modalInputContent = modal.find("textarea[name='hrecontents']");
+
 let widget = $(".widget-inner");
 let hrecontents = widget.find("textarea[name='hrecontents']");
+
 let mainBtn = $("#mainBtn");
 let modalRemoveBtn = $("#modalRemoveBtn");
 let modalModBtn = $("#modalModBtn");
@@ -69,7 +80,7 @@ mainBtn.on("click", function (e) {
  
   let reply = {
     hrecontents: hrecontents.val(),
-    id: id,
+    id: sessionid,
     hugino: hugino
   };
   replyService
@@ -88,24 +99,57 @@ mainBtn.on("click", function (e) {
     document.getElementById("hrecontents").value='';
 }); //end modalRegisterBtn.on
 
-$("#addReplyBtn").on("click", function(e) {
-	alert("테스트!");
+replyUL.on("click", ".media button", function (e) {
+	
+	var hugireno = $(this).parent().attr("data-hugireno");
+	
+	replyService
+		.get(hugireno)
+		.then(reply => {
 
+			modalInputContent.val(reply.hrecontents);
+			modal.data("hugireno", reply.hugireno);
+
+			$(".modal").modal("show");
+
+		});
 });
 
 
-replyUL.on("click", "button", function (e) {
-	alert("리스트 버튼 테스트ㅠ");
+$("#modalCloseBtn").on("click", function(e) {
+	modal.modal('hide');
 });
 
+//댓글 수정
+modalModBtn.on("click", function(e) {
 
+	let reply = { hugireno: modal.data("hugireno"), hrecontents: modalInputContent.val() };
+	//alert(reply.rnum);
+	replyService
+		.update(reply)
+		.then(result => {
 
+			//alert(result);
+			modal.modal("hide");
+			showList();
+			showPage();
+		});
 
+});//modify 
 
+//댓글 삭제
+modalRemoveBtn.on("click", function(e) {
+	
+	let hugireno = modal.data("hugireno");
+	
+	replyService
+		.remove(hugireno)
+		.then(result => {
 
+			//alert(result);
+			modal.modal("hide");
+			showList();
+			showPage();
+		});
 
-
-
-
-
-
+});//remove

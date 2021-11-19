@@ -13,4 +13,8 @@ public interface ReviewreplyService {
 
 	int delete(int hugireno);
 
+	ReviewreplyDTO read(int hugireno);
+
+	int update(ReviewreplyDTO dto);
+
 }

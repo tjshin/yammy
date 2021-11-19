@@ -16,8 +16,8 @@
 <title>review read test</title>
 
 <script>
-
- </script>
+	
+</script>
 
 </head>
 <body>
@@ -50,7 +50,8 @@
 					<a href="${root }/sikdang/map_main"
 						class="main-button accent-color"> <i
 						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 지도로 돌아가기
-					</a> <a href="${listurl }" class="main-button accent-color"> <i
+					</a> &nbsp;&nbsp; <a href="${listurl }"
+						class="main-button accent-color"> <i
 						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
 					</a>
 
@@ -164,7 +165,6 @@
 					<div class="col-md-12">
 						<div id="blog-comments" class="blog-post-comments">
 							<h3>댓글 수: ${reviewrcount }</h3>
-							<button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>test</button>
 							<div class="blog-comments-content list-group">
 								<div class="media">
 
@@ -200,20 +200,22 @@
 									<div class="col-md-12">
 										<p>
 											<label for="hrecontents">댓글 내용:</label>
-											<textarea id ="hrecontents" name="hrecontents" rows="5">
 											<c:if test="${sessionScope.id == null }">
-											댓글은 로그인 후 남길 수 있습니다.
+												<textarea id="hrecontents" name="hrecontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
 											</c:if>
-											<c:if test="${sessionScope.id != null }"></c:if>
-											</textarea>
+											<c:if test="${sessionScope.id != null }">
+												<textarea id="hrecontents" name="hrecontents" rows="5"></textarea>
+											</c:if>
+
 										</p>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-									<c:if test="${sessionScope.id != null }">
-										<input class="mainBtn" type="button" name="submit"
-											value="댓글 등록" id="mainBtn"></c:if>
+										<c:if test="${sessionScope.id != null }">
+											<input class="mainBtn" type="button" name="submit"
+												value="댓글 등록" id="mainBtn">
+										</c:if>
 									</div>
 								</div>
 
@@ -229,6 +231,10 @@
 			<!-- /.col-md-8 -->
 		</div>
 	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -238,13 +244,16 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">MODAL</h4>
+					<h4 class="modal-title" id="myModalLabel">댓글 수정, 삭제</h4>
 				</div>
-				<div class="modal-body" style="margin: auto;">
-					<p style="text-align: center;">삭제하면 복구 할 수 없습니다.</p>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>내용</label>
+						<textarea cols="10" rows="3" class="form-control" name='hrecontents'>New Reply!!!!</textarea>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+					<button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
 					<button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
 					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
 				</div>
@@ -255,15 +264,16 @@
 	</div>
 	<!-- /.modal -->
 	<script type="text/javascript">
-	var hugino = "${dto.hugino}";
-	var sno = "${sno}";
-	var eno = "${eno}";
-	var nPage = "${nPage}";
-	var nowPage = "${param.nowPage}";
-	var colx = "${param.col}";
-	var wordx = "${param.word}";
-	var id = "${sessionScope.id}";
-	var deleteimage = "<img src='${root }/images/trash-alt-solid.svg' alt='댓글 삭제 버튼' style='width:30px;height:30px;'>";
+		var hugino = "${dto.hugino}";
+		var sno = "${sno}";
+		var eno = "${eno}";
+		var nPage = "${nPage}";
+		var nowPage = "${param.nowPage}";
+		var colx = "${param.col}";
+		var wordx = "${param.word}";
+		var sessionid = "${sessionScope.id}";
+		var deleteimage = "<img src='${root }/images/trash-alt-solid.svg' alt='댓글 삭제 버튼' style='width:30px;height:30px;'>";
+		var modifyimage = "<img src='${root }/images/edit-solid.svg' alt='댓글 수정 버튼' style='width:30px;height:30px;'>";
 	</script>
 	<script type="text/javascript" src="${root}/js/reviewreply/revreply.js"></script>
 

@@ -69,7 +69,7 @@ class ReplyService {
     
     update(reply) {
         return new Promise((resolve, reject) => {
-            console.log("hugireno: " + reply.hugireno);
+//            console.log("hugireno: " + reply.hugireno);
             $.ajax({
                 type: 'put',
                 url: '/review/reply/' + reply.hugireno,

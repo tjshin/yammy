@@ -39,6 +39,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{hrecontents}, sysdate, #{hugino}, #{id})
 	</insert>
 	
+	<select id="read" parameterType="int"
+		resultType="com.study.reviewreply.ReviewreplyDTO">
+		select * from reviewreply
+		where hugireno = #{hugireno}
+	</select>
+	
+	<update id="update" parameterType="com.study.reviewreply.ReviewreplyDTO">
+		update reviewreply
+		set hrecontents = #{hrecontents}
+		where hugireno = #{hugireno}
+	</update>
+	
 	<delete id="delete" parameterType="int">
 		delete reviewreply
 		where hugireno = #{hugireno}

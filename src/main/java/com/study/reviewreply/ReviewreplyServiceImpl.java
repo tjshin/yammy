@@ -36,4 +36,16 @@ public class ReviewreplyServiceImpl implements ReviewreplyService {
 		return mapper.delete(hugireno);
 	}
 
+	@Override
+	public ReviewreplyDTO read(int hugireno) {
+		// TODO Auto-generated method stub
+		return mapper.read(hugireno);
+	}
+
+	@Override
+	public int update(ReviewreplyDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.update(dto);
+	}
+
 }
