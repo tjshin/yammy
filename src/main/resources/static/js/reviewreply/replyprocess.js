@@ -24,7 +24,11 @@ function showList() {
         str += "<div class='media' data-hugireno='" + list[i].hugireno + "'>";
         str += "<div class='media-body'>";
         str += "<div class='media-heading'><h4>" + list[i].nick + "</h4>";
-        str += "<span>" + list[i].hredate + "</span></div><p>";
+        str += "<span>" + list[i].hredate + "</span>";
+        str += "<span>&nbsp;&nbsp;</span>";
+        str += "<div id='removeBtn' name='removeBtn' data-hugireno='" + list[i].hugireno + "'>";
+        str += "<button id='removeBtn' class='pull-right' style='background-color:transparent;'>";
+        str += deleteimage + "</button></div></div><p>";
         str += replaceAll(list[i].hrecontents, '\n', '<br>') + "</p></div></div>";
       }
 
@@ -47,10 +51,14 @@ function showPage(){
 	});
 }
 
-
+let modal = $(".modal");
+let media = $(".media");
 let widget = $(".widget-inner");
 let hrecontents = widget.find("textarea[name='hrecontents']");
 let mainBtn = $("#mainBtn");
+let modalRemoveBtn = $("#modalRemoveBtn");
+let modalModBtn = $("#modalModBtn");
+
 //댓글 생성
 mainBtn.on("click", function (e) {
  
@@ -77,8 +85,27 @@ mainBtn.on("click", function (e) {
       showPage();
  
     }); //end add
- 
+    document.getElementById("hrecontents").value='';
 }); //end modalRegisterBtn.on
+
+$("#addReplyBtn").on("click", function(e) {
+	alert("테스트!");
+
+});
+
+
+replyUL.on("click", "button", function (e) {
+	alert("리스트 버튼 테스트ㅠ");
+});
+
+
+
+
+
+
+
+
+
 
 
 

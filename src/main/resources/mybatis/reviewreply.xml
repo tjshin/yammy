@@ -39,4 +39,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{hrecontents}, sysdate, #{hugino}, #{id})
 	</insert>
 	
+	<delete id="delete" parameterType="int">
+		delete reviewreply
+		where hugireno = #{hugireno}
+	</delete>
+	
 </mapper>

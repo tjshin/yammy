@@ -11,4 +11,6 @@ public interface ReviewreplyService {
 
 	int create(ReviewreplyDTO dto);
 
+	int delete(int hugireno);
+
 }

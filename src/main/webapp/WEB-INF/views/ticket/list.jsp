@@ -57,7 +57,7 @@
 		onclick="location.href='${root }/ticket/create'">등록</button>
 
 </form>
-
+<br>
 	<!-- 참조 : contents/mainlist-->
 
 	<c:choose>   

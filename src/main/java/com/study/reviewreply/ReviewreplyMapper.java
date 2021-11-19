@@ -11,4 +11,6 @@ public interface ReviewreplyMapper {
 
 	int create(ReviewreplyDTO dto);
 
+	int delete(int hugireno);
+
 }

@@ -72,7 +72,7 @@ class ReplyService {
             console.log("hugireno: " + reply.hugireno);
             $.ajax({
                 type: 'put',
-                url: '/review/reply/' + reply.rnum,
+                url: '/review/reply/' + reply.hugireno,
                 data: JSON.stringify(reply),
                 contentType: "application/json; charset=utf-8",
                 success: function (result, status, xhr) {
