@@ -23,7 +23,7 @@
 	}
 	
 	#tbl{
-		border-collapse: collapse;
+		
 	}
 	
 	#tr:nth-child(odd) {
@@ -65,43 +65,44 @@
         <div class="row">
         <div class="col-sm-12">
         <h3><span class="glyphicon glyphicon-user"></span></h3>
-        <img class="img-rounded" src="${root }/member/${mdto.filename}" style="width:200px"><br/>
-        <a href="/member/updateFile?oldfile=${mdto.filename}">사진 수정</a>
+        <img class="img-rounded" src="${root }/member/${mdto.filename}" style="width:200px"><br/><br/>
+        <a href="/member/updateFile?oldfile=${mdto.filename}" class="main-button accent-color">사진 수정</a>
+        <a href="/member/download?filename=${mdto.filename}" class="main-button accent-color">다운로드</a>
           <div class="caption">
           <p></p>
           
           
           <table id="tbl" style="text-align:left;">
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">ID</td>
+          <td style="font-weight:bold;">ID</td>
           <td>${mdto.id}</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">성명</td>
+          <td style="font-weight:bold;">성명</td>
           <td>${mdto.mname}</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">닉네임</td>
+          <td style="font-weight:bold;">닉네임</td>
           <td>${mdto.nick}</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">이메일</td>
+          <td style="font-weight:bold;">이메일</td>
           <td>${mdto.email }</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">연락처</td>
+          <td style="font-weight:bold;">연락처</td>
           <td>${mdto.phone }</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">주소</td>
+          <td style="font-weight:bold;">주소</td>
           <td>(${mdto.postcode })${mdto.address1 }  ${mdto.address2}</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">포인트</td>
+          <td style="font-weight:bold;">포인트</td>
           <td>${mdto.point }</td>
           </tr>
           <tr id="tr">
-          <td style="font-weight:bold; border-right: 2px solid #778899;">응원구단</td>
+          <td style="font-weight:bold;">응원구단</td>
           <td>${mdto.favteam }</td>
           </table>
           <br/><br/>
@@ -273,7 +274,7 @@ ${mpaging}
 <c:choose>   
 
 <c:when test="${empty rdto}">
-   <tr><td colspan="6">작성하신 리뷰가 없습니다.</td>
+   <tr><td colspan="7">작성하신 리뷰가 없습니다.</td>
 </c:when>
 
 <c:otherwise>
@@ -320,6 +321,141 @@ ${mpaging}
                 </div> <!-- /.post-blog -->
             </div> <!-- /.col-md-12 -->
         </div> <!-- /.row -->
+
+
+
+
+
+
+
+
+
+<div class="row">
+            <div class="col-md-12">
+                
+                <div class="post-blog">
+                </div> <!-- /.post-blog -->
+
+                <div class="post-blog">
+                    <div class="blog-content">
+                    <h3 style="font-weight:bold">내가 작성한 티켓 게시글</h3>
+                    
+                    <form class="form-inline" action="${root }/member/mypage">
+	
+	<!-- select으로 닉네임 , 구장 선택-->
+	<div class="form-group">
+		<select name="col" class="form-control">
+		<option value="stadium"
+		<c:if test="${col=='stadium' }">selected</c:if>
+		>지역</option>
+		<option value="total"
+		<c:if test="${col=='total' }">selected</c:if>
+		>전체출력</option>
+		</select>
+	</div>
+
+	<!-- 검색 input + 등록 button-->
+	<div class="form-group">
+		<input type="text" class="form-control" name="word" required="required" value="${word}">
+	</div>
+		<button class="btn btn-info">검색</button>
+		<button class="btn btn-default" type="button" 
+		onclick="location.href='${root }/ticket/create'">등록</button>
+</form><br/>
+
+	<!-- 참조 : contents/mainlist-->
+
+	<c:choose>   
+        <c:when test="${empty tdto}"> <!-- 목록이 비어 있을경우-->
+        <div class="row">
+        <div class="col-sm-5">
+        <p>작성하신 티켓 게시글이 없습니다.</p>
+        </div>
+         
+        </div>
+        </c:when>
+        
+        <c:otherwise>
+        <c:set var="tdto" value="${tdto}"/>
+        <div class="row">
+            <c:forEach var="tdto" begin="0" end="3" items="${tdto}">
+            <div class="col-sm-3">
+
+            <a href="${root }/ticket/detail?ticketno=${tdto.ticketno}">
+            <p>
+            <img src="/ticket/storage/${tdto.filename}" class="img-rounded"  width="236" height="306">
+            </p>
+            </a>
+			<!-- 스크립트 주석 /contents/storage/${dto.filename }     -->
+            
+       		<div class ="txt_line">
+
+					
+					<p><b>${tdto.stadium}</b> </br> ${tdto.tickettitle}	<br/>
+					
+					<a href="${root}/ticket/update?ticketno=${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
+					</p>
+			</div>
+			
+            </div>
+            </c:forEach>
+        </div>
+        
+        <div class="row">
+            <c:forEach var="tdto" begin="4" end="7" items="${tdto}">
+            <div class="col-sm-3">
+            
+            <a href="${root }/ticket/detail?ticketno=${tdto.ticketno}">
+            <p><img src="/ticket/storage/${tdto.filename}" class="img-rounded"  width="236" height="306"></p></a>
+           <div class ="txt_line">
+
+					<p><b>${tdto.stadium}</b> </br> ${tdto.tickettitle} <br/>
+					<a href="${root}/ticket/update?ticketno=${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a> 
+					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a> 
+					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
+					</p>
+			</div>
+			
+            </div>
+            </c:forEach>
+        </div>
+        ${tpaging}  <!--페이징 관련  -->
+        </c:otherwise>
+        </c:choose>
+                    
+                    
+                    
+                    
+                    
+                    
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
 

@@ -47,6 +47,69 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	
+	
+	
+	<select id="ttotal" parameterType="Map" resultType="int">
+    select count(*) from ticket
+    where id = #{id}
+    <where>
+              <choose>
+              	<when test="col=='stadium'">
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='total'">
+                     tickettitle like '%'||#{word}||'%'
+                     or
+                     ticketcontents like '%'||#{word}||'%' and id = #{id}
+                     or
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+  </select>
+	
+	
+	
+	
+	
+	
+	<select id="ticket" parameterType="Map" resultType="com.study.member.TicketDTO">
+                select ticketno, tickettitle, filename, stadium, r   
+	 			from(
+	 				select ticketno, tickettitle, filename, stadium, rownum r   
+	 				from(                                                                                                                                                  
+	 					select ticketno, tickettitle, filename, stadium   
+	 					from ticket
+	 					where id =#{id}
+    <where>
+              <choose>
+              	<when test="col=='stadium'">
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='total'">
+                     tickettitle like '%'||#{word}||'%'
+                     or
+                     ticketcontents like '%'||#{word}||'%' and id = #{id}
+                     or
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+		    order by ticketno desc
+		    )
+		    )
+    <![CDATA[
+	 where r>=#{tsno} and r <=#{teno}
+	]]> 
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	<select id="btotal" parameterType="Map" resultType="int">
     select count(*) from bbs
     where id = #{id}
@@ -163,6 +226,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 where r>=#{sno} and r <=#{eno}
 	]]> 
 	</select>
+	
+	
+	
+	
+	
+	
 	
 
 	

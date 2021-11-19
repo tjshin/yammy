@@ -110,13 +110,14 @@ button.btn.btn-default:hover {
     <H2></H2>
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="connect">챗봇 : </label>
+                    <label for="connect">챗봇 > </label>
                     <button id="connect" class="btn btn-default" type="submit">시작하기</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">끝내기</button>
                 </div>
             </form>
+            <br/>
             <form class="form-inline" onchange="handleOnChange(this)">
-                <select id ="content" name ="content" style="width:35%;">
+                <select id ="content" name ="content" style="width:37%; height:30px;" class="form-control">
                 		<option value="1" selected="selected">직접입력</option>
 						<option value="야구 일정을 알고 싶어요.">야구 일정을 알고 싶어요.</option>
 						<option value="안녕하세요?">안녕하세요?</option>
@@ -126,9 +127,9 @@ button.btn.btn-default:hover {
 						<option value="고객센터 번호을 알고 싶어요.">고객센터 번호을 알고 싶어요.</option>
                 
                 </select>
-                    
-                 <div class ="form-group" style ="width: 90%;">>
-                 <label for ="msg"> 문의</label>
+                    <br/><br/>
+                 <div class ="form-group" style ="width: 90%;">
+                 <label for ="msg"> 문의 ></label>
 				 <input type="text" id="msg" class="form-control" placeholder="문의 사항을 입력하세요." style="width:90%;">
                  
                  </div>   

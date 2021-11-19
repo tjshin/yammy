@@ -45,4 +45,8 @@ public interface MemberMapper {
 	int rtotal(Map map);
 
 	List<ReviewDTO> review(Map map);
+
+	int ttotal(Map map);
+
+	List<TicketDTO> ticket(Map map);
 }

@@ -128,4 +128,16 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.review(map);
 	}
+
+	@Override
+	public int ttotal(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.ttotal(map);
+	}
+
+	@Override
+	public List<TicketDTO> ticket(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.ticket(map);
+	}
 }
