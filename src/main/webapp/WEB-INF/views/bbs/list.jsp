@@ -16,6 +16,7 @@
      function read(bbsno){
        var url = "read";
        url += "?bbsno="+bbsno;
+       url += "?bbscate="+bbscate;
        url += "&col=${col}";
        url += "&word=${word}";
        url += "&nowPage=${nowPage}";
@@ -35,7 +36,7 @@
 <div class = first-widget> </div>
 <div class="container">
  
-  <h2>SSG게시판</h2>
+  <h2>{bbscate}게시판</h2>
   
  
  <table class="table table-striped">
@@ -75,7 +76,7 @@
   
   </div>
   <div>
-      <button type="button" class="btn btn-default" onclick="location.href='../bbs/create'">등록</button>
+      <button type="button" class="btn btn-default" onclick="location.href='/bbs/create'">등록</button>
 <button type="button" class="btn btn-default" onclick="location.href='../bbs/bestlist'">인기글</button>
 
 </div>

@@ -63,12 +63,15 @@
   </div>
     
     
-    
-    
+    	 <div class="form-group">
+        <label class="control-label col-sm-3" for="sendid" style="color: black; font-weight: bolder;">게시판이름</label>
+        <div class="col-sm-5">
+          <input type="text" name="bbscate" id="bbscate" class="form-control" value="{bbscate}"> 
+    </div></div>
         	 <div class="form-group">
-        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">보내는 사람</label>
+        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">글쓴이</label>
         <div class="col-sm-8">
-       <input type="text" name="sendid" id="sendid" class="form-control" value="${id}" readonly> <!--로그인아이디 = sendid 입니다. -->
+       <input type="text" name="id" id="id" class="form-control" value="${id}" readonly> 
        		
         </div>
         </div>

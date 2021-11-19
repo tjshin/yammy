@@ -9,4 +9,6 @@ public class ReplyDTO {
 	private String recontents;
 	private String id;
 	private String redate;
-	}
+	private String nick; 	
+
+}

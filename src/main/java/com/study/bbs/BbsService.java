@@ -27,11 +27,9 @@ public interface BbsService {
 
    int besttotal(Map map);
 
+   
+   
+   
 
-
-// 덧글
-   
-   
-   
 }
 
