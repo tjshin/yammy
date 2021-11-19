@@ -241,7 +241,7 @@ function signOut() {
 										</c:when>
 
 										<c:otherwise>
-										
+										<li></li><li></li><li></li><li></li><li></li>
 											<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 										</c:otherwise>
 									</c:choose>

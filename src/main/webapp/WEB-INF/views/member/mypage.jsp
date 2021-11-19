@@ -393,9 +393,10 @@ ${mpaging}
 					
 					<p><b>${tdto.stadium}</b> </br> ${tdto.tickettitle}	<br/>
 					
-					<a href="${root}/ticket/update?ticketno=${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
-					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/update/${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a>
 					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
+
 					</p>
 			</div>
 			
@@ -412,9 +413,10 @@ ${mpaging}
            <div class ="txt_line">
 
 					<p><b>${tdto.stadium}</b> </br> ${tdto.tickettitle} <br/>
-					<a href="${root}/ticket/update?ticketno=${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a> 
-					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a> 
+					<a href="${root}/ticket/update/${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a>
 					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
+
 					</p>
 			</div>
 			
