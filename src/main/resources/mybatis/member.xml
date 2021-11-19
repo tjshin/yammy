@@ -47,8 +47,72 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	
+	
+	
+	<select id="ttotal" parameterType="Map" resultType="int">
+    select count(*) from ticket
+    where id = #{id}
+    <where>
+              <choose>
+              	<when test="col=='stadium'">
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='total'">
+                     tickettitle like '%'||#{word}||'%'
+                     or
+                     ticketcontents like '%'||#{word}||'%' and id = #{id}
+                     or
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+  </select>
+	
+	
+	
+	
+	
+	
+	<select id="ticket" parameterType="Map" resultType="com.study.member.TicketDTO">
+                select ticketno, tickettitle, filename, stadium, r   
+	 			from(
+	 				select ticketno, tickettitle, filename, stadium, rownum r   
+	 				from(                                                                                                                                                  
+	 					select ticketno, tickettitle, filename, stadium   
+	 					from ticket
+	 					where id =#{id}
+    <where>
+              <choose>
+              	<when test="col=='stadium'">
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='total'">
+                     tickettitle like '%'||#{word}||'%'
+                     or
+                     ticketcontents like '%'||#{word}||'%' and id = #{id}
+                     or
+                     stadium like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+		    order by ticketno desc
+		    )
+		    )
+    <![CDATA[
+	 where r>=#{tsno} and r <=#{teno}
+	]]> 
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	<select id="btotal" parameterType="Map" resultType="int">
     select count(*) from bbs
+    where id = #{id}
     <where>
               <choose>
               	<when test="col=='btitle'">
@@ -78,6 +142,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		from (                                                                                                                                                                    
 	 			select bbsno, bcate, btitle, id, bview, bdate           
 	 			from bbs
+	 			where id = #{id}
     <where>
               <choose>
               	<when test="col=='btitle'">
@@ -100,6 +165,73 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 where r>=#{sno} and r <=#{eno}
 	]]> 
 	</select>
+	
+	
+	
+	
+	
+	<select id="rtotal" parameterType="Map" resultType="int">
+    select count(*) from review
+    where id = #{id}
+    <where>
+              <choose>
+              	<when test="col=='htitle'">
+                      htitle like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='hcontents'">
+                      hcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='htitle_hcontents'">
+                     htitle like '%'||#{word}||'%'
+                     or
+                     hcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+  </select>
+	
+	
+	
+	
+	
+	
+	<select id="review" parameterType="Map" resultType="com.study.member.ReviewDTO">
+		select hugino, htitle, hcontents, to_char(hdate, 'yyyy-mm-dd') hdate, star, sikname, stadium, sikurl, r
+		from(                                                                                        
+    		select hugino, htitle, hcontents, hdate, star, sikname, stadium, sikurl, rownum r    
+    		from (                                                                                                                                                                    
+	 			select hugino, htitle, hcontents, hdate, star, sikname, stadium, sikurl           
+	 			from review inner join sikdang
+	 			on review.sikid = sikdang.sikid
+	 			and review.id = #{id}
+    <where>
+              <choose>
+              	<when test="col=='btitle'">
+                      htitle like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='bcontents'">
+                      hcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+                  <when test="col=='btitle_bcontents'">
+                     htitle like '%'||#{word}||'%'
+                     or
+                     hcontents like '%'||#{word}||'%' and id = #{id}
+                  </when>
+              </choose>
+           </where>
+		    order by hugino desc
+		    )
+   	 )
+    <![CDATA[
+	 where r>=#{sno} and r <=#{eno}
+	]]> 
+	</select>
+	
+	
+	
+	
+	
+	
 	
 
 	

@@ -29,6 +29,23 @@
 		function historyback(){
 		window.history.back();
 		}
+		
+		function idCheck(){
+			var idCheck = document.getElementById('check').value;
+			
+			if(idCheck == ""){
+				alert("내용을 입력하세요.");
+				form.check.focus();
+				return false;
+			}else if(idCheck !== "delete ${dto.nick}"){
+				alert("잘못입력하셨습니다.");
+				form.check.focus();
+				return false;
+			}else{
+				alert("${dto.nick} 님이 탈퇴되었습니다.");
+				form.submit();
+			}
+		}
 	</script>
 
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
@@ -42,6 +59,7 @@
 <style type="text/css">
   #red{
     color:red;
+    font-weight:bold;
   }
   </style>
 </head>
@@ -65,14 +83,16 @@
 <form class="form-horizontal" 
       action="/admin/member/delete"
       method="post"
+      id="form"
       >
-  <input type="hidden" name="id" value="${param.id}">
+  <input type="hidden" name="id" value="${dto.id}">
  <br/>
-  <p id="red" class="col-sm-offset-2 col-sm-6">탈퇴시키면 복구할 수 없습니다. 정말 탈퇴시키시겠습니까?</p>
+  <p id="red" style="text-align:left">탈퇴시키면 복구할 수 없습니다.</p>
+  <input type="text" class="form-control" style="width:30%;" id="check" name="check" placeholder="'delete ${dto.nick }' (을)를 입력하세요."><br/>
   
    <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-5" style="text-align: center">
-    <button class="btn">탈퇴</button>
+   <div class="col-sm-offset-0 col-sm-5" style="text-align:left">
+    <button type="button" class="btn" onclick="idCheck()">탈퇴</button>
     <button type="button" class="btn" onclick="historyback()">취소</button>
    </div>
  </div>

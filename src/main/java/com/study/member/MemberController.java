@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -330,7 +329,7 @@ public class MemberController {
 		if(service.create(dto)>0) {
 			return "redirect:/";
 		}else {
-			return "error";
+			return "/errorMsg";
 		}
 	}
 	
@@ -470,7 +469,7 @@ public class MemberController {
 			model.addAttribute("id", dto.getId());
 			return "redirect:/member/read";
 		} else {
-			return "error";
+			return "/errorMsg";
 		}
 	}
 	
@@ -510,7 +509,7 @@ public class MemberController {
             if(cnt==1) {
                     return "redirect:/member/mypage";
             }else {
-                    return "./error";
+                    return "./errorMsg";
             }
     }
 	
@@ -518,7 +517,7 @@ public class MemberController {
 	@GetMapping("/member/updateFile")
     public String updateFile(HttpSession session, HttpServletRequest request) {
 		 
-		MemberDTO dto = service.read(session.getId());
+		MemberDTO dto = service.read((String)session.getAttribute("id"));
 
 		request.setAttribute("dto", dto);
             return "/member/updateFile";
@@ -589,13 +588,15 @@ public class MemberController {
             request.setAttribute("word", word);
             request.setAttribute("paging", paging);
             
-            return "/admin/list";
+            return "/admin/member/list";
             
     }
 	
 	@GetMapping("/admin/member/delete")
-	public String memberDelete() {
+	public String memberDelete(HttpServletRequest request) {
+		MemberDTO dto = service.read(request.getParameter("id"));
 		
+		request.setAttribute("dto", dto);
 		return "/admin/member/delete";
 		
 	}
@@ -611,7 +612,7 @@ public class MemberController {
 		if(cnt>0) {
 		return "redirect:/admin/member/list";
 		}else {
-			return "/error";
+			return "/errorMsg";
 		}
 		
 	}
@@ -640,9 +641,8 @@ public class MemberController {
 				nowPage = Integer.parseInt(request.getParameter("nowPage"));
 			}
 			
-			System.out.println("nowPage : "+nowPage);
-			int recordPerPage = 3;
 			
+			int recordPerPage = 3;
 			int sno = ((nowPage-1) * recordPerPage) + 1;
 			int eno = nowPage * recordPerPage;
 			
@@ -654,24 +654,48 @@ public class MemberController {
 		    map.put("id", id);
 			
 		    int btotal = service.btotal(map);
+		    int rtotal = service.rtotal(map);
 		    
-		    System.out.println("btotal:"+btotal);
+		    
+		    int trecordPerPage = 8;
+			int tsno = ((nowPage-1) * trecordPerPage) + 1;
+			int teno = nowPage * trecordPerPage;
+			
+			Map tmap = new HashMap();
+			tmap.put("col", col);
+		    tmap.put("word", word);
+		    tmap.put("tsno", tsno);
+		    tmap.put("teno", teno);
+		    tmap.put("id", id);
+		    
+		    int ttotal = service.ttotal(tmap);
+		    
 		 
 		    String mpaging = Utility.mpaging(btotal, nowPage, recordPerPage, col, word);
+		    String rpaging = Utility.mpaging(rtotal, nowPage, recordPerPage, col, word);
+		    String tpaging = Utility.mpaging(ttotal, nowPage, trecordPerPage, col, word);
 //		    System.out.println("paging : "+paging);
 		    
 		    request.setAttribute("nowPage", nowPage);
 		    request.setAttribute("col", col);
 		    request.setAttribute("word", word);
 		    request.setAttribute("mpaging", mpaging);
+		    request.setAttribute("rpaging", rpaging);
+		    request.setAttribute("tpaging", tpaging);
 		    
 	       MemberDTO mdto = service.mypage(id);
 	       List<BbsDTO> bdto = service.bbs(map);
+	       List<ReviewDTO> rdto = service.review(map);
+	       List<TicketDTO> tdto = service.ticket(tmap);
 	       
 //	       System.out.println(bdto);
 	       
 	       model.addAttribute("mdto", mdto);
 	       model.addAttribute("bdto", bdto);
+	       model.addAttribute("rdto", rdto);
+	       model.addAttribute("tdto", tdto);
+	       
+	       System.out.println(tdto);
 	      
 	   return "/member/mypage";
 	  }

@@ -125,7 +125,7 @@ function signOut() {
 				<c:when test="${sessionScope.grade == 'GH'}">
 					<li><a href="${root}/member/update"><span
 							class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-					<li><a href="#" onclick="signOut()"><span class="g-signin2"></span> Logout</a></li>
+					<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
 				</c:when>
 
 				<c:otherwise>
@@ -230,7 +230,7 @@ function signOut() {
 											<li><a href="${root}/member/update"><span
 													class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
 											<li><a href="#" onclick="signOut()"><span
-													class="g-signin2"></span> Logout</a></li>
+													class=class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>

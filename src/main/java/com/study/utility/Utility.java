@@ -216,7 +216,7 @@ public class Utility {
 		int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
 		if (nowGrp >= 2) {
 
-			str.append("<li><a href='./mypage?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>이전</A></li>");
+			str.append("<li><a href='./mypage?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>이전</a></li>");
 
 		}
 
@@ -231,7 +231,7 @@ public class Utility {
 				str.append(
 
 						"<li><a href='./mypage?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i
-								+ "</A></li>");
+								+ "</a></li>");
 
 			}
 		}
@@ -239,7 +239,7 @@ public class Utility {
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
 
-			str.append("<li><A href='./mypage?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>다음</A></li>");
+			str.append("<li><a href='./mypage?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>다음</a></li>");
 
 		}
 		str.append("</ul>");
@@ -353,14 +353,14 @@ public class Utility {
 				str.append("<li class='active'><a href=#>" + i + "</a></li>");
 			} else {
 				str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
-						+ i + "'>" + i + "</A></li>");
+						+ i + "'>" + i + "</a></li>");
 			}
 		}
 
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
-			str.append("<li><A href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
-					+ _nowPage + "'>다음</A></li>");
+			str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+					+ _nowPage + "'>다음</a></li>");
 		}
 		str.append("</ul>");
 		str.append("</div>");
