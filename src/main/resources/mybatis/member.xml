@@ -52,18 +52,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="ttotal" parameterType="Map" resultType="int">
     select count(*) from ticket
-    where id = #{id}
+    
     <where>
+    id = #{id}
               <choose>
               	<when test="col=='stadium'">
-                     stadium like '%'||#{word}||'%' and id = #{id}
+                     and stadium like '%'||#{tword}||'%'
                   </when>
                   <when test="col=='total'">
-                     tickettitle like '%'||#{word}||'%'
+                     and tickettitle like '%'||#{tword}||'%'
                      or
-                     ticketcontents like '%'||#{word}||'%' and id = #{id}
+                     ticketcontents like '%'||#{tword}||'%'
                      or
-                     stadium like '%'||#{word}||'%' and id = #{id}
+                     stadium like '%'||#{tword}||'%'
                   </when>
               </choose>
            </where>
@@ -81,18 +82,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 				from(                                                                                                                                                  
 	 					select ticketno, tickettitle, filename, stadium   
 	 					from ticket
-	 					where id =#{id}
+	 					
     <where>
+    id =#{id}
               <choose>
               	<when test="col=='stadium'">
-                     stadium like '%'||#{word}||'%' and id = #{id}
+                     and stadium like '%'||#{tword}||'%'
                   </when>
                   <when test="col=='total'">
-                     tickettitle like '%'||#{word}||'%'
+                     and tickettitle like '%'||#{tword}||'%'
                      or
-                     ticketcontents like '%'||#{word}||'%' and id = #{id}
+                     ticketcontents like '%'||#{tword}||'%'
                      or
-                     stadium like '%'||#{word}||'%' and id = #{id}
+                     stadium like '%'||#{tword}||'%'
                   </when>
               </choose>
            </where>
@@ -112,19 +114,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="btotal" parameterType="Map" resultType="int">
     select count(*) from bbs
-    where id = #{id}
-    <where>
+    
+    	<where>
+    	id = #{id}
               <choose>
               	<when test="col=='btitle'">
-                      btitle like '%'||#{word}||'%' and id = #{id}
+                      and btitle like '%'||#{bword}||'%' 
                   </when>
                   <when test="col=='bcontents'">
-                      bcontents like '%'||#{word}||'%' and id = #{id}
+                      and bcontents like '%'||#{bword}||'%' 
                   </when>
                   <when test="col=='btitle_bcontents'">
-                     btitle like '%'||#{word}||'%'
+                     and btitle like '%'||#{bword}||'%'
                      or
-                     bcontents like '%'||#{word}||'%' and id = #{id}
+                     bcontents like '%'||#{bword}||'%'
                   </when>
               </choose>
            </where>
@@ -142,19 +145,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		from (                                                                                                                                                                    
 	 			select bbsno, bcate, btitle, id, bview, bdate           
 	 			from bbs
-	 			where id = #{id}
+	 			
     <where>
+    id = #{id}
               <choose>
               	<when test="col=='btitle'">
-                      btitle like '%'||#{word}||'%' and id = #{id}
+                      and btitle like '%'||#{bword}||'%'
                   </when>
                   <when test="col=='bcontents'">
-                      bcontents like '%'||#{word}||'%' and id = #{id}
+                      and bcontents like '%'||#{bword}||'%'
                   </when>
                   <when test="col=='btitle_bcontents'">
-                     btitle like '%'||#{word}||'%'
+                     and btitle like '%'||#{bword}||'%'
                      or
-                     bcontents like '%'||#{word}||'%' and id = #{id}
+                     bcontents like '%'||#{bword}||'%'
                   </when>
               </choose>
            </where>
@@ -172,19 +176,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="rtotal" parameterType="Map" resultType="int">
     select count(*) from review
-    where id = #{id}
+    
     <where>
+     id = #{id}
               <choose>
               	<when test="col=='htitle'">
-                      htitle like '%'||#{word}||'%' and id = #{id}
+                      and htitle like '%'||#{rword}||'%'
                   </when>
                   <when test="col=='hcontents'">
-                      hcontents like '%'||#{word}||'%' and id = #{id}
+                      and hcontents like '%'||#{rword}||'%'
                   </when>
                   <when test="col=='htitle_hcontents'">
-                     htitle like '%'||#{word}||'%'
+                     and htitle like '%'||#{rword}||'%'
                      or
-                     hcontents like '%'||#{word}||'%' and id = #{id}
+                     hcontents like '%'||#{rword}||'%'
                   </when>
               </choose>
            </where>
@@ -202,20 +207,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		from (                                                                                                                                                                    
 	 			select hugino, htitle, hcontents, hdate, star, sikname, stadium, sikurl           
 	 			from review inner join sikdang
-	 			on review.sikid = sikdang.sikid
-	 			and review.id = #{id}
+	 			on review.sikid = sikdang.sikid and review.id = #{id}
     <where>
+    
               <choose>
-              	<when test="col=='btitle'">
-                      htitle like '%'||#{word}||'%' and id = #{id}
+              	<when test="col=='htitle'">
+                      htitle like '%'||#{rword}||'%'
                   </when>
-                  <when test="col=='bcontents'">
-                      hcontents like '%'||#{word}||'%' and id = #{id}
+                  <when test="col=='hcontents'">
+                      hcontents like '%'||#{rword}||'%'
                   </when>
-                  <when test="col=='btitle_bcontents'">
-                     htitle like '%'||#{word}||'%'
+                  <when test="col=='htitle_hcontents'">
+                     htitle like '%'||#{rword}||'%'
                      or
-                     hcontents like '%'||#{word}||'%' and id = #{id}
+                     hcontents like '%'||#{rword}||'%'
                   </when>
               </choose>
            </where>

@@ -146,7 +146,7 @@
          </div>
          <div class="form-group">
            <input type="text" class="form-control" placeholder="Enter 검색어" 
-           name="word" value="${word}">
+           name="bword" value="${bword}">
          </div>
          <button type="submit" class="btn btn-default" >검색</button>
        </form>
@@ -249,7 +249,7 @@ ${mpaging}
          </div>
          <div class="form-group">
            <input type="text" class="form-control" placeholder="Enter 검색어" 
-           name="word" value="${word}">
+           name="rword" value="${rword}">
          </div>
          <button type="submit" class="btn btn-default" >검색</button>
        </form>
@@ -356,7 +356,7 @@ ${mpaging}
 
 	<!-- 검색 input + 등록 button-->
 	<div class="form-group">
-		<input type="text" class="form-control" name="word" required="required" value="${word}">
+		<input type="text" class="form-control" name="tword" required="required" value="${tword}">
 	</div>
 		<button class="btn btn-info">검색</button>
 		<button class="btn btn-default" type="button" 
