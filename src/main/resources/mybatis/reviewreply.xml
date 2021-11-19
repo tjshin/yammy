@@ -32,4 +32,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where hugino = #{hugino}
 	</select>
 	
+	<insert id="create" parameterType="com.study.reviewreply.ReviewreplyDTO">
+		insert into reviewreply (hugireno, hrecontents, hredate,
+								 hugino, id)	
+		values ((select nvl(max(hugireno), 0) + 1 from reviewreply),
+				#{hrecontents}, sysdate, #{hugino}, #{id})
+	</insert>
+	
 </mapper>

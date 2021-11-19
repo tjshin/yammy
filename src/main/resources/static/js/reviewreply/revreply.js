@@ -40,7 +40,7 @@ class ReplyService {
  
             $.ajax({
                 type: 'post',
-                url: './reply/create',
+                url: '/review/reply/create',
                 data: JSON.stringify(reply),
                 contentType: "application/json; charset=utf-8",
                 success: function (result, status, xhr) {
@@ -59,7 +59,7 @@ class ReplyService {
  
     get(hugireno) {
         return new Promise((resolve, reject) => {
-            $.get("./reply/" + hugireno + "", function (result) {
+            $.get("/review/reply/" + hugireno + "", function (result) {
                 resolve(result);
             }).fail(function (xhr, status, err) {
                 reject(err);
@@ -72,7 +72,7 @@ class ReplyService {
             console.log("hugireno: " + reply.hugireno);
             $.ajax({
                 type: 'put',
-                url: './reply/' + reply.rnum,
+                url: '/review/reply/' + reply.rnum,
                 data: JSON.stringify(reply),
                 contentType: "application/json; charset=utf-8",
                 success: function (result, status, xhr) {
@@ -90,7 +90,7 @@ class ReplyService {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'delete',
-                url: './reply/' + hugireno,
+                url: '/review/reply/' + hugireno,
                 success: function (deleteResult, status, xhr) {
                     resolve(deleteResult);
  

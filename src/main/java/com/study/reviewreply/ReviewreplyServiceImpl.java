@@ -24,4 +24,10 @@ public class ReviewreplyServiceImpl implements ReviewreplyService {
 		return mapper.total(hugino);
 	}
 
+	@Override
+	public int create(ReviewreplyDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.create(dto);
+	}
+
 }

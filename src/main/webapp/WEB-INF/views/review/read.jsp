@@ -124,8 +124,8 @@
 					<div class="col-md-12">
                         <div id="blog-comments" class="blog-post-comments">
                             <h3>댓글 수: ${reviewrcount }</h3>
-                            <div class="blog-comments-content">
-                                <div class="chat list-group">
+                            <div class="blog-comments-content list-group">
+                                <div class="media">
                                     
                                     <div class="media-body">
                                         <div class="media-heading">
@@ -148,22 +148,21 @@
                         <div class="comment-form">
                             <h3>댓글 남기기</h3>
                             <div class="widget-inner">
-                            	<form action="#" method="post">
                                 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p>
-                                            <label for="comment">댓글 내용:</label>
-                                            <textarea name="comment" id="comment" rows="5"></textarea>
+                                            <label for="hrecontents">댓글 내용:</label>
+                                            <textarea name="hrecontents" rows="5"></textarea>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="mainBtn" type="submit" name="submit" value="댓글 등록" id="submit">
+                                        <input class="mainBtn" type="button" name="submit" value="댓글 등록" id="mainBtn">
                                     </div>
                                 </div>
-                                </form>
+                                
                             </div> <!-- /.widget-inner -->
                         </div> <!-- /.widget-main -->
                     </div> <!-- /.col-md-12 -->
@@ -179,6 +178,7 @@ var nPage = "${nPage}";
 var nowPage = "${param.nowPage}";
 var colx = "${param.col}";
 var wordx = "${param.word}";
+var id = "${sessionScope.id}";
 </script>	
 <script type="text/javascript" src="${root}/js/reviewreply/revreply.js"></script>
 		

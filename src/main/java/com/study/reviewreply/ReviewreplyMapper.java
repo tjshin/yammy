@@ -9,4 +9,6 @@ public interface ReviewreplyMapper {
 
 	int total(int hugino);
 
+	int create(ReviewreplyDTO dto);
+
 }

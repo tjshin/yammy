@@ -3,7 +3,7 @@ $(function () {//페이지가 로딩될때
    showPage();
 });//page loading function end  
 
-let replyUL = $(".chat");
+let replyUL = $(".blog-comments-content");
 let replyPageFooter = $(".comments-footer");
 
 let param = "nPage=" + nPage;
@@ -21,10 +21,11 @@ function showList() {
       let str = ""
 
       for (var i = 0; i < list.length ; i++) {
-        str += "<div class='media-body' data-hugireno='" + list[i].hugireno + "'>";
+        str += "<div class='media' data-hugireno='" + list[i].hugireno + "'>";
+        str += "<div class='media-body'>";
         str += "<div class='media-heading'><h4>" + list[i].nick + "</h4>";
-        str += "<a href='#'><span>" + list[i].hredate + "</span><span>댓글</span></a></div><p>";
-        str += replaceAll(list[i].hrecontents, '\n', '<br>') + "</p></div>";
+        str += "<span>" + list[i].hredate + "</span></div><p>";
+        str += replaceAll(list[i].hrecontents, '\n', '<br>') + "</p></div></div>";
       }
 
       replyUL.html(str);
@@ -40,11 +41,44 @@ function showPage(){
     replyService
    .getPage(param)
    .then(paging => {
-      console.log(paging);
       let str = "<div><small class='text-muted'>" + paging + "</small></div>";
 
       replyPageFooter.html(str);
 	});
 }
+
+
+let widget = $(".widget-inner");
+let hrecontents = widget.find("textarea[name='hrecontents']");
+let mainBtn = $("#mainBtn");
+//댓글 생성
+mainBtn.on("click", function (e) {
+ 
+  if (hrecontents.val() == '') {
+    alert("댓글을 입력하세요")
+    return;
+  }
+ 
+  let reply = {
+    hrecontents: hrecontents.val(),
+    id: id,
+    hugino: hugino
+  };
+  replyService
+    .add(reply)
+    .then(result => {
+ 
+      //alert(result);
+ 
+      //modal.find("input").val("");
+      //modal.modal("hide");
+ 
+      showList();
+      showPage();
+ 
+    }); //end add
+ 
+}); //end modalRegisterBtn.on
+
 
 
