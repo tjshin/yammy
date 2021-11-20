@@ -27,7 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update ticket
 		set stadium =#{stadium},
 		tickettitle = #{tickettitle},
-		ticketcontents = #{ticketcontents}
+		ticketcontents = #{ticketcontents},
+		location =#{location},
+		gamedate =#{gamedate}
 		where ticketno =#{ticketno}
 	</update>
 
