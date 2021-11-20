@@ -76,8 +76,7 @@
 								<span class="meta-date">${dto.hdate }</span>
 								<c:set var="reviewrcount"
 									value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
-								<span class="meta-comments">댓글 수: ${reviewrcount }</span> <span
-									class="meta-author"><a href="#blog-author">${dto.nick }</a></span>
+								<span class="meta-author"> ${dto.nick }</span>
 								<span>/</span>
 
 								<c:if test="${dto.stadium == 1}">

@@ -4,6 +4,18 @@ values((select nvl(max(hugireno),0)+1 from reviewreply),
         sysdate,
         '30',
         'skkutj');
+
+--제약 조건명 확인
+select * from all_constraints
+where table_name = 'reviewreply';
+--제약 조건 삭제
+alter table "ADMIN"."REVIEWREPLY" drop constraint "SYS_C005801";
+
+alter table reviewreply
+add constraint allreplydelete
+    foreign key (hugino)
+    references review(hugino)
+    on delete cascade;
         
 select hugireno, hrecontents, hredate, hugino, m.nick
 from reviewreply rr inner join member m

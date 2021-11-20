@@ -294,9 +294,7 @@ ${mpaging}
     </td>
     <td>
     <a href="${root }/review/read?hugino=${rdto.hugino}">${rdto.htitle}</a>
-    <c:if test="${util:newImg(fn:substring(rdto.hdate,0,10)) }">
-         <img src="${pageContext.request.contextPath}/images/new.gif"> 
-    </c:if>
+    
     </td>
     <td><a href="${rdto.sikurl }">${rdto.sikname }</a></td>
     <td>${rdto.hdate}</td>
@@ -307,8 +305,9 @@ ${mpaging}
 								<c:if test="${rdto.star == 4}">★★★★</c:if>
 								<c:if test="${rdto.star == 5}">★★★★★</c:if>
     </td>
-    <td style="font-size:20px;"><a href="${root }/review/update?hugino=${rdto.hugino }"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
-    <td style="font-size:20px;"><a href="${root }/review/delete?hugino=${rdto.hugino }"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
+    <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}" />
+    <td style="font-size:20px;"><a href="${root }/review/update?hugino=${rdto.hugino }${urlhelper}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
+    <td style="font-size:20px;"><a href="${root }/review/delete?hugino=${rdto.hugino }${urlhelper}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
    </tr>
    </c:forEach>
    </c:otherwise>

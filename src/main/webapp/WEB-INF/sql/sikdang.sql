@@ -9,15 +9,14 @@ CREATE TABLE SIKDANG (
        coy                  VARCHAR2(50) NULL,
        cox                  VARCHAR2(50) NULL,
        roadadd              VARCHAR2(200) NULL,
-       reviewcnt            NUMBER(10) NULL,
        distance             NUMBER(30) NULL,
        PRIMARY KEY (sikid)
 );
 
 select * from sikdang;
-
-alter table sikdang add reviewcnt number(10) null;
+alter table sikdang drop column reviewcnt;
 alter table sikdang add distance number(30) null;
+
 
 update sikdang set distance = 0;
 

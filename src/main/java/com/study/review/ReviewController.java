@@ -162,7 +162,6 @@ public class ReviewController {
 		sdto.setDistance(stadist);		
 				
 		if (service.create(dto) > 0) {
-			sikdangservice.reviewcntUp(sikid);
 			sikdangservice.distance(sdto);
 			return "redirect:/review/list";			
 		} else {
@@ -237,11 +236,8 @@ public class ReviewController {
 	@PostMapping("/review/delete")
 	public String delete (int hugino, HttpServletRequest request,
 			RedirectAttributes redirect) {
-		
-		String sikid = service.read(hugino).getSikid();
-				
+						
 		if(service.delete(hugino) > 0) {
-			sikdangservice.reviewcntDn(sikid);
 			redirect.addAttribute("col", request.getParameter("col"));
 			redirect.addAttribute("word", request.getParameter("word"));
 			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
