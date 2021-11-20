@@ -99,7 +99,7 @@
 					</tr>
 					<tr>
 						<th>작성된 리뷰</th>
-						<td>dto.reviewcnt 자리 / <a href=
+						<td>${dto.reviewcnt } / <a href=
 							"${root }/review/list?col=sikname&word=${dto.sikname}&nowPage=1"
 							>☜이 식당에 작성된 리뷰 목록 </a></td>
 					</tr>
@@ -122,6 +122,7 @@
 								class="main-button accent-color">DB 삭제</a>
 						
 					</div>
+					<br><br><br>  
 				</div>
 
 

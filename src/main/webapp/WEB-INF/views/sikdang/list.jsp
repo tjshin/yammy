@@ -104,7 +104,7 @@
 		    <a href="${dto.sikurl }" target="_blank">${dto.sikurl}</a>
 		    </td>
 		    <td><a href="${root }/review/list?col=sikname&word=${dto.sikname}&nowPage=1"
-		    		>dto.reviewcnt 자리</a></td>
+		    		>${dto.reviewcnt }</a></td>
 		    <td>
 		        <a href="${root }/admin/sikdang/delete?sikid=${dto.sikid}${urlhelper}"
 		        ><img src="${root }/images/trash-alt-solid.svg"

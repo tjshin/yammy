@@ -105,7 +105,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <update id="update" parameterType="com.study.review.ReviewDTO">
 	update review
-	set htitle = #{htitle}, hcontents = #{htitle},
+	set htitle = #{htitle}, hcontents = #{hcontents},
 	    stadium = #{stadium}, star = #{star}
 	where hugino = #{hugino}
 </update>

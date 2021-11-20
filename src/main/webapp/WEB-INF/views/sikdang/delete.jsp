@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-12">
                 
-                <h2>리뷰 삭제</h2>
+                <h2>식당 DB 삭제</h2>
 				<form class="form-horizontal" action="/admin/sikdang/delete" method="post">
 					<input type="hidden" name="sikid" value="${param.sikid}">
 					<input type='hidden' name="col" value="${param.col}">
@@ -53,7 +53,7 @@
 						<div>
 							<button class="mainBtn" type="submit">삭제</button>
 							<button class="mainBtn" type="reset" onclick="goback();">
-							돌아가기</button>   
+							돌아가기</button> 
 							
 						</div>
 					</div>

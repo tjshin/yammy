@@ -208,18 +208,23 @@ public class ReviewController {
 	@PostMapping("/review/update")
 	public String update(ReviewDTO dto, HttpServletRequest request,
 						RedirectAttributes redirect) throws IOException {
+		
 		if (service.update(dto) > 0) {
-			redirect.addAttribute("col", request.getParameter("col"));
-			redirect.addAttribute("word", request.getParameter("word"));
-			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
-			return "redirect:/review/list";
+			if(request.getParameter("mtest") == "") {
+				redirect.addAttribute("col", request.getParameter("col"));
+				redirect.addAttribute("word", request.getParameter("word"));
+				redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+				return "redirect:/review/list";
+			} else {			
+				return "redirect:/member/mypage";
+			}
 		} else {
 			return "/review/error";
 		}
 	}
 	
 	@GetMapping("/review/delete")
-	public String delete(int hugino, HttpSession session) {
+	public String delete(int hugino, HttpSession session, HttpServletRequest request) {
 		
 		String sessionid = (String)session.getAttribute("id");
 		String recordid = service.read(hugino).getId();
@@ -238,10 +243,14 @@ public class ReviewController {
 			RedirectAttributes redirect) {
 						
 		if(service.delete(hugino) > 0) {
-			redirect.addAttribute("col", request.getParameter("col"));
-			redirect.addAttribute("word", request.getParameter("word"));
-			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
-			return "redirect:/review/list";
+			if(request.getParameter("mtest") == "") {
+				redirect.addAttribute("col", request.getParameter("col"));
+				redirect.addAttribute("word", request.getParameter("word"));
+				redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+				return "redirect:/review/list";
+			} else {
+				return "redirect:/member/mypage";
+			}
 		} else {
 			return "/review/error";
 		}

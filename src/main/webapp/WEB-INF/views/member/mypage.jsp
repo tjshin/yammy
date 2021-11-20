@@ -306,8 +306,11 @@ ${mpaging}
 								<c:if test="${rdto.star == 5}">★★★★★</c:if>
     </td>
     <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}" />
-    <td style="font-size:20px;"><a href="${root }/review/update?hugino=${rdto.hugino }${urlhelper}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
-    <td style="font-size:20px;"><a href="${root }/review/delete?hugino=${rdto.hugino }${urlhelper}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
+    <td style="font-size:20px;"><a href="${root }/review/update?hugino=${rdto.hugino }${urlhelper}&mtest=y">
+    <img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
+    
+    <td style="font-size:20px;"><a href="${root }/review/delete?hugino=${rdto.hugino }${urlhelper}&mtest=y">
+    <img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
    </tr>
    </c:forEach>
    </c:otherwise>
