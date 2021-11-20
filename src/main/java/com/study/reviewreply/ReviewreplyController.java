@@ -29,12 +29,22 @@ public class ReviewreplyController {
 	@GetMapping("/review/reply/list/{hugino}/{sno}/{eno}")
 	public ResponseEntity<List<ReviewreplyDTO>> getList(@PathVariable("hugino") int hugino,
 			@PathVariable("sno") int sno, @PathVariable("eno") int eno) {
+		
 		Map map = new HashMap();
+		
 		map.put("sno", sno);
 		map.put("eno", eno);
 		map.put("hugino", hugino);
 
 		return new ResponseEntity<List<ReviewreplyDTO>>(service.list(map), HttpStatus.OK);
+	}
+	
+	@GetMapping("/review/reply/total/{hugino}")
+	public ResponseEntity<Integer> getTotal(@PathVariable("hugino") int hugino) {
+		
+		int replyCnt = service.total(hugino);
+		
+		return new ResponseEntity<>(replyCnt, HttpStatus.OK);
 	}
 
 	@GetMapping("/review/reply/page")
@@ -80,5 +90,6 @@ public class ReviewreplyController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
+	
 
 }

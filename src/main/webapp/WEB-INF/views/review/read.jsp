@@ -164,7 +164,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-comments" class="blog-post-comments">
-							<h3>댓글 수: ${reviewrcount }</h3>
+							<div class="comments-count"><h3>댓글 수: #</h3></div>
 							<div class="blog-comments-content list-group">
 								<div class="media">
 
@@ -267,6 +267,7 @@
 		var hugino = "${dto.hugino}";
 		var sno = "${sno}";
 		var eno = "${eno}";
+		var total = "${total}";
 		var nPage = "${nPage}";
 		var nowPage = "${param.nowPage}";
 		var colx = "${param.col}";

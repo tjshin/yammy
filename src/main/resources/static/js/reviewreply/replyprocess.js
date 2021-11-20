@@ -1,6 +1,7 @@
 $(function () {//페이지가 로딩될때
    showList();
    showPage();
+   showTotal();
 });//page loading function end  
 
 let replyUL = $(".blog-comments-content");
@@ -45,6 +46,16 @@ function showList() {
     })
 
 }//showList() end
+
+function showTotal() {
+	replyService
+		.getTotal({ hugino: hugino })
+		.then(replyCnt => {
+			let str = "<h3>댓글 수: " + replyCnt + "</h3>";
+			
+			$(".comments-count").html(str);
+		});
+}
 
 function replaceAll(str, searchStr, replaceStr) {
   return str.split(searchStr).join(replaceStr);
@@ -94,9 +105,11 @@ mainBtn.on("click", function (e) {
  
       showList();
       showPage();
+      showTotal();
  
     }); //end add
     document.getElementById("hrecontents").value='';
+    
 }); //end modalRegisterBtn.on
 
 replyUL.on("click", ".media button", function (e) {
@@ -133,6 +146,7 @@ modalModBtn.on("click", function(e) {
 			modal.modal("hide");
 			showList();
 			showPage();
+			showTotal();
 		});
 
 });//modify 
@@ -150,6 +164,7 @@ modalRemoveBtn.on("click", function(e) {
 			modal.modal("hide");
 			showList();
 			showPage();
+			showTotal();
 		});
 
 });//remove

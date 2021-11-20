@@ -10,11 +10,23 @@ class ReplyService {
                 function (data) {
                     //alert(data);
                     resolve(data); // 댓글 목록만 가져오는 경우 
-                    //callback(data.replyCnt, data.list); //댓글 숫자와 목록을 가져오는 경우 
+                    //callback(data.total, data.list); //댓글 숫자와 목록을 가져오는 경우 
                 }
             );
         });
     }
+    
+    getTotal(param) {
+		return new Promise((resolve, reject) => {
+			var hugino = param.hugino;
+			
+			$.getJSON("/review/reply/total/" + hugino ,
+				function (data) {
+					resolve(data);
+				}
+			);
+		});
+	}
 
     getPage(param) {
         return new Promise((resolve, reject) => {
