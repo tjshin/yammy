@@ -222,7 +222,7 @@ public class TicketController {
 		
 		
 		
-			// 검색관련------------------------
+			// 검색관련-----------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
 
@@ -230,7 +230,7 @@ public class TicketController {
 			word = "";
 		}
 
-		// 페이지관련-----------------------
+		// 페이지관련----------------------
 		int nowPage = 1;// 현재 보고있는 페이지
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
