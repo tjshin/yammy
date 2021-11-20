@@ -103,6 +103,10 @@
 							"${root }/review/list?col=sikname&word=${dto.sikname}&nowPage=1"
 							>☜이 식당에 작성된 리뷰 목록 </a></td>
 					</tr>
+					<tr>
+						<th>인접 구장과의 직선 거리(m)</th>
+						<td>${dto.distance}</td>
+					</tr>
 
 				</table>
 				

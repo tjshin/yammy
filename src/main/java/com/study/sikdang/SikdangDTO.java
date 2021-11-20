@@ -14,5 +14,6 @@ public class SikdangDTO {
 	private String cox;
 	private String coy;
 	private int reviewcnt;
+	private double distance;
 
 }

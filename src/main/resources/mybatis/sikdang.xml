@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create" parameterType="com.study.sikdang.SikdangDTO">
 	insert into sikdang(
 	sikid, sikname, sikphone, roadadd,
-	jibunadd, sikurl, cox, coy, reviewcnt)
+	jibunadd, sikurl, cox, coy, reviewcnt, distance)
 	values(#{sikid}, #{sikname}, #{sikphone}, #{roadadd},
-	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, 0)
+	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, 0, 0)
 </insert>
 
 <select id="checkId" parameterType="String" resultType="int">
@@ -50,13 +50,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="adminlist" parameterType="Map"
 		resultType="com.study.sikdang.SikdangDTO">
 	select sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, reviewcnt, r
+			sikurl, cox, coy, reviewcnt, distance, r
 	from (
 	select sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, reviewcnt, rownum r
+			sikurl, cox, coy, reviewcnt, distance, rownum r
 	from (
 	select sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, reviewcnt
+			sikurl, cox, coy, reviewcnt, distance
 	from sikdang
 	<where>
 		<choose>
@@ -92,5 +92,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from sikdang
 	where sikid = #{sikid}
 </select>
+
+<update id="reviewcntUp" parameterType="String">
+	update sikdang
+	set reviewcnt = reviewcnt +1
+	where sikid = #{sikid}
+</update>
+
+<update id="reviewcntDn" parameterType="String">
+	update sikdang
+	set reviewcnt = reviewcnt -1
+	where sikid = #{sikid}
+</update>
+
+<update id="distance" parameterType="com.study.sikdang.SikdangDTO">
+	update sikdang
+	set distance = #{distance}
+	where sikid = #{sikid}
+</update>
     
 </mapper>

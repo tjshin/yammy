@@ -20,5 +20,11 @@ public interface SikdangService {
 	int delete(String sikid);
 
 	SikdangDTO read(String sikid);
+	
+	int reviewcntUp(String sikid);
+
+	int reviewcntDn(String sikid);
+
+	int distance(SikdangDTO sdto);
 
 }

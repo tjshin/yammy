@@ -121,16 +121,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where hugino = #{hugino}
 </delete>
 
-<update id="reviewcntUp" parameterType="String">
-	update sikdang
-	set reviewcnt = reviewcnt +1
-	where sikid = #{sikid}
-</update>
-
-<update id="reviewcntDn" parameterType="String">
-	update sikdang
-	set reviewcnt = reviewcnt -1
-	where sikid = #{sikid}
-</update>
-
 </mapper>
