@@ -11,6 +11,7 @@ function setConnected(connected) {
         $("#conversation").hide();
     }
     $("#msg").html("");
+    $("#enter").html("====================챗봇과 연결되었습니다.=====================");
 }
 
 function connect() {
@@ -20,7 +21,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/public', function (message) {
-            showMessage("받은 메시지: " + message.body); // 서버에 메시지 전달 후 리턴받는 메시지
+            showReceMessage(message.body); 
         });
     });
 }
@@ -35,13 +36,17 @@ function disconnect() {
 
 function sendMessage() {
     let message = $("#msg").val()
-    showMessage("보낸 메시지: " + message);
+    showSendMessage(message);
 
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); // 서버에 보낼 메시지
+    stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
 }
 
-function showMessage(message) {
-    $("#communicate").append("<tr><td>" + message + "</td></tr>");
+function showReceMessage(message) {
+    $("#chat-container").append("&nbsp;&nbsp;Yammy⚾<br/><div class='chat-box'><div class='chat' id='receMessage'>" + message + "</div></div><br/><br/>");
+}
+
+function showSendMessage(message) {
+    $("#chat-container").append("<div class='chat-box'><div class='chat' id='sendMessage'>" + message + "</div></div><br/><br/>");
 }
 
 $(function () {

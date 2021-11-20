@@ -6,14 +6,12 @@ import java.util.Map;
 
 import com.study.member.ReviewDTO;
 
-
-
 public interface MemberMapper {
 
 	int btotal(Map map);
 
 	int duplicatedId(String id);
-	
+
 	int duplicatedEmail(String email);
 
 	int create(MemberDTO dto);
@@ -31,7 +29,7 @@ public interface MemberMapper {
 	int total(Map map);
 
 	List<MemberDTO> list(Map map);
-	
+
 	MemberDTO mypage(String id);
 
 	int kakaoCreate(MemberDTO dto);

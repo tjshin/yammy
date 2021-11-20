@@ -2,12 +2,9 @@ package com.study.member;
 
 import java.util.List;
 
-
 import java.util.Map;
 
 import com.study.member.ReviewDTO;
-
-
 
 public interface MemberService {
 
@@ -30,7 +27,7 @@ public interface MemberService {
 	int total(Map map);
 
 	List<MemberDTO> list(Map map);
-	
+
 	MemberDTO mypage(String id);
 
 	int kakaoCreate(MemberDTO dto);
