@@ -35,9 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="create"
 		parameterType="com.study.ticket.TicketDTO">
-		insert into ticket (ticketno, tickettitle, ticketdate, stadium, ticketcontents, filename, id)
+		insert into ticket (ticketno, tickettitle, ticketdate, stadium, ticketcontents, filename, id ,location ,gamedate)
 		values((select nvl(max(ticketno),0)+1 from ticket), #{tickettitle}, 
-		sysdate, #{stadium}, #{ticketcontents}, #{filename} ,#{id})	
+		sysdate, #{stadium}, #{ticketcontents}, #{filename} ,#{id} ,#{location} ,#{gamedate})	
 	</insert>
 
  <select id="detail" parameterType="int" resultType="com.study.ticket.TicketDTO">
