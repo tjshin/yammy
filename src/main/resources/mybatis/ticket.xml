@@ -43,11 +43,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
  <select id="detail" parameterType="int" resultType="com.study.ticket.TicketDTO">
-       select ticketno, tickettitle, nick, to_char(ticketdate,'yyyy-mm-dd HH24:MI:SS') ticketdate, stadium, ticketcontents, filename ,id ,mfilename ,r
+       select ticketno, tickettitle, nick, to_char(ticketdate,'yyyy-mm-dd HH24:MI:SS') ticketdate, stadium, ticketcontents, filename ,id ,mfilename , location ,gamedate ,r
 		from (
-			select ticketno, tickettitle, nick, ticketdate, stadium, ticketcontents, filename, id, mfilename, rownum r
+			select ticketno, tickettitle, nick, ticketdate, stadium, ticketcontents, filename, id, mfilename, location ,gamedate, rownum r
 			from(
-				select ticketno, tickettitle, m.nick nick, ticketdate, stadium, ticketcontents, t.filename filename, t.id id  ,m.filename mfilename
+				select ticketno, tickettitle, m.nick nick, ticketdate, stadium, ticketcontents, t.filename filename, t.id id  ,m.filename mfilename ,location ,gamedate
 				from ticket t  inner join member m
 				on t.id =m.id )
 				)
@@ -74,11 +74,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" parameterType="Map"
 		resultType="com.study.ticket.TicketDTO">
-		select ticketno, tickettitle, nick, to_char(ticketdate,'yyyy-mm-dd HH24:MI:SS') ticketdate, stadium, ticketcontents, filename ,id ,r
+		select ticketno, tickettitle, nick, to_char(ticketdate,'yyyy-mm-dd HH24:MI:SS') ticketdate, stadium, ticketcontents, filename ,id ,r ,location ,gamedate
 		from (
-			select ticketno, tickettitle, nick, ticketdate, stadium, ticketcontents, filename,id, rownum r
+			select ticketno, tickettitle, nick, ticketdate, stadium, ticketcontents, filename,id, rownum r ,location ,gamedate
 			from(
-				select ticketno, tickettitle, m.nick nick, ticketdate, stadium, ticketcontents, t.filename filename, t.id id
+				select ticketno, tickettitle, m.nick nick, ticketdate, stadium, ticketcontents, t.filename filename, t.id id ,location ,gamedate
 				from ticket t  inner join member m
 				on t.id =m.id 
 				<where>
