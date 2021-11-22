@@ -114,4 +114,19 @@ public class MemberServiceImpl implements MemberService {
 	public List<TicketDTO> ticket(Map map) {
 		return mapper.ticket(map);
 	}
+
+	@Override
+	public int duplicatedNick(String nick) {
+		return mapper.duplicatedNick(nick);
+	}
+
+	@Override
+	public MemberDTO readByEmail(String email) {
+		return mapper.readByEmail(email);
+	}
+
+	@Override
+	public int updatePassword(Map map) {
+		return mapper.updatePassword(map);
+	}
 }

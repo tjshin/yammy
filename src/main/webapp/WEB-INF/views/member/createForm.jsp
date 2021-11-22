@@ -107,6 +107,22 @@
 			})
 		}
 	}
+	
+	function nickCheck(nick) {
+		if (nick == '') {
+			alert("닉네임을 입력하세요");
+			document.frm.nick.focus();
+		} else {
+			var url = "/member/nickcheck";
+			url += "?nick=" + nick;
+
+			$.get(url, function(data, textStatus) {
+
+				$("#nickcheck").text(data.str);
+
+			})
+		}
+	}
 
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
@@ -153,7 +169,7 @@
 	color: red;
 }
 
-#idcheck, #emailcheck {
+#idcheck, #emailcheck, #nickcheck {
 	color: red;
 	font-size: 13px;
 }
@@ -179,12 +195,13 @@
 	<!-- /.pageTitle -->
 
 	<div class="container">
-		<br /> <label class="col-sm-offset-2 col-sm-15">( * 필수입력사항)</label> <br />
+		<br /> <label class="col-sm-offset-2 col-sm-15">( <span id="need">*</span> 필수입력사항)</label> <br />
 
 		<form class="form-horizontal" action="create" method="post" name='frm'
 			enctype="multipart/form-data" onsubmit="return inCheck(this)">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="fnameMF">사진</label>
+				
 				<div class="col-sm-4">
 					<input type="file" class="form-control" id="fnameMF" name="fnameMF"
 						accept=".jpg,.gif,.png">
@@ -196,7 +213,7 @@
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="id" name="id">
 				</div>
-				<button type="button" class="btn btn-default col-sm-2"
+				<button type="button" class="btn btn-default col-sm-2" style="width:100px;"
 					onclick="idCheck(document.frm.id.value)">ID 중복확인</button>
 				<div id="idcheck"></div>
 			</div>
@@ -229,6 +246,9 @@
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="nick" name="nick">
 				</div>
+				<button type="button" class="btn btn-default col-sm-2" style="width:130px;"
+					onclick="nickCheck(document.frm.nick.value)">닉네임 중복확인</button>
+				<div id="nickcheck"></div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone"><span
@@ -244,7 +264,7 @@
 					<input type="email" class="form-control" id="email" name="email">
 				</div>
 
-				<button type="button" class="btn btn-default col-sm-2"
+				<button type="button" class="btn btn-default col-sm-2" style="width:120px;"
 					onclick="emailCheck(document.frm.email.value)">Email 중복확인</button>
 				<div id="emailcheck"></div>
 
@@ -257,7 +277,7 @@
 				</div>
 
 				<button type="button" class="btn btn-default col-sm-2"
-					onclick="sample6_execDaumPostcode()">주소검색</button>
+					onclick="sample6_execDaumPostcode()" style="width:85px;">주소검색</button>
 
 			</div>
 			<div class="form-group">
@@ -287,7 +307,6 @@
 					</select>
 				</div>
 			</div>
-			<br />
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-5">

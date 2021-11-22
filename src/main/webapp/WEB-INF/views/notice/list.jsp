@@ -22,6 +22,16 @@
        location.href=url;
      }  
   </script>
+  
+  <style>
+  table{
+   text-align:center;
+  }
+  
+  th{
+   text-align:center;
+  }
+  </style>
     
 </head>
 <body>

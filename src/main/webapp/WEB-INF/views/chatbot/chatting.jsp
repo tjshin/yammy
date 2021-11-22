@@ -49,38 +49,6 @@
 </script>
 
 <style>
-.button {
-	padding: 12px 15px;
-	font-size: 12px;
-	font-family: "Raleway", sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	-ms-border-radius: 2px;
-	-o-border-radius: 2px;
-	border-radius: 2px;
-}
-
-button.btn.btn-default {
-	background-color: #00a8d6;
-	color: white;
-	padding: 10px 12px;
-	font-size: 12px;
-	font-family: "Raleway", sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	-ms-border-radius: 2px;
-	-o-border-radius: 2px;
-	border-radius: 2px;
-}
-
-button.btn.btn-default:hover {
-	background-color: #31373a;
-	transition: all ease 0.5s 0s;
-}
 
 #main-container {
 	width: 600px;

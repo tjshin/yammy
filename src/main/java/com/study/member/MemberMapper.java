@@ -47,4 +47,10 @@ public interface MemberMapper {
 	int ttotal(Map map);
 
 	List<TicketDTO> ticket(Map map);
+
+	int duplicatedNick(String nick);
+
+	MemberDTO readByEmail(String email);
+
+	int updatePassword(Map map);
 }

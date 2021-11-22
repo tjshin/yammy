@@ -256,11 +256,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set phone =
 		#{phone},
 		nick = #{nick},
+		password = #{password},
 		email = #{email},
 		postcode = #{postcode},
 		address1 = #{address1},
 		address2 = #{address2},
 		favteam = #{favteam}
+		where id = #{id}
+	</update>
+	
+	<update id="updatePassword" parameterType="Map">
+		update member
+		set password
+		= #{password}
 		where id = #{id}
 	</update>
 
@@ -269,6 +277,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from member
 		where id = #{id}
+	</select>
+	
+	<select id="readByEmail" parameterType="String"
+		resultType="com.study.member.MemberDTO">
+		select *
+		from member
+		where email = #{email}
 	</select>
 
 	<select id="getGrade" parameterType="String" resultType="String">
@@ -296,6 +311,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*)
 		from member
 		where email=#{email}
+	</select>
+
+	<select id="duplicatedNick" parameterType="String"
+		resultType="int">
+		select count(*)
+		from member
+		where nick=#{nick}
 	</select>
 
 	<insert id="create" parameterType="com.study.member.MemberDTO">

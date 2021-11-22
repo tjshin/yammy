@@ -213,9 +213,9 @@ public class MemberController {
 
 		Map<String, String> map = new HashMap<String, String>();
 		if (cnt > 0) {
-			map.put("str", id + "은(는) 중복되어서 사용할 수 없습니다.");
+			map.put("str", "->'" + id + "' 은(는) 중복되어서 사용할 수 없습니다.");
 		} else {
-			map.put("str", id + "은(는) 사용 가능한 ID입니다.");
+			map.put("str", "->'" + id + "' 은(는) 사용 가능한 ID입니다.");
 		}
 		return map;
 	}
@@ -229,9 +229,26 @@ public class MemberController {
 		Map<String, String> map = new HashMap<String, String>();
 
 		if (cnt > 0) {
-			map.put("str", email + "은(는) 중복되어 사용할 수 없습니다.");
+			map.put("str", "->'" + email + "' 은(는) 중복되어 사용할 수 없습니다.");
 		} else {
-			map.put("str", email + "은(는) 사용 가능한 Email입니다.");
+			map.put("str", "->'" + email + "' 은(는) 사용 가능한 Email입니다.");
+		}
+
+		return map;
+	}
+
+	@GetMapping(value = "/member/nickcheck", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Map<String, String> nickcheck(String nick) {
+
+		int cnt = service.duplicatedNick(nick);
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		if (cnt > 0) {
+			map.put("str", "->'" + nick + "' 은(는) 중복되어 사용할 수 없습니다.");
+		} else {
+			map.put("str", "->'" + nick + "' 은(는) 사용 가능한 닉네임입니다.");
 		}
 
 		return map;
@@ -279,7 +296,7 @@ public class MemberController {
 
 			Cookie cookie = null;
 			String c_id = request.getParameter("c_id");
-			
+
 			if (c_id != null) {
 				cookie = new Cookie("c_id", c_id);
 				cookie.setMaxAge(60 * 60 * 24 * 365);
