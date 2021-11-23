@@ -71,7 +71,7 @@
          </div>
          <button type="submit" class="btn btn-default" >검색</button>
          <c:choose>
-         <c:when test="${not empty sessionScope.id && sessionScope.grade == 'A '}">
+         <c:when test="${not empty sessionScope.id && sessionScope.grade == 'A'}">
          <button type="button" class="btn btn-default" onclick="location.href='/admin/notice/create'">등록</button>
          </c:when>
          </c:choose>

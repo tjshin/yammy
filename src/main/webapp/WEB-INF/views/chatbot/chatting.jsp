@@ -153,11 +153,10 @@
 			</select>
 			<br/>
 			<br/>
-			<div class="form-group" style="width: 90%;">
+			<div class="form-group" style="width: 75%;">
 				<label for="msg"> 문의 ></label> <input type="text" id="msg"
 					class="form-control" placeholder="문의 사항을 입력하세요."
-					style="width: 90%;">
-
+					style="width: 92%;">
 			</div>
 			<button id="send" class="btn btn-default" disabled type="submit">보내기</button>
 		</form>

@@ -22,7 +22,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			System.out.println("접속 권한 있음 : " + grade);
 			return true;
 
-		} else if (grade.length() != 0 && grade.compareTo("A ") > 0) {
+		} else if (grade.length() != 0 && grade.compareTo("A") > 0) {
 
 			response.sendRedirect("/errorMsg");
 			return false;
