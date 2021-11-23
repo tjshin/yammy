@@ -71,7 +71,7 @@
 			return false;
 		}
 		if (f.job.selectedIndex == 0) {
-			alert("직업을 선택하세요");
+			alert("직업을 선택하세요.");
 			f.job.focus();
 			return false;
 		}
@@ -79,14 +79,12 @@
 
 	function idCheck(id) {
 		if (id == '') {
-			alert("아이디를 입력하세요");
+			alert("아이디를 입력하세요.");
 			document.frm.id.focus();
 		} else {
 			var url = "/member/idcheck";
 			var param = "id=" + id;
-
 			$.get(url, param, function(data, textStatus) {
-
 				$("#idcheck").text(data.str);
 			})
 		}
@@ -94,7 +92,7 @@
 
 	function emailCheck(email) {
 		if (email == '') {
-			alert("email를 입력하세요");
+			alert("email를 입력하세요.");
 			document.frm.email.focus();
 		} else {
 			var url = "/member/emailcheck";
