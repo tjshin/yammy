@@ -72,8 +72,8 @@
   
    <div class="form-group">
    <div class="col-sm-offset-2 col-sm-5">
-    <button class="btn">삭제</button>
-    <button type="button" class="btn" onclick="historyback()">취소</button>
+    <button class="btn btn-default">삭제</button>
+    <button type="button" class="btn btn-default2" onclick="historyback()">취소</button>
    </div>
  </div>
 </form>

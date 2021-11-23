@@ -28,9 +28,19 @@ function deleteM(){
 
 </head>
 <body>
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">티켓 양도</h2>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
 
-    <div class="container">
+    <div class="container"><br/>
         <div class="row">
         <div class="col-sm-3">
         <img class="img-rounded" src="/ticket/storage/${dto.filename}" style="width:729px">
@@ -60,11 +70,11 @@ function deleteM(){
     <form method ="post" action ="${root }/message/ticketmessage" >
 	<input type= "hidden" name ="ticketno" id="ticketno" class="form-control"  value="${dto.ticketno}">
 	
-    <button type="button" class="btn btn-success" onclick="messagesend()">쪽지 보내기</button>
+    <button type="button" class="btn btn-default3" onclick="messagesend()">쪽지 보내기</button>
    	    
        <c:choose>
 				<c:when test="${not empty sessionScope.id && sessionScope.grade =='A'}">
-					<button type="button" class="btn" onclick="deleteM()">삭제</button>
+					<button type="button" class="btn btn-default2" onclick="deleteM()">삭제</button>
 				</c:when>
 		</c:choose>
 		

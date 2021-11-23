@@ -181,6 +181,12 @@ public class MemberController {
 
 		return "/member/create";
 	}
+	
+	@GetMapping("/member/createForm")
+	public String create2() {
+
+		return "/member/create";
+	}
 
 	@PostMapping("/member/create")
 	public String create(MemberDTO dto) throws IOException {

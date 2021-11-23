@@ -27,11 +27,19 @@
 </head>
 
 <body>
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">티켓 목록</h2>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
 
-<div class="container">
-        <h3> 티켓 목록</h3>
-		
+<div class="container"><br/>
 	<!-- 참조 : member/list-->
 	<form class="form-inline" action="${root }/ticket/list">
 	
@@ -54,24 +62,19 @@
 	<div class="form-group">
 		<input type="text" class="form-control" name="word" required="required" value="${word}">
 	</div>
-		<button class="btn btn-info">검색</button>
-		<button class="btn btn-default" type="button" 
+		<button class="btn btn-default">검색</button>
+		<button class="btn btn-default2" type="button" 
 		onclick="location.href='${root }/ticket/create'">등록</button>
 
 </form>
-<<<<<<< HEAD
 
-<br>
-	
-=======
 <br>
 	<!-- 참조 : contents/mainlist-->
 
->>>>>>> master
 	<c:choose>   
         <c:when test="${empty list}"> <!-- 목록이 비어 있을경우-->
         <div class="row">
-        <h2>등록 된 티켓 목록이 없습니다.</h2> 
+        <h2>등록된 티켓 목록이 없습니다.</h2> 
         </div>
         </c:when>
         

@@ -239,8 +239,8 @@
 				<div >
 					<input id="agree" type="checkbox" name="agree" value="1">&nbsp;<label
 						for="agree"> 약관에 동의합니다. </label>
-					<button type="submit" class="btn">회원가입</button>
-					<button type="button" class="btn" onclick="history.back()">취소</button>
+					<button type="submit" class="btn btn-default">회원가입</button>
+					<button type="button" class="btn btn-default2" onclick="history.back()">취소</button>
 				</div>
 			</div>
 		</form>
