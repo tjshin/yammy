@@ -16,7 +16,7 @@
 <meta name="google-signin-client_id"
 	content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
 
-<title>계정 찾기</title>
+<title>패스워드 수정</title>
 
 <link
 	href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700itali"
@@ -33,27 +33,26 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
-
-<style>
-#remember {
-	font-size: 12px;
-}
-</style>
-
 <script>
 
-function sendEmail(form){
+function checkPassword(form){
 	
-	var mname = form.mname.value;
-	var email = form.email.value;
+	var password = form.password.value;
+	var passwordCheck = form.passwordCheck.value;
 	
-	if(mname == ""){
-		alert("이름을 입력하세요.");
-		form.mname.focus();
+	if(password == ""){
+		alert("수정하실 패스워드를 입력하세요.");
+		form.password.focus();
 		return false;
-	}else if(email == ""){
-		alert("이메일을 입력하세요.");
-		form.email.focus();
+	}if(passwordCheck == ""){
+		alert("패스워드 확인을 입력하세요.");
+		form.passwordCheck.focus();
+		return false;
+	}if (password != passwordCheck) {
+		alert("패스워드와 패스워드 확인이 일치하지 않습니다.");
+		form.password.value = "";
+		form.passwordCheck.value = "";
+		form.password.focus();
 		return false;
 	}
 }
@@ -64,20 +63,27 @@ function sendEmail(form){
 	<section id="homeIntro" class="parallax first-widget">
 		<div class="parallax-overlay">
 			<div class="container home-intro-content">
-				<h2>Email 본인 확인</h2>
-				<br />
+
+				<h4>${dto.mname } 님의 아이디는 "${dto.id }"입니다</h4><br/>
+				
 				<div class="row">
 					<div class="col-md-12">
-
 						<div class="container" align="center" style="margin-left: 100px;">
-							<form id="form" class="form-horizontal" action="${root }/member/sendEmail"
-								method="post" onsubmit="return sendemail(this)">
-								
+							<form id="form" class="form-horizontal" action="${root }/member/modify"
+								method="post" onsubmit="return checkPassword(this)">
+								<input type="hidden" id="id" name="id" value="${dto.id }">
 								<div class="form-group">
-									<label class="control-label col-sm-3" for="id">Email</label>
+									<label class="control-label col-sm-3" for="id">Password</label>
 									<div class="col-sm-4">
-										<input type="text" class="form-control" id="email"
-											placeholder="Email을 입력하세요." name="email" required="required">
+										<input type="password" class="form-control" id="password"
+											placeholder="수정하실 패스워드를 입력하세요." name="password" required="required">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-3" for="id">Password 확인</label>
+									<div class="col-sm-4">
+										<input type="password" class="form-control" id="passwordCheck"
+											placeholder="패스워드를 한 번 더 입력하세요." name="passwordCheck" required="required">
 									</div>
 								</div>
 								<br />

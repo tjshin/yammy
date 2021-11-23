@@ -208,8 +208,8 @@ function inCheck(f){
             
             <div class="form-group">
               <label class="control-label col-sm-2" for="favteam">응원구단 선택</label>
-              <div class="col-sm-6">          
-                <select name="favteam" id="favteam">
+              <div class="col-sm-6" >          
+                <select class="form-control" name="favteam" id="favteam" style="width:37%; height:30px;">
 		        <option value="없음">없음</option>
 		        <option value="NC 다이노스">NC 다이노스</option>
 		        <option value="두산 베어스">두산 베어스</option>
@@ -235,12 +235,8 @@ function inCheck(f){
             </div>
           </form>
         
-        <br><br>
+        <br>
         </div>
-
-<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
 
 </body>
 </html>

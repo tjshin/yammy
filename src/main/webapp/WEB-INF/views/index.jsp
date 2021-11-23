@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>기본페이지</title>
+<title>야구에 미치다 YAMMY</title>
 <meta charset="utf-8">
 
 <meta name="viewport"
@@ -18,6 +18,7 @@
 
 <body>
 <div class = "first-widget parallax"> </div>
+
 
 
     <section class="cta clearfix">

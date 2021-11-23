@@ -1,34 +1,28 @@
-<%@ page contentType="text/html; charset=UTF-8" %> 
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>약관동의</title>
-    <meta name="keywords" content="">
-	<meta name="description" content="">
-    <meta name="author" content="templatemo">
-    <!-- 
-	Medigo Template
-	http://www.templatemo.com/preview/templatemo_460_medigo
-    -->
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>약관동의</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="templatemo">
 
-	<!-- Google Fonts -->
-	<link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700itali" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600" rel="stylesheet">
+<link
+	href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700itali"
+	rel="stylesheet">
+<link
+	href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600"
+	rel="stylesheet">
+<link rel="stylesheet" href="bootstrap/bootstrap.css">
+<link rel="stylesheet" href="css/misc.css">
+<link rel="stylesheet" href="css/blue-scheme.css">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="css/misc.css">
-	<link rel="stylesheet" href="css/blue-scheme.css">
-	
-	<!-- JavaScripts -->
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/jquery-migrate-1.2.1.min.js"></script>
-	
-
-
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
 
 </head>
 <body>
@@ -39,26 +33,27 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
 						<h2 class="page-title">약관동의</h2>
-					</div> <!-- /.col-md-6 -->
-				</div> <!-- /.row -->
-			</div> <!-- /.container -->
-		</div> <!-- /.parallax-overlay -->
-	</div> <!-- /.pageTitle -->
+					</div>
+					<!-- /.col-md-6 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /.parallax-overlay -->
+	</div>
+	<!-- /.pageTitle -->
 
 	<div class="container">
-        <h2 class="col-sm-offset-1 col-sm-11"></h2>
-        <form class="form-horizontal" 
-              action="createForm"
-              method="post"
-              onsubmit="return send()"
-              name = "form"
-              >
-         
-          
-          <div class="form-group">
-            <label class="control-label col-sm-1" for="content"></label>
-            <div class="col-sm-8">
-            <textarea rows="20" cols="100" id="content" name="content" class="form-control">Yammy 서비스약관 (2021. 12. 3 부터 유효) 
+		<h2 class="col-sm-offset-1 col-sm-11"></h2>
+		<form class="form-horizontal" action="createForm" method="post"
+			onsubmit="return send()" name="form">
+
+			<div class="form-group">
+				<label class="control-label col-sm-1" for="content"></label>
+				<div class="col-sm-8" style="margin: auto 250px;">
+					<textarea rows="20" cols="100" id="content" name="content"
+						class="form-control">Yammy 서비스약관 (2021. 12. 3 부터 유효) 
          
         제1조(목적 등) 
          
@@ -77,7 +72,7 @@
         제3조(회원 가입) 
          
           
-        ① 이용자가 되고자 하는 자는 Yammy이 정한 가입 양식에 따라 회원정보를 기입하고 "등록하기" 단추를 누르는 방법으로 회원 가입을 신청합니다.  
+        ① 이용자가 되고자 하는 자는 Yammy가 정한 가입 양식에 따라 회원정보를 기입하고 "등록하기" 단추를 누르는 방법으로 회원 가입을 신청합니다.  
           
         ② Yammy는 제1항과 같이 회원으로 가입할 것을 신청한 자가 다음 각 호에 해당하지 않는 한 신청한 자를 회원으로 등록합니다.  
           
@@ -237,43 +232,34 @@
          
           
         본 약관은 2021. 12. 3. 부터 적용하고, 2021. 8. 23.부터 적용되던 종전의 약관은 본 약관으로 대체합니다. </textarea>
-            </div>
-          </div>
-          
-           <div class="form-group">
-           <div class="col-sm-offset-2 col-sm-5">
-            <input id="agree" type="checkbox" name="agree" value="1" ><label for="agree"> 약관에 동의합니다. </label>
-            <button type="submit" class="btn"> 회원가입</button>
-            <button type="button" class="btn" onclick="history.back()">취소</button>
-           </div>
-         </div>
-        </form>
-        </div>
-        
-        
-        	<script>
-			function send(){
-				var f = document.form;
-				
-				//alert(agree);
-			
-				if(f.agree.checked == false){
-					alert("약관에 동의해 주세요.");
-					f.agree.focus();
-					return false;
-				}else{
-					return true;
-					}
+				</div>
+			</div>
+
+			<div class="form-group"  style="margin: 10px 400px;">
+				<div >
+					<input id="agree" type="checkbox" name="agree" value="1">&nbsp;<label
+						for="agree"> 약관에 동의합니다. </label>
+					<button type="submit" class="btn">회원가입</button>
+					<button type="button" class="btn" onclick="history.back()">취소</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<script>
+		function send() {
+			var f = document.form;
+
+			if (f.agree.checked == false) {
+				alert("약관에 동의해 주세요.");
+				f.agree.focus();
+				return false;
+			} else {
+				return true;
 			}
-			</script>
-        
-        
-        
-        	<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
-
-
+		}
+	</script>
 
 </body>
 </html>

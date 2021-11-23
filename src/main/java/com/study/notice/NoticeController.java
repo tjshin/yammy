@@ -23,125 +23,118 @@ public class NoticeController {
 	@Autowired
 	@Qualifier("com.study.notice.NoticeServiceImpl")
 	private NoticeService service;
-	
+
 	@RequestMapping("/notice/list")
 	public String list(HttpServletRequest request) {
-		
+
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
-		if(col.equals("total")) {
+		if (col.equals("total")) {
 			word = "";
 		}
-		
+
 		int nowPage = 1;
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
 		int recordPerPage = 5;
-		
-		int sno = ((nowPage-1) * recordPerPage) + 1;
+
+		int sno = ((nowPage - 1) * recordPerPage) + 1;
 		int eno = nowPage * recordPerPage;
-		
+
 		Map map = new HashMap();
 		map.put("col", col);
-	    map.put("word", word);
-	    map.put("sno", sno);
-	    map.put("eno", eno);
-		
-	    int total = service.total(map);
-//	    System.out.println("total : " + total);
-	   
-		 
-	    List<NoticeDTO> list = service.list(map);
-	    
-//	    System.out.println("list size : "+list.size());
-	 
-	    String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
-	   System.out.println("paging : "+paging);
-	    
-	    request.setAttribute("list", list);
-	    request.setAttribute("nowPage", nowPage);
-	    request.setAttribute("col", col);
-	    request.setAttribute("word", word);
-	    request.setAttribute("paging", paging);
-		
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+
+		int total = service.total(map);
+
+		List<NoticeDTO> list = service.list(map);
+
+		String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
+
+		request.setAttribute("list", list);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("paging", paging);
+
 		return "/notice/list";
 	}
-	
+
 	@GetMapping("/notice/read")
 	public String read(int noticeno, Model model) {
-		
+
 		service.upCnt(noticeno);
-		
+
 		NoticeDTO dto = service.read(noticeno);
-		
+
 		String ncontent = dto.getNcontents().replaceAll("\r\n", "<br>");
-		
+
 		dto.setNcontents(ncontent);
 		model.addAttribute("dto", dto);
-		
+
 		return "/notice/read";
 	}
-	
+
 	@GetMapping("/admin/notice/create")
 	public String create() {
 		return "/notice/create";
 	}
-	
+
 	@PostMapping("/admin/notice/create")
 	public String create(NoticeDTO dto) {
-		if(service.create(dto) == 1) {
+		if (service.create(dto) == 1) {
 			return "redirect:/notice/list";
-		}else {
+		} else {
 			return "/error";
 		}
 	}
-	
+
 	@GetMapping("/admin/notice/update")
 	public String update(int noticeno, Model model, HttpSession session) {
-		
+
 		NoticeDTO dto = service.read(noticeno);
-		
+
 		String sessionid = (String) session.getAttribute("id");
 		String recordId = dto.getId();
-		
-		if(sessionid.equals(recordId)){
-		model.addAttribute("dto", dto);
-		return "/notice/update";
-		}else {
+
+		if (sessionid.equals(recordId)) {
+			model.addAttribute("dto", dto);
+			return "/notice/update";
+		} else {
 			return "/error";
 		}
 	}
-	
+
 	@PostMapping("/admin/notice/update")
 	public String update(NoticeDTO dto) {
-		
-		
-		   service.update(dto);
 
-		      return "redirect:/notice/list";
+		service.update(dto);
+
+		return "redirect:/notice/list";
 	}
 
-	
 	@GetMapping("/admin/notice/delete")
 	public String delete() {
 		return "/notice/delete";
 	}
-	
+
 	@PostMapping("/admin/notice/delete")
 	public String delete(int noticeno, HttpSession session) {
 		NoticeDTO dto = service.read(noticeno);
-		
+
 		String sessionid = (String) session.getAttribute("id");
 		String recordId = dto.getId();
-		
-		if(sessionid.equals(recordId)){
-		service.delete(noticeno);
-		return "redirect:/notice/list";
-		}else {
-		return "redirect:/error";
+
+		if (sessionid.equals(recordId)) {
+			service.delete(noticeno);
+			return "redirect:/notice/list";
+		} else {
+			return "redirect:/error";
 		}
-		      	    
+
 	}
-	
+
 }

@@ -85,7 +85,7 @@
 				</ul></li>
 
 			<li><a href="${root }/notice/list">공지사항</a></li>
-			<li><a href="${root }/ticket/list">티켓양도</a></li>
+			<li><a href="${root }/ticket/list">티켓 양도</a></li>
 
 			<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 				<ul>
@@ -199,7 +199,7 @@
 
 
 									<li><a href="${root }/notice/list">공지사항</a></li>
-									<li><a href="${root }/ticket/list">티켓양도</a></li>
+									<li><a href="${root }/ticket/list">티켓 양도</a></li>
 
 									<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 										<ul>

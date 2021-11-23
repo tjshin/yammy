@@ -33,28 +33,19 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
-
-<style>
-#remember {
-	font-size: 12px;
-}
-</style>
-
 <script>
 
-function sendEmail(form){
+function checkCode(form){
 	
-	var mname = form.mname.value;
-	var email = form.email.value;
+	var code = form.code.value;
 	
-	if(mname == ""){
-		alert("이름을 입력하세요.");
-		form.mname.focus();
+	if(${code} != code){
+		alert("코드를 잘못입력하셨습니다.");
+		form.code.focus();
 		return false;
-	}else if(email == ""){
-		alert("이메일을 입력하세요.");
-		form.email.focus();
-		return false;
+	}if(${code} == code){
+		alert("본인 확인되었습니다.");
+		form.submit;
 	}
 }
 </script>
@@ -65,25 +56,25 @@ function sendEmail(form){
 		<div class="parallax-overlay">
 			<div class="container home-intro-content">
 				<h2>Email 본인 확인</h2>
+				<h4>입력하신 메일로 받으신 6자리 코드를 입력해 주세요.</h4>
 				<br />
 				<div class="row">
 					<div class="col-md-12">
-
 						<div class="container" align="center" style="margin-left: 100px;">
-							<form id="form" class="form-horizontal" action="${root }/member/sendEmail"
-								method="post" onsubmit="return sendemail(this)">
-								
+							<form id="form" class="form-horizontal" action="${root }/member/modify"
+								method="get" onsubmit="return checkCode(this)">
+								<input type="hidden" id="email" name="email" value="${email}">
 								<div class="form-group">
-									<label class="control-label col-sm-3" for="id">Email</label>
+									<label class="control-label col-sm-3" for="id">Code</label>
 									<div class="col-sm-4">
-										<input type="text" class="form-control" id="email"
-											placeholder="Email을 입력하세요." name="email" required="required">
+										<input type="text" class="form-control" id="code"
+											placeholder="코드를 입력하세요." name="code" required="required">
 									</div>
 								</div>
 								<br />
 								<div class="col-sm-offset-2 col-sm-6">
 								<label> 
-								<button class="btn btn-default">확인</button>
+								<button type="submit" class="btn btn-default">확인</button>
 								<button class="btn btn-default" onclick="history.back()">뒤로</button>
 								</label>
 								</div>
