@@ -7,7 +7,7 @@
 <head>
   <title>homepage</title>
   <meta charset="utf-8">
-  <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js">     </script>
+  <script type="text/javascript" src="${root}/ckeditor/ckeditor.js">     </script>
   <script type="text/JavaScript">
 
   $(function() {
@@ -18,12 +18,12 @@
  function checkIn(f){
          if (f.btitle.value == ""){
               alert("제목을 입력하세요");
-              f.title.focus()
+              f.btitle.focus()
               return false;
          }
          if (f.bcontents.value == ""){
               alert("내용을 입력하세요");
-              f.content.focus();
+              f.bcontents.focus();
               return false;
          }
     
