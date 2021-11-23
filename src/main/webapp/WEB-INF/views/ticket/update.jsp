@@ -27,12 +27,7 @@
              f.ticketcontents.focus();
              return false;
         }
-         
-         if (f.filenameMF.value == ""){
-             alert("사진을 등록하세요");
-             f.filenameMF.focus();
-             return false;
-        } 
+          
          
          if (f.gamedate.value == ""){
              alert("경기 일정을 등록하세요");
@@ -76,10 +71,13 @@
 <div class="container">
     <h1 class="col-sm-offset-2 col-sm-10">게시물 수정</h1>
     <form class="form-horizontal" 
-        action="/ticket/create"
+        action="${root}/ticket/update"
         method="post"
-        enctype="multipart/form-data"
         onsubmit="return checkIn(this)">
+    
+    
+    
+    <input type="hidden" name="ticketno" value="${ticketno}">
     
     <div class="form-group">
         <label class="control-label col-sm-2" for="stadium1"style="color: black; font-weight: bolder;" >구장 분류</label>
@@ -123,14 +121,6 @@
         </div>
         </div>
     
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="filenameMF" style="color: black; font-weight: bolder;">티켓이미지</label>
-        <div class="col-sm-6">
-            <input type="file" name="filenameMF" id="filenameMF" class="form-control">
-        </div>
-        </div>
-    
-    
     	<div class="form-group">
             <label class="control-label col-sm-2" for="gamedate" style="color: black; font-weight: bolder;">경기 날짜</label>
         <div class="col-sm-6">
@@ -146,16 +136,9 @@
         </div>
         </div>
         
-        
-     
-    
-    
-    
-    
-    	
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">등록</button>
+        <button class="btn btn-primary">수정</button>
         <button type="reset" class="btn" onclick="goBack();">취소</button>
         </div>
     </div>

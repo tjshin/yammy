@@ -255,8 +255,7 @@
 											<li></li>
 											<li></li>
 											<li></li>
-											<li><a href="#" onclick="signOut()"><span
-													class=class="g-signin2"></span> Logout</a></li>
+											<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>

@@ -96,7 +96,7 @@ public class TicketController {
 	@PostMapping("/ticket/update")
 	public String update(TicketDTO dto) {
 		int cnt = service.update(dto);
-		System.out.print("dto:"+dto);
+		System.out.print("dto.ticketeno:"+dto.getTicketno());
 		
 		if (cnt == 1) {
 			return "redirect:/member/mypage";
@@ -116,7 +116,9 @@ public class TicketController {
 		
 		TicketDTO dto = service.detail(ticketno);
 		
-		if(dto.getId().equals(id) ) {//아이디 검사
+	
+		
+		if(dto.getId().equals(id)) {//아이디 검사
 			return "/ticket/update";
 		}else
 		model.addAttribute("dto", dto);
