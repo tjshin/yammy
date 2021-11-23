@@ -72,16 +72,15 @@
 			<li><a href="${root }/">Home</a></li>
 			<li><a href="#">구장별 게시판</a>
 				<ul>
-
-					<li><a href="${root }/bbs/list/jamsil">잠실(LG/두산)</a></li>
-					<li><a href="${root }/bbs/list/gocheok">고척(키움)</a></li>
-					<li><a href="${root }/bbs/list/incheon">인천(SSG)</a></li>
-					<li><a href="${root }/bbs/list/suwon">수원(KT)</a></li>
-					<li><a href="${root }/bbs/list/daejeon">대전(한화)</a></li>
-					<li><a href="${root }/bbs/list/gwangju">광주(KIA)</a></li>
-					<li><a href="${root }/bbs/list/daegu">대구(삼성)</a></li>
-					<li><a href="${root }/bbs/list/changwon">창원(NC)</a></li>
-					<li><a href="${root }/bbs/list/busan">사직(롯데)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=jamsil">잠실(LG/두산)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=gocheok">고척(키움)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=incheon">인천(SSG)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=suwon">수원(KT)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=daejeon">대전(한화)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=gwangju">광주(KIA)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=daegu">대구(삼성)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=changwon">창원(NC)</a></li>
+					<li><a href="${root }/bbs/list?bbscate=busan">사직(롯데)</a></li>
 				</ul></li>
 
 			<li><a href="${root }/notice/list">공지사항</a></li>
@@ -186,15 +185,17 @@
 
 									<li><a href="#">구장별 게시판</a>
 										<ul>
-											<li><a href="${root }/bbs/list/jamsil">잠실(LG/두산)</a></li>
-											<li><a href="${root }/bbs/list/gocheok">고척(키움)</a></li>
-											<li><a href="${root }/bbs/list/incheon">인천(SSG)</a></li>
-											<li><a href="${root }/bbs/list/suwon">수원(KT)</a></li>
-											<li><a href="${root }/bbs/list/daejeon">대전(한화)</a></li>
-											<li><a href="${root }/bbs/list/gwangju">광주(KIA)</a></li>
-											<li><a href="${root }/bbs/list/daegu">대구(삼성)</a></li>
-											<li><a href="${root }/bbs/list/changwon">창원(NC)</a></li>
-											<li><a href="${root }/bbs/list/busan">사직(롯데)</a></li>
+
+											<li><a href="${root }/bbs/list?bbscate=jamsil">잠실(LG/두산)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=gocheok">고척(키움)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=incheon">인천(SSG)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=suwon">수원(KT)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=daejeon">대전(한화)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=gwangju">광주(KIA)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=daegu">대구(삼성)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=changwon">창원(NC)</a></li>
+											<li><a href="${root }/bbs/list?bbscate=busan">사직(롯데)</a></li>
+
 										</ul></li>
 
 
@@ -263,7 +264,8 @@
 											<li></li>
 											<li></li>
 											<li></li>
-											<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
+											<li><a href="#" onclick="signOut()"><span
+													class=class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>
