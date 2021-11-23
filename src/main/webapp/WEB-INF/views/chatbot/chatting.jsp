@@ -133,7 +133,7 @@
 			<div class="form-group">
 				<label for="connect">챗봇 > </label>
 				<button id="connect" class="btn btn-default" type="submit">시작하기</button>
-				<button id="disconnect" class="btn btn-default" type="submit"
+				<button id="disconnect" class="btn btn-default2" type="submit"
 					disabled="disabled">끝내기</button>
 			</div>
 		</form>

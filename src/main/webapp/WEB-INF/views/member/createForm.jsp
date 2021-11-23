@@ -211,7 +211,7 @@
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="id" name="id">
 				</div>
-				<button type="button" class="btn btn-default col-sm-2" style="width:100px;"
+				<button type="button" class="btn btn-default" style="width:100px;"
 					onclick="idCheck(document.frm.id.value)">ID 중복확인</button>
 				<div id="idcheck"></div>
 			</div>
@@ -244,7 +244,7 @@
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="nick" name="nick">
 				</div>
-				<button type="button" class="btn btn-default col-sm-2" style="width:130px;"
+				<button type="button" class="btn btn-default" style="width:130px;"
 					onclick="nickCheck(document.frm.nick.value)">닉네임 중복확인</button>
 				<div id="nickcheck"></div>
 			</div>
@@ -262,7 +262,7 @@
 					<input type="email" class="form-control" id="email" name="email">
 				</div>
 
-				<button type="button" class="btn btn-default col-sm-2" style="width:120px;"
+				<button type="button" class="btn btn-default" style="width:120px;"
 					onclick="emailCheck(document.frm.email.value)">Email 중복확인</button>
 				<div id="emailcheck"></div>
 
@@ -274,7 +274,7 @@
 						id="sample6_postcode">
 				</div>
 
-				<button type="button" class="btn btn-default col-sm-2"
+				<button type="button" class="btn btn-default"
 					onclick="sample6_execDaumPostcode()" style="width:85px;">주소검색</button>
 
 			</div>
@@ -309,7 +309,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-5">
 					<button type="submit" class="btn btn-default">등록</button>
-					<button type="reset" class="btn btn-default">취소</button>
+					<button type="reset" class="btn btn-default2">취소</button>
 				</div>
 			</div>
 		</form>

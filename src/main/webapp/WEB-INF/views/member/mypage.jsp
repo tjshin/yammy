@@ -20,6 +20,8 @@
 <style>
 	table, th, tr{
 		text-align:center;
+		border-top:1px solid lightgrey;
+		border-bottom:1px solid lightgrey;
 	}
 	
 	#tbl{
@@ -27,11 +29,11 @@
 	}
 	
 	#tr:nth-child(odd) {
-		background-color: #e6f1ff;
+		background-color:white;
 		text-align:left;
 		}
 	#tr:nth-child(even) {
-		background-color: #f0f7ff;
+		background-color:white;
 		text-align:left;
 		}
 	
@@ -62,7 +64,7 @@
 	</div> <!-- /.pageTitle -->
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="text-align:center">
         <div class="col-sm-12">
         <h3><span class="glyphicon glyphicon-user"></span></h3>
         <img class="img-rounded" src="${root }/member/${mdto.filename}" style="width:200px"><br/><br/>
@@ -72,7 +74,7 @@
           <p></p>
           
           
-          <table id="tbl" style="text-align:left;">
+          <table id="tbl" style="margin-left: auto; margin-right: auto;">
           <tr id="tr">
           <td style="font-weight:bold;">ID</td>
           <td>${mdto.id}</td>
@@ -105,7 +107,7 @@
           <td style="font-weight:bold;">응원구단</td>
           <td>${mdto.favteam }</td>
           </table>
-          <br/><br/>
+          <br/>
         </div>
         <div class="col-sm-offset-0 col-sm-20">
 		<a href="${root }/message/recelist" class="main-button accent-color">받은 쪽지함</a>
@@ -148,7 +150,7 @@
            <input type="text" class="form-control" placeholder="Enter 검색어" 
            name="bword" value="${bword}">
          </div>
-         <button type="submit" class="btn btn-default" >검색</button>
+         <button type="submit" class="btn btn-default" >검색</button><br/><br/>
        </form>
                     
                     
@@ -175,7 +177,7 @@
 <c:otherwise>
    <c:forEach var="bdto" items="${bdto}"> 
    <tr>
-    <td>[${bdto.bcate}]   <a href="javascript:read('${bdto.bbsno}')">    ${bdto.btitle}</a>
+    <td>[${bdto.bcate}]   <a href="javascript:read('${bdto.bbsno}')">${bdto.btitle}</a>
     <c:if test="${util:newImg(fn:substring(bdto.bdate,0,10)) }">
          <img src="${pageContext.request.contextPath}/images/new.gif"> 
     </c:if>
@@ -251,7 +253,7 @@ ${mpaging}
            <input type="text" class="form-control" placeholder="Enter 검색어" 
            name="rword" value="${rword}">
          </div>
-         <button type="submit" class="btn btn-default" >검색</button>
+         <button type="submit" class="btn btn-default" >검색</button><br/><br/>
        </form>
                     
                     
@@ -360,9 +362,9 @@ ${mpaging}
 	<div class="form-group">
 		<input type="text" class="form-control" name="tword" required="required" value="${tword}">
 	</div>
-		<button class="btn btn-info">검색</button>
-		<button class="btn btn-default" type="button" 
-		onclick="location.href='${root }/ticket/create'">등록</button>
+		<button class="btn btn-default">검색</button>
+		<button class="btn btn-default2" type="button" 
+		onclick="location.href='${root }/ticket/create'">등록</button><br/><br/>
 </form><br/>
 
 	<!-- 참조 : contents/mainlist-->

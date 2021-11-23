@@ -134,8 +134,8 @@
          </form>
          <div style="text-align: center">
          <a id="a" href="${root }/member/update?id=${dto.id}">정보수정</a>
-         <a id="a" href="${root }/admin/member/delete?id=${dto.id}">회원탈퇴</a>
          <a id="a" href="#" onclick="history.back()">회원목록</a>
+         <a id="a" href="${root }/admin/member/delete?id=${dto.id}">회원탈퇴</a>
          </div>
          
          <br>

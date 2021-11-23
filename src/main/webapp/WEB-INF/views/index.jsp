@@ -25,7 +25,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-header">
-						<h2 class="section-title">야구에 미치다, Yammy입니다.</h2>
+						<h2 class="section-title">야구에 미치다,<img src="${root }/images/yammylogo.png" style="width">&nbsp;&nbsp; 입니다.</h2>
 						<p class="section-desc">Everything you need to enjoy baseball.</p>
 					</div> <!-- /.section-header -->
 				</div> <!-- /.col-md-12 -->
@@ -42,13 +42,13 @@
 								<h3 class="portfolio-title">경기장을 중심으로 한 자유게시판</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project1.jpg" title="Visual Admin">
+								<a class="fancybox" href="#" title="bbs">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project1.jpg" alt="Visual Admin">
+					<img src="images/includes/project1.jpg" alt="bbs">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">
@@ -60,13 +60,13 @@
 								<h3 class="portfolio-title">공지사항 리스트와 조회</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project2.jpg" title="Compass Template">
+								<a class="fancybox" href="${root }/images/index/notice.png" title="notice">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project2.jpg" alt="Compass Template">
+					<img src="${root }/images/index/notice.png" alt="notice">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">
@@ -78,13 +78,13 @@
 								<h3 class="portfolio-title">구장별 티켓 양도 게시판과 <br/> 쪽지 기능을 활용한 커뮤니케이션</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project3.jpg" title="Awesome Theme">
+								<a class="fancybox" href="images/includes/project3.jpg" title="ticket">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project3.jpg" alt="Awesome Theme">
+					<img src="images/includes/project3.jpg" alt="ticket">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">
@@ -96,13 +96,13 @@
 								<h3 class="portfolio-title">카카오 지도 API를 활요한 경기장 주변 맛집과 <br/>리뷰 작성</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project4.jpg" title="Volton Personal Site">
+								<a class="fancybox" href="${root }/images/index/map.png" title="map">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project4.jpg" alt="Volton Personal Site">
+					<img src="${root }/images/index/map.png" alt="map">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">
@@ -114,13 +114,13 @@
 								<h3 class="portfolio-title">회원정보 조회와 수정</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project5.jpg" title="Rectangle Design">
+								<a class="fancybox" href="${root }/images/index/mypage.png" title="mypage">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project5.jpg" alt="Rectangle Design">
+					<img src="${root }/images/index/mypage.png" alt="mypage">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">
@@ -128,17 +128,17 @@
 					<div class="overlay">
 						<div class="overlay-inner">
 							<div class="portfolio-infos">
-								<span class="meta-category">ChatBot</span>
-								<h3 class="portfolio-title">네이버 CLOVA ChatBot API를 활용한 <br/>1:1 질의응답 서비스</h3>
+								<span class="meta-category">Chatbot</span>
+								<h3 class="portfolio-title">네이버 CLOVA Chatbot API를 활용한 <br/>1:1 질의응답 서비스</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project6.jpg" title="Masonry Gallery">
+								<a class="fancybox" href="${root }/images/index/chatbot.png" title="chatbot">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project6.jpg" alt="Masonry Gallery">
+					<img src="${root }/images/index/chatbot.png" alt="chatbot">
 				</div>
 			</div> <!-- /.item -->
 		</div> <!-- /#owl-demo -->
