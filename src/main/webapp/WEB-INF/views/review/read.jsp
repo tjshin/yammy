@@ -15,9 +15,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>review read test</title>
 
-<script>
-	
-</script>
+
 
 </head>
 <body>
@@ -111,20 +109,38 @@
 								<div class="panel-heading"></div>
 								<div class="panel-body">
 									<p>${dto.hcontents }</p>
+									
 								</div>
-								<div class="tag-items">
-									<span class="small-text">Tags:</span> <a href="#" rel="tag">태그
-										누르면</a> <a href="#" rel="tag">해당 태그를 검색어로 하는</a> <a href="#"
-										rel="tag">list로 넘어갈 수 있게 하는거 어떨까요</a>
-								</div>
+								
+			        						        			
+					        		
 							</div>
 							<!-- /.blog-content -->
 						</div>
 						<!-- /.post-blog -->
 					</div>
-					<!-- /.col-md-12 -->
+					<!-- /.col-md-12 -->				
 				</div>
 				<!-- /.row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="review-like" style="text-align:center;">
+							<button class='reviewlikeBtn' type='button' id='reviewlikeBtn'
+									style='background-color:#ffffff;
+											border-radius: 50%;
+											width:100px;height:100px;'>
+		  						<img src="${root }/images/thumbs-up-solid.svg"
+		  							alt="따봉"
+		  							style="width:50px;height:50px;">
+							</button>
+							<div class="like-count">
+								<h3 style="color:#00a8d6;">추천 수 표시 될 자리</h3>
+							</div>	
+						</div>
+					</div>
+				</div>
+				
+				
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-author" class="clearfix">
@@ -274,11 +290,14 @@
 		var sessionid = "${sessionScope.id}";
 		var deleteimage = "<img src='${root }/images/trash-alt-solid.svg' alt='댓글 삭제 버튼' style='width:30px;height:30px;'>";
 		var modifyimage = "<img src='${root }/images/edit-solid.svg' alt='댓글 수정 버튼' style='width:30px;height:30px;'>";
+		var likeimage = "<img src='${root }/images/thumbs-up-solid.svg' alt='따봉' style='width:50px;height:50px;'>";
 	</script>
 	<script type="text/javascript" src="${root}/js/reviewreply/revreply.js"></script>
 
 	<script type="text/javascript"
 		src="${root}/js/reviewreply/replyprocess.js"></script>
+	<script type="text/javascript"
+		src="${root}/js/reviewlike/likeprocess.js"></script>
 
 
 </body>
