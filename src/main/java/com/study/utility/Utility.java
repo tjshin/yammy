@@ -373,7 +373,7 @@ public class Utility {
 
 	}
 
-	public static String paging2(int total, int nowPage, int recordPerPage, String col, String word, int cateno) {
+	public static String paging2(int total, int nowPage, int recordPerPage, String col, String word, String bbscate) {
 		int pagePerBlock = 5; // 블럭당 페이지 수
 		int totalPage = (int) (Math.ceil((double) total / recordPerPage)); // 전체 페이지
 		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
@@ -386,7 +386,7 @@ public class Utility {
 		str.append("<ul class='pagination'> ");
 		int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
 		if (nowGrp >= 2) {
-			str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+			str.append("<li><a href='/bbs/list?bbscate=" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>이전</a></li>");
 		}
 
@@ -398,14 +398,14 @@ public class Utility {
 			if (nowPage == i) {
 				str.append("<li class='active'><a href=#>" + i + "</a></li>");
 			} else {
-				str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+				str.append("<li><a href='/bbs/list?bbscate=" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 						+ i + "'>" + i + "</a></li>");
 			}
 		}
 
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
-			str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+			str.append("<li><a href='/bbs/list?bbscate=/" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>다음</a></li>");
 		}
 		str.append("</ul>");

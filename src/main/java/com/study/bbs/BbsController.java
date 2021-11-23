@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.study.bbslike.BbslikeService;
+import com.study.notice.NoticeDTO;
 import com.study.reply.ReplyDTO;
 import com.study.reply.ReplyService;
 import com.study.reply.ReplyServiceImpl;
@@ -32,31 +33,44 @@ public class BbsController {
 	private ReplyService reservice;
 	// create
 	@GetMapping("/bbs/create")
-	public String create(Model model, HttpSession session) {
+	public String create(HttpSession session) {
+		
+		String id = (String)session.getAttribute("id");
+		if(id==null) {
+			return "redirect:/member/login";
+		} else {
+			return "/bbs/create";
+			
+		}
 
 		
-
-		return "/bbs/list/{bbscate}";
 	}
 
 	@PostMapping("/bbs/create")
-	public String create(BbsDTO dto) {
+	public String create(BbsDTO dto, HttpServletRequest request, HttpSession session) {
+		String bbscate = request.getParameter("bbscate");
+		dto.setBbscate(bbscate);
+		String id = (String)session.getAttribute("id");
+		dto.setId(id);
 		if (service.create(dto) == 1) {
 			System.out.println(dto.getBtitle());
 			System.out.println(dto.getBcontents());
+			String str = "redirect:/bbs/list?bbscate=";
+			str += bbscate;
 
-			return "/bbs/list/{bbscate}";
+			return str;
 		} else {
-			return "/error";
+			return "/bbs/error";
 		}
 	}
 
 
-	@RequestMapping("/bbs/list/{bbscate}")
+	@RequestMapping("/bbs/list")
 	public String list(HttpServletRequest request) {
-
+		
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
+		String bbscate = Utility.checkNull(request.getParameter("bbscate"));
 
 		if (col.equals("total")) {
 			word = "";
@@ -67,7 +81,7 @@ public class BbsController {
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
-		int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
+		int recordPerPage = 10;// 한페이지당 보여줄 레코드갯수
 
 		// DB에서 가져올 순번-----------------
 		int sno = ((nowPage - 1) * recordPerPage) + 1;
@@ -78,19 +92,21 @@ public class BbsController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
+		map.put("bbscate", bbscate);
 		String url = "list";
 
 		int total = service.total(map);
 
 		List<BbsDTO> list = service.list(map);
 		// System.out.print("값:"+list.get(0));
-		String paging = Utility.paging(total, nowPage, recordPerPage, col, word, url);
+		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다
 		request.setAttribute("list", list);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
+		request.setAttribute("bbscate", bbscate);
 		request.setAttribute("paging", paging);
 
 		return "/bbs/list";
@@ -111,53 +127,8 @@ public class BbsController {
 		dto.setBcontents(content);
 
 		model.addAttribute("dto", dto);
-	
-		
-		//댓글 
-		String col = Utility.checkNull(request.getParameter("col"));
-		String word = Utility.checkNull(request.getParameter("word"));
-		
-		if (col.equals("total")) {
-			word = "";
-		}
-
-		// 페이지관련-----------------------
-		int nowPage = 1;// 현재 보고있는 페이지
-		if (request.getParameter("nowPage") != null) {
-			nowPage = Integer.parseInt(request.getParameter("nowPage"));
-		}
-		int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
-
-		// DB에서 가져올 순번-----------------
-		int sno = ((nowPage - 1) * recordPerPage) + 1;
-		int eno = nowPage * recordPerPage; // 확인
-
-		Map map = new HashMap();
-		map.put("col", col);
-		map.put("word", word);
-		map.put("sno", sno);
-		map.put("eno", eno);
-		String url = "rlist";
-
-		int total = reservice.retotal(map);
-		List<ReplyDTO> list = reservice.rlist(map);
-
-		System.out.print("값:" + list.get(0));
-
-		String paging = Utility.paging(total, nowPage, recordPerPage, col, word, url);
-
-		// request에 Model사용 결과 담는다
-		request.setAttribute("list", list);
-		request.setAttribute("nowPage", nowPage);
-		request.setAttribute("col", col);
-		request.setAttribute("word", word);
-		request.setAttribute("paging", paging);
-
+			
 		return "/bbs/read";
-	
-	
-	
-	
 	
 	
 	}
@@ -197,30 +168,34 @@ public class BbsController {
 
 	// update
 	@GetMapping("/bbs/update")
-	public String update(int bbsno, HttpSession session) {
-		String id = (String) session.getAttribute("id");
+	public String update(int bbsno, Model model, HttpSession session) {
+		
 		BbsDTO dto = service.read(bbsno);
-		System.out.print("값:" + id);
-
-		if (id == null) {
-			return "redirect:/member/login";
-
-		} else if (id.equals(dto.getId())) {
-
-			return "/bbs/update";
-		} else {
-			return "/bbs/error";
+		
+		String sessionid = (String) session.getAttribute("id");
+		String recordId = dto.getId();
+		
+		if(sessionid.equals(recordId)){
+		model.addAttribute("dto", dto);
+		return "/bbs/update";
+		}else {
+			return "/error";
 		}
-
 	}
-
+	
 	@PostMapping("/bbs/update")
 	public String update(BbsDTO dto) {
+		
+		
+		   service.update(dto);
 
-		service.update(dto);
-
-		return "redirect:/bbs/list";
+		      return "redirect:/bbs/list";
 	}
+
+	
+	
+	
+	
 
 	@RequestMapping("/bbs/bestlist")
 	public String bestlist(HttpServletRequest request) {

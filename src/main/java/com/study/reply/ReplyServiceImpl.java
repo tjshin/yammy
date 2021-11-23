@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.study.reviewreply.ReviewreplyDTO;
+
 @Service("com.study.reply.ReplyServiceImpl")
 public class ReplyServiceImpl implements ReplyService {
 
@@ -19,14 +21,33 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int retotal(Map map) {
-		return mapper.retotal(map);
+	public int total(int bbsno) {
+		return mapper.total(bbsno);
 	}
 
 	@Override
-	public List<ReplyDTO> rlist(Map map) {
+	public List<ReplyDTO> list(Map map) {
 		// TODO Auto-generated method stub
-		return mapper.rlist(map);
+		return mapper.list(map);
+	}
+
+
+	@Override
+	public int delete(int reno) {
+		// TODO Auto-generated method stub
+		return mapper.delete(reno);
+	}
+
+	@Override
+	public ReplyDTO read(int reno) {
+		// TODO Auto-generated method stub
+		return mapper.read(reno);
+	}
+
+	@Override
+	public int update(ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.update(dto);
 	}
 
 }

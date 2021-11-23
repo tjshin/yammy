@@ -7,30 +7,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.study.bbs.BbsMapper">
 
 
-<!-- 등록 -->
-  <insert id="create" parameterType="com.study.bbs.BbsDTO">
- 	INSERT INTO bbs(bbsno, btitle, bcontents, bview, bcate,  bdate, id, bbscate)
-    VALUES((select nvl(max(bbsno),0)+1 from bbs), #{btitle}, #{bcontents},  0, #{bcate}, SYSTIMESTAMP, 'admin', #{bbscate} )
-  </insert> 
- 
- <!--리스트  -->
-	 
-<select id="list" parameterType="Map" resultType="com.study.bbs.BbsDTO">
-  select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, r, bcname
-    from (
-    select bbsno, btitle, nick, bdate, bview, bcontents,  rownum r, bcname
-    from (
-    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcategory.bcatename as bcname
-    
-    from bbs 
-    inner join bcategory
-     on bbs.bcate = bcategory.bcate
-           
-     inner join member
-    on bbs.id = member.id
+	<!-- 등록 -->
+	<insert id="create" parameterType="com.study.bbs.BbsDTO">
+		INSERT INTO bbs(bbsno, btitle,
+		bcontents, bview, bcate, bdate, id, bbscate)
+		VALUES((select
+		nvl(max(bbsno),0)+1 from bbs), #{btitle}, #{bcontents},
+		0, #{bcate},
+		SYSTIMESTAMP, 'admin', #{bbscate} )
+	</insert>
 
-	
-        ORDER BY bbsno DESC
+	<!--리스트 -->
+
+	<select id="list" parameterType="Map"
+		resultType="com.study.bbs.BbsDTO">
+		select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS')
+		bdate, bview, bcontents, r, bcname ,bbscate
+		from (
+		select bbsno, btitle,
+		nick, bdate, bview, bcontents, rownum r, bcname
+		,bbscate
+		from (
+		select
+		bbsno, btitle, member.nick nick, bdate, bview, bcontents,
+		bcategory.bcatename as bcname ,bbscate
+
+		from bbs
+		inner join bcategory
+		on
+		bbs.bcate = bcategory.bcate
+
+		inner join member
+		on bbs.id = member.id
+
+		<where>
+			bbscate = #{bbscate}
+			<choose>
+				<when test="col=='nick'">
+					and m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='btitle'">
+					and btitle like '%'||#{word}||'%'
+				</when>
+				<when test="col=='bcontents'">
+					and bcontents like '%'||#{word}||'%'
+				</when>
+				<when test="col=='title_content'">
+					and btitle like '%'||#{word}||'%'
+					or
+					bcontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+
+		ORDER BY bbsno DESC
 
 		)
 		)
@@ -38,81 +68,96 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        where r >= #{sno} and r <= #{eno}
          ]]>
 
-  
-</select>
-  <select id="total" resultType="int" parameterType="Map">
-    select count(*) from bbs
-   <where>
-    <choose>
-                  <when test="col=='wname'">
-                      bname like ('%',#{word},'%')
-                  </when>
-                  <when test="col=='title'">
-                      btitle like ('%',#{word},'%')
-                  </when>
-                  <when test="col=='content'">
-                      bcontent like ('%',#{word},'%')
-                  </when>
-                  <when test="col=='title_content'">
-                     btitle like ('%',#{word},'%')
-                     or
-                     bcontent like ('%',#{word},'%')
-                  </when>
-              </choose>
-           </where>
-  </select>
 
- <!-- 삭제 -->
-  <delete id="delete" parameterType="int">
-    DELETE FROM bbs
-    WHERE bbsno=#{bbsno}
-  </delete>
+	</select>
+	<select id="total" resultType="int" parameterType="Map">
+		select count(*) from bbs
+		<where>
+			bbscate = #{bbscate}
+			<choose>
+				<when test="col=='nick'">
+					and bname like '%'||#{word}||'%'
+				</when>
+				<when test="col=='btitle'">
+					and btitle like '%'||#{word}||'%'
+				</when>
+				<when test="col=='bcontents'">
+					and bcontents like '%'||#{word}||'%'
+				</when>
+				<when test="col=='title_content'">
+					and btitle like '%'||#{word}||'%'
+					or
+					bcontents like
+					'%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
 
-  <select id="read" resultType="com.study.bbs.BbsDTO">
-     select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, bcate, r, id
-    from (
-    select bbsno, btitle, nick, bdate, bview, bcontents, bcate, rownum r, id
-    from (
-    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcate, member.id id
-           
-    from bbs inner join member
-    on bbs.id = member.id
-    WHERE bbsno=#{bbsno}
-    ))
-  </select>
-<!-- 조회수 증가 -->
-  <update id="upbview" parameterType="int">
-    update bbs              
-    set bview = bview + 1 
-    where bbsno = #{bbsno}         
-  </update>
-  
-  	<select id="getCategory" resultType="Map">
-		select bcate, bcatename from bcategory
+	<!-- 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM bbs
+		WHERE
+		bbsno=#{bbsno}
+	</delete>
+
+	<select id="read" resultType="com.study.bbs.BbsDTO">
+		select bbsno, btitle, nick,
+		to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, bcate,
+		id, bbscate
+		from(
+		select bbsno, btitle, member.nick nick, bdate, bview,
+		bcontents, bcate,
+		member.id id, bbscate
+
+		from bbs inner join member
+		on
+		bbs.id = member.id
+		WHERE bbsno=#{bbsno}
+		)
+	</select>
+	<!-- 조회수 증가 -->
+	<update id="upbview" parameterType="int">
+		update bbs
+		set bview = bview +
+		1
+		where bbsno = #{bbsno}
+	</update>
+
+	<select id="getCategory" resultType="Map">
+		select bcate, bcatename from
+		bcategory
 		where bcategrpno is null
 	</select>
-  
 
 
 
 
-<select id="bestlist" parameterType="Map" resultType="com.study.bbs.BbsDTO">
-  select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS') bdate, bview, bcontents, r, bcname
-    from (
-    select bbsno, btitle, nick, bdate, bview, bcontents,  rownum r, bcname
-    from (
-    select bbsno, btitle, member.nick nick, bdate, bview, bcontents, bcategory.bcatename as bcname
-    
-    from bbs 
-    inner join bcategory
-     on bbs.bcate = bcategory.bcate
-           
-     inner join member
-    on bbs.id = member.id
-   
-   where bview >= 10
-   
-       ORDER BY bbsno DESC
+
+	<select id="bestlist" parameterType="Map"
+		resultType="com.study.bbs.BbsDTO">
+		select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS')
+		bdate, bview, bcontents, r, bcname
+		from (
+		select bbsno, btitle, nick,
+		bdate, bview, bcontents, rownum r, bcname
+		from (
+		select bbsno, btitle,
+		member.nick nick, bdate, bview, bcontents,
+		bcategory.bcatename as
+		bcname
+
+		from bbs
+		inner join bcategory
+		on bbs.bcate = bcategory.bcate
+
+		inner
+		join member
+		on bbs.id = member.id
+
+		where bview >= 10
+
+		ORDER BY bbsno DESC
 
 		)
 		)
@@ -120,18 +165,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        where r >= #{sno} and r <= #{eno}
          ]]>
 
-  
 
-</select>
-<update id="update" parameterType="com.study.bbs.BbsDTO">
 
-		update bbs
-		<set>
-			btitle = #{btitle},
-			bcontents = #{bcontents},
-			
-		</set>
-		where bbsno = #{bbsno}
+	</select>
+	<update id="update" parameterType="com.study.bbs.BbsDTO">
+
+    update bbs
+    set btitle=#{btitle}, bcontents=#{bcontents}, id=#{id}, bbscate=#{bbscate}
+    where bbsno=#{bbsno}
 
 	</update>
 
@@ -142,31 +183,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 동일 게시글 추천 여부 검색 -->
 	<select id="likecheck" parameterType="map" resultType="int">
-		select count(*) from bbslike where bbsno = #{bbsno} and id = #{id}
+		select
+		count(*) from bbslike where bbsno = #{bbsno} and id = #{id}
 	</select>
-	
+
 	<!-- 게시글 추천 -->
 	<insert id="likeupdate" parameterType="map">
-		insert into bbslike values(#{bbsno}, #{id})
+		insert into bbslike
+		values(#{bbsno}, #{id})
 	</insert>
-	
+
 	<!-- 게시글 추천 취소 -->
 	<delete id="likedelete" parameterType="map">
-		delete from bbslike where bbsno = #{bbsno} and id = #{id}
+		delete from bbslike where
+		bbsno = #{bbsno} and id = #{id}
 	</delete>
-	
+
 	<!-- 게시글 추천수 -->
 	<select id="likecount" parameterType="int" resultType="int">
-		select count(*) from bbslike where bbsno = #{bbsno}
+		select
+		count(*) from bbslike where bbsno = #{bbsno}
 	</select>
 
 
- <update id="uplike" parameterType="int">
-    update bbslike         
-    set bcnt = bcnt + 1 
-    where bbsno = #{bbsno}         
-  </update>
+	<update id="uplike" parameterType="int">
+		update bbslike
+		set bcnt = bcnt
+		+ 1
+		where bbsno = #{bbsno}
+	</update>
 
 
 
-  </mapper>
+</mapper>
