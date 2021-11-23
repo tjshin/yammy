@@ -99,9 +99,13 @@
 					</tr>
 					<tr>
 						<th>작성된 리뷰</th>
-						<td>${dto.reviewcnt} / <a href=
+						<td>${dto.reviewcnt } / <a href=
 							"${root }/review/list?col=sikname&word=${dto.sikname}&nowPage=1"
 							>☜이 식당에 작성된 리뷰 목록 </a></td>
+					</tr>
+					<tr>
+						<th>인접 구장과의 직선 거리(m)</th>
+						<td>${dto.distance}</td>
 					</tr>
 
 				</table>
@@ -118,6 +122,7 @@
 								class="main-button accent-color">DB 삭제</a>
 						
 					</div>
+					<br><br><br>  
 				</div>
 
 

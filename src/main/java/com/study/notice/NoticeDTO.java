@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class NoticeDTO {
+	
 	private int noticeno;
 	private String ntitle;
 	private String ncontents;

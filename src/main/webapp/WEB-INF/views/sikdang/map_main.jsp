@@ -85,19 +85,16 @@
 
 			<div id="map" style="width: 100%; height: 600px; margin: 0 auto;">
 				<!--  style="width:100%;height:600px;margin:0 auto; -->
-				<div class="buttons">
-					<input id="to-jamsil" type="button" value="잠실(LG/두산)"
-						class="control-btn" /> <input id="to-gocheok" type="button"
-						value="고척(키움)" class="control-btn" /> <input id="to-incheon"
-						type="button" value="인천(SSG)" class="control-btn" /> <input
-						id="to-suwon" type="button" value="수원(KT)" class="control-btn" />
-					<input id="to-daejeon" type="button" value="대전(한화)"
-						class="control-btn" /> <input id="to-gwangju" type="button"
-						value="광주(KIA)" class="control-btn" /> <input id="to-daegu"
-						type="button" value="대구(삼성)" class="control-btn" /> <input
-						id="to-changwon" type="button" value="창원(NC)" class="control-btn" />
-					<input id="to-sajik" type="button" value="사직(롯데)"
-						class="control-btn" />
+				<div class="buttons" style="font-family:arial;font-size:8pt;">
+					<input id="to-jamsil" type="button" value="잠실야구장"	class="mainBtn" />
+					<input id="to-gocheok" type="button" value="고척스카이돔" class="mainBtn" />
+					<input id="to-incheon" type="button" value="인천SSG랜더스필드" class="mainBtn" />
+					<input id="to-suwon" type="button" value="수원케이티위즈파크" class="mainBtn" />
+					<input id="to-daejeon" type="button" value="한화생명이글스파크" class="mainBtn" />
+					<input id="to-gwangju" type="button" value="광주기아챔피언스필드" class="mainBtn" />
+					<input id="to-daegu" type="button" value="대구삼성라이온즈파크" class="mainBtn" />
+					<input id="to-changwon" type="button" value="창원NC파크" class="mainBtn" />
+					<input id="to-sajik" type="button" value="사직야구장" class="mainBtn" />
 				</div>
 
 			</div>
@@ -119,12 +116,13 @@
 		arr.push("${dto.sikurl}");
 		arr.push("${dto.cox}");
 		arr.push("${dto.coy}");
+		arr.push("${dto.distance}");
 		</c:forEach>		  
 		</script>
 		<script>
 			var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 			
-			for (var i = 0; i < arr.length; i += 8) {			    
+			for (var i = 0; i < arr.length; i += 9) {			    
 			    var imageSize = new kakao.maps.Size(24, 35); 
 			    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 			    
@@ -137,11 +135,12 @@
 			    });
 			    
 			    var infowindow = new kakao.maps.InfoWindow({
-			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:150px;">' +
+			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:180px;">' +
 			    				'<h5>' + arr[i+1] +'</h5>' + 
 			    				arr[i+3] + '<br>' + 
 			    				arr[i+4] + '<br>' +
 			    				arr[i+2] + '<br>' +
+			    				'인접 구장과의 거리: ' + arr[i+8] + 'm<br>' + 
 			    				'<a href="${root}/review/list?col=sikname&word=' +
 			    				arr[i+1] + '">' + 
 			    				'리뷰 보러가기</a>' +			    				

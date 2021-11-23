@@ -59,9 +59,15 @@
 		onclick="location.href='${root }/ticket/create'">등록</button>
 
 </form>
+<<<<<<< HEAD
 
 <br>
 	
+=======
+<br>
+	<!-- 참조 : contents/mainlist-->
+
+>>>>>>> master
 	<c:choose>   
         <c:when test="${empty list}"> <!-- 목록이 비어 있을경우-->
         <div class="row">

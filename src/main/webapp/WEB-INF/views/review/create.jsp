@@ -29,6 +29,12 @@
          CKEDITOR.instances['hcontents'].focus();
          return false;
      }
+     if (document.getElementById('stadium').value == '0') {
+    	 window.alert('주변 지역을 선택해 주세요.');
+    	 f.stadium.focus()
+    	 return false;
+     }
+     
  }
 </script>
 
@@ -98,7 +104,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="stadium">지역 선택</label>
                 <div class="col-sm-5">
-                    <select class="form-control" name="stadium">
+                    <select class="form-control" id="stadium" name="stadium">
+                        <option value="0" selected>지역을 선택하세요</option>
                         <option value="1" <c:if test="${stadium==1}"> selected </c:if>
                             >잠실(LG/두산)</option>
                         <option value="2" <c:if test="${stadium==2}"> selected </c:if>
