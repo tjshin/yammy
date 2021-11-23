@@ -1,18 +1,4 @@
 
-CREATE TABLE SIKDANG (
-       sikid                VARCHAR2(50) NOT NULL,
-       sikname              VARCHAR2(100) NULL,
-       jibunadd             VARCHAR2(200) NULL,
-       sikurl               VARCHAR2(200) NULL,
-       sikphone             VARCHAR2(20) NULL,
-       distance             NUMBER(30) NULL,
-       coy                  VARCHAR2(50) NULL,
-       cox                  VARCHAR2(50) NULL,
-       roadadd              VARCHAR2(200) NULL,
-       PRIMARY KEY (sikid)
-);
-
-
 CREATE TABLE MEMBER (
        id                   VARCHAR2(50) NOT NULL,
        mname                VARCHAR2(10) NULL,
@@ -28,6 +14,20 @@ CREATE TABLE MEMBER (
        point                NUMBER(10) NULL,
        favteam              VARCHAR2(20) NULL,
        PRIMARY KEY (id)
+);
+
+
+CREATE TABLE SIKDANG (
+       sikid                VARCHAR2(50) NOT NULL,
+       sikname              VARCHAR2(100) NULL,
+       jibunadd             VARCHAR2(200) NULL,
+       sikurl               VARCHAR2(200) NULL,
+       sikphone             VARCHAR2(20) NULL,
+       distance             NUMBER(30) NULL,
+       coy                  VARCHAR2(50) NULL,
+       cox                  VARCHAR2(50) NULL,
+       roadadd              VARCHAR2(200) NULL,
+       PRIMARY KEY (sikid)
 );
 
 
@@ -49,14 +49,14 @@ CREATE TABLE REVIEW (
 
 
 CREATE TABLE REVIEWLIKE (
-       hugilike             number(10) NULL,
+       hugilike             NUMBER(10) NOT NULL,
+       hugino               NUMBER(10) NULL,
        id                   VARCHAR2(50) NULL,
-       hugino               NUMBER(10) NOT NULL,
-       PRIMARY KEY (hugino), 
-       FOREIGN KEY (hugino)
-                             REFERENCES REVIEW, 
+       PRIMARY KEY (hugilike), 
        FOREIGN KEY (id)
-                             REFERENCES MEMBER
+                             REFERENCES MEMBER, 
+       FOREIGN KEY (hugino)
+                             REFERENCES REVIEW
 );
 
 
