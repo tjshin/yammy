@@ -136,7 +136,7 @@ function inCheck(f){
 	<div class="container">
 
         <h2 class="col-sm-offset-2 col-sm-10"></h2>
-        <label class="col-sm-offset-2 col-sm-15">( * 필수입력사항)</label>
+        <label class="col-sm-offset-2 col-sm-15">( <span id="need">*</span> 필수입력사항)</label>
           <form class="form-horizontal" 
                 action="update"
                 method="post"
@@ -157,14 +157,14 @@ function inCheck(f){
               </div>
             </div>
              <div class="form-group">
-              <label class="control-label col-sm-2" for="nick">닉네임</label>
+              <label class="control-label col-sm-2" for="nick"><span id="need">*</span>닉네임</label>
               <div class="col-sm-4">          
                 <input type="text" class="form-control" id="nick" 
                  value="${dto.nick}"  name="nick">
               </div>
               </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="phone">전화번호</label>
+              <label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
               <div class="col-sm-4">          
                 <input type="text" class="form-control" id="phone" 
                  value="${dto.phone}"  name="phone">
@@ -177,7 +177,7 @@ function inCheck(f){
                 value="${dto.email}" name="email">
               </div>
               
-              <button type="button" class="btn btn-default col-sm-2"
+              <button type="button" class="btn btn-default"
               onclick="emailCheck(document.frm.email.value)">Email 변경</button>
               <div id="emailcheck"></div>
               
@@ -189,7 +189,7 @@ function inCheck(f){
                  name="postcode" id="sample6_postcode" value="${dto.postcode}">
               </div>
               
-              <button type="button" class="btn btn-default col-sm-2"
+              <button type="button" class="btn btn-default"
               onclick="sample6_execDaumPostcode()">주소검색</button>
               
             </div>

@@ -93,8 +93,8 @@
           
            <div class="form-group">
            <div class="col-sm-offset-2 col-sm-5">
-            <button class="btn">수정</button>
-            <button type="reset" class="btn">취소</button>
+            <button class="btn btn-default">수정</button>
+            <button type="reset" class="btn btn-default2">취소</button>
            </div>
          </div>
         </form>

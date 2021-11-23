@@ -372,15 +372,52 @@ button.btn.btn-default {
 	font-family: "Raleway", sans-serif;
 	text-transform: uppercase;
 	font-weight: 700;
-	padding: 12px 15px;
+	padding: 10px 15px;
 	border-color:#00a8d6;
+	height:36px;
 }
 
 button.btn.btn-default:hover {
 	background-color: #31373a;
 	border-color:#31373a;
 	transition: all ease 0.5s 0s;
+}
+
+button.btn.btn-default2 {
+	background-color: grey;
+	color: white;
+	font-size: 12px;
+	font-family: "Raleway", sans-serif;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 10px 15px;
+	border-color:grey;
+	height:36px;
+}
+
+button.btn.btn-default2:hover {
+	background-color: black;
+	border-color: black;
+	transition: all ease 0.5s 0s;
 	border-color:#00a8d6;
+}
+
+button.btn.btn-default3 {
+	background-color: #84c333;
+	color: white;
+	font-size: 12px;
+	font-family: "Raleway", sans-serif;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 10px 15px;
+	border-color:#84c333;
+	height:36px;
+}
+
+button.btn.btn-default3:hover {
+	background-color: #31373a;
+	border-color:#31373a;
+	transition: all ease 0.5s 0s;
 }
 
 .large-button {

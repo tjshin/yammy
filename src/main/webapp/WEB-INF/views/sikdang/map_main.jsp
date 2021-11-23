@@ -47,7 +47,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 주변 맛집</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -79,9 +78,8 @@
 
 
 	<article>
-		<div id="wrap" class="section" style="width: 90%; margin: 0 auto;">
-			<h2>구장별 지도 이동</h2>
-			<p>각 구장별 버튼을 누르면 해당 지역 주변으로 지도를 이동합니다</p>
+		<div id="wrap" class="section" style="width: 90%; margin: 0 auto;"><br/>
+			<p style="font-weight:bold">각 버튼을 누르면 해당 구장의 주변으로 지도가 이동합니다.</p>
 
 			<div id="map" style="width: 100%; height: 600px; margin: 0 auto;">
 				<!--  style="width:100%;height:600px;margin:0 auto; -->

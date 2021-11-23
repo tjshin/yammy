@@ -50,7 +50,6 @@
 						<h2 class="page-title">회원 목록</h2>
 					</div>
 					<!-- /.col-md-6 -->
-
 				</div>
 				<!-- /.row -->
 			</div>
@@ -78,8 +77,8 @@
 					required="required" value="${word}">
 			</div>
 			<button class="btn btn-default">검색</button>
-			<button class="btn btn-default" type="button"
-				onclick="location.href='create'">등록</button>
+			<button class="btn btn-default2" type="button"
+				onclick="location.href='/member/createForm'">등록</button>
 		</form>
 
 		<br>

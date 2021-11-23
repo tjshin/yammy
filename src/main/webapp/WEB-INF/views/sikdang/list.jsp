@@ -22,7 +22,6 @@
 						<h2 class="page-title">식당 DB 목록</h2>
 					</div> <!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 식당 DB 목록</span>
 					</div> <!-- /.col-md-6 -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->
@@ -67,8 +66,8 @@
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Enter 검색어" name="word" value="${word}">
 			</div>
-			<button type="submit" class="mainBtn">검색</button>
-			<button type="button" class="mainBtn"
+			<button type="submit" class="btn btn-default">검색</button>
+			<button type="button" class="btn btn-default2"
 				onclick="location.href='${root }/admin/sikdang/create'">DB 등록</button>
 
 		</form>
