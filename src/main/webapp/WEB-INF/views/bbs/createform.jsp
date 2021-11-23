@@ -35,9 +35,26 @@
 
 
 <br>
-<div class="first-widget parallax"></div>
-<div class="container">
-<h2 class="col-sm-offset-2 col-sm-10">게시글 쓰기</h2>
+	<div class="first-widget parallax" id="blog">
+	<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">게시글 작성</h2>
+					</div>
+					<!-- /.col-md-6 -->
+					<div class="col-md-6 col-sm-6 text-right">
+						<span class="page-location">Home / 경기장 게시판 /글쓰기</span>
+					</div>
+					<!-- /.col-md-6 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /.parallax-overlay -->
+	</div>
+	<div class="container">
 <form class="form-horizontal" 
       action="create"
       method="post"
@@ -74,7 +91,7 @@
   </div>
   
   <div class="form-group">
-    <label class="control-label col-sm-2" for="bcontent">내용</label>
+    <label class="control-label col-sm-2" for="content">내용</label>
     <div class="col-sm-8">
     <textarea rows="12" cols="7" id="bcontents" name="bcontents" class="form-control"></textarea>
     </div>
@@ -91,8 +108,8 @@
 
    <div class="form-group">
    <div class="col-sm-offset-2 col-sm-5">
-    <button class="btn">등록</button>
-    <button type="reset" class="btn">취소</button>
+    <button class="mainBtn">등록</button>
+    <button type="reset" class="mainBtn">취소</button>
    </div>
  </div>
 
