@@ -45,6 +45,7 @@
 					<input type='hidden' name="col" value="${param.col}">
 					<input type='hidden' name="word" value="${param.word}">
 					<input type='hidden' name="nowPage" value="${param.nowPage}">
+					<input type='hidden' name="mtest" value="${param.mtest}">
 					<div>
 					삭제하면 복구할 수 없습니다<br><br>
 					</div>

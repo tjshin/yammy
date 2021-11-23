@@ -5,15 +5,15 @@ var container = document.getElementById('map');
 			};
 			var map = new kakao.maps.Map(container, mapOption);//지도 생성
 
-			var jamsil = new kakao.maps.LatLng(37.51226, 127.07190), gocheok = new kakao.maps.LatLng(
-					37.49818, 126.86698), incheon = new kakao.maps.LatLng(
-					37.43674, 126.69331), suwon = new kakao.maps.LatLng(
-					37.29976, 127.00967), daejeon = new kakao.maps.LatLng(
-					36.31725, 127.42908), gwangju = new kakao.maps.LatLng(
-					35.16808, 126.88894), daegu = new kakao.maps.LatLng(
-					35.84100, 128.68205), changwon = new kakao.maps.LatLng(
-					35.22239, 128.58244), sajik = new kakao.maps.LatLng(
-					35.19402, 129.06151);
+			var jamsil = new kakao.maps.LatLng(37.5121513808403, 127.071909507224),
+				gocheok = new kakao.maps.LatLng(37.4982338495579, 126.867104761712),
+				incheon = new kakao.maps.LatLng(37.436998685442084, 126.69327612453377),
+				suwon = new kakao.maps.LatLng(37.2997302532973, 127.009772045935),
+				daejeon = new kakao.maps.LatLng(36.3170804578898, 127.429163729933),
+				gwangju = new kakao.maps.LatLng(35.16820922209541, 126.88911206152956),
+				daegu = new kakao.maps.LatLng(35.8410595632468, 128.681659448344),
+				changwon = new kakao.maps.LatLng(35.22242918856418, 128.58209037232203),
+				sajik = new kakao.maps.LatLng(35.1940192576625, 129.061550650471);
 
 			$("#to-jamsil").on("click", function(e) {
 				e.preventDefault();
