@@ -72,7 +72,6 @@
 			<li><a href="${root }/">Home</a></li>
 			<li><a href="#">구장별 게시판</a>
 				<ul>
-
 					<li><a href="${root }/bbs/list?bbscate=jamsil">잠실(LG/두산)</a></li>
 					<li><a href="${root }/bbs/list?bbscate=gocheok">고척(키움)</a></li>
 					<li><a href="${root }/bbs/list?bbscate=incheon">인천(SSG)</a></li>
@@ -85,7 +84,7 @@
 				</ul></li>
 
 			<li><a href="${root }/notice/list">공지사항</a></li>
-			<li><a href="${root }/ticket/list">티켓양도</a></li>
+			<li><a href="${root }/ticket/list">티켓 양도</a></li>
 
 			<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 				<ul>
@@ -95,7 +94,7 @@
 
 				</ul></li>
 
-			<li><a href="#">My Page</a>
+			<li><a href="${root}/member/mypage">My Page</a>
 				<ul>
 					<li><a href="${root}/member/mypage"><span
 							class="glyphicon glyphicon-list"></span>회원정보</a></li>
@@ -110,7 +109,7 @@
 					<li><a href="${root}/member/login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</c:when>
-				<c:when test="${sessionScope.grade == 'A '}">
+				<c:when test="${sessionScope.grade == 'A'}">
 					<li><a href="#">관리자</a>
 						<ul>
 							<li><a href="${root}/admin/member/list"><span
@@ -186,6 +185,7 @@
 
 									<li><a href="#">구장별 게시판</a>
 										<ul>
+
 											<li><a href="${root }/bbs/list?bbscate=jamsil">잠실(LG/두산)</a></li>
 											<li><a href="${root }/bbs/list?bbscate=gocheok">고척(키움)</a></li>
 											<li><a href="${root }/bbs/list?bbscate=incheon">인천(SSG)</a></li>
@@ -195,11 +195,12 @@
 											<li><a href="${root }/bbs/list?bbscate=daegu">대구(삼성)</a></li>
 											<li><a href="${root }/bbs/list?bbscate=changwon">창원(NC)</a></li>
 											<li><a href="${root }/bbs/list?bbscate=busan">사직(롯데)</a></li>
+
 										</ul></li>
 
 
 									<li><a href="${root }/notice/list">공지사항</a></li>
-									<li><a href="${root }/ticket/list">티켓양도</a></li>
+									<li><a href="${root }/ticket/list">티켓 양도</a></li>
 
 									<li><a href="${root }/sikdang/map_main">경기장 주변 맛집</a>
 										<ul>
@@ -209,7 +210,7 @@
 
 										</ul></li>
 
-									<li><a href="#">My Page</a>
+									<li><a href="${root}/member/mypage">My Page</a>
 										<ul>
 											<li><a href="${root}/member/mypage"><span
 													class="glyphicon glyphicon-list"></span>회원정보</a></li>
@@ -229,7 +230,7 @@
 										</c:when>
 
 
-										<c:when test="${sessionScope.grade == 'A '}">
+										<c:when test="${sessionScope.grade == 'A'}">
 											<li><a href="#">관리자</a>
 												<ul>
 													<li><a href="${root}/admin/member/list"><span

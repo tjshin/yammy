@@ -6,6 +6,7 @@
 <tiles-definitions>
 
 
+
   <definition name="/ticket/delete" extends="main">
     <put-attribute name="title" value="게시물 삭제"></put-attribute>
     <put-attribute name="body"

@@ -78,9 +78,10 @@
 				<c:if test = "${dto.meticketno gt 0}"> 
 				<button type="button" class="btn" onclick="ticketdetailM()">해당 게시물 이동</button>
 				</c:if>
+			
 		</div>
+		<br>
 	</div>
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
+
 </body>
 </html>

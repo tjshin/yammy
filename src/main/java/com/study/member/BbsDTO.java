@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class BbsDTO {
+
 	private int bbsno;
 	private String btitle;
 	private String bcontents;

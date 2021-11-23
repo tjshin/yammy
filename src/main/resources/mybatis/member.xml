@@ -4,11 +4,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.study.member.MemberMapper">  <!-- 이 안에서만 영향이 있는 쿼리문 -->
+<mapper namespace="com.study.member.MemberMapper">
 
 	<delete id="memberDelete" parameterType="String">
 		delete from member
-		where id=#{id}
+		where
+		id=#{id}
 	</delete>
 
 	<select id="total" parameterType="Map" resultType="int">
@@ -50,19 +51,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					or
 					ticketcontents like '%'||#{tword}||'%'
 					or
-					stadium like '%'||#{tword}||'%'
+					stadium like
+					'%'||#{tword}||'%'
 				</when>
 			</choose>
 		</where>
 	</select>
-	
+
 	<select id="ticket" parameterType="Map"
 		resultType="com.study.member.TicketDTO">
 		select ticketno, tickettitle, filename, stadium, r
 		from(
-		select ticketno, tickettitle, filename, stadium, rownum r
+		select
+		ticketno, tickettitle, filename, stadium, rownum r
 		from(
-		select ticketno, tickettitle, filename, stadium
+		select
+		ticketno, tickettitle, filename, stadium
 		from ticket
 
 		<where>
@@ -76,7 +80,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					or
 					ticketcontents like '%'||#{tword}||'%'
 					or
-					stadium like '%'||#{tword}||'%'
+					stadium like
+					'%'||#{tword}||'%'
 				</when>
 			</choose>
 		</where>
@@ -103,12 +108,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="col=='btitle_bcontents'">
 					and btitle like '%'||#{bword}||'%'
 					or
-					bcontents like '%'||#{bword}||'%'
+					bcontents like
+					'%'||#{bword}||'%'
 				</when>
 			</choose>
 		</where>
 	</select>
-	
+
 	<select id="bbs" parameterType="Map"
 		resultType="com.study.member.BbsDTO">
 		select bbsno, bcate, btitle, id, bview, to_char(bdate, 'yyyy-mm-dd')
@@ -131,7 +137,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="col=='btitle_bcontents'">
 					and btitle like '%'||#{bword}||'%'
 					or
-					bcontents like '%'||#{bword}||'%'
+					bcontents like
+					'%'||#{bword}||'%'
 				</when>
 			</choose>
 		</where>
@@ -158,23 +165,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="col=='htitle_hcontents'">
 					and htitle like '%'||#{rword}||'%'
 					or
-					hcontents like '%'||#{rword}||'%'
+					hcontents like
+					'%'||#{rword}||'%'
 				</when>
 			</choose>
 		</where>
 	</select>
-	
+
 	<select id="review" parameterType="Map"
 		resultType="com.study.member.ReviewDTO">
 		select hugino, htitle, hcontents, to_char(hdate, 'yyyy-mm-dd') hdate,
 		star, sikname, stadium, sikurl, r
 		from(
-		select hugino, htitle, hcontents, hdate, star, sikname, stadium, sikurl,
+		select hugino, htitle,
+		hcontents, hdate, star, sikname, stadium, sikurl,
 		rownum r
 		from (
-		select hugino, htitle, hcontents, hdate, star, sikname, stadium, sikurl
-		from review inner join sikdang
-		on review.sikid = sikdang.sikid and review.id = #{id}
+		select
+		hugino, htitle, hcontents, hdate, star, sikname, stadium, sikurl
+		from
+		review inner join sikdang
+		on review.sikid = sikdang.sikid and review.id
+		= #{id}
 		<where>
 
 			<choose>
@@ -187,7 +199,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="col=='htitle_hcontents'">
 					htitle like '%'||#{rword}||'%'
 					or
-					hcontents like '%'||#{rword}||'%'
+					hcontents like
+					'%'||#{rword}||'%'
 				</when>
 			</choose>
 		</where>
@@ -204,10 +217,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select id, mname, nick, email, phone, address1, address2, postcode,
 		filename, r
 		from(
-		select id, mname, nick, email, phone, address1, address2, postcode,
+		select id, mname, nick, email, phone, address1,
+		address2, postcode,
 		filename, rownum r
 		from(
-		select id, mname, nick, email, phone, address1, address2, postcode, filename
+		select id, mname, nick,
+		email, phone, address1, address2, postcode, filename
 		from member
 		<where>
 			<choose>
@@ -228,17 +243,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 )where r >= #{sno} and r <= #{eno}
         ]]>
 	</select>
-	
+
 	<update id="updateFile" parameterType="Map">
 		update member
-		set filename = #{filename}
+		set filename
+		= #{filename}
 		where id = #{id}
 	</update>
-	
+
 	<update id="update" parameterType="com.study.member.MemberDTO">
 		update member
-		set phone = #{phone},
+		set phone =
+		#{phone},
 		nick = #{nick},
+		password = #{password},
 		email = #{email},
 		postcode = #{postcode},
 		address1 = #{address1},
@@ -247,11 +265,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id = #{id}
 	</update>
 	
+	<update id="updatePassword" parameterType="Map">
+		update member
+		set password
+		= #{password}
+		where id = #{id}
+	</update>
+
 	<select id="read" parameterType="String"
 		resultType="com.study.member.MemberDTO">
 		select *
 		from member
 		where id = #{id}
+	</select>
+	
+	<select id="readByEmail" parameterType="String"
+		resultType="com.study.member.MemberDTO">
+		select *
+		from member
+		where email = #{email}
 	</select>
 
 	<select id="getGrade" parameterType="String" resultType="String">
@@ -281,24 +313,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where email=#{email}
 	</select>
 
+	<select id="duplicatedNick" parameterType="String"
+		resultType="int">
+		select count(*)
+		from member
+		where nick=#{nick}
+	</select>
+
 	<insert id="create" parameterType="com.study.member.MemberDTO">
-		insert into member(id, password, mname, nick, phone, email, postcode,
-		address1, address2, filename, grade, point, favteam)
-		values(#{id}, #{password},#{mname}, #{nick}, #{phone}, #{email}, #{postcode},
-		#{address1}, #{address2}, #{filename}, 'H', 0, #{favteam})
+		insert into member(id,
+		password, mname, nick, phone, email, postcode,
+		address1, address2,
+		filename, grade, point, favteam)
+		values(#{id}, #{password},#{mname},
+		#{nick}, #{phone}, #{email}, #{postcode},
+		#{address1}, #{address2},
+		#{filename}, 'H', 0, #{favteam})
 	</insert>
 
 	<insert id="kakaoCreate"
 		parameterType="com.study.member.MemberDTO">
-		insert into member(id, password, mname, nick, email, grade, filename)
-		values(#{id}, #{password},#{mname}, #{nick}, #{email}, 'KH',
+		insert into member(id, password, mname, nick, email,
+		grade, filename)
+		values(#{id}, #{password},#{mname}, #{nick}, #{email},
+		'KH',
 		'member.jpg')
 	</insert>
 
 	<insert id="googleCreate"
 		parameterType="com.study.member.MemberDTO">
-		insert into member(id, password, nick, mname, email, grade, filename)
-		values(#{id}, #{password},#{nick}, #{mname},#{email}, 'GH',
+		insert into member(id, password, nick, mname, email,
+		grade, filename)
+		values(#{id}, #{password},#{nick}, #{mname},#{email},
+		'GH',
 		'member.jpg')
 	</insert>
 

@@ -23,13 +23,36 @@ import com.study.utility.Utility;
 @Controller
 public class TicketController {
 
+	
+	//test
 	@Autowired
 	@Qualifier("com.study.ticket.TicketServiceImpl")
 	private TicketService service;
 	
+	//관리자 삭제
+	@GetMapping("/admin/ticket/delete")
+	  public String delete() {
+	 
+	 
+	    return "/ticket/delete";
+	  }
+	
+	 @PostMapping("/admin/ticket/delete")
+	  public String delete(int ticketno) {
+	 
+	    int cnt = 0;
+	   
+	   cnt = service.delete(ticketno);
+	   
+	   
+	    return "redirect:/ticket/list"; 
+	   
+	 
+	  }
 	
 	
 	
+	//사용자 삭제
 	@GetMapping("/ticket/delete")
 	  public String delete(int ticketno , HttpSession session) {
 	 
@@ -39,7 +62,7 @@ public class TicketController {
       if(id==null) {
           return "redirect:/member/login";
       } else if(id.equals(dto.getId())) {
-          //원하는 액션
+    	//세션에 로그인한 아이디와 게시물(id) 비교  아이디검사
 
       	return "/ticket/delete";
       } else {
@@ -56,7 +79,14 @@ public class TicketController {
 	   cnt = service.delete(ticketno);
 	   
 	   
-	    return "redirect:/ticket/list"; // 마이페이지 경로 바꾸기 
+	   String grade = (String)request.getSession().getAttribute("grade");
+	   System.out.println("1111grade:"+grade);
+	  
+	   if(grade.equals("A")) {
+		    return "redirect:/ticket/list"; 
+	   }else {
+		   return "redirect:/member/mypage";
+	   }
 	   
 	 
 	  }
@@ -66,10 +96,10 @@ public class TicketController {
 	@PostMapping("/ticket/update")
 	public String update(TicketDTO dto) {
 		int cnt = service.update(dto);
-		System.out.print("dto:"+dto);
+		System.out.print("dto.ticketeno:"+dto.getTicketno());
 		
 		if (cnt == 1) {
-			return "redirect:/ticket/list";
+			return "redirect:/member/mypage";
 		} else {
 			return "/message/error";
 		}
@@ -79,14 +109,16 @@ public class TicketController {
 	public String update(@PathVariable("ticketno") int ticketno , HttpSession session ,Model model) {
 
 		
-		String id = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+		String id = (String)session.getAttribute("id"); 
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
 		
 		TicketDTO dto = service.detail(ticketno);
 		
-		if(dto.getId().equals(id) ) { //아이디 검사
+	
+		
+		if(dto.getId().equals(id)) {//아이디 검사
 			return "/ticket/update";
 		}else
 		model.addAttribute("dto", dto);
@@ -105,7 +137,7 @@ public class TicketController {
 			{
 		//String basePath = new ClassPathResource("/static/pstorage").getFile().getAbsolutePath();
 		String basePath = Ticket.getUploadDir();
-		if (oldfile != null && !oldfile.equals("default1.jpg")) { // 원본파일 삭제 default1 기본임 
+		if (oldfile != null && !oldfile.equals("default1.jpg")) {// 원본파일 삭제 default1 기본임 
 			Utility.deleteFile(basePath, oldfile);
 		}
 
@@ -118,7 +150,7 @@ public class TicketController {
 		int cnt = service.updateFile(map);
 
 		if (cnt == 1) {
-			return "redirect:/ticket/list";
+			return "redirect:/member/mypage";
 		} else {
 			return "./error";
 		}
@@ -128,7 +160,7 @@ public class TicketController {
 	public String updateFileForm(@PathVariable("ticketno") int ticketno, @PathVariable("oldfile") String oldfile,
 			Model model , HttpSession session) {
 		
-		String id = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+		String id = (String)session.getAttribute("id");  //추후 세션에 저장된 아이디 값으로 등록 
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
@@ -138,7 +170,7 @@ public class TicketController {
 			TicketDTO dto = service.detail(ticketno);
 
 			if(dto.getId().equals(id) ) { //아이디 검사
-			model.addAttribute("id", id); //param 으로 view 데이터 전달 
+			model.addAttribute("id", id); //param 으로 view(jsp) 데이터 전달 
 			model.addAttribute("ticketno", ticketno);
 			model.addAttribute("oldfile", oldfile);
 
@@ -158,8 +190,8 @@ public class TicketController {
 	@GetMapping("/ticket/create")
 	  public String create(Model model, HttpSession session) {
 		
-		//id 테스트용도 ***********************
-		String id = (String)session.getAttribute("id"); //추후 세션에 저장된 아이디 값으로 등록 
+		//id �뀒�뒪�듃�슜�룄 ***********************
+		String id = (String)session.getAttribute("id"); 
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
@@ -220,7 +252,7 @@ public class TicketController {
 		
 		
 		
-		// 검색관련------------------------
+			// 검색관련-----------------------
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
 
@@ -228,7 +260,7 @@ public class TicketController {
 			word = "";
 		}
 
-		// 페이지관련-----------------------
+		// 페이지관련----------------------
 		int nowPage = 1;// 현재 보고있는 페이지
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));

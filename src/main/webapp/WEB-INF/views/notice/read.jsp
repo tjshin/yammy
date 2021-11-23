@@ -86,24 +86,21 @@
 		</div>
 		<div>
 			<c:choose>
-    		<c:when test="${sessionScope.id != dto.id && sessionScope.grade == 'A '}">
+    		<c:when test="${sessionScope.id != dto.id && sessionScope.grade == 'A'}">
 			<button type="button" class="btn" onclick="location.href='/admin/notice/create'">등록</button>
 			</c:when>
-			<c:when test="${sessionScope.id == dto.id && sessionScope.grade == 'A '}">
+			<c:when test="${sessionScope.id == dto.id && sessionScope.grade == 'A'}">
 			<button type="button" class="btn" onclick="location.href='/admin/notice/create'">등록</button>
 			<button type="button" class="btn" onclick="location.href='/admin/notice/update?noticeno=${dto.noticeno}'">수정</button>
 			<button type="button" class="btn" onclick="location.href='/admin/notice/delete?noticeno=${dto.noticeno}'">삭제</button>
 			</c:when>
 			</c:choose>
 			<button type="button" class="btn" onclick="list()">목록</button>
+			<br/><br/>
 		</div>
 	</div>
 
 	
-
-	<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
 	<script>
         function initialize() {
           var mapOptions = {

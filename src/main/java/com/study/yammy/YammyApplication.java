@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages= {"com.study.*"})
+@ComponentScan(basePackages = { "com.study.*" })
 public class YammyApplication {
 
 	public static void main(String[] args) {

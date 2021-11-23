@@ -25,149 +25,140 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ChatbotController {
-	
+
 	@GetMapping("/chatbot/chatting")
 	public String chatting() {
 		return "/chatbot/chatting";
 	}
-	
-    // ��ũ�� Ű
-    private static String secretKey = "clhra3dIUmdnTm5DZEppaGJveXNGd2J6Q2lSTnNMV1U=";
-    // APIGW Invoe URL , ���� Exception: 
-    private static String apiUrl = "https://928ff5853ef24f4fb0da63d0ed9e69cc.apigw.ntruss.com/custom/v1/5803/d64525be2f83c8bb8b67c20dff1d31c2dbaf065e102b9358a631946124cf6877";
-    
-    
-    @RequestMapping("/chatbot/chatting")  // http://localhost:9093/naver_chatting
-    public ModelAndView chat() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("/chatbot/chatting"); // /src/main/webapp/WEB-INF/views/naver_chatting.jsp
-        
-        return mav;
-    }
-    
-    @MessageMapping("/sendMessage")
-    @SendTo("/topic/public")
-    public String sendMessage(@Payload String chatMessage) throws IOException {
 
-        URL url = new URL(apiUrl);
+	private static String secretKey = "clhra3dIUmdnTm5DZEppaGJveXNGd2J6Q2lSTnNMV1U=";
+	private static String apiUrl = "https://928ff5853ef24f4fb0da63d0ed9e69cc.apigw.ntruss.com/custom/v1/5803/d64525be2f83c8bb8b67c20dff1d31c2dbaf065e102b9358a631946124cf6877";
 
-        String message =  getReqMessage(chatMessage);
-        String encodeBase64String = makeSignature(message, secretKey);
+	@RequestMapping("/chatbot/chatting")
+	public ModelAndView chat() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/chatbot/chatting");
 
-        //api���� ���� (���� -> ���� ���)        
-        HttpURLConnection con = (HttpURLConnection)url.openConnection();
-        con.setRequestMethod("POST");
-        con.setRequestProperty("Content-Type", "application/json;UTF-8");
-        con.setRequestProperty("X-NCP-CHATBOT_SIGNATURE", encodeBase64String);
+		return mav;
+	}
 
-        con.setDoOutput(true);
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+	@MessageMapping("/sendMessage")
+	@SendTo("/topic/public")
+	public String sendMessage(@Payload String chatMessage) throws IOException {
 
-        wr.write(message.getBytes("UTF-8"));
-        wr.flush();
-        wr.close();
-        int responseCode = con.getResponseCode();
+		URL url = new URL(apiUrl);
 
-        BufferedReader br;
+		String message = getReqMessage(chatMessage);
+		String encodeBase64String = makeSignature(message, secretKey);
 
-        if(responseCode==200) { // ���� ȣ��
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		con.setRequestMethod("POST");
+		con.setRequestProperty("Content-Type", "application/json;UTF-8");
+		con.setRequestProperty("X-NCP-CHATBOT_SIGNATURE", encodeBase64String);
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(
-                            con.getInputStream(), "UTF-8"));
-            String decodedString;
-            String jsonString = "";
-            while ((decodedString = in.readLine()) != null) {
-                jsonString = decodedString;
-            }
-            
-            // �޾ƿ� ���� �����ϴ� �κ�
-            JSONParser jsonparser = new JSONParser();
-            try {
-                JSONObject json = (JSONObject)jsonparser.parse(jsonString);
-                JSONArray bubblesArray = (JSONArray)json.get("bubbles");
-                JSONObject bubbles = (JSONObject)bubblesArray.get(0);
-                JSONObject data = (JSONObject)bubbles.get("data");
-                String description = "";
-                description = (String)data.get("description");
-                chatMessage = description;
-            } catch (Exception e) {
-                System.out.println("error");
-                e.printStackTrace();
-            }
+		con.setDoOutput(true);
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 
-            in.close();
-        } else {  // ���� �߻�
-            chatMessage = con.getResponseMessage();
-        }
-        return chatMessage;
-    }
+		wr.write(message.getBytes("UTF-8"));
+		wr.flush();
+		wr.close();
+		int responseCode = con.getResponseCode();
 
-    //���� �޼����� ���̹����� �������� ��ȣȭ�� �������ִ� �޼ҵ�
-    public static String makeSignature(String message, String secretKey) {
+		BufferedReader br;
 
-        String encodeBase64String = "";
+		if (responseCode == 200) {
 
-        try {
-            byte[] secrete_key_bytes = secretKey.getBytes("UTF-8");
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+			String decodedString;
+			String jsonString = "";
+			while ((decodedString = in.readLine()) != null) {
+				jsonString = decodedString;
+			}
 
-            SecretKeySpec signingKey = new SecretKeySpec(secrete_key_bytes, "HmacSHA256");
-            Mac mac = Mac.getInstance("HmacSHA256");
-            mac.init(signingKey);
+			JSONParser jsonparser = new JSONParser();
+			try {
+				JSONObject json = (JSONObject) jsonparser.parse(jsonString);
+				JSONArray bubblesArray = (JSONArray) json.get("bubbles");
+				JSONObject bubbles = (JSONObject) bubblesArray.get(0);
+				JSONObject data = (JSONObject) bubbles.get("data");
+				String description = "";
+				description = (String) data.get("description");
+				chatMessage = description;
+			} catch (Exception e) {
+				System.out.println("error");
+				e.printStackTrace();
+			}
 
-            byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
-            encodeBase64String = Base64.encodeBase64String(rawHmac);
+			in.close();
+		} else {
+			chatMessage = con.getResponseMessage();
+		}
+		return chatMessage;
+	}
 
-            return encodeBase64String;
+	public static String makeSignature(String message, String secretKey) {
 
-        } catch (Exception e){
-            System.out.println(e);
-        }
+		String encodeBase64String = "";
 
-        return encodeBase64String;
+		try {
+			byte[] secrete_key_bytes = secretKey.getBytes("UTF-8");
 
-    }
+			SecretKeySpec signingKey = new SecretKeySpec(secrete_key_bytes, "HmacSHA256");
+			Mac mac = Mac.getInstance("HmacSHA256");
+			mac.init(signingKey);
 
-    // ���� �޼����� ���̹� ê���� �������� �������ִ� �޼ҵ�
-    public static String getReqMessage(String voiceMessage) {
+			byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
+			encodeBase64String = Base64.encodeBase64String(rawHmac);
 
-        String requestBody = "";
+			return encodeBase64String;
 
-        try {
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 
-            JSONObject obj = new JSONObject();
+		return encodeBase64String;
 
-            long timestamp = new Date().getTime();
+	}
 
-            System.out.println("##"+timestamp);
+	public static String getReqMessage(String voiceMessage) {
 
-            obj.put("version", "v2");
-            obj.put("userId", "U47b00b58c90f8e47428af8b7bddcda3d"); // ���� ä���ϴ� ������� ���� ID�� �ִ� 256�ڸ� ���� �ʾƾ� �մϴ�. ����ڸ��� ������ userId�� �����Ͻʽÿ�.
-            obj.put("timestamp", timestamp);
+		String requestBody = "";
 
-            JSONObject bubbles_obj = new JSONObject();
+		try {
 
-            bubbles_obj.put("type", "text");
+			JSONObject obj = new JSONObject();
 
-            JSONObject data_obj = new JSONObject();
-            data_obj.put("description", voiceMessage);
+			long timestamp = new Date().getTime();
 
-            bubbles_obj.put("type", "text");
-            bubbles_obj.put("data", data_obj);
+			System.out.println("##" + timestamp);
 
-            JSONArray bubbles_array = new JSONArray();
-            bubbles_array.add(bubbles_obj);
+			obj.put("version", "v2");
+			obj.put("userId", "U47b00b58c90f8e47428af8b7bddcda3d");
+			obj.put("timestamp", timestamp);
 
-            obj.put("bubbles", bubbles_array);
-            obj.put("event", "send");
+			JSONObject bubbles_obj = new JSONObject();
 
-            requestBody = obj.toString();
+			bubbles_obj.put("type", "text");
 
-        } catch (Exception e){
-            System.out.println("## Exception : " + e);
-        }
+			JSONObject data_obj = new JSONObject();
+			data_obj.put("description", voiceMessage);
 
-        return requestBody;
+			bubbles_obj.put("type", "text");
+			bubbles_obj.put("data", data_obj);
 
-    }
+			JSONArray bubbles_array = new JSONArray();
+			bubbles_array.add(bubbles_obj);
+
+			obj.put("bubbles", bubbles_array);
+			obj.put("event", "send");
+
+			requestBody = obj.toString();
+
+		} catch (Exception e) {
+			System.out.println("## Exception : " + e);
+		}
+
+		return requestBody;
+
+	}
 }
