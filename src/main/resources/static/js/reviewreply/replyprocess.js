@@ -85,7 +85,7 @@ let modalModBtn = $("#modalModBtn");
 mainBtn.on("click", function (e) {
  
   if (hrecontents.val() == '') {
-    alert("댓글을 입력하세요")
+    alert("댓글을 입력하세요");
     return;
   }
  
