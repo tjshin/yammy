@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
 <script type="text/JavaScript">
         
  function checkIn(f){
@@ -21,10 +27,17 @@
              f.ticketcontents.focus();
              return false;
         }
+          
          
-         if (f.filenameMF.value == ""){
-             alert("사진을 등록하세요");
-             f.filenameMF.focus();
+         if (f.gamedate.value == ""){
+             alert("경기 일정을 등록하세요");
+             f.gamedate.focus();
+             return false;
+        }
+         
+         if (f.location.value == ""){
+             alert("거래/양도 장소를 등록하세요");
+             f.location.focus();
              return false;
         } 
         
@@ -37,6 +50,13 @@
      window.history.back();
              }
 
+
+ 
+ $( function() { 
+	 $( "#gamedate" ).datepicker({
+		 dateFormat: "yy-mm-dd"
+	 }); 
+  });
 
 
 
@@ -51,14 +71,14 @@
 <div class="container">
     <h1 class="col-sm-offset-2 col-sm-10">게시물 수정</h1>
     <form class="form-horizontal" 
-        action="/ticket/update"
+        action="${root}/ticket/update"
         method="post"
         onsubmit="return checkIn(this)">
     
     
     
-     <input type ="hidden" name ="ticketno" value ='${ticketno}'>
-     
+    <input type="hidden" name="ticketno" value="${ticketno}">
+    
     <div class="form-group">
         <label class="control-label col-sm-2" for="stadium1"style="color: black; font-weight: bolder;" >구장 분류</label>
         <div class="col-sm-6">
@@ -101,9 +121,24 @@
         </div>
         </div>
     
+    	<div class="form-group">
+            <label class="control-label col-sm-2" for="gamedate" style="color: black; font-weight: bolder;">경기 날짜</label>
+        <div class="col-sm-6">
+            <input type="text" name="gamedate" id="gamedate" class="form-control">
+        </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="location" style="color: black; font-weight: bolder;">거래/양도 장소</label>
+        <div class="col-sm-6">
+            <input type="text" name="location" id="location" class="form-control">
+        </div>
+        </div>
+        
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">등록</button>
+        <button class="btn btn-primary">수정</button>
         <button type="reset" class="btn" onclick="goBack();">취소</button>
         </div>
     </div>

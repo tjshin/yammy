@@ -36,7 +36,7 @@
 				<div class="col-md-12">
 					<a href="${root }/sikdang/map_main" class="main-button accent-color">
 						<i class="icon-button fa fa-arrow-left"></i>
-						&nbsp;&nbsp;전체 지도로 돌아가기</a>
+						&nbsp;&nbsp;전체 지도로 돌아가기</a>&nbsp;&nbsp; 
 					<a href="${root }/sikdang/map_search" class="main-button accent-color">리뷰 등록하러 가기<i
 							class="icon-button fa fa-arrow-right"></i></a>
 				</div> <!-- /.col-md-12 -->

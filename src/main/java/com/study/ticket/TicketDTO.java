@@ -15,5 +15,8 @@ public class TicketDTO {
 	private MultipartFile filenameMF        ;
 	private String id;
 	private String nick;
-	private String mfilename;;
+	private String mfilename;
+	private String location;
+	private String gamedate;
+	
 }

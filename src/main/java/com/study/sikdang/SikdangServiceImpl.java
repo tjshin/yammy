@@ -55,5 +55,11 @@ public class SikdangServiceImpl implements SikdangService {
 		// TODO Auto-generated method stub
 		return mapper.read(sikid);
 	}
+	
+	@Override
+	public int distance(SikdangDTO sdto) {
+		// TODO Auto-generated method stub
+		return mapper.distance(sdto);
+	}
 
 }

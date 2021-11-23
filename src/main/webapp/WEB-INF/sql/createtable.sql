@@ -1,11 +1,15 @@
 
-CREATE TABLE BCATEGORY (
-       bcate                NUMBER(10) NOT NULL,
-       bcatename            VARCHAR2(50) NULL,
-       bcategrpno           NUMBER(10) NULL,
-       PRIMARY KEY (bcate), 
-       FOREIGN KEY (bcate)
-                             REFERENCES BCATEGORY
+CREATE TABLE SIKDANG (
+       sikid                VARCHAR2(50) NOT NULL,
+       sikname              VARCHAR2(100) NULL,
+       jibunadd             VARCHAR2(200) NULL,
+       sikurl               VARCHAR2(200) NULL,
+       sikphone             VARCHAR2(20) NULL,
+       distance             NUMBER(30) NULL,
+       coy                  VARCHAR2(50) NULL,
+       cox                  VARCHAR2(50) NULL,
+       roadadd              VARCHAR2(200) NULL,
+       PRIMARY KEY (sikid)
 );
 
 
@@ -20,10 +24,49 @@ CREATE TABLE MEMBER (
        postcode             VARCHAR2(7) NULL,
        phone                VARCHAR2(15) NULL,
        filename             VARCHAR2(100) NULL,
-       grade                CHAR(2) NULL,
+       grade                VARCHAR2(2) NULL,
        point                NUMBER(10) NULL,
        favteam              VARCHAR2(20) NULL,
        PRIMARY KEY (id)
+);
+
+
+CREATE TABLE REVIEW (
+       hugino               NUMBER(10) NOT NULL,
+       htitle               VARCHAR2(500) NULL,
+       hcontents            VARCHAR2(4000) NULL,
+       hdate                DATE NULL,
+       sikid                VARCHAR2(50) NOT NULL,
+       star                 NUMBER(1) NULL,
+       stadium              NUMBER(2) NOT NULL,
+       id                   VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (hugino), 
+       FOREIGN KEY (sikid)
+                             REFERENCES SIKDANG, 
+       FOREIGN KEY (id)
+                             REFERENCES MEMBER
+);
+
+
+CREATE TABLE REVIEWLIKE (
+       hugilike             number(10) NULL,
+       id                   VARCHAR2(50) NULL,
+       hugino               NUMBER(10) NOT NULL,
+       PRIMARY KEY (hugino), 
+       FOREIGN KEY (hugino)
+                             REFERENCES REVIEW, 
+       FOREIGN KEY (id)
+                             REFERENCES MEMBER
+);
+
+
+CREATE TABLE BCATEGORY (
+       bcate                NUMBER(10) NOT NULL,
+       bcatename            VARCHAR2(50) NULL,
+       bcategrpno           NUMBER(10) NULL,
+       PRIMARY KEY (bcate), 
+       FOREIGN KEY (bcate)
+                             REFERENCES BCATEGORY
 );
 
 
@@ -31,6 +74,8 @@ CREATE TABLE TICKET (
        ticketno             NUMBER(10) NOT NULL,
        tickettitle          VARCHAR2(500) NULL,
        ticketdate           DATE NULL,
+       gamedate             VARCHAR2(20) NULL,
+       location             VARCHAR2(100) NULL,
        stadium              VARCHAR2(50) NULL,
        ticketcontents       VARCHAR2(4000) NULL,
        filename             VARCHAR2(100) NULL,
@@ -59,6 +104,7 @@ CREATE TABLE BBS (
 
 
 CREATE TABLE BBSLIKE (
+       like_check           NUMBER(1) NULL,
        bcnt                 NUMBER(5) NULL,
        id                   VARCHAR2(50) NOT NULL,
        bbsno                NUMBER(10) NOT NULL,
@@ -85,6 +131,7 @@ CREATE TABLE REPLY (
 
 
 CREATE TABLE REPLYLIKE (
+       like_check           NUMBER(1) NULL,
        recnt                NUMBER(5) NULL,
        id                   VARCHAR2(50) NOT NULL,
        reno                 NUMBER(10) NOT NULL,
@@ -121,37 +168,6 @@ CREATE TABLE NOTICE (
        ndate                DATE NULL,
        id                   VARCHAR2(50) NOT NULL,
        PRIMARY KEY (noticeno), 
-       FOREIGN KEY (id)
-                             REFERENCES MEMBER
-);
-
-
-CREATE TABLE SIKDANG (
-       sikid                VARCHAR2(50) NOT NULL,
-       sikname              VARCHAR2(100) NULL,
-       jibunadd             VARCHAR2(200) NULL,
-       sikurl               VARCHAR2(200) NULL,
-       sikphone             VARCHAR2(20) NULL,
-       reviewcnt            NUMBER(10) NULL,
-       coy                  VARCHAR2(50) NULL,
-       cox                  VARCHAR2(50) NULL,
-       roadadd              VARCHAR2(200) NULL,
-       PRIMARY KEY (sikid)
-);
-
-
-CREATE TABLE REVIEW (
-       hugino               NUMBER(10) NOT NULL,
-       htitle               VARCHAR2(500) NULL,
-       hcontents            VARCHAR2(4000) NULL,
-       hdate                DATE NULL,
-       sikid                VARCHAR2(50) NOT NULL,
-       star                 NUMBER(1) NULL,
-       stadium              NUMBER(2) NULL,
-       id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (hugino), 
-       FOREIGN KEY (sikid)
-                             REFERENCES SIKDANG, 
        FOREIGN KEY (id)
                              REFERENCES MEMBER
 );

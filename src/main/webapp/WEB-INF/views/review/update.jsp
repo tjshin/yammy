@@ -76,6 +76,7 @@
         <input type='hidden' name="col" value="${param.col}">
 		<input type='hidden' name="word" value="${param.word}">
 		<input type='hidden' name="nowPage" value="${param.nowPage}">
+		<input type='hidden' name="mtest" value="${param.mtest}">
         
         
             <br>            

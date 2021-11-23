@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>야구에 미치다, Yammy입니다.</title>
+
 <meta charset="utf-8">
 
 <meta name="viewport"
@@ -16,6 +18,7 @@
 </head>
 <body>
 <div class = "first-widget parallax"> </div>
+
 
 	<section class="dark-content portfolio">
 		<div class="container">
@@ -181,6 +184,7 @@
 			</div> <!-- /.row -->
 		</div> <!-- /.container -->
 	</section> <!-- /.testimonials-widget -->
+
 
 
 </body>
