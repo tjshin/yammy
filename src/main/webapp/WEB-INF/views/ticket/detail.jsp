@@ -11,12 +11,19 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-function createM(){
+function messagesend(){
     var url = "${root }/message/ticketmessage";
     url +="?receid=${dto.id}";
     url +="&ticketno=${dto.ticketno}";
     location.href=url;
   }
+  
+function deleteM(){
+    var url = "/admin/ticket/delete";
+    url += "?ticketno=${dto.ticketno}";
+    location.href=url;
+  }  
+  
 </script>
 
 </head>
@@ -53,8 +60,14 @@ function createM(){
     <form method ="post" action ="${root }/message/ticketmessage" >
 	<input type= "hidden" name ="ticketno" id="ticketno" class="form-control"  value="${dto.ticketno}">
 	
-    <button type="button" class="btn btn-success" onclick="createM()">쪽지 보내기</button>
-   
+    <button type="button" class="btn btn-success" onclick="messagesend()">쪽지 보내기</button>
+   	    
+       <c:choose>
+				<c:when test="${not empty sessionScope.id && sessionScope.grade =='A'}">
+					<button type="button" class="btn" onclick="deleteM()">삭제</button>
+				</c:when>
+		</c:choose>
+		
    </form>
    
     <br>
@@ -82,9 +95,12 @@ function createM(){
         
          <br><br><br><br><br>
          <p style="font-size: 15px; color:#0C090A;">거래/양도 장소: ${dto.location} </p> 
-         
          <p style="font-size: 15px; color:#0C090A;">경기 날짜: ${dto.gamedate} </p> 
+         
    
+         
+   		
+   			
     <hr width =740px>
     <br>
     <br>

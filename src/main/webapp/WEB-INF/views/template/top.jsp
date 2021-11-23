@@ -110,7 +110,7 @@
 					<li><a href="${root}/member/login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</c:when>
-				<c:when test="${sessionScope.grade == 'A '}">
+				<c:when test="${sessionScope.grade == 'A'}">
 					<li><a href="#">관리자</a>
 						<ul>
 							<li><a href="${root}/admin/member/list"><span
@@ -225,7 +225,7 @@
 										</c:when>
 
 
-										<c:when test="${sessionScope.grade == 'A '}">
+										<c:when test="${sessionScope.grade == 'A'}">
 											<li><a href="#">관리자</a>
 												<ul>
 													<li><a href="${root}/admin/member/list"><span

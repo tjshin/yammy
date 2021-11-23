@@ -29,9 +29,30 @@ public class TicketController {
 	@Qualifier("com.study.ticket.TicketServiceImpl")
 	private TicketService service;
 	
+	//관리자 삭제
+	@GetMapping("/admin/ticket/delete")
+	  public String delete() {
+	 
+	 
+	    return "/ticket/delete";
+	  }
+	
+	 @PostMapping("/admin/ticket/delete")
+	  public String delete(int ticketno) {
+	 
+	    int cnt = 0;
+	   
+	   cnt = service.delete(ticketno);
+	   
+	   
+	    return "redirect:/ticket/list"; 
+	   
+	 
+	  }
 	
 	
 	
+	//사용자 삭제
 	@GetMapping("/ticket/delete")
 	  public String delete(int ticketno , HttpSession session) {
 	 
@@ -58,7 +79,14 @@ public class TicketController {
 	   cnt = service.delete(ticketno);
 	   
 	   
-	    return "redirect:/member/mypage"; 
+	   String grade = (String)request.getSession().getAttribute("grade");
+	   System.out.println("1111grade:"+grade);
+	  
+	   if(grade.equals("A")) {
+		    return "redirect:/ticket/list"; 
+	   }else {
+		   return "redirect:/member/mypage";
+	   }
 	   
 	 
 	  }
