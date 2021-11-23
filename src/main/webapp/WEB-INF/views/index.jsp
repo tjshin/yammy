@@ -19,8 +19,6 @@
 <body>
 <div class = "first-widget parallax"> </div>
 
-
-
     <section class="cta clearfix">
 		<div class="container">
 			<div class="row">
@@ -31,7 +29,6 @@
 		<!-- /.container -->
 	</section>
 	<!-- /.cta -->
-
 
 
 </body>

@@ -25,8 +25,10 @@
   }
 	</style>
 </head>
+
 <body>
 <div class = first-widget>  </div>
+
 <div class="container">
         <h3> 티켓 목록</h3>
 		
@@ -57,9 +59,15 @@
 		onclick="location.href='${root }/ticket/create'">등록</button>
 
 </form>
+<<<<<<< HEAD
+
+<br>
+	
+=======
 <br>
 	<!-- 참조 : contents/mainlist-->
 
+>>>>>>> master
 	<c:choose>   
         <c:when test="${empty list}"> <!-- 목록이 비어 있을경우-->
         <div class="row">
@@ -74,17 +82,18 @@
             <div class="col-sm-3">
 
             <a href="${root }/ticket/detail?ticketno=${dto.ticketno}">
-            <p>
-            <img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="306">
-            </p>
+            <img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="290">
             </a>
-			<!-- 스크립트 주석 /contents/storage/${dto.filename }     -->
+            
+			
             
        		<div class ="txt_line">
 
-					
-					<p><b>${dto.stadium}</b> </br> ${dto.tickettitle}</p>
-					<p align="right" style ="color: #ff8c00" >${dto.nick}</p>
+					<br>
+					<p><b>${dto.stadium} </b> </p>
+					<p><b>경기 일자: ${dto.gamedate} </b> <br></p>
+					<p> ${dto.tickettitle} </p>
+					<p align="right" style ="color: #ff8c00; font-size:1.2em;  "   >${dto.nick}</p>
 					
 					 
 					
@@ -98,11 +107,15 @@
             <div class="col-sm-3">
             
             <a href="${root }/ticket/detail?ticketno=${dto.ticketno}">
-            <p><img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="306"></p></a>
+            <img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="290">
+            </a>
+            
            <div class ="txt_line">
-
-					<p><b>${dto.stadium}</b> </br> ${dto.tickettitle}</p>
-					<p align="right" style ="color: #ff8c00">${dto.nick}</p>
+					<br>
+				    <p><b>${dto.stadium} </b> </p>
+					<p><b>경기 일자: ${dto.gamedate} </b> <br></p>
+					<p> ${dto.tickettitle} </p>
+					<p align="right" style ="color: #ff8c00; font-size:1.2em;  "   >${dto.nick}</p>
 			
 			</div>
             </div>
