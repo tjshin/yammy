@@ -6,6 +6,20 @@
 <tiles-definitions>
 
 
+ <definition name="/message/read" extends="main">
+    <put-attribute name="title" value="관리자메세지목록"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/read.jsp" />
+  </definition>
+
+ <definition name="/message/adminlist" extends="main">
+    <put-attribute name="title" value="관리자 쪽지 목록"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/message/adminlist.jsp" />
+  </definition>
+
+
+
  <definition name="/message/ticketmessage" extends="main">
     <put-attribute name="title" value="티켓양도 쪽지 "></put-attribute>
     <put-attribute name="body"

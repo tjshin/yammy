@@ -11,7 +11,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>받은 쪽지 함</title>
+<title>관리자 전체 쪽지 함</title>
 <meta charset="utf-8">
 
 <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
      function read(messageno){
-       var url = "${root }/message/receread";
+       var url = "${root }/admin/message/read";
        url += "?messageno="+messageno;
        url += "&col=${col}";
        url += "&word=${word}";
@@ -60,7 +60,7 @@
      
      // 체크 이후 삭제 버튼 클릭시
      function deleteValue(){
-			var url = "/rcheckdelete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+			var url = "/delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 			var valueArr = new Array();
 		    var list = $("input[name='RowCheck']");
 		    for(var i = 0; i < list.length; i++){
@@ -73,24 +73,25 @@
 		    }
 		    else{
 		    	if(confirm("정말 삭제하시겠습니까?")){			 
-				$.ajax({
-				    url : url,                    // 전송 URL
-				    type : 'POST',                // GET or POST 방식
-				    traditional : true,
-				    data : {
-				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
-				    },
-	                success: function(jdata){
-	                	 if(jdata = 1) {
+					$.ajax({
+					    url : url,                    // 전송 URL
+					    type : 'POST',                // GET or POST 방식
+					    traditional : true,
+					    data : {
+					    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+					    },
+		                success: function(jdata){
+		                   // alert(jdata);
+		                    if(jdata = 1) {
 		                        alert("삭제 성공");
 		                        location.reload();
 		                    }
-	                    else{
-	                        alert("삭제 실패");
-	                    }
-	                }
-				});
-		    }
+		                    else{
+		                        alert("삭제 실패");
+		                    }
+		                }
+					});
+		        }
  				else{
  					alert("취소되었습니다.");
  				}
@@ -107,18 +108,21 @@
 <div class = first-widget>  </div>
 
 	<div class="container">
-		<h2>받은 쪽지 함</h2>
-		<form class="form-inline" action="${root }/message/recelist">
+		<h2>전체 쪽지 목록</h2>
+		<form class="form-inline" action="${root }/admin/message/list">
 
 			<div class="form-group">
 				<select class="form-control" name="col">
-					<option value="sendid"
+						<option value="sendid"
 						<c:if test= "${col=='sendid'}"> selected </c:if>>보낸 사람</option>
-					<option value="total"
-                <c:if test= "${col=='total'}"> selected </c:if>
-                >전체출력</option>
+						<option value="sendid"
+						<c:if test= "${col=='receid'}"> selected </c:if>>받은 사람</option>
+						<option value="total"
+               		     <c:if test= "${col=='total'}"> selected </c:if>>전체출력</option>
 				</select>
 			</div>
+			
+			
 
 
 			<div class="form-group">
@@ -136,6 +140,7 @@
 				<tr>
 					<th><label class="checkbox-inline">	<input id="allCheck" type="checkbox" name="allCheck"/></label></th>
 					<th>보낸사람</th>
+					<th>받은사람</th>
 					<th>내용</th>
 					<th>날짜/시간</th>
 
@@ -162,6 +167,9 @@
 										<!--<img src="./imagetest/new.gif">  --> <!-- shop/WebMvcConfiguration 추가해야함 -->
 										 <img src="${root }/images/new.gif">  
 									</c:if></td>
+									
+								<td>${dto.receid}</td>
+									
 								<td><a href="javascript:read('${dto.messageno}')">${dto.mcontents}</a></td>
 								<td>${dto.mdate}</td>
 
