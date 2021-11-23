@@ -95,7 +95,7 @@
 
 				</ul></li>
 
-			<li><a href="#">My Page</a>
+			<li><a href="${root}/member/mypage">My Page</a>
 				<ul>
 					<li><a href="${root}/member/mypage"><span
 							class="glyphicon glyphicon-list"></span>회원정보</a></li>
@@ -209,7 +209,7 @@
 
 										</ul></li>
 
-									<li><a href="#">My Page</a>
+									<li><a href="${root}/member/mypage">My Page</a>
 										<ul>
 											<li><a href="${root}/member/mypage"><span
 													class="glyphicon glyphicon-list"></span>회원정보</a></li>
