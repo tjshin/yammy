@@ -99,7 +99,7 @@
 			<code id="snippet" class="snippet"></code>
 		</div>
 		
-		<script type="text/javascript" src="${root }/js/map_main.js">
+		<script type="text/javascript" src="${root }/js/mapsikdang/map_main.js">
 // 			이 javascript 파일은 지도에 각 구단 엠블렘을 마커로 표시하고,
 // 			버튼을 눌렀을 때 해당 구장의 지도를 보여줍니다. by 신태진
 		</script>
