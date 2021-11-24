@@ -143,12 +143,14 @@
 				<option value="1" selected="selected">직접입력</option>
 				<option value="안녕하세요?">안녕하세요?</option>
 				<option value="Yammy는 무슨 뜻인가요?">Yammy는 무슨 뜻인가요?</option>
-				<option value="야구 일정을 알고 싶어요.">야구 일정을 알고 싶어요.</option>
 				<option value="로그인이 되지 않습니다.">로그인이 되지 않습니다.</option>
-				<option value="티켓 양도 거래 중에 사기를 당했을 때는 어떻게 해야 하나요?">티켓 양도 거래
-					중에 사기를 당했을 때는 어떻게 해야 하나요?</option>
-				<option value="고객센터 번호을 알고 싶어요.">고객센터 번호을 알고 싶어요.</option>
+				<option value="티켓 양도는 어떻게 하나요?">티켓 양도는 어떻게 하나요?</option>
+				<option value="구장별 게시판 이용은 어떻게 하나요?">구장별 게시판 이용은 어떻게 하나요?</option>
+				<option value="경기장 주변 맛집은 어떻게 이용하나요?">경기장 주변 맛집은 어떻게 이용하나요?</option>
+				<option value="티켓 양도 거래 중에 사기를 당했을 때는 어떻게 해야 하나요?">티켓 양도 거래 중에 사기를 당했을 때는 어떻게 해야 하나요?</option>
 				<option value="Yammy의 메일 주소를 알려주세요.">Yammy의 메일 주소를 알려주세요.</option>
+				<option value="고객센터 번호을 알고 싶어요.">고객센터 번호을 알고 싶어요.</option>
+				<option value="야구 일정을 알고 싶어요.">야구 일정을 알고 싶어요.</option>
 
 			</select>
 			<br/>
