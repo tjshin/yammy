@@ -48,11 +48,23 @@
 					<a href="${root }/sikdang/map_main"
 						class="main-button accent-color"> <i
 						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 지도로 돌아가기
-					</a> &nbsp;&nbsp; <a href="${listurl }"
-						class="main-button accent-color"> <i
-						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
-					</a>
-
+					</a> &nbsp;&nbsp;
+					<c:choose>
+					<c:when test="${param.col == null && param.word == null && param.nowPage == null }">
+						<a href="${root}/review/list"
+							class="main-button accent-color"> <i
+							class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${listurl }"
+							class="main-button accent-color"> <i
+							class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						</a>
+					</c:otherwise>
+					</c:choose>
+					
+					
 				</div>
 				<!-- /.col-md-12 -->
 			</div>
