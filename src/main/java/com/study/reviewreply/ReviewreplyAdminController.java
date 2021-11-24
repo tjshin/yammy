@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.review.ReviewDTO;
 import com.study.utility.Utility;
@@ -60,6 +63,26 @@ public class ReviewreplyAdminController {
 		//댓글 관련
 		
 		return "/admin/review/reply/list";
+	}
+	
+	@GetMapping("/admin/review/reply/delete")
+	public String adminReviewreplyDelete(int hugireno) {
+		return "/admin/review/reply/delete";
+	}
+	
+	@PostMapping("/admin/review/reply/delete")
+	public String adminReviewreplyDelete(int hugireno, HttpServletRequest request,
+			RedirectAttributes redirect) {
+		
+		if(service.delete(hugireno) > 0) {
+			redirect.addAttribute("col", request.getParameter("col"));
+			redirect.addAttribute("word", request.getParameter("word"));
+			redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+			return "redirect:/admin/review/reply/list";
+		} else {
+			return "/admin/review/reply/error";
+		}
+		
 	}
 
 }

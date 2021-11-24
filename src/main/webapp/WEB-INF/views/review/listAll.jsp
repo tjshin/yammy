@@ -96,7 +96,8 @@
 		    <td><a href="${root }/admin/member/list?col=id&word=${dto.id}">${dto.nick}(${dto.id})</a></td>
 		    <td>${dto.hredate }</td>
 		    <td>
-		        <a href="#"><img src="${root }/images/trash-alt-solid.svg"
+		        <a href="${root }/admin/review/reply/delete?hugireno=${dto.hugireno}${urlhelper}">
+		        <img src="${root }/images/trash-alt-solid.svg"
 		        alt="DB에서 삭제합니다."
 		        style="width:20px;height:20px;"></a>
 		    </td>
