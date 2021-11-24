@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
+<c:set var="root" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +28,12 @@
 	<script src="js/jquery-migrate-1.2.1.min.js"></script>
 
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  <script type="text/javascript" src="${root}/ckeditor/ckeditor.js">     </script>
+  <script type="text/JavaScript">
 
-	<script type="text/JavaScript">
+  $(function() {
+         CKEDITOR.replace('bcontents'); // <TEXTAREA>태그 id 값
+   });
         
  function checkIn(f){
 

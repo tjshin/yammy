@@ -38,11 +38,11 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">게시글 조회</h2>
+						<h2 class="page-title"><a onClick="window.location.reload()" style="cursor: pointer;">게시판 목록</a></h2>
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 게시판 / 게시글 조회</span>
+						<span class="page-location">Home / 경기장 게시판 / 게시판 목록</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -53,18 +53,40 @@
 		<!-- /.parallax-overlay -->
 	</div>
 	<div class="container">
-		<c:choose>
-			<c:when test="${bbscate == 'jamsil'}"><h2>잠실야구장 게시판</h2></c:when>
-			<c:when test="${bbscate == 'gocheok'}"><h2>고척스카이돔 게시판</h2></c:when>
-			<c:when test="${bbscate == 'incheon'}"><h2>인천SSG랜더스필드 게시판</h2></c:when>
-			<c:when test="${bbscate == 'suwon'}"><h2>수원KT위즈파크 게시판</h2></c:when>
-			<c:when test="${bbscate == 'daejeon'}"><h2>한화생명이글스파크 게시판</h2></c:when>
-			<c:when test="${bbscate == 'gwangju'}"><h2>광주기아챔피언스필드 게시판</h2></c:when>
-			<c:when test="${bbscate == 'daegi'}"><h2>대구삼성라이온즈파크 게시판</h2></c:when>
-			<c:when test="${bbscate == 'changwon'}"><h2>창원NC파크 게시판</h2></c:when>
-			<c:otherwise><h2>사직야구장</h2></c:otherwise>
-		</c:choose>
 
+		<a href='/bbs/list?bbscate=${bbscate}'> <c:choose>
+				<c:when test="${bbscate == 'jamsil'}">
+					<h2>잠실야구장 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'gocheok'}">
+					<h2>고척스카이돔 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'incheon'}">
+					<h2>인천SSG랜더스필드 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'suwon'}">
+					<h2>수원KT위즈파크 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'daejeon'}">
+					<h2>한화생명이글스파크 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'gwangju'}">
+					<h2>광주기아챔피언스필드 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'daegu'}">
+					<h2>대구삼성라이온즈파크 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'changwon'}">
+					<h2>창원NC파크 게시판</h2>
+				</c:when>
+				<c:when test="${bbscate == 'busan'}">
+					<h2>사직야구장 게시판</h2>
+				</c:when>
+				<c:otherwise>
+					<h2>bbscate : ${bbscate} 오류났다 고쳐라</h2>
+				</c:otherwise>
+			</c:choose>
+		</a> 
 		<br>
 
 		<form class="form-inline" action="/bbs/list">
@@ -137,7 +159,7 @@
 				onclick="location.href='../bbs/bestlist'">인기글</button>
 
 		</div>
-		</form>
+				</form>
 		<div>${paging}</div>
 	</div>
 

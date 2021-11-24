@@ -5,14 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
 <title>조회</title>
 <meta charset="utf-8">
 	   
@@ -72,7 +64,20 @@
 	</div>
 	<div class="container">
 
-		<h2>게시글</h2>
+		 <a href='/bbs/list?bbscate=${param.bbscate}'>
+   	<c:choose>
+			<c:when test="${param.bbscate == 'jamsil'}"><h2>잠실야구장 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'gocheok'}"><h2>고척스카이돔 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'incheon'}"><h2>인천SSG랜더스필드 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'suwon'}"><h2>수원KT위즈파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'daejeon'}"><h2>한화생명이글스파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'gwangju'}"><h2>광주기아챔피언스필드 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'daegu'}"><h2>대구삼성라이온즈파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'changwon'}"><h2>창원NC파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'busan'}"><h2>사직야구장 게시판</h2></c:when>
+			<c:otherwise><h2> bbscate : ${param.bbscate} 오류났다 고쳐라</h2></c:otherwise>
+		</c:choose>
+   </a>
 		<header>
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -88,7 +93,7 @@
 					</div>
 					<div align="right">
 						<span class="gall_count">조회수: ${dto.bview}</span> <span
-							class="gall_reply_num">추천수: </span> 
+							class="like-count">추천수: </span> 
 							<div class="comments-count"><h6>댓글 수: #</h6></div>
 					</div>
 				</div>

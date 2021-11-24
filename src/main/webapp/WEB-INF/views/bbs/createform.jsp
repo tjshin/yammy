@@ -11,7 +11,7 @@
   <script type="text/JavaScript">
 
   $(function() {
-         CKEDITOR.replace('content'); // <TEXTAREA>태그 id 값
+         CKEDITOR.replace('bcontents'); // <TEXTAREA>태그 id 값
    });
  
  
@@ -60,7 +60,23 @@
       method="post"
       onsubmit="return checkIn(this)"
       >
-      <input type="hidden" name="bbscate" value="${param.bbscate }">
+      <input type="hidden" name="bbscate" value="${param.bbscate}">
+   
+   <a href='/bbs/list?bbscate=${param.bbscate}'>
+   	<c:choose>
+			<c:when test="${param.bbscate == 'jamsil'}"><h2>잠실야구장 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'gocheok'}"><h2>고척스카이돔 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'incheon'}"><h2>인천SSG랜더스필드 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'suwon'}"><h2>수원KT위즈파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'daejeon'}"><h2>한화생명이글스파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'gwangju'}"><h2>광주기아챔피언스필드 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'daegu'}"><h2>대구삼성라이온즈파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'changwon'}"><h2>창원NC파크 게시판</h2></c:when>
+			<c:when test="${param.bbscate == 'busan'}"><h2>사직야구장 게시판</h2></c:when>
+			<c:otherwise><h2> bbscate : ${param.bbscate} 오류났다 고쳐라</h2></c:otherwise>
+		</c:choose>
+   </a>
+   
    
     
       <div class="form-group">
@@ -91,19 +107,12 @@
   </div>
   
   <div class="form-group">
-    <label class="control-label col-sm-2" for="content">내용</label>
+    <label class="control-label col-sm-2" for="bcontents">내용</label>
     <div class="col-sm-8">
     <textarea rows="12" cols="7" id="bcontents" name="bcontents" class="form-control"></textarea>
     </div>
   </div>
   
-  <!-- <div class="form-group">
-    <label class="control-label col-sm-2" for="filenameMF">첨부파일</label>
-    <div class="col-sm-6">          
-      <input type="file" class="form-control" id="filenameMF" 
-      name="filenameMF" accept=".jpg,.png,.gif" required="required">
-    </div>
-  </div>-->
 
 
    <div class="form-group">

@@ -28,7 +28,7 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">HOME / 게시판 /게시글 삭제</span>
+						<span class="page-location">HOME /경기장 게시판 /게시글 삭제</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
