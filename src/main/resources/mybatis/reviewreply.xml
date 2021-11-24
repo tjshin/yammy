@@ -56,4 +56,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where hugireno = #{hugireno}
 	</delete>
 	
+	<select id="admintotal" parameterType="Map" resultType="int">
+		select count(*)
+		from reviewreply rr inner join member m
+		on rr.id = m.id
+		<where>
+			<choose>
+				<when test="col=='nick'">
+					m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					rr.id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='hrecontents'">
+					hrecontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<select id="adminlist" parameterType="Map"
+		resultType="com.study.reviewreply.ReviewreplyDTO">
+		select hugireno, hrecontents, hredate,
+				hugino, id, nick, r
+		from (
+		select hugireno, hrecontents, hredate,
+				hugino, id, nick, rownum r
+		from (
+		select hugireno, hrecontents, hredate,
+				hugino, rr.id id, m.nick nick
+		from reviewreply rr inner join member m
+		on rr.id = m.id
+		<where>
+			<choose>
+				<when test="col=='nick'">
+					m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					rr.id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='hrecontents'">
+					hrecontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>		
+		order by hugireno desc
+		)
+		)
+		<![CDATA[
+		where r >= #{sno} and r <= #{eno}
+		]]>
+	</select>
+	
 </mapper>

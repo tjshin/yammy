@@ -17,4 +17,8 @@ public interface ReviewreplyService {
 
 	int update(ReviewreplyDTO dto);
 
+	int admintotal(Map map);
+	
+	List<ReviewreplyDTO> adminlist(Map map);
+
 }

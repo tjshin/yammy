@@ -50,7 +50,7 @@
 
 		<br>
 
-		<form class="form-inline" action="${root}/review/list">
+		<form class="form-inline" method="post" action="${root}/review/list">
 			<div class="form-group">
 				<select class="form-control" name="col">
 					<option value="sikname" <c:if test="${col=='sikname'}"> selected </c:if>
