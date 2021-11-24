@@ -5,9 +5,17 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.study.reviewlike.ReviewlikeDTO;
+
 @Mapper
 public interface BbslikeMapper {
 
-	void uplike(int bbsno);
-	
+	int total(int bbsno);
+
+	int idcheck(Map map);
+
+	int create(BbslikeDTO dto);
+
+	int delete(Map map);
+
 }

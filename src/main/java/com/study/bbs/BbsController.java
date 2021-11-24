@@ -119,8 +119,6 @@ public class BbsController {
 
 		service.upbview(bbsno);
 
-		BbslikeService.uplike(bbsno);
-
 		BbsDTO dto = service.read(bbsno);
 
 		String content = dto.getBcontents().replaceAll("\r\n", "<br>");

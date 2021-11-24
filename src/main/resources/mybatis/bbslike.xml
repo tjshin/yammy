@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.bbslike.BbslikeMapper">
+	<select id="total" resultType="int" parameterType="int">
+		select count(*) from bbslike
+		where bbsno = #{bbsno}
+	</select>
+	
+	<select id="idcheck" resultType="int" parameterType="Map">
+		select count(*) from bbslike
+		where bbsno = #{bbsno}
+		and id = #{id}
+	</select>
+	
+	<insert id="create" parameterType="com.study.bbslike.BbslikeDTO">
+		insert into bbslike (bcnt, bbsno, id)	
+		values ((select nvl(max(bcnt), 0) + 1 from bbslike),
+				#{bbsno}, #{id})
+	</insert>
+	
+	<delete id="delete" parameterType="Map">
+		delete bbslike
+		where bbsno = #{bbsno}
+		and id = #{id}
+	</delete>
+	
+</mapper>
