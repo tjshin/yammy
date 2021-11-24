@@ -4,18 +4,20 @@ CREATE TABLE SIKDANG (
        sikid                VARCHAR2(50) NOT NULL,
        sikname              VARCHAR2(100) NULL,
        jibunadd             VARCHAR2(200) NULL,
-       sikurl                  VARCHAR2(200) NULL,
+       sikurl               VARCHAR2(200) NULL,
        sikphone             VARCHAR2(20) NULL,
+       nearsta              NUMBER(2) NULL,
+       distance             NUMBER(30) NULL,
        coy                  VARCHAR2(50) NULL,
        cox                  VARCHAR2(50) NULL,
        roadadd              VARCHAR2(200) NULL,
-       distance             NUMBER(30) NULL,
        PRIMARY KEY (sikid)
 );
 
 select * from sikdang;
 alter table sikdang drop column reviewcnt;
 alter table sikdang add distance number(30) null;
+alter table sikdang add nearsta number(2) null;
 
 
 update sikdang set distance = 0;
