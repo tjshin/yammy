@@ -90,9 +90,9 @@ mainBtn.on("click", function (e) {
   }
  
   let reply = {
-    hrecontents: recontents.val(),
+    recontents: recontents.val(),
     id: sessionid,
-    hugino: bbsno
+    bbsno: bbsno
   };
   replyService
     .add(reply)

@@ -15,13 +15,6 @@
 
 <title>조회</title>
 <meta charset="utf-8">
-
-
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
-
-<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	   
 	   <script type="text/javascript">
 	function updateM() {
@@ -95,8 +88,8 @@
 					</div>
 					<div align="right">
 						<span class="gall_count">조회수: ${dto.bview}</span> <span
-							class="gall_reply_num">추천수: </span> <span class="gall_comment"><a
-							href="#focus_cmt">댓글수: </a></span>
+							class="gall_reply_num">추천수: </span> 
+							<div class="comments-count"><h6>댓글 수: #</h6></div>
 					</div>
 				</div>
 			</div>
@@ -163,7 +156,6 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-comments" class="blog-post-comments">
-							<div class="comments-count"><h3>댓글 수: #</h3></div>
 							<div class="blog-comments-content list-group">
 								<div class="media">
 

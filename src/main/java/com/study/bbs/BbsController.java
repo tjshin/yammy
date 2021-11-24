@@ -27,30 +27,30 @@ public class BbsController {
 	@Autowired
 	@Qualifier("com.study.bbs.BbsServiceImpl")
 	private BbsService service;
-	
+
 	@Autowired
 	@Qualifier("com.study.reply.ReplyServiceImpl")
 	private ReplyService reservice;
+
 	// create
 	@GetMapping("/bbs/create")
 	public String create(HttpSession session) {
-		
-		String id = (String)session.getAttribute("id");
-		if(id==null) {
+
+		String id = (String) session.getAttribute("id");
+		if (id == null) {
 			return "redirect:/member/login";
 		} else {
 			return "/bbs/create";
-			
+
 		}
 
-		
 	}
 
 	@PostMapping("/bbs/create")
 	public String create(BbsDTO dto, HttpServletRequest request, HttpSession session) {
 		String bbscate = request.getParameter("bbscate");
 		dto.setBbscate(bbscate);
-		String id = (String)session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		dto.setId(id);
 		if (service.create(dto) == 1) {
 			System.out.println(dto.getBtitle());
@@ -64,10 +64,9 @@ public class BbsController {
 		}
 	}
 
-
 	@RequestMapping("/bbs/list")
 	public String list(HttpServletRequest request) {
-		
+
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
 		String bbscate = Utility.checkNull(request.getParameter("bbscate"));
@@ -108,14 +107,16 @@ public class BbsController {
 		request.setAttribute("word", word);
 		request.setAttribute("bbscate", bbscate);
 		request.setAttribute("paging", paging);
+		// 댓글
+		request.setAttribute("reservice", reservice);
 
 		return "/bbs/list";
 	}
 
 	// read
 	@RequestMapping("/bbs/read")
-   public String read(int bbsno, Model model ,HttpServletRequest request) {	
-		
+	public String read(int bbsno, Model model, HttpServletRequest request) {
+
 		service.upbview(bbsno);
 
 		BbsDTO dto = service.read(bbsno);
@@ -125,14 +126,29 @@ public class BbsController {
 		dto.setBcontents(content);
 
 		model.addAttribute("dto", dto);
-			
+		// 댓글 시작
+		int nPage = 1;
+		if (request.getParameter("nPage") != null) {
+			nPage = Integer.parseInt(request.getParameter("nPage"));
+		}
+		int recordPerPage = 5;
+
+		int sno = ((nPage - 1) * recordPerPage) + 1;
+		int eno = nPage * recordPerPage;
+
+		Map map = new HashMap();
+		map.put("sno", sno);
+		map.put("eno", eno);
+		map.put("nPage", nPage);
+
+		model.addAllAttributes(map);
+		request.setAttribute("reservice", reservice);
+		// 댓글 끝
+
 		return "/bbs/read";
-	
-	
+
 	}
 
-		
-	
 //del	
 	@GetMapping("/bbs/delete")
 	public String delete(int bbsno, HttpSession session) {
@@ -152,48 +168,48 @@ public class BbsController {
 	}
 
 	@PostMapping("/bbs/delete")
-	public String delete(HttpServletRequest requests, int bbsno) {
-
+	public String delete(int bbsno, BbsDTO dto, HttpServletRequest request, HttpSession session) {
+		String bbscate = request.getParameter("bbscate");
+		dto.setBbscate(bbscate);
 		Map map = new HashMap();
 		map.put("bbsno", bbsno);
 
 		int cnt = 0;
+		service.delete(bbsno);
+		String str = "redirect:/bbs/list?bbscate=";
+		str += bbscate;
 
-		cnt = service.delete(bbsno);
-
-		return "redirect:./list";
+		return str;
 	}
 
 	// update
 	@GetMapping("/bbs/update")
 	public String update(int bbsno, Model model, HttpSession session) {
-		
+
 		BbsDTO dto = service.read(bbsno);
-		
+
 		String sessionid = (String) session.getAttribute("id");
 		String recordId = dto.getId();
-		
-		if(sessionid.equals(recordId)){
-		model.addAttribute("dto", dto);
-		return "/bbs/update";
-		}else {
+
+		if (sessionid.equals(recordId)) {
+			model.addAttribute("dto", dto);
+			return "/bbs/update";
+		} else {
 			return "/error";
 		}
 	}
-	
+
 	@PostMapping("/bbs/update")
-	public String update(BbsDTO dto) {
-		
-		
-		   service.update(dto);
+	public String update(BbsDTO dto, HttpServletRequest request, HttpSession session) {
+		String bbscate = request.getParameter("bbscate");
+		dto.setBbscate(bbscate);
 
-		      return "redirect:/bbs/list";
+		service.update(dto);
+		String str = "redirect:/bbs/list?bbscate=";
+		str += bbscate;
+
+		return str;
 	}
-
-	
-	
-	
-	
 
 	@RequestMapping("/bbs/bestlist")
 	public String bestlist(HttpServletRequest request) {
@@ -245,9 +261,4 @@ public class BbsController {
 		return "/bbs/reed";
 	}
 
-
-
-	
-	
-	
 }

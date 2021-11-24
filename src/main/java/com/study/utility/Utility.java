@@ -368,7 +368,7 @@ public class Utility {
 
 		_nowPage = (nowGrp * pagePerBlock) + 1;
 		if (nowGrp < totalGrp) {
-			str.append("<li><a href='/bbs/list?bbscate=/" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
+			str.append("<li><a href='/bbs/list?bbscate=" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>다음</a></li>");
 		}
 		str.append("</ul>");
