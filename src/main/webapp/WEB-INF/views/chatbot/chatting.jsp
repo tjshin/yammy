@@ -117,7 +117,6 @@
 						<h2 class="page-title">Q&A</h2>
 					</div>
 					<!-- /.col-md-6 -->
-
 				</div>
 				<!-- /.row -->
 			</div>
@@ -131,7 +130,7 @@
 		<H2></H2>
 		<form class="form-inline">
 			<div class="form-group">
-				<label for="connect">챗봇 > </label>
+				<label for="connect" style="margin-left:45px;"> </label>
 				<button id="connect" class="btn btn-default" type="submit">시작하기</button>
 				<button id="disconnect" class="btn btn-default2" type="submit"
 					disabled="disabled">끝내기</button>
@@ -139,22 +138,25 @@
 		</form>
 		<br />
 		<form class="form-inline" onchange="handleOnChange(this)">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="content" name="content" style="width: 37%; height: 30px;"
+			<select id="content" name="content" style="width: 37%; height: 33px; margin-left:50px; font-size:17px;"
 				class="form-control">
 				<option value="1" selected="selected">직접입력</option>
-				<option value="야구 일정을 알고 싶어요.">야구 일정을 알고 싶어요.</option>
 				<option value="안녕하세요?">안녕하세요?</option>
-				<option value="야미는 무슨 뜻인가요?">야미는 무슨 뜻인가요?</option>
+				<option value="Yammy는 무슨 뜻인가요?">Yammy는 무슨 뜻인가요?</option>
 				<option value="로그인이 되지 않습니다.">로그인이 되지 않습니다.</option>
-				<option value="티켓 양도 거래 중에 사기를 당했을 때는 어떻게 해야 하나요?">티켓 양도 거래
-					중에 사기를 당했을 때는 어떻게 해야 하나요?</option>
+				<option value="티켓 양도는 어떻게 하나요?">티켓 양도는 어떻게 하나요?</option>
+				<option value="구장별 게시판 이용은 어떻게 하나요?">구장별 게시판 이용은 어떻게 하나요?</option>
+				<option value="경기장 주변 맛집은 어떻게 이용하나요?">경기장 주변 맛집은 어떻게 이용하나요?</option>
+				<option value="티켓 양도 거래 중에 사기를 당했을 때는 어떻게 해야 하나요?">티켓 양도 거래 중에 사기를 당했을 때는 어떻게 해야 하나요?</option>
+				<option value="Yammy의 메일 주소를 알려주세요.">Yammy의 메일 주소를 알려주세요.</option>
 				<option value="고객센터 번호을 알고 싶어요.">고객센터 번호을 알고 싶어요.</option>
+				<option value="야구 일정을 알고 싶어요.">야구 일정을 알고 싶어요.</option>
 
 			</select>
 			<br/>
 			<br/>
 			<div class="form-group" style="width: 75%;">
-				<label for="msg"> 문의 ></label> <input type="text" id="msg"
+				<label for="msg" style="margin-left:45px;"></label> <input type="text" id="msg"
 					class="form-control" placeholder="문의 사항을 입력하세요."
 					style="width: 92%;">
 			</div>

@@ -22,6 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="col=='id'">
 					id like '%'||#{word}||'%'
 				</when>
+				<when test="col=='nick'">
+					nick like '%'||#{word}||'%'
+				</when>
 				<when test="col=='email'">
 					email like '%'||#{word}||'%'
 				</when>
@@ -231,6 +234,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 				<when test="col=='id'">
 					id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='nick'">
+					nick like '%'||#{word}||'%'
 				</when>
 				<when test="col=='email'">
 					email like '%'||#{word}||'%'

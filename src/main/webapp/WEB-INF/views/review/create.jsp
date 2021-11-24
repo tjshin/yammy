@@ -20,7 +20,7 @@
  
  function checkIn(f){
      if (f.htitle.value == ""){
-             alert("리뷰 제목을 입력하세요");
+             alert("리뷰 제목을 입력하세요.");
              f.htitle.focus()
              return false;
      }
@@ -50,7 +50,6 @@
                         <h2 class="page-title">리뷰 등록</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 리뷰 등록</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -163,8 +162,8 @@
             
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-5">
-                    <button class="mainBtn" type="submit">등록</button>
-                    <button type="reset" class="mainBtn">취소</button>
+                    <button class="btn btn-default" type="submit">등록</button>
+                    <button type="reset" class="btn btn-default2">취소</button>
                 </div>
             </div>
         </form>

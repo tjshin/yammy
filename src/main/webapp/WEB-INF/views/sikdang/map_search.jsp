@@ -20,7 +20,6 @@
                         <h2 class="page-title">식당 검색, 추가</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 식당 검색, 추가</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -55,7 +54,9 @@
             <div>
                 <form onsubmit="searchPlaces(); return false;">
                     키워드 : <input type="text" value="잠실 야구장 주변 삼겹살" id="keyword" size="60"> 
-                    <button type="submit">검색하기</button>                    
+
+                    <button class="btn btn-default" type="submit">검색하기</button> 
+
                 </form>
             </div>
         </div>

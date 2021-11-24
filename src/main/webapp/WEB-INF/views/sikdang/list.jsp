@@ -45,10 +45,11 @@
 
 
 	<div class="container">
-
 		<br>
 
+
 		<form class="form-inline" method="post" action="${root}/admin/sikdang/list">
+
 			<div class="form-group">
 				<select class="form-control" name="col">
 					<option value="sikid" <c:if test="${col=='sikid'}"> selected </c:if>
@@ -69,11 +70,10 @@
 			<button type="submit" class="btn btn-default">검색</button>
 			<button type="button" class="btn btn-default2"
 				onclick="location.href='${root }/admin/sikdang/create'">DB 등록</button>
-
-		</form>
+		</form><br/>
 		
 		<div class="row">
-			<table class="table table-striped">
+			<table class="table table-striped" style="margin-left:20px;">
 		    <thead>
 		    <tr>
 		    <th>식당 ID (kakao)</th>

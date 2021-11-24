@@ -11,7 +11,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>받은 쪽지 함</title>
+<title>받은 쪽지함</title>
 <meta charset="utf-8">
 
 <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
@@ -104,10 +104,20 @@
 
 <body>
 
-<div class = first-widget>  </div>
-
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">받은 쪽지함</h2>
+					</div> <!-- /.col-md-6 -->
+					
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+<br/>
 	<div class="container">
-		<h2>받은 쪽지 함</h2>
 		<form class="form-inline" action="${root }/message/recelist">
 
 			<div class="form-group">
@@ -127,7 +137,7 @@
 
 			<button type="submit" class="btn btn-default">검색</button>
 			<button type="button" class="btn btn-default" onclick="createM()">쪽지 보내기</button>
-			<button type="button" class="btn btn-danger" onclick="deleteValue();" >쪽지 삭제</button>
+			<button type="button" class="btn btn-red" onclick="deleteValue();" >쪽지 삭제</button>
 			
 		</form>
 	

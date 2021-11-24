@@ -209,10 +209,11 @@
 				<label class="control-label col-sm-2" for="id"><span
 					id="need">*</span>아이디</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="id" name="id">
+					<input type="text" class="form-control" id="id" name="id" maxlength="15">
 				</div>
 				<button type="button" class="btn btn-default" style="width:100px;"
-					onclick="idCheck(document.frm.id.value)">ID 중복확인</button>
+					onclick="idCheck(document.frm.id.value)">ID 중복확인</button><br/>
+					<div style="margin-left:215px; height:35px; font-size:12px;">아이디는 영문과 숫자만을 포함해 15자 내로 입력해 주시기 바랍니다.</div>
 				<div id="idcheck"></div>
 			</div>
 			<div class="form-group">
@@ -241,13 +242,14 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nick"><span
 					id="need">*</span>닉네임</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="nick" name="nick">
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="nick" name="nick" maxlength="7">
 				</div>
-				<button type="button" class="btn btn-default" style="width:130px;"
+				<button type="button" class="btn btn-default" style="width:125px;"
 					onclick="nickCheck(document.frm.nick.value)">닉네임 중복확인</button>
 				<div id="nickcheck"></div>
 			</div>
+			<div style="margin-left:195px; height:35px; font-size:12px;">닉네임은 영문,한문과 숫자만을 포함해 7자 내로 입력해 주시기 바랍니다.</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone"><span
 					id="need">*</span>전화번호</label>

@@ -78,13 +78,13 @@
 								<h3 class="portfolio-title">구장별 티켓 양도 게시판과 <br/> 쪽지 기능을 활용한 커뮤니케이션</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="images/includes/project3.jpg" title="ticket">
+								<a class="fancybox" href="${root }/images/index/ticket.png" title="ticket">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project3.jpg" alt="ticket">
+					<img src="${root }/images/index/ticket.png" alt="ticket">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">

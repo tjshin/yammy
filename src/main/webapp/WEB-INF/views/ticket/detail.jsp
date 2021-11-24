@@ -74,7 +74,7 @@ function deleteM(){
    	    
        <c:choose>
 				<c:when test="${not empty sessionScope.id && sessionScope.grade =='A'}">
-					<button type="button" class="btn btn-default2" onclick="deleteM()">삭제</button>
+					<button type="button" class="btn btn-red" onclick="deleteM()">삭제</button>
 				</c:when>
 		</c:choose>
 		
@@ -102,10 +102,10 @@ function deleteM(){
          <p>${dto.ticketcontents} </p> 
         
         
-        
-         <br><br><br><br><br>
-         <p style="font-size: 15px; color:#0C090A;">거래/양도 장소: ${dto.location} </p> 
-         <p style="font-size: 15px; color:#0C090A;">경기 날짜: ${dto.gamedate} </p> 
+        	
+         <br><br><br>
+         <li style="font-size: 15px; color:#0C090A;">거래/양도 장소: ${dto.location} </li> 
+         <li style="font-size: 15px; color:#0C090A;">경기 날짜: ${dto.gamedate} </li> 
          
    
          

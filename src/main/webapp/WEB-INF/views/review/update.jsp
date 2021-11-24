@@ -44,7 +44,6 @@
                         <h2 class="page-title">리뷰 수정</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 리뷰 수정</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -171,8 +170,8 @@
             
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-5">
-                    <button class="mainBtn" type="submit">수정</button>
-                    <button type="reset" class="mainBtn">취소</button>
+                    <button class="btn btn-default" type="submit">수정</button>
+                    <button type="reset" class="btn btn-default2">취소</button>
                 </div>
             </div>
         </form>

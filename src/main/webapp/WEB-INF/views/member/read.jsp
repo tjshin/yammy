@@ -33,39 +33,6 @@
         #often{
             font-size:20px;
         }
-	
-	#a{
-  padding: 12px 15px;
-  font-size: 12px;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-}
-
-	#a{
-  background-color: #00a8d6;
-  color: white;
-  padding: 10px 12px;
-  font-size: 12px;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  
-}
-	#a:hover {
-  background-color: #31373a;
-  transition: all ease 0.5s 0s;
-}
     </style>
 
 </head>
@@ -133,9 +100,9 @@
          </table>
          </form>
          <div style="text-align: center">
-         <a id="a" href="${root }/member/update?id=${dto.id}">정보수정</a>
-         <a id="a" href="#" onclick="history.back()">회원목록</a>
-         <a id="a" href="${root }/admin/member/delete?id=${dto.id}">회원탈퇴</a>
+         <a href="${root }/member/update?id=${dto.id}" class="btn btn-default">정보수정</a>
+         <a href="#" onclick="history.back()" class="btn btn-default2">회원목록</a>
+         <a href="${root }/admin/member/delete?id=${dto.id}" class="btn btn-red">회원탈퇴</a>
          </div>
          
          <br>
