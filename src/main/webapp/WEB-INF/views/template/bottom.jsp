@@ -44,7 +44,7 @@
 						<!-- /.footer-menu -->
 					</nav>
 					<!-- /.footer-nav -->
-					<p class="copyright-text">Original Design: templatemo</p>
+					<p class="copyright-text">Original Design : templatemo</p>
 				</div>
 				<!-- /.col-md-12 -->
 			</div>

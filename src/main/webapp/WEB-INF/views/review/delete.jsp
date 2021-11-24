@@ -37,8 +37,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                
-                <h2>리뷰 삭제</h2>
 				<form class="form-horizontal" action="/review/delete" method="post">
 					<input type="hidden" name="hugino" value="${param.hugino}">
 					<input type='hidden' name="col" value="${param.col}">
@@ -53,7 +51,7 @@
 						<div>
 							<button class="btn btn-red" type="submit">삭제</button>
 							<button class="btn btn-default2" type="reset" onclick="goback();">
-							돌아가기</button>   
+							취소</button>   
 							
 						</div>
 					</div>

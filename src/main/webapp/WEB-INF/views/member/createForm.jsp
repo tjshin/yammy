@@ -213,7 +213,7 @@
 				</div>
 				<button type="button" class="btn btn-default" style="width:100px;"
 					onclick="idCheck(document.frm.id.value)">ID 중복확인</button><br/>
-					<label style="margin-left:215px;"><span style="font-size:12px;">아이디는 영문과 숫자만을 포함해 15자 내로 입력해 주시기 바랍니다.</span></label>
+					<div style="margin-left:215px; height:35px; font-size:12px;">아이디는 영문과 숫자만을 포함해 15자 내로 입력해 주시기 바랍니다.</div>
 				<div id="idcheck"></div>
 			</div>
 			<div class="form-group">
@@ -249,7 +249,7 @@
 					onclick="nickCheck(document.frm.nick.value)">닉네임 중복확인</button>
 				<div id="nickcheck"></div>
 			</div>
-			<label style="margin-left:195px;"><span style="font-size:12px;">닉네임은 영문,한문과 숫자만을 포함해 7자 내로 입력해 주시기 바랍니다.</span></label>
+			<div style="margin-left:195px; height:35px; font-size:12px;">닉네임은 영문,한문과 숫자만을 포함해 7자 내로 입력해 주시기 바랍니다.</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone"><span
 					id="need">*</span>전화번호</label>

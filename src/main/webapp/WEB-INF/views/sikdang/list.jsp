@@ -45,9 +45,7 @@
 
 
 	<div class="container">
-
 		<br>
-
 		<form class="form-inline" action="${root}/admin/sikdang/list">
 			<div class="form-group">
 				<select class="form-control" name="col">
@@ -69,11 +67,10 @@
 			<button type="submit" class="btn btn-default">검색</button>
 			<button type="button" class="btn btn-default2"
 				onclick="location.href='${root }/admin/sikdang/create'">DB 등록</button>
-
-		</form>
+		</form><br/>
 		
 		<div class="row">
-			<table class="table table-striped">
+			<table class="table table-striped" style="margin-left:20px;">
 		    <thead>
 		    <tr>
 		    <th>식당 ID (kakao)</th>
