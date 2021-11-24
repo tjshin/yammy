@@ -84,6 +84,7 @@ public class ReviewController {
 	public String reviewRead(int hugino, Model model, HttpServletRequest request) {
 		
 		ReviewDTO dto = service.read(hugino);
+		System.out.println(dto);
 		String hcontents = dto.getHcontents().replaceAll("\r\n", "<br>");
 		dto.setHcontents(hcontents);
 		

@@ -12,10 +12,10 @@ public class TicketDTO {
 	private String stadium;
 	private String ticketcontents;
 	private String filename;
-	private MultipartFile filenameMF        ;
+	private MultipartFile filenameMF;
 	private String id;
 	private String nick;
-	private String mfilename;
+	private String mfilename; //프로필 filename
 	private String location;
 	private String gamedate;
 	

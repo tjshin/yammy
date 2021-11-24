@@ -85,8 +85,7 @@
 								<span class="meta-date">${dto.hdate }</span>
 								<c:set var="reviewrcount"
 									value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
-								<span class="meta-author"> ${dto.nick }</span>
-								<span>/</span>
+								<span class="meta-author"> ${dto.nick }</span> <span>/</span>
 
 								<c:if test="${dto.stadium == 1}">
 									<span>서울 잠실</span>
@@ -155,12 +154,16 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-author" class="clearfix">
-
 							<div class="blog-author-info">
+							
+							<img class="img-circle" src="/member/storage/${dto.mfilename}"  style="width: 80px">
+                                          <%-- /member/storage/${dto.mfilename} --%>
+                                
+                                <br> <br>
 								<h4 class="author-name">
 									<a href="#">${dto.nick }</a>
 								</h4>
-								<p>프로필에는 어떤 내용을 노출시킬까요?</p>
+
 							</div>
 						</div>
 					</div>
@@ -190,7 +193,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-comments" class="blog-post-comments">
-							<div class="comments-count"><h3>댓글 수: #</h3></div>
+							<div class="comments-count">
+								<h3>댓글 수: #</h3>
+							</div>
 							<div class="blog-comments-content list-group">
 								<div class="media">
 
@@ -274,7 +279,8 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>내용</label>
-						<textarea cols="10" rows="3" class="form-control" name='hrecontents'>New Reply!!!!</textarea>
+						<textarea cols="10" rows="3" class="form-control"
+							name='hrecontents'>New Reply!!!!</textarea>
 					</div>
 				</div>
 				<div class="modal-footer">

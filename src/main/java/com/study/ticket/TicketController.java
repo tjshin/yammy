@@ -29,6 +29,8 @@ public class TicketController {
 	@Qualifier("com.study.ticket.TicketServiceImpl")
 	private TicketService service;
 	
+	
+	
 	//관리자 삭제
 	@GetMapping("/admin/ticket/delete")
 	  public String delete() {
