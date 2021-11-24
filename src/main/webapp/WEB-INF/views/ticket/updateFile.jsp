@@ -38,7 +38,7 @@
       <label class="control-label col-sm-2" for="filenameMF">변경파일</label>
       <div class="col-sm-6">          
         <input type="file" class="form-control" id="filenameMF" 
-        name="filenameMF" accept=".jpg,.png,.gif" required="required">
+        name="filenameMF" accept=".jpg,.png,.gif" required="required" style="width:50%;">
       </div>
     </div>
     <div class="form-group">        

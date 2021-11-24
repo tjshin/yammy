@@ -42,7 +42,7 @@ function sendMessage() {
 }
 
 function showReceMessage(message) {
-    $("#chat-container").append("&nbsp;&nbsp;Yammy⚾<br/><div class='chat-box'><div class='chat' id='receMessage'>" + message + "</div></div><br/><br/>");
+    $("#chat-container").append("&nbsp;&nbsp;<span style='color:black;'>Yammy⚾<span><br/><div class='chat-box'><div class='chat' id='receMessage'>" + message + "</div></div><br/><br/>");
 }
 
 function showSendMessage(message) {
