@@ -74,7 +74,7 @@ function deleteM(){
    	    
        <c:choose>
 				<c:when test="${not empty sessionScope.id && sessionScope.grade =='A'}">
-					<button type="button" class="btn btn-default2" onclick="deleteM()">삭제</button>
+					<button type="button" class="btn btn-red" onclick="deleteM()">삭제</button>
 				</c:when>
 		</c:choose>
 		

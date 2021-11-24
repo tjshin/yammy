@@ -420,6 +420,24 @@ button.btn.btn-default3:hover {
 	transition: all ease 0.5s 0s;
 }
 
+button.btn.btn-red {
+	background-color: red;
+	color: white;
+	font-size: 12px;
+	font-family: "Raleway", sans-serif;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 10px 15px;
+	border-color:red;
+	height:36px;
+}
+
+button.btn.btn-red:hover {
+	background-color: #31373a;
+	border-color:#31373a;
+	transition: all ease 0.5s 0s;
+}
+
 .large-button {
 	padding: 15px 20px;
 	font-size: 12px;

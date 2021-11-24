@@ -27,7 +27,6 @@
                         <h2 class="page-title">식당 DB 삭제</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 식당 DB 삭제</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -51,8 +50,8 @@
 		
 					<div class="form-group">
 						<div>
-							<button class="mainBtn" type="submit">삭제</button>
-							<button class="mainBtn" type="reset" onclick="goback();">
+							<button class="btn btn-red" type="submit">삭제</button>
+							<button class="btn btn-default2" type="reset" onclick="goback();">
 							돌아가기</button> 
 							
 						</div>

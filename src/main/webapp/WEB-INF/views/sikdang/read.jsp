@@ -28,7 +28,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 식당 DB 조회</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>

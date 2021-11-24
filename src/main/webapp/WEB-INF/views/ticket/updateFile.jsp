@@ -7,9 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class = first-widget>  </div>
-
-<h1 class="col-sm-offset-2 col-sm-10">사진 수정</h1>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">티켓 사진 수정</h2>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+<br/>
   <form class="form-horizontal" 
         action="/ticket/updateFile"
         method="post"
@@ -35,7 +44,7 @@
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-8">
         <button type="submit" class="btn btn-default">수정</button>
-        <button type="button" class="btn btn-default" 
+        <button type="button" class="btn btn-default2" 
         onclick="history.back()">취소</button>
       </div>
     </div>

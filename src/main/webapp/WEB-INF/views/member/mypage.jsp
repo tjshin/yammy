@@ -418,51 +418,20 @@ ${mpaging}
 
 					<p><b>${tdto.stadium}</b> </br> ${tdto.tickettitle} <br/>
 					<a href="${root}/ticket/update/${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
-					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/check-square-regular.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/image-regular.svg" style="width:15px;"></a>
 					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
-
 					</p>
 			</div>
-			
             </div>
             </c:forEach>
         </div>
-        ${tpaging}  <!--페이징 관련  -->
+        ${tpaging}
         </c:otherwise>
         </c:choose>
-                    
-                    
-                    
-                    
-                    
-                    
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 </body>

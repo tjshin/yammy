@@ -92,7 +92,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-0 col-sm-5" style="text-align: left">
-					<button type="button" class="btn btn-default" onclick="idCheck()">탈퇴</button>
+					<button type="button" class="btn btn-red" onclick="idCheck()">탈퇴</button>
 					<button type="button" class="btn btn-default2" onclick="historyback()">취소</button>
 				</div>
 			</div>
