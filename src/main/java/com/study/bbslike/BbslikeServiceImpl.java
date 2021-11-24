@@ -15,10 +15,30 @@ public class BbslikeServiceImpl implements BbslikeService {
 
 	@Autowired
 	private BbslikeMapper mapper;
-	
-	public void uplike(int bbsno) {
-		mapper.uplike(bbsno);
-	
+
+	@Override
+	public int idcheck(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.idcheck(map);
 	}
+
+	@Override
+	public int delete(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.delete(map);
+	}
+
+	@Override
+	public int create(BbslikeDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.create(dto);
+	}
+
+	@Override
+	public int total(int bbsno) {
+		// TODO Auto-generated method stub
+		return mapper.total(bbsno);
+	}
+
 
 }

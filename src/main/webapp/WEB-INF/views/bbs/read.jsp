@@ -118,21 +118,24 @@
 
 	
 		<!-- 추천 기능 -->
-		<div>
-			<div class="w3-border w3-center w3-padding">
-				<c:if test="${ id == null }">
-					추천 기능은 <a href="${root }/member/login">로그인</a></button> 후 사용 가능합니다.<br />
-					<i class="fa fa-heart" style="font-size:16px;color:red"></i>
-					<span class="rec_count"></span>					
-				</c:if>
-				<c:if test="${ id != null }">
-					<button class="w3-button w3-black w3-round" id="likeupdate">
-						<i class="fa fa-heart" style="font-size:16px;color:red"></i>
-						&nbsp;<span class="rec_count"></span>
-					</button> 
-				</c:if>
-			</div>
-		</div>
+			<div class="row">
+					<div class="col-md-12">
+						<div class="bbs-like" style="text-align:center;">
+							<button class='bbslikeBtn' type='button' id='bbslikeBtn'
+									style='background-color:#ffffff;
+											border-radius: 50%;
+											width:100px;height:100px;'>
+		  						<img src="${root }/images/thumbs-up-solid.svg"
+		  							alt="따봉"
+		  							style="width:50px;height:50px;">
+							</button>
+							<div class="like-count">
+								<h3 style="color:#00a8d6;">추천 수 표시 될 자리</h3>
+							</div>	
+						</div>
+					</div>
+				</div>
+				
 
 
 
@@ -271,12 +274,14 @@
 		var sessionid = "${sessionScope.id}";
 		var deleteimage = "<img src='${root }/images/trash-alt-solid.svg' alt='댓글 삭제 버튼' style='width:30px;height:30px;'>";
 		var modifyimage = "<img src='${root }/images/edit-solid.svg' alt='댓글 수정 버튼' style='width:30px;height:30px;'>";
-	</script>
+		var likeimage = "<img src='${root }/images/thumbs-up-solid.svg' alt='따봉' style='width:50px;height:50px;'>";
+		</script>
 	<script type="text/javascript" src="${root}/js/reply/revreply.js"></script>
 
 	<script type="text/javascript"
 		src="${root}/js/reply/replyprocess.js"></script>
-
+<script type="text/javascript"
+		src="${root}/js/like/likeprocess.js"></script>
 
 </body>
 </html>
