@@ -22,33 +22,38 @@
   
 </head>
 <body> 
-
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">티켓 게시글 삭제</h2>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+	<br/>
+	
+<section class="cta clearfix">
 <div class="container">
- 
-<h2 class="col-sm-offset-2 col-sm-10">게시물 삭제</h2>
 <form class="form-horizontal" 
       action="${root }/ticket/delete"
       method="post"
       >
   <input type="hidden" name="ticketno" value="${param.ticketno}">
-  
-  
   <div class="form-group">
-    
-    
-    
-  <p id="red" class="col-sm-offset-2 col-sm-6">삭제하면 복구할 수 없습니다</p>
+  <p id="red" >삭제하면 복구할 수 없습니다.</p>
   
    <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-5">
+   <div>
     <button class="btn btn-red">삭제</button>
     <button type="reset" class="btn btn-default2" onclick="goBack();">취소</button>
    </div>
  </div>
  </div>
 </form>
- 
 </div>
+</section>
 </body> 
 </html>

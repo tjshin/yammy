@@ -413,12 +413,12 @@ ${mpaging}
             <div class="col-sm-3">
             
             <a href="${root }/ticket/detail?ticketno=${tdto.ticketno}">
-            <p><img src="/ticket/storage/${tdto.filename}" class="img-rounded"  width="236" height="306"></p></a>
+            <img src="/ticket/storage/${tdto.filename}" class="img-rounded"  width="236" height="306"></a>
            <div class ="txt_line">
 
-					<p><b>${tdto.stadium}</b> </br> ${tdto.tickettitle} <br/>
+					<p><b>${tdto.stadium}</b><br/> ${tdto.tickettitle} <br/>
 					<a href="${root}/ticket/update/${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
-					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/image-regular.svg" style="width:15px;"></a>
+					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/camera-retro-solid.svg" style="width:15px;"></a>
 					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
 					</p>
 			</div>

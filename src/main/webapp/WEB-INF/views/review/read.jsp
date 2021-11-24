@@ -31,7 +31,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 주변 맛집 / 리뷰 조회</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -144,17 +143,17 @@
 				<div class="row">
 					<br>
 					<div class="col-md-12">
-						<a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
+						<a href="${listurl}" class="btn btn-default2">리뷰 목록</a>
 						<c:if test="${sessionScope.id !=null }">
 							<a href="${root }/sikdang/map_search"
-								class="main-button accent-color">리뷰 등록</a>
+								class="btn btn-default">리뷰 등록</a>
 						</c:if>
 						<c:if
 							test="${sessionScope.id !=null && sessionScope.id == dto.id}">
 							<a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}"
-								class="main-button accent-color">리뷰 수정</a>
+								class="btn btn-default">리뷰 수정</a>
 							<a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}"
-								class="main-button accent-color">리뷰 삭제</a>
+								class="btn btn-red">리뷰 삭제</a>
 						</c:if>
 					</div>
 				</div>
@@ -192,13 +191,12 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="comment-form">
-							<h3>댓글 남기기</h3>
 							<div class="widget-inner">
 
 								<div class="row">
 									<div class="col-md-12">
 										<p>
-											<label for="hrecontents">댓글 내용:</label>
+											<label for="hrecontents">댓글 쓰기</label>
 											<c:if test="${sessionScope.id == null }">
 												<textarea id="hrecontents" name="hrecontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
 											</c:if>
@@ -212,8 +210,8 @@
 								<div class="row">
 									<div class="col-md-12">
 										<c:if test="${sessionScope.id != null }">
-											<input class="mainBtn" type="button" name="submit"
-												value="댓글 등록" id="mainBtn">
+											<button type="button" class="btn btn-default" name="submit"
+												value="댓글 등록" id="mainBtn">댓글 등록</button>
 										</c:if>
 									</div>
 								</div>
@@ -252,9 +250,9 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
-					<button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
-					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
+					<button id='modalModBtn' type="button" class="btn btn-default">수정</button>
+					<button id='modalRemoveBtn' type="button" class="btn btn-red">삭제</button>
+					<button id='modalCloseBtn' type="button" class="btn btn-default2">취소</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->

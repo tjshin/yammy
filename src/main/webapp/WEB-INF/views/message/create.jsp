@@ -39,15 +39,25 @@ String sendid= request.getParameter("sendid"); //컨트롤러(model.addAttribute
 
 </script>
 
-<title>쪽지 하기</title>
+<title>쪽지 쓰기</title>
 
 </head>
 
 <body>
-
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">쪽지 보내기</h2>
+					</div> <!-- /.col-md-6 -->
+					
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+	<br/>
 <div class="container">
-    <h1 class="col-sm-offset-2 col-sm-10">쪽지 보내기</h1>
     <form class="form-horizontal" 
         action="${root }/message/create"
         method="post"
@@ -80,8 +90,8 @@ String sendid= request.getParameter("sendid"); //컨트롤러(model.addAttribute
            
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">보내기</button>
-        <button type="reset" class="btn">취소</button>
+        <button class="btn btn-default">보내기</button>
+        <button type="reset" class="btn btn-default2">취소</button>
         </div>
     </div>
     </form>

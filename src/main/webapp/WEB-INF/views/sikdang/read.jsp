@@ -114,11 +114,11 @@
 				<div class="row" style="text-align: center">
 					<br>
 					<div class="col-md-12">
-						<a href="${listurl}" class="main-button accent-color">DB 목록</a>
+						<a href="${listurl}" class="btn btn-default">DB 목록</a>
 						<a href="${root }/admin/sikdang/create"
-								class="main-button accent-color">DB 등록</a>
+								class="btn btn-default">DB 등록</a>
 						<a href="${root }/admin/sikdang/delete?sikid=${dto.sikid}${urlhelper}"
-								class="main-button accent-color">DB 삭제</a>
+								class="btn btn-red">DB 삭제</a>
 						
 					</div>
 					<br><br><br>  

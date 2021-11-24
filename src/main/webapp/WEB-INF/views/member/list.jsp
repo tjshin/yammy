@@ -67,11 +67,11 @@
 				<select name="col" class="form-control">
 					<option value="mname" <c:if test="${col=='mname' }">selected</c:if>>성명</option>
 					<option value="id" <c:if test="${col=='id' }">selected</c:if>>아이디</option>
+					<option value="nick" <c:if test="${col=='nick' }">selected</c:if>>닉네임</option>
 					<option value="email" <c:if test="${col=='email' }">selected</c:if>>이메일</option>
 					<option value="total" <c:if test="${col=='total' }">selected</c:if>>전체출력</option>
 				</select>
 			</div>
-
 			<div class="form-group">
 				<input type="text" class="form-control" name="word"
 					required="required" value="${word}">
@@ -86,15 +86,19 @@
 		<c:forEach var="dto" items="${list}">
 			<table class="table table-bordered">
 				<tr>
-					<td rowspan="5" class="col-sm-2"><img
+					<td rowspan="6" class="col-sm-2"><img
 						src="${root }/member/${dto.filename}" class="img-rounded"
-						width="200px" height="200px"></td>
+						width="200px" height="230px"></td>
 					<th class="col-sm-2">아이디</th>
 					<td class="col-sm-8"><a href="javascript:read('${dto.id}')">${dto.id}</a></td>
 				</tr>
 				<tr>
 					<th class="col-sm-2">성명</th>
 					<td class="col-sm-8">${dto.mname}</td>
+				</tr>
+				<tr>
+					<th class="col-sm-2">닉네임</th>
+					<td class="col-sm-8">${dto.nick}</td>
 				</tr>
 				<tr>
 					<th class="col-sm-2">전화번호</th>
@@ -114,7 +118,6 @@
 	</div>
 
 	<div>${paging}</div>
-
 
 </body>
 </html>
