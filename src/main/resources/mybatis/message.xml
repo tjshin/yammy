@@ -12,6 +12,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE messageno=#{messageno}
   </delete>  
 
+
+
+<!-- =========================================  -->
+<!-- exeltotal -->
+
+ <select id="exelTotal" resultType="int">
+    select MAX(messageno) from message
+ </select>
+<!-- =========================================  -->
+
+
+
 <!-- total -->
 
  <select id="total" resultType="int" parameterType="Map">

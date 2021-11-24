@@ -23,6 +23,9 @@ public interface MessageService {
 	 MessageDTO read(int messageno);
 	
 	 
+	//------------------------------------------
+	 int exelTotal();
+	//------------------------------------------
 	 int total(Map map);
 	 int stotal(Map map);
 	 int rtotal(Map map);
