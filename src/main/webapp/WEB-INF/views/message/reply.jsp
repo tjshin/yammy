@@ -39,15 +39,25 @@
 
 </script>
 
-<title>쪽지 하기</title>
+<title>답장 쓰기</title>
 
 </head>
 
 <body>
-
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">답장 쓰기</h2>
+					</div> <!-- /.col-md-6 -->
+					
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+<br/>
 <div class="container">
-    <h1 class="col-sm-offset-2 col-sm-10">답장 보내기</h1>
     <form class="form-horizontal" 
         action="${root }/message/reply"
         method="post"
@@ -77,8 +87,8 @@
            
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">보내기</button>
-        <button type="reset" class="btn" onclick="goBack();">취소</button>
+        <button class="btn btn-default">보내기</button>
+        <button type="reset" class="btn btn-default2" onclick="goBack();">취소</button>
         </div>
     </div>
     </form>

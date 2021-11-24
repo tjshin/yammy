@@ -274,12 +274,14 @@ public class MemberController {
 				cookie = cookies[i];
 
 				if (cookie.getName().equals("c_id")) {
-					c_id = cookie.getValue(); // Y
+					c_id = cookie.getValue();
 				} else if (cookie.getName().equals("c_id_val")) {
 					c_id_val = cookie.getValue();
 				}
 			}
 		}
+		System.out.println("c_id : " + c_id);
+		System.out.println("c_id_val : " + c_id_val);
 
 		request.setAttribute("c_id", c_id);
 		request.setAttribute("c_id_val", c_id_val);
@@ -302,6 +304,8 @@ public class MemberController {
 
 			Cookie cookie = null;
 			String c_id = request.getParameter("c_id");
+			
+			System.out.println("c_id : " + c_id);
 
 			if (c_id != null) {
 				cookie = new Cookie("c_id", c_id);

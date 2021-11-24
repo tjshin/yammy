@@ -17,27 +17,22 @@
   
 <script type="text/javascript">
       
-        function deleteM(){
-          var url = "${root }/message/sdelete";
-          url += "?messageno=${dto.messageno}";
-          location.href=url;
-        } 
        function listM(){
-            var url = "${root }/message/sendlist";
+            var url = "${root }/admin/message/list";
             url += "?nowPage=${param.nowPage}";
             url += "&col=${param.col}";
             url += "&word=${param.word}";
             location.href = url;
                     }
        
-       
-      
-       function  ticketdetailM(){
-           var url = "${root }/ticket/detail?ticketno=${dto.meticketno}";
-          
+       function download(){
+           var url = "${root }/excel/download";
+           url += "?messageno=${param.messageno}";
+         
            location.href = url;
                    }
-       
+      
+             
        
     </script>
  
@@ -45,25 +40,19 @@
 
 
 <body>
-<div class="first-widget parallax" id="blog">
-		<div class="parallax-overlay">
-			<div class="container pageTitle">
-				<div class="row">
-					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">쪽지 읽기</h2>
-					</div> <!-- /.col-md-6 -->
-					
-				</div> <!-- /.row -->
-			</div> <!-- /.container -->
-		</div> <!-- /.parallax-overlay -->
-	</div> <!-- /.pageTitle -->
-<br/>
+
+<div class = first-widget>  </div>
 
 <div class="container">
-		<div class="panel panel-default">
-			<div class="panel-heading">받는 사람</div>
-			<div class="panel-body">${dto.receid}</div>
 
+		<h2>쪽지 읽기</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">받는사람</div>
+			<div class="panel-body">${dto.receid}</div>
+			
+			<div class="panel-heading">보낸사람</div>
+			<div class="panel-body">${dto.sendid}</div>
+			
             <div class="panel-heading">내용</div>
 			<div class="panel-body">${dto.mcontents}</div>
             
@@ -75,14 +64,13 @@
 
 		</div>
 		<div>
+				<button type="button" class="btn" onclick="listM()">목록</button>
 				
-				<button type="button" class="btn btn-red" onclick="deleteM()">삭제</button>
-				<button type="button" class="btn btn-default2" onclick="listM()">목록</button>
-				
-				<c:if test = "${dto.meticketno gt 0}"> 
-				<button type="button" class="btn btn-default" onclick="ticketdetailM()">해당 게시물 이동</button>
-				</c:if>
 		</div>
+		<br>
+		<div>
+				<button type="button" class="btn" style ="background-color:green ;" onclick="download()">엑셀 다운로드 </button>
+        </div>
 		<br>
 	</div>
 	

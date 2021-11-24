@@ -11,7 +11,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>보낸 쪽지 함</title>
+<title>보낸 쪽지함</title>
 <meta charset="utf-8">
 <script type="text/javascript">
      function read(messageno){
@@ -71,10 +71,10 @@
  				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
  				    },
  	                success: function(jdata){
- 	                    if(jdata = 1) {
- 	                        alert("삭제 성공");
- 	                        location.replace("sendlist")
- 	                    }
+ 	                	 if(jdata = 1) {
+		                        alert("삭제 성공");
+		                        location.reload();
+		                    }
  	                    else{
  	                        alert("삭제 실패");
  	                    }
@@ -97,11 +97,20 @@
 
 
 <body>
-
-<div class = first-widget>  </div>
-
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">보낸 쪽지함</h2>
+					</div> <!-- /.col-md-6 -->
+					
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+<br/>
 	<div class="container">
-		<h2>보낸 쪽지 함</h2>
 		<form class="form-inline" action="${root }/message/sendlist">
 
 			<div class="form-group">
@@ -121,7 +130,7 @@
 			</div>
 
 			<button type="submit" class="btn btn-default">검색</button>
-			<button type="button" class="btn btn-danger" onclick="deleteValue();" >쪽지 삭제</button>
+			<button type="button" class="btn btn-red" onclick="deleteValue();" >쪽지 삭제</button>
 			
 
 		</form>

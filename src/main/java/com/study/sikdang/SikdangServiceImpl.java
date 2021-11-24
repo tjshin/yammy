@@ -62,4 +62,16 @@ public class SikdangServiceImpl implements SikdangService {
 		return mapper.distance(sdto);
 	}
 
+	@Override
+	public int nearsta(SikdangDTO sdto) {
+		// TODO Auto-generated method stub
+		return mapper.nearsta(sdto);
+	}
+
+	@Override
+	public List<SikdangDTO> maplist(int nearsta) {
+		// TODO Auto-generated method stub
+		return mapper.maplist(nearsta);
+	}
+
 }

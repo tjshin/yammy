@@ -12,9 +12,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<style type="text/css">
-		body {
-		font-family: "Helvetica Nene", Helvetica, Arial, sans-serif;
-		}
+
 
 		.txt_line {
 			
@@ -68,6 +66,7 @@
 
 </form>
 
+
 <br>
 	<!-- 참조 : contents/mainlist-->
 
@@ -93,12 +92,10 @@
        		<div class ="txt_line">
 
 					<br>
-					<p><b>${dto.stadium} </b> </p>
-					<p><b>경기 일자: ${dto.gamedate} </b> <br></p>
-					<p> ${dto.tickettitle} </p>
-					<p align="right" style ="color: #ff8c00; font-size:1.2em;  "   >${dto.nick}</p>
-					
-					 
+					<li><b>${dto.stadium} </b> </li>
+					<li><b>경기 날짜 : ${dto.gamedate} </b></li>
+					<p style="margin-left:22px;">${dto.tickettitle}</p>
+					<p style ="color: #ff8c00; font-size:15px; text-align:right; margin-right:20px;"><span style="color:grey;">작성자 : </span>${dto.nick}</p>
 					
 			</div>
             </div>
@@ -115,10 +112,10 @@
             
            <div class ="txt_line">
 					<br>
-				    <p><b>${dto.stadium} </b> </p>
-					<p><b>경기 일자: ${dto.gamedate} </b> <br></p>
-					<p> ${dto.tickettitle} </p>
-					<p align="right" style ="color: #ff8c00; font-size:1.2em;  "   >${dto.nick}</p>
+				    <li><b>${dto.stadium} </b> </li>
+					<li><b>경기 일자: ${dto.gamedate} </b> <br></li>
+					<p style="margin-left:22px;"> ${dto.tickettitle} </p>
+					<p style ="color: #ff8c00; font-size:15px; text-align:right; margin-right:20px;"><span style="color:grey;">작성자 : </span>${dto.nick}</p>
 			
 			</div>
             </div>

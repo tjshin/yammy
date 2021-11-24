@@ -29,7 +29,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 주변 맛집 / 리뷰 조회</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -48,11 +47,23 @@
 					<a href="${root }/sikdang/map_main"
 						class="main-button accent-color"> <i
 						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 지도로 돌아가기
-					</a> &nbsp;&nbsp; <a href="${listurl }"
-						class="main-button accent-color"> <i
-						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
-					</a>
-
+					</a> &nbsp;&nbsp;
+					<c:choose>
+					<c:when test="${param.col == null && param.word == null && param.nowPage == null }">
+						<a href="${root}/review/list"
+							class="main-button accent-color"> <i
+							class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${listurl }"
+							class="main-button accent-color"> <i
+							class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						</a>
+					</c:otherwise>
+					</c:choose>
+					
+					
 				</div>
 				<!-- /.col-md-12 -->
 			</div>
@@ -74,8 +85,7 @@
 								<span class="meta-date">${dto.hdate }</span>
 								<c:set var="reviewrcount"
 									value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
-								<span class="meta-author"> ${dto.nick }</span>
-								<span>/</span>
+								<span class="meta-author"> ${dto.nick }</span> <span>/</span>
 
 								<c:if test="${dto.stadium == 1}">
 									<span>서울 잠실</span>
@@ -144,12 +154,16 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-author" class="clearfix">
-
 							<div class="blog-author-info">
+							
+							<img class="img-circle" src="/member/storage/${dto.mfilename}"  style="width: 80px">
+                                          <%-- /member/storage/${dto.mfilename} --%>
+                                
+                                <br> <br>
 								<h4 class="author-name">
 									<a href="#">${dto.nick }</a>
 								</h4>
-								<p>프로필에는 어떤 내용을 노출시킬까요?</p>
+
 							</div>
 						</div>
 					</div>
@@ -160,17 +174,17 @@
 				<div class="row">
 					<br>
 					<div class="col-md-12">
-						<a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
+						<a href="${listurl}" class="btn btn-default2">리뷰 목록</a>
 						<c:if test="${sessionScope.id !=null }">
 							<a href="${root }/sikdang/map_search"
-								class="main-button accent-color">리뷰 등록</a>
+								class="btn btn-default">리뷰 등록</a>
 						</c:if>
 						<c:if
 							test="${sessionScope.id !=null && sessionScope.id == dto.id}">
 							<a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}"
-								class="main-button accent-color">리뷰 수정</a>
+								class="btn btn-default">리뷰 수정</a>
 							<a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}"
-								class="main-button accent-color">리뷰 삭제</a>
+								class="btn btn-red">리뷰 삭제</a>
 						</c:if>
 					</div>
 				</div>
@@ -179,7 +193,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-comments" class="blog-post-comments">
-							<div class="comments-count"><h3>댓글 수: #</h3></div>
+							<div class="comments-count">
+								<h3>댓글 수: #</h3>
+							</div>
 							<div class="blog-comments-content list-group">
 								<div class="media">
 
@@ -208,13 +224,12 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="comment-form">
-							<h3>댓글 남기기</h3>
 							<div class="widget-inner">
 
 								<div class="row">
 									<div class="col-md-12">
 										<p>
-											<label for="hrecontents">댓글 내용:</label>
+											<label for="hrecontents">댓글 쓰기</label>
 											<c:if test="${sessionScope.id == null }">
 												<textarea id="hrecontents" name="hrecontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
 											</c:if>
@@ -228,8 +243,8 @@
 								<div class="row">
 									<div class="col-md-12">
 										<c:if test="${sessionScope.id != null }">
-											<input class="mainBtn" type="button" name="submit"
-												value="댓글 등록" id="mainBtn">
+											<button type="button" class="btn btn-default" name="submit"
+												value="댓글 등록" id="mainBtn">댓글 등록</button>
 										</c:if>
 									</div>
 								</div>
@@ -264,13 +279,14 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>내용</label>
-						<textarea cols="10" rows="3" class="form-control" name='hrecontents'>New Reply!!!!</textarea>
+						<textarea cols="10" rows="3" class="form-control"
+							name='hrecontents'>New Reply!!!!</textarea>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
-					<button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
-					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
+					<button id='modalModBtn' type="button" class="btn btn-default">수정</button>
+					<button id='modalRemoveBtn' type="button" class="btn btn-red">삭제</button>
+					<button id='modalCloseBtn' type="button" class="btn btn-default2">취소</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->

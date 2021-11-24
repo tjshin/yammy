@@ -16,5 +16,7 @@ public class ReviewDTO {
 	private String hdate;
 	private String sikname;
 	private String sikurl;
+	
+	private String mfilename; //프로필 filename
 
 }

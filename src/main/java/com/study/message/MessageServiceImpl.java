@@ -82,6 +82,24 @@ public class MessageServiceImpl implements MessageService {
 		return mapper.read(messageno);
 	}
 
+	@Override
+	public List<MessageDTO> list(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.list(map);
+	}
+
+	@Override
+	public int total(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.total(map);
+	}
+
+	@Override
+	public int delete(int messageno) {
+		// TODO Auto-generated method stub
+		return mapper.delete(messageno);
+	}
+
 
 
 	

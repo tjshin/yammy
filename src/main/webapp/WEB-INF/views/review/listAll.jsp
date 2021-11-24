@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>review db list test</title>
+    <title>review reply db list test</title>
     
 </head>
 <body>
@@ -19,10 +19,12 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">리뷰 DB 목록</h2>
+						<h2 class="page-title">리뷰 댓글 DB 목록</h2>
 					</div> <!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 식당 DB 목록</span>
+
+						<span class="page-location">Home / 리뷰 댓글 DB 목록</span>
+
 					</div> <!-- /.col-md-6 -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->
@@ -49,19 +51,15 @@
 
 		<br>
 
-		<form class="form-inline" action="${root}/admin/sikdang/list">
+		<form class="form-inline" method="post" action="${root}/admin/review/reply/list">
 			<div class="form-group">
 				<select class="form-control" name="col">
-					<option value="htitle" <c:if test="${col=='htitle'}"> selected </c:if>
-						>제목</option>
+					<option value="nick" <c:if test="${col=='nick'}"> selected </c:if>
+						>닉네임</option>
 					<option value="id" <c:if test="${col=='id'}"> selected </c:if>
 						>작성자 ID</option>
-					<option value="sikname" <c:if test="${col=='sikname'}"> selected </c:if>
-						>상호명</option>
-					<option value="hcontents" <c:if test="${col=='hcontents'}"> selected </c:if>
+					<option value="hrecontents" <c:if test="${col=='hrecontents'}"> selected </c:if>
 						>내용</option>
-					<option value="title_content" <c:if test="${col=='title_content'}"> selected</c:if>
-						>제목+내용</option>
 					<option value="total" <c:if test="${col=='total'}"> selected </c:if>
 						>전체출력</option>
 				</select>
@@ -70,18 +68,16 @@
 				<input type="text" class="form-control" placeholder="Enter 검색어" name="word" value="${word}">
 			</div>
 			<button type="submit" class="btn btn-default">검색</button>
-			<button type="button" class="btn btn-default"
-				onclick="location.href='${root }/admin/sikdang/create'">DB 등록</button>
+
 		</form>
 		
 		<div class="row">
 			<table class="table table-striped">
 		    <thead>
 		    <tr>
-		    <th>리뷰 번호</th>
-		    <th>상호명</th>
-		    <th>제목</th>
-		    <th>작성자 ID</th>
+		    <th>댓글 번호</th>		    
+		    <th>댓글 내용 / 클릭 시 원본 글 이동</th>
+		    <th>작성자 닉네임(ID)</th>
 		    <th>작성일자</th>
 		    <th>삭제</th>
 		    </tr>
@@ -90,19 +86,20 @@
 		 
 			<c:choose>   
 			<c:when test="${empty adminlist}">
-			   <tr><td colspan="6">DB에 등록된 식당이 없습니다.</td>
+			   <tr><td colspan="6">DB에 등록된 댓글이 없습니다.</td>
 			</c:when>
 			<c:otherwise>
 		  
 		    <c:forEach var="dto" items="${adminlist}"> 
 		   
 		    <tr>
-		    <td>${dto.hugino}</td>
-		    <td><a href="${readurl}${dto.hugino}">${dto.htitle}</a></td>
-		    <td><a href="#">${dto.id}</a></td>
-		    <td>${dto.hdate }</td>
+		    <td>${dto.hugireno}</td>
+		    <td><a href="${readurl}${dto.hugino}">${dto.hrecontents}</a></td>
+		    <td><a href="${root }/admin/member/list?col=id&word=${dto.id}">${dto.nick}(${dto.id})</a></td>
+		    <td>${dto.hredate }</td>
 		    <td>
-		        <a href="#"><img src="${root }/images/trash-alt-solid.svg"
+		        <a href="${root }/admin/review/reply/delete?hugireno=${dto.hugireno}${urlhelper}">
+		        <img src="${root }/images/trash-alt-solid.svg"
 		        alt="DB에서 삭제합니다."
 		        style="width:20px;height:20px;"></a>
 		    </td>

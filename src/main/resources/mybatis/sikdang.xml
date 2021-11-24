@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create" parameterType="com.study.sikdang.SikdangDTO">
 	insert into sikdang(
 	sikid, sikname, sikphone, roadadd,
-	jibunadd, sikurl, cox, coy, distance)
+	jibunadd, sikurl, cox, coy, distance, nearsta)
 	values(#{sikid}, #{sikname}, #{sikphone}, #{roadadd},
-	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, 0)
+	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, 0, 0)
 </insert>
 
 <select id="checkId" parameterType="String" resultType="int">
@@ -22,6 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" resultType="com.study.sikdang.SikdangDTO">
 	select * from sikdang
+</select>
+
+<select id="maplist" parameterType="int" resultType="com.study.sikdang.SikdangDTO">
+	select * from sikdang
+	where nearsta = #{nearsta}
+	order by distance
 </select>
 
 <select id="total" parameterType="Map" resultType="int">
@@ -50,13 +56,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="adminlist" parameterType="Map"
 		resultType="com.study.sikdang.SikdangDTO">
 	select sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, distance, reviewcnt, r
+			sikurl, cox, coy, distance, nearsta, reviewcnt, r
 	from (
 	select sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, distance, reviewcnt, rownum r
+			sikurl, cox, coy, distance, nearsta, reviewcnt, rownum r
 	from (
 	select s.sikid sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, distance, reviewcnt 
+			sikurl, cox, coy, distance, nearsta, reviewcnt 
 	from sikdang s inner join (
 			select ins.sikid, count(hugino) reviewcnt
 			from sikdang ins left join review
@@ -95,7 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="read" parameterType="String" resultType="com.study.sikdang.SikdangDTO">
 	select s.sikid sikid, sikname, sikphone, roadadd, jibunadd,
-			sikurl, cox, coy, distance, reviewcnt 
+			sikurl, cox, coy, distance, nearsta, reviewcnt 
 	from sikdang s inner join (
 			select ins.sikid, count(hugino) reviewcnt
 			from sikdang ins left join review
@@ -108,6 +114,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <update id="distance" parameterType="com.study.sikdang.SikdangDTO">
 	update sikdang
 	set distance = #{distance}
+	where sikid = #{sikid}
+</update>
+
+<update id="nearsta" parameterType="com.study.sikdang.SikdangDTO">
+	update sikdang
+	set nearsta = #{nearsta}
 	where sikid = #{sikid}
 </update>
     

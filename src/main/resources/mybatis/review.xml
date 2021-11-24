@@ -94,7 +94,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="read" parameterType="int" resultType="com.study.review.ReviewDTO">
-	select hugino, m.nick nick, review.sikid sikid, s.sikname sikname,
+	select hugino, m.nick nick, m.filename mfilename, review.sikid sikid, s.sikname sikname,
 	        s.sikurl sikurl, stadium, htitle, hcontents, star, hdate, review.id id
 	from review inner join member m
 	on review.id = m.id
