@@ -127,10 +127,11 @@ public class ReviewController {
 		double stax = 0;
 		double stay = 0;		
 		int stadium = dto.getStadium();
+		sdto.setNearsta(stadium);
 		
 		switch(stadium) {
 			case 1: stay = 37.5121513808403;
-					stax = 127.071909507224;
+					stax = 127.071909507224;					
 					break;//잠실
 			case 2: stay = 37.4982338495579;
 					stax = 126.867104761712;
@@ -163,6 +164,7 @@ public class ReviewController {
 				
 		if (service.create(dto) > 0) {
 			sikdangservice.distance(sdto);
+			sikdangservice.nearsta(sdto);
 			return "redirect:/review/list";			
 		} else {
 			return "/review/error";

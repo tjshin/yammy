@@ -334,20 +334,22 @@ public class Utility {
 
 	}
 
-	public static String paging2(int total, int nowPage, int recordPerPage, String col, String word, int cateno) {
-		int pagePerBlock = 5;
-		int totalPage = (int) (Math.ceil((double) total / recordPerPage));
-		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));
-		int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock));
-		int startPage = ((nowGrp - 1) * pagePerBlock) + 1;
-		int endPage = (nowGrp * pagePerBlock);
+
+	public static String paging2(int total, int nowPage, int recordPerPage, String col, String word, String bbscate) {
+		int pagePerBlock = 5; // 블럭당 페이지 수
+		int totalPage = (int) (Math.ceil((double) total / recordPerPage)); // 전체 페이지
+		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
+		int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock)); // 현재 그룹
+		int startPage = ((nowGrp - 1) * pagePerBlock) + 1; // 특정 그룹의 페이지 목록 시작
+		int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
+
 
 		StringBuffer str = new StringBuffer();
 		str.append("<div style='text-align:center'>");
 		str.append("<ul class='pagination'> ");
 		int _nowPage = (nowGrp - 1) * pagePerBlock;
 		if (nowGrp >= 2) {
-			str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+			str.append("<li><a href='/bbs/list?bbscate=" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>이전</a></li>");
 		}
 
@@ -359,14 +361,14 @@ public class Utility {
 			if (nowPage == i) {
 				str.append("<li class='active'><a href=#>" + i + "</a></li>");
 			} else {
-				str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+				str.append("<li><a href='/bbs/list?bbscate=" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 						+ i + "'>" + i + "</a></li>");
 			}
 		}
 
 		_nowPage = (nowGrp * pagePerBlock) + 1;
 		if (nowGrp < totalGrp) {
-			str.append("<li><a href='/contents/mainlist/" + cateno + "?col=" + col + "&word=" + word + "&nowPage="
+			str.append("<li><a href='/bbs/list?bbscate=" + bbscate + "&col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>다음</a></li>");
 		}
 		str.append("</ul>");

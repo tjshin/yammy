@@ -7,7 +7,7 @@
 <head>
   <title>homepage</title>
   <meta charset="utf-8">
-  <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js">     </script>
+  <script type="text/javascript" src="${root}/ckeditor/ckeditor.js">     </script>
   <script type="text/JavaScript">
 
   $(function() {
@@ -18,12 +18,12 @@
  function checkIn(f){
          if (f.btitle.value == ""){
               alert("제목을 입력하세요");
-              f.title.focus()
+              f.btitle.focus()
               return false;
          }
          if (f.bcontents.value == ""){
               alert("내용을 입력하세요");
-              f.content.focus();
+              f.bcontents.focus();
               return false;
          }
     
@@ -35,14 +35,32 @@
 
 
 <br>
-<div class="first-widget parallax"></div>
-<div class="container">
-<h2 class="col-sm-offset-2 col-sm-10">게시글 쓰기</h2>
+	<div class="first-widget parallax" id="blog">
+	<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">게시글 작성</h2>
+					</div>
+					<!-- /.col-md-6 -->
+					<div class="col-md-6 col-sm-6 text-right">
+						<span class="page-location">Home / 경기장 게시판 /글쓰기</span>
+					</div>
+					<!-- /.col-md-6 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /.parallax-overlay -->
+	</div>
+	<div class="container">
 <form class="form-horizontal" 
       action="create"
       method="post"
       onsubmit="return checkIn(this)"
       >
+      <input type="hidden" name="bbscate" value="${param.bbscate }">
    
     
       <div class="form-group">
@@ -63,18 +81,8 @@
   </div>
     
     
-    	 <div class="form-group">
-        <label class="control-label col-sm-3" for="sendid" style="color: black; font-weight: bolder;">게시판이름</label>
-        <div class="col-sm-5">
-          <input type="text" name="bbscate" id="bbscate" class="form-control" value="{bbscate}"> 
-    </div></div>
-        	 <div class="form-group">
-        <label class="control-label col-sm-2" for="sendid" style="color: black; font-weight: bolder;">글쓴이</label>
-        <div class="col-sm-8">
-       <input type="text" name="id" id="id" class="form-control" value="${id}" readonly> 
-       		
-        </div>
-        </div>
+    	
+        
 <div class="form-group">
     <label class="control-label col-sm-2" for="btitle">제목</label>
     <div class="col-sm-8">
@@ -83,7 +91,7 @@
   </div>
   
   <div class="form-group">
-    <label class="control-label col-sm-2" for="bcontent">내용</label>
+    <label class="control-label col-sm-2" for="content">내용</label>
     <div class="col-sm-8">
     <textarea rows="12" cols="7" id="bcontents" name="bcontents" class="form-control"></textarea>
     </div>
@@ -100,8 +108,8 @@
 
    <div class="form-group">
    <div class="col-sm-offset-2 col-sm-5">
-    <button class="btn">등록</button>
-    <button type="reset" class="btn">취소</button>
+    <button class="mainBtn">등록</button>
+    <button type="reset" class="mainBtn">취소</button>
    </div>
  </div>
 

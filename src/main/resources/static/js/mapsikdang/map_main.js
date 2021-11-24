@@ -1,3 +1,46 @@
+console.log("*****sikdang list Module........");
+class SikdangService {
+	getList(param) {
+		return new Promise((resolve, reject) => {
+			var nearsta = param.nearsta;
+			
+			$.getJSON("/sikdang/map_main/list/" + nearsta , 
+				function (data) {
+					resolve(data);
+				}
+			);
+		});
+	}	
+}
+
+$(function () {//페이지가 로딩될때
+   showList();
+});//page loading function end  
+
+let listUL = $(".table-body");
+let listPageFooter = $(".list-footer");
+
+var nearsta = 0;
+
+const sikdangService = new SikdangService();
+
+function showList() {
+	sikdangService
+		.getList({ nearsta: nearsta })
+		.then(list => {
+			let str = "";
+			for (var i = 0; i< list.length; i++) {
+				
+				str += "<tr><td>" + list[i].sikname + "</td>";
+				str += "<td>" + reviewsearch + list[i].sikname +"'>리뷰 보러가기</a>";
+				str += "<td>" + list[i].distance + "</td></tr>"
+			}
+			listUL.html(str);
+		})
+}
+
+
+
 var container = document.getElementById('map');
 			var mapOption = {
 				center : new kakao.maps.LatLng(37.51226, 127.07190),
@@ -20,54 +63,81 @@ var container = document.getElementById('map');
 
 				map.setCenter(jamsil);
 				map.setLevel(4);
+				
+				nearsta = 1;
+				showList();
 			});
 			$("#to-gocheok").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(gocheok);
 				map.setLevel(4);
+				
+				nearsta = 2;
+				showList();
 			});
 			$("#to-incheon").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(incheon);
 				map.setLevel(4);
+				
+				nearsta = 3;
+				showList();
 			});
 			$("#to-suwon").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(suwon);
 				map.setLevel(4);
+				
+				nearsta = 4;
+				showList();
 			});
 			$("#to-daejeon").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(daejeon);
 				map.setLevel(4);
+				
+				nearsta = 5;
+				showList();
 			});
 			$("#to-gwangju").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(gwangju);
 				map.setLevel(4);
+				
+				nearsta = 6;
+				showList();
 			});
 			$("#to-daegu").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(daegu);
 				map.setLevel(4);
+				
+				nearsta = 7;
+				showList();
 			});
 			$("#to-changwon").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(changwon);
 				map.setLevel(4);
+				
+				nearsta = 8;
+				showList();
 			});
 			$("#to-sajik").on("click", function(e) {
 				e.preventDefault();
 
 				map.setCenter(sajik);
 				map.setLevel(4);
+				
+				nearsta = 9;
+				showList();
 			});
 
 			var lgSrc = '/images/map/emblem_LG.png', lgSize = new kakao.maps.Size(

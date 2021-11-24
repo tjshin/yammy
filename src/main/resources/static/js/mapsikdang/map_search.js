@@ -78,23 +78,30 @@ function displayPlaces(places) {
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다            
-		
+            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다 
+       		
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
-
+                
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function(marker, title) {
+			// 마커 누르면 목록으로
+			var scroll = '#sikdanglist' + (i + 1);
+			// 페이지 내 이동 클릭이벤트			
+            kakao.maps.event.addListener(marker, 'click', function() {
+                document.location.href = scroll;
+            });
+            
             kakao.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
 
             kakao.maps.event.addListener(marker, 'mouseout', function() {
                 infowindow.close();
-            });
+            });                     
 
             itemEl.onmouseover =  function () {
                 displayInfowindow(marker, title);
@@ -103,10 +110,18 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
+            // 목록 누르면 지도로
+            itemEl.onclick = function () {
+				document.location.href = '#map';
+			};
+            
         })(marker, places[i].place_name);
 
-        fragment.appendChild(itemEl);
-    }
+        fragment.appendChild(itemEl);       
+    }     
+    
+     
+                
 
     // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
     listEl.appendChild(fragment);
@@ -121,7 +136,7 @@ function getListItem(index, places) {
 
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
+                '<div id="sikdanglist'+ (index+1) + '" class="info">' +
                 '   <h5>' + places.place_name + '</h5>';
     
 

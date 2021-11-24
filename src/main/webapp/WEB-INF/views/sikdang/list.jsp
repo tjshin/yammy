@@ -46,7 +46,10 @@
 
 	<div class="container">
 		<br>
-		<form class="form-inline" action="${root}/admin/sikdang/list">
+
+
+		<form class="form-inline" method="post" action="${root}/admin/sikdang/list">
+
 			<div class="form-group">
 				<select class="form-control" name="col">
 					<option value="sikid" <c:if test="${col=='sikid'}"> selected </c:if>

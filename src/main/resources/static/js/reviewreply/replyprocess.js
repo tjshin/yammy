@@ -24,7 +24,7 @@ function showList() {
   replyService
     .getList({ hugino: hugino, sno: sno, eno: eno })
     .then(list => {
-      let str = ""
+      let str = "";
 
       for (var i = 0; i < list.length ; i++) {
 		
@@ -85,7 +85,7 @@ let modalModBtn = $("#modalModBtn");
 mainBtn.on("click", function (e) {
  
   if (hrecontents.val() == '') {
-    alert("댓글을 입력하세요")
+    alert("댓글을 입력하세요");
     return;
   }
  

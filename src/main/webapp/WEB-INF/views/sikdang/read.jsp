@@ -103,6 +103,18 @@
 							>☜이 식당에 작성된 리뷰 목록 </a></td>
 					</tr>
 					<tr>
+						<th>인접 구장</th>
+						<c:if test="${dto.nearsta == 1}"><td>잠실야구장</td></c:if>
+						<c:if test="${dto.nearsta == 2}"><td>고척스카이돔</td></c:if>
+						<c:if test="${dto.nearsta == 3}"><td>인천SSG랜더스필드</td></c:if>
+						<c:if test="${dto.nearsta == 4}"><td>수원케이티위즈파크</td></c:if>
+						<c:if test="${dto.nearsta == 5}"><td>한화생명이글스파크</td></c:if>
+						<c:if test="${dto.nearsta == 6}"><td>광주기아챔피언스필드</td></c:if>
+						<c:if test="${dto.nearsta == 7}"><td>대구삼성라이온즈파크</td></c:if>
+						<c:if test="${dto.nearsta == 8}"><td>창원NC파크</td></c:if>
+						<c:if test="${dto.nearsta == 9}"><td>사직야구장</td></c:if>
+					</tr>
+					<tr>
 						<th>인접 구장과의 직선 거리(m)</th>
 						<td>${dto.distance}</td>
 					</tr>

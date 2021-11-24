@@ -5,22 +5,12 @@ import java.util.Map;
 
 public interface BbslikeService {
 
-	static void uplike(int bbsno) {
-		// TODO Auto-generated method stub
-		
-	}
+	int idcheck(Map map);
 
+	int delete(Map map);
 
+	int create(BbslikeDTO dto);
 
+	int total(int bbsno);
 
-    
-
-// 덧글
-   
-   
-   
-   
-   
-   
 }
-

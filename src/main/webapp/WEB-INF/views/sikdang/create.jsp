@@ -60,11 +60,10 @@
     </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=763a821d2c1a10416e3b6d12208ed9c0&libraries=services"></script>
-<script type="text/javascript" src="${root }/js/sikdang_create.js">
+<script type="text/javascript" src="${root }/js/mapsikdang/sikdang_create.js">
 // 	이 javascript 파일은 키워드로 장소를 검색하는 카카오 API 예제를 수정했습니다.
 // 	키워드로 식당을 검색하고, 목록에서 해당 식당의 버튼을 누르면 
-// 	API로부터 식당 정보를 프로젝트 DB에 레코드로 저장하고,
-// 	해당 식당에 리뷰를 작성(create)하는 페이지로 넘어갑니다.
+// 	API로부터 식당 정보를 프로젝트 DB에 레코드로 저장합니다.
 // 	places.id를 pk로 정했습니다. by 신태진
 </script>
 </body>
