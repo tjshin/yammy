@@ -121,7 +121,7 @@
 									<label class="control-label col-sm-3" for="id">ID</label>
 									<div class="col-sm-4">
 										<input type="text" class="form-control" id="id" name="id"
-											required="required">
+											required="required" value="${c_id_val}">
 									</div>
 								</div>
 								<br />
@@ -135,8 +135,15 @@
 
 								<div class="form-group">
 									<div class="col-sm-offset-5 col-sm-3">
-										<label id="remember"> <input type="checkbox" id="c_id"
-											name="c_id" value="Y"> &nbsp; Remember ID
+										<label id="remember">
+										<c:choose>
+											<c:when test="${c_id =='Y'}">
+											<input type="checkbox" id="c_id" name="c_id" value="Y" checked="checked"> &nbsp; Remember ID
+										</c:when>
+										<c:otherwise>
+											<input type="checkbox" id="c_id" name="c_id" value="Y"> &nbsp; Remember ID
+          								</c:otherwise>		
+										</c:choose>
 										</label>
 									</div>
 								</div>

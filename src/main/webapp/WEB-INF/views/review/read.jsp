@@ -15,9 +15,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>review read test</title>
 
-<script>
-	
-</script>
+
 
 </head>
 <body>
@@ -31,7 +29,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 주변 맛집 / 리뷰 조회</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -50,11 +47,23 @@
 					<a href="${root }/sikdang/map_main"
 						class="main-button accent-color"> <i
 						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 지도로 돌아가기
-					</a> &nbsp;&nbsp; <a href="${listurl }"
-						class="main-button accent-color"> <i
-						class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
-					</a>
-
+					</a> &nbsp;&nbsp;
+					<c:choose>
+					<c:when test="${param.col == null && param.word == null && param.nowPage == null }">
+						<a href="${root}/review/list"
+							class="main-button accent-color"> <i
+							class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${listurl }"
+							class="main-button accent-color"> <i
+							class="icon-button fa fa-arrow-left"></i> &nbsp;&nbsp; 목록으로 돌아가기
+						</a>
+					</c:otherwise>
+					</c:choose>
+					
+					
 				</div>
 				<!-- /.col-md-12 -->
 			</div>
@@ -110,20 +119,38 @@
 								<div class="panel-heading"></div>
 								<div class="panel-body">
 									<p>${dto.hcontents }</p>
+									
 								</div>
-								<div class="tag-items">
-									<span class="small-text">Tags:</span> <a href="#" rel="tag">태그
-										누르면</a> <a href="#" rel="tag">해당 태그를 검색어로 하는</a> <a href="#"
-										rel="tag">list로 넘어갈 수 있게 하는거 어떨까요</a>
-								</div>
+								
+			        						        			
+					        		
 							</div>
 							<!-- /.blog-content -->
 						</div>
 						<!-- /.post-blog -->
 					</div>
-					<!-- /.col-md-12 -->
+					<!-- /.col-md-12 -->				
 				</div>
 				<!-- /.row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="review-like" style="text-align:center;">
+							<button class='reviewlikeBtn' type='button' id='reviewlikeBtn'
+									style='background-color:#ffffff;
+											border-radius: 50%;
+											width:100px;height:100px;'>
+		  						<img src="${root }/images/thumbs-up-solid.svg"
+		  							alt="따봉"
+		  							style="width:50px;height:50px;">
+							</button>
+							<div class="like-count">
+								<h3 style="color:#00a8d6;">추천 수 표시 될 자리</h3>
+							</div>	
+						</div>
+					</div>
+				</div>
+				
+				
 				<div class="row">
 					<div class="col-md-12">
 						<div id="blog-author" class="clearfix">
@@ -147,17 +174,17 @@
 				<div class="row">
 					<br>
 					<div class="col-md-12">
-						<a href="${listurl}" class="main-button accent-color">리뷰 목록</a>
+						<a href="${listurl}" class="btn btn-default2">리뷰 목록</a>
 						<c:if test="${sessionScope.id !=null }">
 							<a href="${root }/sikdang/map_search"
-								class="main-button accent-color">리뷰 등록</a>
+								class="btn btn-default">리뷰 등록</a>
 						</c:if>
 						<c:if
 							test="${sessionScope.id !=null && sessionScope.id == dto.id}">
 							<a href="${root }/review/update?hugino=${dto.hugino}${urlhelper}"
-								class="main-button accent-color">리뷰 수정</a>
+								class="btn btn-default">리뷰 수정</a>
 							<a href="${root }/review/delete?hugino=${dto.hugino}${urlhelper}"
-								class="main-button accent-color">리뷰 삭제</a>
+								class="btn btn-red">리뷰 삭제</a>
 						</c:if>
 					</div>
 				</div>
@@ -197,13 +224,12 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="comment-form">
-							<h3>댓글 남기기</h3>
 							<div class="widget-inner">
 
 								<div class="row">
 									<div class="col-md-12">
 										<p>
-											<label for="hrecontents">댓글 내용:</label>
+											<label for="hrecontents">댓글 쓰기</label>
 											<c:if test="${sessionScope.id == null }">
 												<textarea id="hrecontents" name="hrecontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
 											</c:if>
@@ -217,8 +243,8 @@
 								<div class="row">
 									<div class="col-md-12">
 										<c:if test="${sessionScope.id != null }">
-											<input class="mainBtn" type="button" name="submit"
-												value="댓글 등록" id="mainBtn">
+											<button type="button" class="btn btn-default" name="submit"
+												value="댓글 등록" id="mainBtn">댓글 등록</button>
 										</c:if>
 									</div>
 								</div>
@@ -258,9 +284,9 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
-					<button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
-					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
+					<button id='modalModBtn' type="button" class="btn btn-default">수정</button>
+					<button id='modalRemoveBtn' type="button" class="btn btn-red">삭제</button>
+					<button id='modalCloseBtn' type="button" class="btn btn-default2">취소</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -280,11 +306,14 @@
 		var sessionid = "${sessionScope.id}";
 		var deleteimage = "<img src='${root }/images/trash-alt-solid.svg' alt='댓글 삭제 버튼' style='width:30px;height:30px;'>";
 		var modifyimage = "<img src='${root }/images/edit-solid.svg' alt='댓글 수정 버튼' style='width:30px;height:30px;'>";
+		var likeimage = "<img src='${root }/images/thumbs-up-solid.svg' alt='따봉' style='width:50px;height:50px;'>";
 	</script>
 	<script type="text/javascript" src="${root}/js/reviewreply/revreply.js"></script>
 
 	<script type="text/javascript"
 		src="${root}/js/reviewreply/replyprocess.js"></script>
+	<script type="text/javascript"
+		src="${root}/js/reviewlike/likeprocess.js"></script>
 
 
 </body>

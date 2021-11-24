@@ -9,13 +9,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list" parameterType="Map"
 		resultType="com.study.reviewreply.ReviewreplyDTO">
 		select hugireno, hrecontents, hredate,
-				hugino, id, nick, r
+		hugino, id, nick, r
 		from (
 		select hugireno, hrecontents, hredate,
-				hugino, id, nick, rownum r
+		hugino, id, nick, rownum r
 		from (
 		select hugireno, hrecontents, hredate,
-				hugino, rr.id id, m.nick nick
+		hugino, rr.id id, m.nick nick
 		from reviewreply rr inner join member m
 		on rr.id = m.id
 		where hugino = #{hugino}
@@ -26,34 +26,91 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where r >= #{sno} and r <= #{eno}
 		]]>
 	</select>
-	
+
 	<select id="total" resultType="int" parameterType="int">
-		select count(*) from reviewreply
+		select
+		count(*) from reviewreply
 		where hugino = #{hugino}
 	</select>
-	
-	<insert id="create" parameterType="com.study.reviewreply.ReviewreplyDTO">
+
+	<insert id="create"
+		parameterType="com.study.reviewreply.ReviewreplyDTO">
 		insert into reviewreply (hugireno, hrecontents, hredate,
-								 hugino, id)	
+		hugino, id)
 		values ((select nvl(max(hugireno), 0) + 1 from reviewreply),
-				#{hrecontents}, sysdate, #{hugino}, #{id})
+		#{hrecontents}, sysdate, #{hugino}, #{id})
 	</insert>
-	
+
 	<select id="read" parameterType="int"
 		resultType="com.study.reviewreply.ReviewreplyDTO">
 		select * from reviewreply
 		where hugireno = #{hugireno}
 	</select>
-	
-	<update id="update" parameterType="com.study.reviewreply.ReviewreplyDTO">
+
+	<update id="update"
+		parameterType="com.study.reviewreply.ReviewreplyDTO">
 		update reviewreply
 		set hrecontents = #{hrecontents}
-		where hugireno = #{hugireno}
+		where
+		hugireno = #{hugireno}
 	</update>
-	
+
 	<delete id="delete" parameterType="int">
 		delete reviewreply
-		where hugireno = #{hugireno}
+		where
+		hugireno = #{hugireno}
 	</delete>
-	
+
+	<select id="admintotal" parameterType="Map" resultType="int">
+		select count(*)
+		from reviewreply rr inner join member m
+		on rr.id = m.id
+		<where>
+			<choose>
+				<when test="col=='nick'">
+					m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					rr.id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='hrecontents'">
+					hrecontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<select id="adminlist" parameterType="Map"
+		resultType="com.study.reviewreply.ReviewreplyDTO">
+		select hugireno, hrecontents, hredate,
+		hugino, id, nick, r
+		from (
+		select hugireno, hrecontents, hredate,
+		hugino, id, nick, rownum r
+		from (
+		select hugireno, hrecontents, hredate,
+		hugino, rr.id id, m.nick nick
+		from reviewreply rr inner join member m
+		on rr.id = m.id
+		<where>
+			<choose>
+				<when test="col=='nick'">
+					m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					rr.id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='hrecontents'">
+					hrecontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+		order by hugireno desc
+		)
+		)
+		<![CDATA[
+		where r >= #{sno} and r <= #{eno}
+		]]>
+	</select>
+
 </mapper>

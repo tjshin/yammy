@@ -78,26 +78,23 @@
 		<!-- /.parallax-overlay -->
 	</div>
 	<!-- /.pageTitle -->
-
+    <section class="cta clearfix">
 	<div class="container">
-
-
 		<form class="form-horizontal" action="/admin/member/delete"
 			method="post" id="form">
 			<input type="hidden" name="id" value="${dto.id}"> <br />
-			<p id="red" style="text-align: left">탈퇴시키면 복구할 수 없습니다.</p>
-			<input type="text" class="form-control" style="width: 30%;"
+			<p id="red">탈퇴시키면 복구할 수 없습니다.</p>
+			<input type="text" class="form-control" style="width: 30%; margin-left:34%;"
 				id="check" name="check"
 				placeholder="'delete ${dto.nick }' (을)를 입력하세요."><br />
-
 			<div class="form-group">
-				<div class="col-sm-offset-0 col-sm-5" style="text-align: left">
-					<button type="button" class="btn" onclick="idCheck()">탈퇴</button>
-					<button type="button" class="btn" onclick="historyback()">취소</button>
+				<div>
+					<button type="button" class="btn btn-red" onclick="idCheck()">탈퇴</button>
+					<button type="button" class="btn btn-default2" onclick="historyback()">취소</button>
 				</div>
 			</div>
 		</form>
 	</div>
-
+</section>
 </body>
 </html>

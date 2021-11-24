@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.study.review.ReviewDTO;
 import com.study.utility.Utility;
 
 @Controller
@@ -28,10 +27,10 @@ public class SikdangController {
 	
 
 	@GetMapping("/sikdang/map_main")
-	public String mapMain(HttpServletRequest request) {
+	public String mapMain(HttpServletRequest request, Model model) {
 		
 		List <SikdangDTO> list = service.list();
-		request.setAttribute("list", list);
+		request.setAttribute("list", list);		
 		
 		return "/sikdang/map_main";
 	}

@@ -59,30 +59,25 @@
 		</div> <!-- /.parallax-overlay -->
 	</div> <!-- /.pageTitle -->
 
-         <div class="container">
- 
-
+<section class="cta clearfix">
+<div class="container">
 <form class="form-horizontal" 
       action="/admin/notice/delete"
       method="post"
       >
   <input type="hidden" name="noticeno" value="${param.noticeno}">
  <br/>
-  <p id="red" class="col-sm-offset-2 col-sm-6">삭제하면 복구할 수 없습니다. 정말 삭제하시겠습니까?</p>
+  <p id="red">삭제하면 복구할 수 없습니다. 정말 삭제하시겠습니까?</p>
   
    <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-5">
-    <button class="btn">삭제</button>
-    <button type="button" class="btn" onclick="historyback()">취소</button>
+   <div>
+    <button class="btn btn-red">삭제</button>
+    <button type="button" class="btn btn-default2" onclick="historyback()">취소</button>
    </div>
  </div>
 </form>
- 
 </div>
-          
-	<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
+</section>
 
 </body>
 </html>

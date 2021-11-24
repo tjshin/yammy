@@ -36,7 +36,7 @@
 	</definition>
 
 	<definition name="/bbs/bestlist" extends="main">
-		<put-attribute name="title" value="수정페이지"></put-attribute>
+		<put-attribute name="title" value="인기글페이지"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/bbs/bestlist.jsp" />
 	</definition>

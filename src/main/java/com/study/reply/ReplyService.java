@@ -3,16 +3,20 @@ package com.study.reply;
 import java.util.List;
 import java.util.Map;
 
-public interface ReplyService
-{
+import com.study.reviewreply.ReviewreplyDTO;
+
+public interface ReplyService {
 
 	int create(ReplyDTO dto);
 
-	int retotal(Map map);
+	int total(int bbsno);
 
-	List<ReplyDTO> rlist(Map map);
-	
+	List<ReplyDTO> list(Map map);
 
+	int update(ReplyDTO dto);
 
+	int delete(int reno);
+
+	ReplyDTO read(int reno);
 
 }

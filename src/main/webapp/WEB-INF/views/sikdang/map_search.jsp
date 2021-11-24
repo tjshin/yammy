@@ -20,7 +20,6 @@
                         <h2 class="page-title">식당 검색, 추가</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 식당 검색, 추가</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
@@ -50,11 +49,14 @@
    
 </div>
  <div id="menu_wrap" class="bg_white">
+ <code id="snippet" class="snippet">"주변" 키워드를 활용해보세요!</code>
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
                     키워드 : <input type="text" value="잠실 야구장 주변 삼겹살" id="keyword" size="60"> 
-                    <button type="submit">검색하기</button> 
+
+                    <button class="btn btn-default" type="submit">검색하기</button> 
+
                 </form>
             </div>
         </div>
@@ -64,7 +66,7 @@
     </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=763a821d2c1a10416e3b6d12208ed9c0&libraries=services"></script>
-<script type="text/javascript" src="${root }/js/map_search.js">
+<script type="text/javascript" src="${root }/js/mapsikdang/map_search.js">
 // 	이 javascript 파일은 키워드로 장소를 검색하는 카카오 API 예제를 수정했습니다.
 // 	키워드로 식당을 검색하고, 목록에서 해당 식당의 버튼을 누르면 
 // 	API로부터 식당 정보를 프로젝트 DB에 레코드로 저장하고,

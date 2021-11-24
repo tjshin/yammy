@@ -28,7 +28,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 식당 DB 조회</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -104,6 +103,18 @@
 							>☜이 식당에 작성된 리뷰 목록 </a></td>
 					</tr>
 					<tr>
+						<th>인접 구장</th>
+						<c:if test="${dto.nearsta == 1}"><td>잠실야구장</td></c:if>
+						<c:if test="${dto.nearsta == 2}"><td>고척스카이돔</td></c:if>
+						<c:if test="${dto.nearsta == 3}"><td>인천SSG랜더스필드</td></c:if>
+						<c:if test="${dto.nearsta == 4}"><td>수원케이티위즈파크</td></c:if>
+						<c:if test="${dto.nearsta == 5}"><td>한화생명이글스파크</td></c:if>
+						<c:if test="${dto.nearsta == 6}"><td>광주기아챔피언스필드</td></c:if>
+						<c:if test="${dto.nearsta == 7}"><td>대구삼성라이온즈파크</td></c:if>
+						<c:if test="${dto.nearsta == 8}"><td>창원NC파크</td></c:if>
+						<c:if test="${dto.nearsta == 9}"><td>사직야구장</td></c:if>
+					</tr>
+					<tr>
 						<th>인접 구장과의 직선 거리(m)</th>
 						<td>${dto.distance}</td>
 					</tr>
@@ -115,11 +126,11 @@
 				<div class="row" style="text-align: center">
 					<br>
 					<div class="col-md-12">
-						<a href="${listurl}" class="main-button accent-color">DB 목록</a>
+						<a href="${listurl}" class="btn btn-default">DB 목록</a>
 						<a href="${root }/admin/sikdang/create"
-								class="main-button accent-color">DB 등록</a>
+								class="btn btn-default">DB 등록</a>
 						<a href="${root }/admin/sikdang/delete?sikid=${dto.sikid}${urlhelper}"
-								class="main-button accent-color">DB 삭제</a>
+								class="btn btn-red">DB 삭제</a>
 						
 					</div>
 					<br><br><br>  

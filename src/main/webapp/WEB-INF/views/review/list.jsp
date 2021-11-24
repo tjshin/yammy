@@ -22,7 +22,6 @@
 						<h2 class="page-title">리뷰 목록</h2>
 					</div> <!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 주변 맛집 / 리뷰 목록</span>
 					</div> <!-- /.col-md-6 -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->
@@ -51,7 +50,7 @@
 
 		<br>
 
-		<form class="form-inline" action="${root}/review/list">
+		<form class="form-inline" method="post" action="${root}/review/list">
 			<div class="form-group">
 				<select class="form-control" name="col">
 					<option value="sikname" <c:if test="${col=='sikname'}"> selected </c:if>
@@ -71,7 +70,7 @@
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Enter 검색어" name="word" value="${word}">
 			</div>
-			<button type="submit" class="mainBtn">검색</button>
+			<button type="submit" class="btn btn-default">검색</button>
 
 		</form>
 		

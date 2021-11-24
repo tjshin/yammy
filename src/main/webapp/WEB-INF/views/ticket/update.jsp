@@ -66,10 +66,19 @@
 </head>
 <body>
 
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">게시글 수정</h2>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
 
-<div class="container">
-    <h1 class="col-sm-offset-2 col-sm-10">게시물 수정</h1>
+<div class="container"><br/>
     <form class="form-horizontal" 
         action="${root}/ticket/update"
         method="post"
@@ -138,8 +147,8 @@
         
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-5">
-        <button class="btn btn-primary">수정</button>
-        <button type="reset" class="btn" onclick="goBack();">취소</button>
+        <button class="btn btn-default">수정</button>
+        <button type="reset" class="btn btn-default2" onclick="goBack();">취소</button>
         </div>
     </div>
     </form>

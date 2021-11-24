@@ -27,19 +27,19 @@
                         <h2 class="page-title">리뷰 삭제</h2>
                     </div> <!-- /.col-md-6 -->
                     <div class="col-md-6 col-sm-6 text-right">
-                        <span class="page-location">Home / 경기장 주변 맛집 / 리뷰 삭제</span>
                     </div> <!-- /.col-md-6 -->
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
         </div> <!-- /.parallax-overlay -->
     </div> <!-- /.pageTitle -->
     
+    
+    
+    
     <section class="cta clearfix">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                
-                <h2>리뷰 삭제</h2>
 				<form class="form-horizontal" action="/review/delete" method="post">
 					<input type="hidden" name="hugino" value="${param.hugino}">
 					<input type='hidden' name="col" value="${param.col}">
@@ -47,14 +47,14 @@
 					<input type='hidden' name="nowPage" value="${param.nowPage}">
 					<input type='hidden' name="mtest" value="${param.mtest}">
 					<div>
-					삭제하면 복구할 수 없습니다<br><br>
+					삭제하면 복구할 수 없습니다.<br><br>
 					</div>
 		
 					<div class="form-group">
 						<div>
-							<button class="mainBtn" type="submit">삭제</button>
-							<button class="mainBtn" type="reset" onclick="goback();">
-							돌아가기</button>   
+							<button class="btn btn-red" type="submit">삭제</button>
+							<button class="btn btn-default2" type="reset" onclick="goback();">
+							취소</button>   
 							
 						</div>
 					</div>

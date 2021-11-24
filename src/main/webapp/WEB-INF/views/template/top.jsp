@@ -73,15 +73,16 @@
 			<li><a href="#">구장별 게시판</a>
 				<ul>
 
-					<li><a href="${root }/bbs/list/jamsil">잠실(LG/두산)</a></li>
-					<li><a href="${root }/bbs/list/gocheok">고척(키움)</a></li>
-					<li><a href="${root }/bbs/list/incheon">인천(SSG)</a></li>
-					<li><a href="${root }/bbs/list/suwon">수원(KT)</a></li>
-					<li><a href="${root }/bbs/list/daejeon">대전(한화)</a></li>
-					<li><a href="${root }/bbs/list/gwangju">광주(KIA)</a></li>
-					<li><a href="${root }/bbs/list/daegu">대구(삼성)</a></li>
-					<li><a href="${root }/bbs/list/changwon">창원(NC)</a></li>
-					<li><a href="${root }/bbs/list/busan">사직(롯데)</a></li>
+					<li><a href="${root }/bbs/list/jamsil"><img src="${root }/images/map/emblem_LG.png" style="width:45px;"><img src="${root }/images/map/emblem_OB.png" style="width:45px;">잠실(LG/두산)</a></li>
+					<li><a href="${root }/bbs/list/gocheok"><img src="${root }/images/map/emblem_WO.png" style="width:45px;">고척(키움)</a></li>
+					<li><a href="${root }/bbs/list/incheon"><img src="${root }/images/map/emblem_SK.png" style="width:45px;">인천(SSG)</a></li>
+					<li><a href="${root }/bbs/list/suwon"><img src="${root }/images/map/emblem_KT.png" style="width:45px;">수원(KT)</a></li>
+					<li><a href="${root }/bbs/list/daejeon"><img src="${root }/images/map/emblem_HH.png" style="width:45px;">대전(한화)</a></li>
+					<li><a href="${root }/bbs/list/gwangju"><img src="${root }/images/map/emblem_HT.png" style="width:45px;">광주(KIA)</a></li>
+					<li><a href="${root }/bbs/list/daegu"><img src="${root }/images/map/emblem_SS.png" style="width:45px;">대구(삼성)</a></li>
+					<li><a href="${root }/bbs/list/changwon"><img src="${root }/images/map/emblem_NC.png" style="width:45px;">창원(NC)</a></li>
+					<li><a href="${root }/bbs/list/busan"><img src="${root }/images/map/emblem_LT.png" style="width:45px;">사직(롯데)</a></li>
+
 				</ul></li>
 
 			<li><a href="${root }/notice/list">공지사항</a></li>
@@ -95,7 +96,7 @@
 
 				</ul></li>
 
-			<li><a href="#">My Page</a>
+			<li><a href="${root}/member/mypage">My Page</a>
 				<ul>
 					<li><a href="${root}/member/mypage"><span
 							class="glyphicon glyphicon-list"></span>회원정보</a></li>
@@ -118,7 +119,7 @@
 							<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 							<li><a href="#">전체 쪽지 목록</a></li>
 							<li><a href="#">전체 게시판 댓글 목록</a></li>
-							<li><a href="#">전체 리뷰 댓글 목록</a></li>
+							<li><a href="${root }/admin/review/reply/list">전체 리뷰 댓글 목록</a></li>
 							<li><a href="#">실험실</a></li>
 						</ul></li>
 					<li><a href="${root}/member/logout"><span
@@ -186,15 +187,17 @@
 
 									<li><a href="#">구장별 게시판</a>
 										<ul>
-											<li><a href="${root }/bbs/list/jamsil">잠실(LG/두산)</a></li>
-											<li><a href="${root }/bbs/list/gocheok">고척(키움)</a></li>
-											<li><a href="${root }/bbs/list/incheon">인천(SSG)</a></li>
-											<li><a href="${root }/bbs/list/suwon">수원(KT)</a></li>
-											<li><a href="${root }/bbs/list/daejeon">대전(한화)</a></li>
-											<li><a href="${root }/bbs/list/gwangju">광주(KIA)</a></li>
-											<li><a href="${root }/bbs/list/daegu">대구(삼성)</a></li>
-											<li><a href="${root }/bbs/list/changwon">창원(NC)</a></li>
-											<li><a href="${root }/bbs/list/busan">사직(롯데)</a></li>
+
+											<li><a href="${root }/bbs/list/jamsil"><img src="${root }/images/map/emblem_LG.png" style="width:45px;"><img src="${root }/images/map/emblem_OB.png" style="width:45px;">잠실(LG/두산)</a></li>
+											<li><a href="${root }/bbs/list/gocheok"><img src="${root }/images/map/emblem_WO.png" style="width:45px;">고척(키움)</a></li>
+											<li><a href="${root }/bbs/list/incheon"><img src="${root }/images/map/emblem_SK.png" style="width:45px;">인천(SSG)</a></li>
+											<li><a href="${root }/bbs/list/suwon"><img src="${root }/images/map/emblem_KT.png" style="width:45px;">수원(KT)</a></li>
+											<li><a href="${root }/bbs/list/daejeon"><img src="${root }/images/map/emblem_HH.png" style="width:45px;">대전(한화)</a></li>
+											<li><a href="${root }/bbs/list/gwangju"><img src="${root }/images/map/emblem_HT.png" style="width:45px;">광주(KIA)</a></li>
+											<li><a href="${root }/bbs/list/daegu"><img src="${root }/images/map/emblem_SS.png" style="width:45px;">대구(삼성)</a></li>
+											<li><a href="${root }/bbs/list/changwon"><img src="${root }/images/map/emblem_NC.png" style="width:45px;">창원(NC)</a></li>
+											<li><a href="${root }/bbs/list/busan"><img src="${root }/images/map/emblem_LT.png" style="width:45px;">사직(롯데)</a></li>
+
 										</ul></li>
 
 
@@ -209,7 +212,7 @@
 
 										</ul></li>
 
-									<li><a href="#">My Page</a>
+									<li><a href="${root}/member/mypage">My Page</a>
 										<ul>
 											<li><a href="${root}/member/mypage"><span
 													class="glyphicon glyphicon-list"></span>회원정보</a></li>
@@ -237,7 +240,7 @@
 													<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 													<li><a href="${root}/admin/message/list">전체 쪽지 목록</a></li>
 													<li><a href="#">전체 게시판 댓글 목록</a></li>
-													<li><a href="#">전체 리뷰 댓글 목록</a></li>
+													<li><a href="${root }/admin/review/reply/list">전체 리뷰 댓글 목록</a></li>
 													<li><a href="#">실험실</a></li>
 												</ul></li>
 
@@ -263,7 +266,8 @@
 											<li></li>
 											<li></li>
 											<li></li>
-											<li><a href="#" onclick="signOut()"><span class=class="g-signin2"></span> Logout</a></li>
+											<li><a href="#" onclick="signOut()"><span
+													class=class="g-signin2"></span> Logout</a></li>
 										</c:when>
 
 										<c:otherwise>

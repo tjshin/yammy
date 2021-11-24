@@ -40,14 +40,6 @@
 		url += "?noticeno=${dto.noticeno}";
 		location.href = url;
 	}
-
-	function list() {
-		var url = "list";
-		url += "?nowPage=${param.nowPage}";
-		url += "&col=${param.col}";
-		url += "&word=${param.word}";
-		location.href = url;
-	}
 </script>
 
 </head>
@@ -87,15 +79,15 @@
 		<div>
 			<c:choose>
     		<c:when test="${sessionScope.id != dto.id && sessionScope.grade == 'A'}">
-			<button type="button" class="btn" onclick="location.href='/admin/notice/create'">등록</button>
+			<button type="button" class="btn btn-default" onclick="location.href='/admin/notice/create'">등록</button>
 			</c:when>
 			<c:when test="${sessionScope.id == dto.id && sessionScope.grade == 'A'}">
-			<button type="button" class="btn" onclick="location.href='/admin/notice/create'">등록</button>
-			<button type="button" class="btn" onclick="location.href='/admin/notice/update?noticeno=${dto.noticeno}'">수정</button>
-			<button type="button" class="btn" onclick="location.href='/admin/notice/delete?noticeno=${dto.noticeno}'">삭제</button>
+			<button type="button" class="btn btn-default" onclick="location.href='/admin/notice/create'">등록</button>
+			<button type="button" class="btn btn-default" onclick="location.href='/admin/notice/update?noticeno=${dto.noticeno}'">수정</button>
+			<button type="button" class="btn btn-red" onclick="location.href='/admin/notice/delete?noticeno=${dto.noticeno}'">삭제</button>
 			</c:when>
 			</c:choose>
-			<button type="button" class="btn" onclick="list()">목록</button>
+			<button type="button" class="btn btn-default2" onclick="history.back()">목록</button>
 			<br/><br/>
 		</div>
 	</div>

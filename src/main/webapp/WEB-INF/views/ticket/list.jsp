@@ -12,9 +12,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<style type="text/css">
-		body {
-		font-family: "Helvetica Nene", Helvetica, Arial, sans-serif;
-		}
+
 
 		.txt_line {
 			
@@ -27,11 +25,19 @@
 </head>
 
 <body>
-<div class = first-widget>  </div>
+<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h2 class="page-title">티켓 목록</h2>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
 
-<div class="container">
-        <h3> 티켓 목록</h3>
-		
+<div class="container"><br/>
 	<!-- 참조 : member/list-->
 	<form class="form-inline" action="${root }/ticket/list">
 	
@@ -54,24 +60,20 @@
 	<div class="form-group">
 		<input type="text" class="form-control" name="word" required="required" value="${word}">
 	</div>
-		<button class="btn btn-info">검색</button>
-		<button class="btn btn-default" type="button" 
+		<button class="btn btn-default">검색</button>
+		<button class="btn btn-default2" type="button" 
 		onclick="location.href='${root }/ticket/create'">등록</button>
 
 </form>
 
 
 <br>
-	
-
-<br>
 	<!-- 참조 : contents/mainlist-->
-
 
 	<c:choose>   
         <c:when test="${empty list}"> <!-- 목록이 비어 있을경우-->
         <div class="row">
-        <h2>등록 된 티켓 목록이 없습니다.</h2> 
+        <h2>등록된 티켓 목록이 없습니다.</h2> 
         </div>
         </c:when>
         
@@ -90,12 +92,10 @@
        		<div class ="txt_line">
 
 					<br>
-					<p><b>${dto.stadium} </b> </p>
-					<p><b>경기 일자: ${dto.gamedate} </b> <br></p>
-					<p> ${dto.tickettitle} </p>
-					<p align="right" style ="color: #ff8c00; font-size:1.2em;  "   >${dto.nick}</p>
-					
-					 
+					<li><b>${dto.stadium} </b> </li>
+					<li><b>경기 날짜 : ${dto.gamedate} </b></li>
+					<p style="margin-left:22px;">${dto.tickettitle}</p>
+					<p style ="color: #ff8c00; font-size:15px; text-align:right; margin-right:20px;"><span style="color:grey;">작성자 : </span>${dto.nick}</p>
 					
 			</div>
             </div>
@@ -112,10 +112,10 @@
             
            <div class ="txt_line">
 					<br>
-				    <p><b>${dto.stadium} </b> </p>
-					<p><b>경기 일자: ${dto.gamedate} </b> <br></p>
-					<p> ${dto.tickettitle} </p>
-					<p align="right" style ="color: #ff8c00; font-size:1.2em;  "   >${dto.nick}</p>
+				    <li><b>${dto.stadium} </b> </li>
+					<li><b>경기 일자: ${dto.gamedate} </b> <br></li>
+					<p style="margin-left:22px;"> ${dto.tickettitle} </p>
+					<p style ="color: #ff8c00; font-size:15px; text-align:right; margin-right:20px;"><span style="color:grey;">작성자 : </span>${dto.nick}</p>
 			
 			</div>
             </div>
