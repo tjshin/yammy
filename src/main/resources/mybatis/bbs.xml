@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES((select
 		nvl(max(bbsno),0)+1 from bbs), #{btitle}, #{bcontents},
 		0, #{bcate},
-		SYSTIMESTAMP, 'admin', #{bbscate} )
+		SYSTIMESTAMP, #{id}, #{bbscate} )
 	</insert>
 
 	<!--리스트 -->
