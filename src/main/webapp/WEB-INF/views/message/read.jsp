@@ -25,7 +25,12 @@
             location.href = url;
                     }
        
-       
+       function download(){
+           var url = "${root }/excel/download";
+           url += "?messageno=${param.messageno}";
+         
+           location.href = url;
+                   }
       
              
        
@@ -61,8 +66,11 @@
 		<div>
 				<button type="button" class="btn" onclick="listM()">목록</button>
 				
-			
 		</div>
+		<br>
+		<div>
+				<button type="button" class="btn" style ="background-color:green ;" onclick="download()">엑셀 다운로드 </button>
+        </div>
 		<br>
 	</div>
 	

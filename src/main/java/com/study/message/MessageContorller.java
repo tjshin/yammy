@@ -1,12 +1,22 @@
 package com.study.message;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,11 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.study.ticket.TicketDTO;
 import com.study.utility.Utility;
 
 @Controller
@@ -27,6 +33,87 @@ public class MessageContorller {
 	@Autowired
 	@Qualifier("com.study.message.MessageServiceImpl")
 	private MessageService service;
+	
+	
+	//엑셀
+	@RequestMapping(value="/excel/download")
+    public void excelDownload(HttpServletResponse response ,HttpServletRequest request) throws IOException {
+       
+		
+		
+		int messageno = Integer.parseInt(request.getParameter("messageno"));
+	
+		MessageDTO dto = service.read(messageno); //선택한 게시물 정보 가져오기
+	
+		
+		//workbook 생성
+        Workbook wb = new XSSFWorkbook();// Excel 2007 이상
+        
+        
+        Sheet sheet = wb.createSheet("첫번째 시트");
+        
+     // 컬럼 너비 설정
+        sheet.setColumnWidth(1, 5000);
+        sheet.setColumnWidth(2, 15000);
+        sheet.setColumnWidth(3, 5000);
+      // style ----
+    
+        // Cell 스타일 생성
+        CellStyle cellStyle = wb.createCellStyle();
+         
+        // 줄 바꿈
+        cellStyle.setWrapText(true);
+         
+      
+        
+        Row row = null;
+        Cell cell = null;
+        int rowNum = 0;
+              
+        // Header
+        row = sheet.createRow(rowNum++);
+     
+        
+        cell = row.createCell(0);
+        cell.setCellValue("받는사람");
+        
+        cell = row.createCell(1);
+        cell.setCellValue("보낸사람");
+        
+        cell = row.createCell(2);
+        cell.setCellValue("내용");
+        
+        cell = row.createCell(3);
+        cell.setCellValue("보낸시간");
+        
+        
+        // Body
+        	
+            row = sheet.createRow(rowNum++);
+           
+            cell = row.createCell(0);
+            cell.setCellValue(dto.getReceid()); // 받는사람
+            cell = row.createCell(1);
+            cell.setCellValue(dto.getSendid()); // 보낸사람
+            cell = row.createCell(2);
+            cell.setCellValue(dto.getMcontents()); // 내용
+            cell = row.createCell(3);
+            cell.setCellValue(dto.getMdate()); // 보낸시간
+       
+
+        // 컨텐츠 타입과 파일명 지정
+            LocalDate now = LocalDate.now();
+
+          
+        response.setContentType("ms-vnd/excel");
+//        response.setHeader("Content-Disposition", "attachment;filename=example.xls");
+        response.setHeader("Content-Disposition", "attachment;filename=message_"+now+".xlsx");
+
+        // Excel File Output
+        wb.write(response.getOutputStream());
+        wb.close();
+    }
+
 	
 	
 	//관리자용 삭제 비동기
