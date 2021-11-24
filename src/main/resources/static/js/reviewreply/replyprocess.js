@@ -24,7 +24,7 @@ function showList() {
   replyService
     .getList({ hugino: hugino, sno: sno, eno: eno })
     .then(list => {
-      let str = ""
+      let str = "";
 
       for (var i = 0; i < list.length ; i++) {
 		

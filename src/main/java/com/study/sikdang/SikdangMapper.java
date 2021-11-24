@@ -23,4 +23,8 @@ public interface SikdangMapper {
 	
 	int distance(SikdangDTO sdto);
 
+	int nearsta(SikdangDTO sdto);
+
+	List<SikdangDTO> maplist(int nearsta);
+
 }

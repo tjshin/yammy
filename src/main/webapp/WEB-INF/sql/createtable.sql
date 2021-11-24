@@ -23,6 +23,7 @@ CREATE TABLE SIKDANG (
        jibunadd             VARCHAR2(200) NULL,
        sikurl               VARCHAR2(200) NULL,
        sikphone             VARCHAR2(20) NULL,
+       nearsta              NUMBER(2) NULL,
        distance             NUMBER(30) NULL,
        coy                  VARCHAR2(50) NULL,
        cox                  VARCHAR2(50) NULL,

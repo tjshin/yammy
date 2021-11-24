@@ -96,26 +96,57 @@
 				</div>
 
 			</div>
-			<code id="snippet" class="snippet"></code>
+			<code id="snippet" class="snippet">마커를 클릭하면 해당 식당의 정보를 볼 수 있습니다</code>
+			
+			<div id="sikdanglist">
+				<br>	
+				<div class="row">
+				<hr>
+					<table class="table table-striped">
+				    <thead class="table-head">
+				    <tr>
+				    <th>상호명</th>
+				    <th>작성된 리뷰</th>
+				    <th>구장과의 거리(m)</th>
+				    </tr>
+				    </thead>
+				    
+				    <tbody class="table-body">				  			   
+				    <tr>				    
+				    <td>상호명 자리</td>
+				    <td>리뷰 목록 a태그</td>
+				    <td>거리 자리</td>
+				    </tr>
+				 
+				    </tbody>
+				  
+				    </table>
+				    <hr>				  
+					
+				</div> <!-- /.row -->
+			</div>
 		</div>
+		<script type="text/javascript">
+			var reviewsearch = "<a href='${root}/review/list?col=sikname&word=";
+		</script>
 		
 		<script type="text/javascript" src="${root }/js/mapsikdang/map_main.js">
 // 			이 javascript 파일은 지도에 각 구단 엠블렘을 마커로 표시하고,
 // 			버튼을 눌렀을 때 해당 구장의 지도를 보여줍니다. by 신태진
 		</script>
 		<script type="text/javascript">
-		var arr = new Array();
-		<c:forEach items="${list}" var="dto">
-		arr.push("${dto.sikid}");
-		arr.push("${dto.sikname}");
-		arr.push("${dto.sikphone}");
-		arr.push("${dto.roadadd}");
-		arr.push("${dto.jibunadd}");
-		arr.push("${dto.sikurl}");
-		arr.push("${dto.cox}");
-		arr.push("${dto.coy}");
-		arr.push("${dto.distance}");
-		</c:forEach>		  
+			var arr = new Array();
+			<c:forEach items="${list}" var="dto">
+				arr.push("${dto.sikid}");
+				arr.push("${dto.sikname}");
+				arr.push("${dto.sikphone}");
+				arr.push("${dto.roadadd}");
+				arr.push("${dto.jibunadd}");
+				arr.push("${dto.sikurl}");
+				arr.push("${dto.cox}");
+				arr.push("${dto.coy}");
+				arr.push("${dto.distance}");
+			</c:forEach>		  
 		</script>
 		<script>
 			var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";

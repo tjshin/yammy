@@ -50,11 +50,12 @@
    
 </div>
  <div id="menu_wrap" class="bg_white">
+ <code id="snippet" class="snippet">"주변" 키워드를 활용해보세요!</code>
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
                     키워드 : <input type="text" value="잠실 야구장 주변 삼겹살" id="keyword" size="60"> 
-                    <button type="submit">검색하기</button> 
+                    <button type="submit">검색하기</button>                    
                 </form>
             </div>
         </div>
