@@ -58,8 +58,10 @@
 <form class="form-horizontal" 
       action="create"
       method="post"
-      onsubmit="return checkIn(this)"
-      >
+      onsubmit="return checkIn(this)">
+      
+      s
+        
       <input type="hidden" name="bbscate" value="${param.bbscate}">
    
    <a href='/bbs/list?bbscate=${param.bbscate}'>

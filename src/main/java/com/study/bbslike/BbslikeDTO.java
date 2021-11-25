@@ -9,6 +9,5 @@ public class BbslikeDTO {
 private String id;
 private int bbsno;
 	
-	
 }
 

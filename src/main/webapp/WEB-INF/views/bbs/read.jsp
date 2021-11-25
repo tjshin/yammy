@@ -92,9 +92,9 @@
 							class="gall_date" title="2021-11-03 22:35:02">${dto.bdate}</span>
 					</div>
 					<div align="right">
-						<span class="gall_count">조회수: ${dto.bview}</span> <span
-							class="like-count">추천수: </span> 
-							<div class="comments-count"><h6>댓글 수: #</h6></div>
+						<span class="gall_count">조회수: ${dto.bview}</span>
+						<div class="count">추천수: ${dto.bcnt}</div> 
+							<div class="count">댓글 수: ${dto.rcnt}</div>
 					</div>
 				</div>
 			</div>
