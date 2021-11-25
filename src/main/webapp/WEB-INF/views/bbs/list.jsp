@@ -24,11 +24,6 @@
 
 	}
 
-	function fileDown(filename) {
-		var url = "fileDown";
-		url += "?filename=" + filename;
-		location.href = url;
-	}
 </script>
 </head>
 <body>
