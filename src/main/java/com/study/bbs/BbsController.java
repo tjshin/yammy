@@ -255,10 +255,4 @@ public class BbsController {
 		return "/bbs/bestlist";
 	}
 
-	@GetMapping("/bbs/reed")
-	public String home() {
-
-		return "/bbs/reed";
-	}
-
 }
