@@ -7,8 +7,8 @@
 <head>
 <title>조회</title>
 <meta charset="utf-8">
-	   
-	   <script type="text/javascript">
+
+<script type="text/javascript">
 	function updateM() {
 		var url = "${root}/bbs/update";
 		url += "?bbscate=${dto.bbscate}";
@@ -24,14 +24,12 @@
 
 	function listM() {
 		var url = "${root}/bbs/list";
-		url += "?bbscate=${dto.bbscate}";		
+		url += "?bbscate=${dto.bbscate}";
 		url += "&col=${param.col}";
 		url += "&word=${param.word}";
 		url += "&nowPage=${param.nowPage}";
 		location.href = url;
 	}
-
-
 </script>
 
 
@@ -44,11 +42,11 @@
 <body>
 
 	<div class="first-widget parallax" id="blog">
-	<div class="parallax-overlay">
+		<div class="parallax-overlay">
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">게시글 조회</h2>
+						<h2 class="page-title">게시글 조회></h2>
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
@@ -64,20 +62,8 @@
 	</div>
 	<div class="container">
 
-		 <a href='/bbs/list?bbscate=${param.bbscate}'>
-   	<c:choose>
-			<c:when test="${param.bbscate == 'jamsil'}"><h2>잠실야구장 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'gocheok'}"><h2>고척스카이돔 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'incheon'}"><h2>인천SSG랜더스필드 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'suwon'}"><h2>수원KT위즈파크 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'daejeon'}"><h2>한화생명이글스파크 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'gwangju'}"><h2>광주기아챔피언스필드 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'daegu'}"><h2>대구삼성라이온즈파크 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'changwon'}"><h2>창원NC파크 게시판</h2></c:when>
-			<c:when test="${param.bbscate == 'busan'}"><h2>사직야구장 게시판</h2></c:when>
-			<c:otherwise><h2> bbscate : ${param.bbscate} 오류났다 고쳐라</h2></c:otherwise>
-		</c:choose>
-   </a>
+		<br>
+		<br>
 		<header>
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -92,9 +78,9 @@
 							class="gall_date" title="2021-11-03 22:35:02">${dto.bdate}</span>
 					</div>
 					<div align="right">
-						<span class="gall_count">조회수: ${dto.bview}</span> <span
-							class="like-count">추천수: </span> 
-							<div class="comments-count"><h6>댓글 수: #</h6></div>
+						<span class="gall_count">조회수: ${dto.bview}</span>
+						<div class="count">추천수: ${dto.bcnt}</div>
+						<div class="count">댓글 수: ${dto.rcnt}</div>
 					</div>
 				</div>
 			</div>
@@ -114,26 +100,23 @@
 
 
 
-	
+
 		<!-- 추천 기능 -->
-			<div class="row">
-					<div class="col-md-12">
-						<div class="bbs-like" style="text-align:center;">
-							<button class='bbslikeBtn' type='button' id='bbslikeBtn'
-									style='background-color:#ffffff;
-											border-radius: 50%;
-											width:100px;height:100px;'>
-		  						<img src="${root }/images/thumbs-up-solid.svg"
-		  							alt="따봉"
-		  							style="width:50px;height:50px;">
-							</button>
-							<div class="like-count">
-								<h3 style="color:#00a8d6;">추천 수 표시 될 자리</h3>
-							</div>	
-						</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="bbs-like" style="text-align: center;">
+					<button class='bbslikeBtn' type='button' id='bbslikeBtn'
+						style='background-color: #ffffff; border-radius: 50%; width: 100px; height: 100px;'>
+						<img src="${root }/images/thumbs-up-solid.svg" alt="따봉"
+							style="width: 50px; height: 50px;">
+					</button>
+					<div class="like-count">
+						<h3 style="color: #00a8d6;">추천 수 표시 될 자리</h3>
 					</div>
 				</div>
-				
+			</div>
+		</div>
+
 
 
 
@@ -143,89 +126,89 @@
 		<div>
 			<br>
 			<div class="col-md-12">
-			
+
 				<button type="button" class="mainBtn" onclick="listM()">목록</button>
-			
+
 
 				<c:if test="${sessionScope.id !=null }">
+					<button type="button" class="mainBtn"
+						onclick="location.href='/bbs/create?bbscate=${param.bbscate}'">등록</button>
 				</c:if>
 				<c:if test="${sessionScope.id !=null  && sessionScope.id == dto.id}">
-				
-				<button type="button" class="mainBtn"onclick="location.href='/bbs/create?bbscate=${param.bbscate}'">등록</button>
 					<button type="button" class="mainBtn" onclick="updateM()">수정</button>
 					<button type="button" class="mainBtn" onclick="deleteM()">삭제</button>
 				</c:if>
 			</div>
 		</div>
 
-				<div class="row">
-					<div class="col-md-12">
-						<div id="blog-comments" class="blog-post-comments">
-							<div class="blog-comments-content list-group">
-								<div class="media">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="blog-comments" class="blog-post-comments">
+					<div class="blog-comments-content list-group">
+						<div class="media">
 
-									<div class="media-body">
-										<div class="media-heading">
-											<h4>JS 정상 실행 시 닉네임이 표시</h4>
-											<a href="#"><span>댓글 작성일 표시 부분</span><span>Reply</span></a>
-										</div>
-										<p>
-											댓글 내용 표시될 부분<span class="label label-primary">New</span>
-										</p>
-
-									</div>
+							<div class="media-body">
+								<div class="media-heading">
+									<h4>JS 정상 실행 시 닉네임이 표시</h4>
+									<a href="#"><span>댓글 작성일 표시 부분</span><span>Reply</span></a>
 								</div>
-							</div>
-							<!-- /.blog-comments-content -->
-
-							<div class="comments-footer">1234 paging 자리</div>
-
-						</div>
-						<!-- /.blog-post-comments -->
-					</div>
-					<!-- /.col-md-12 -->
-				</div>
-				<!-- /.row -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="comment-form">
-							<h3>댓글 남기기</h3>
-							<div class="widget-inner">
-
-								<div class="row">
-									<div class="col-md-12">
-										<p>
-											<label for="hrecontents">댓글 내용:</label>
-											<c:if test="${sessionScope.id == null }">
-												<textarea id="hrecontents" name="recontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
-											</c:if>
-											<c:if test="${sessionScope.id != null }">
-												<textarea id="hrecontents" name="recontents" rows="5"></textarea>
-											</c:if>
-
-										</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<c:if test="${sessionScope.id != null }">
-											<input class="mainBtn" type="button" name="submit"
-												value="댓글 등록" id="mainBtn">
-										</c:if>
-									</div>
-								</div>
+								<p>
+									댓글 내용 표시될 부분<span class="label label-primary">New</span>
+								</p>
 
 							</div>
-							<!-- /.widget-inner -->
 						</div>
-						<!-- /.widget-main -->
 					</div>
-					<!-- /.col-md-12 -->
+					<!-- /.blog-comments-content -->
+
+					<div class="comments-footer">1234 paging 자리</div>
+
 				</div>
-				<!-- /.row -->
+				<!-- /.blog-post-comments -->
 			</div>
-			<!-- /.col-md-8 -->
+			<!-- /.col-md-12 -->
 		</div>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="comment-form">
+					<h3>댓글 남기기</h3>
+					<div class="widget-inner">
+
+						<div class="row">
+							<div class="col-md-12">
+								<p>
+									<label for="hrecontents">댓글 내용:</label>
+									<c:if test="${sessionScope.id == null }">
+										<textarea id="hrecontents" name="recontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
+									</c:if>
+									<c:if test="${sessionScope.id != null }">
+										<textarea id="hrecontents" name="recontents" rows="5"></textarea>
+									</c:if>
+
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<c:if test="${sessionScope.id != null }">
+									<input class="mainBtn" type="button" name="submit"
+										value="댓글 등록" id="mainBtn">
+								</c:if>
+							</div>
+						</div>
+
+					</div>
+					<!-- /.widget-inner -->
+				</div>
+				<!-- /.widget-main -->
+			</div>
+			<!-- /.col-md-12 -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.col-md-8 -->
+	</div>
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -245,7 +228,8 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>내용</label>
-						<textarea cols="10" rows="3" class="form-control" name='recontents'>New Reply!!!!</textarea>
+						<textarea cols="10" rows="3" class="form-control"
+							name='recontents'>New Reply!!!!</textarea>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -272,13 +256,11 @@
 		var deleteimage = "<img src='${root }/images/trash-alt-solid.svg' alt='댓글 삭제 버튼' style='width:30px;height:30px;'>";
 		var modifyimage = "<img src='${root }/images/edit-solid.svg' alt='댓글 수정 버튼' style='width:30px;height:30px;'>";
 		var likeimage = "<img src='${root }/images/thumbs-up-solid.svg' alt='따봉' style='width:50px;height:50px;'>";
-		</script>
+	</script>
 	<script type="text/javascript" src="${root}/js/reply/revreply.js"></script>
 
-	<script type="text/javascript"
-		src="${root}/js/reply/replyprocess.js"></script>
-<script type="text/javascript"
-		src="${root}/js/like/likeprocess.js"></script>
+	<script type="text/javascript" src="${root}/js/reply/replyprocess.js"></script>
+	<script type="text/javascript" src="${root}/js/like/likeprocess.js"></script>
 
 </body>
 </html>

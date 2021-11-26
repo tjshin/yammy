@@ -51,11 +51,12 @@ function showTotal() {
 	replyService
 		.getTotal({ bbsno: bbsno })
 		.then(replyCnt => {
-			let str = "<h3>댓글 수: " + replyCnt + "</h3>";
+			let str = "<h5>댓글 수: " + replyCnt + "</h5>";
 			
 			$(".comments-count").html(str);
 		});
 }
+
 
 function replaceAll(str, searchStr, replaceStr) {
   return str.split(searchStr).join(replaceStr);

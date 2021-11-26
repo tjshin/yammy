@@ -1,7 +1,8 @@
 $(function () {//페이지가 로딩될때
 
 	if(sessionid === '') {
-		likeTotal();		
+		likeTotal();
+		showlcount();		
 	} else if (sessionid !== ''){
 		idCheck();
 	}   
@@ -108,12 +109,21 @@ function likeTotal() {
 				str += "border-radius: 50%;";
 				str += "width:100px;height:100px;'>";
 				str += likeimage + "</button>";
-				str += "<div class='like-count'>";;
+				str += "<div class='like-count'>";
 				str += "<h3 style='color:#000000;'>" + likeCnt + "</h3><br></div>";
 			$(".bbs-like").html(str);
 		});
 }
 
+
+function showlcount() {
+	likeService.getLikeTotal({ bbsno: bbsno })
+		.then(likeCnt => {
+			let str = "<h5>추천 수: " + likeCnt + "</h5>";
+			
+			$(".show-count").html(str);
+		});
+}
 
 
 

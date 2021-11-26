@@ -21,11 +21,12 @@
               f.btitle.focus()
               return false;
          }
-         if (f.bcontents.value == ""){
-              alert("내용을 입력하세요");
-              f.bcontents.focus();
-              return false;
+         if (CKEDITOR.instances['bcontents'].getData() == '') {
+             window.alert('내용을 입력해 주세요.');
+             CKEDITOR.instances['bcontents'].focus();
+             return false;
          }
+
     
 
  }
@@ -58,8 +59,10 @@
 <form class="form-horizontal" 
       action="create"
       method="post"
-      onsubmit="return checkIn(this)"
-      >
+      onsubmit="return checkIn(this)">
+      
+      s
+        
       <input type="hidden" name="bbscate" value="${param.bbscate}">
    
    <a href='/bbs/list?bbscate=${param.bbscate}'>
