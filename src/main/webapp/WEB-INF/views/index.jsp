@@ -19,14 +19,26 @@
 <body>
 <div class = "first-widget parallax"> </div>
 
+	<section id="homeIntro" class="parallax first-widget">
+	    <div class="parallax-overlay">
+		    <div class="container home-intro-content">
+		        <div class="row">
+		        	<div class="col-md-12">
+		        		<h2 class="section-title">야구에 미치다,<img src="${root }/images/yammylogo.png" style="width">&nbsp;&nbsp; 입니다.</h2>
+						<p class="section-desc">Everything you need to enjoy baseball.</p>
+		        	</div> <!-- /.col-md-12 -->
+		        </div> <!-- /.row -->
+		    </div> <!-- /.container -->
+	    </div> <!-- /.parallax-overlay -->
+	</section> <!-- /#homeIntro -->
 
 	<section class="dark-content portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-header">
-						<h2 class="section-title">야구에 미치다,<img src="${root }/images/yammylogo.png" style="width">&nbsp;&nbsp; 입니다.</h2>
-						<p class="section-desc">Everything you need to enjoy baseball.</p>
+						<h2 class="section-title">기능 소개</h2>
+						<p class="section-desc">사이트의 주요 기능들을 만나보세요.</p>
 					</div> <!-- /.section-header -->
 				</div> <!-- /.col-md-12 -->
 			</div> <!-- /.row -->
@@ -149,7 +161,8 @@
 		<div class="container">
 			<div class="row" style="text-align:center;">
 				<div>
-					<span class="testimonial-team">Team Yammy</span><br/><br/>
+					<span class="testimonial-team">Team 'no.2'</span><br/><br/>
+					<span>no.1 개발자를 꿈꾸는 사람들이 모여 Team 'no.2'. </span><br/><br/>
 				</div>
 			</div>
 			<div class="row">
@@ -158,25 +171,25 @@
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">TaeJin Shin</span>
-								<p class="testimonial-description">Thank you for all your good work in creating theme. They have a ‘presence’ which feels right.</p>
+								<p class="testimonial-description">커멘트1</p>
 							</div>
 						</div>
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">ChangSeok Park</span>
-								<p class="testimonial-description">I love the logo. Particularly how the mark can stand on its own. Nice work! It feels tall and proud and powerful — and I love that. That’s what I was after.</p>
+								<p class="testimonial-description">커멘트2</p>
 							</div>
 						</div>
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">JongBin Oh</span>
-								<p class="testimonial-description">I love the logo. Particularly how the mark can stand on its own. Nice work! It feels tall and proud and powerful — and I love that. That’s what I was after.</p>
+								<p class="testimonial-description">커멘트3</p>
 							</div>
 						</div>
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">JooYoung Kim</span>
-								<p class="testimonial-description">You’re pretty awesome to work with. Incredibly organized, easy to communicate with, responsive with next iterations, and beautiful work.</p>
+								<p class="testimonial-description">커멘트4</p>
 							</div>
 						</div>
 					</div> <!-- /.bxslider -->
