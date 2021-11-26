@@ -97,7 +97,7 @@ public class BbsController {
 		int total = service.total(map);
 
 		List<BbsDTO> list = service.list(map);
-		System.out.print("값:"+list.get(0));
+		//System.out.print("값:"+list.get(0));
 		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다

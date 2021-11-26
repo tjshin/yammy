@@ -21,11 +21,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on r.id = m.id
 		where bbsno = #{bbsno}
 		order by reno desc
+		
 		)
 		)
 		<![CDATA[
 		where r >= #{sno} and r <= #{eno}
 		]]>
+		order by r desc
 	</select>
 	
 	<select id="total" resultType="int" parameterType="int">
