@@ -146,13 +146,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="read" resultType="com.study.bbs.BbsDTO">
 			select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS')
-		bdate, bview, bcontents, bcname ,bcnt, r, bbscate, rcnt
+		bdate, bview, bcontents, bcname ,bcnt, r, bbscate, rcnt, id
 		from (
 		select
 		bbsno, btitle,
 		nick,
 		bdate, bview, bcontents, bcname ,bcnt, rownum r,
-		bbscate,rcnt
+		bbscate,rcnt,id
 		from (
 		select
 		b.bbsno bbsno ,
@@ -160,7 +160,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		member.nick nick, bdate,
 		bview, bcontents,
 		bcategory.bcatename
-		as bcname, bcnt,bbscate ,rcnt
+		as bcname, bcnt,bbscate , rcnt, b.id id
 
 		from bbs b
 
@@ -299,8 +299,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		=
 		member.id
 		where
+		<![CDATA[
 		bcnt >= '1'
-
+           ]]>
 		ORDER BY bbsno DESC
 
 		)
@@ -344,7 +345,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on b.id =
 		member.id
 		<where>
+			<![CDATA[
 			bcnt>= '1'
+			]]>
 			<choose>
 				<when test="col=='nick'">
 					and bname like '%'||#{word}||'%'

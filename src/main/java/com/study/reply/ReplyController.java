@@ -54,7 +54,7 @@ public class ReplyController {
 		int total = service.total(bbsno);
 		String url = "/bbs/read";
 		int recordPerPage = 5;
-		String paging = Utility.reviewrpaging2(total, nowPage, recordPerPage, col, word, url, nPage, bbsno);
+		String paging = Utility.rpaging(total, nowPage, recordPerPage, col, word, url, nPage, bbsno);
 
 		return new ResponseEntity<>(paging, HttpStatus.OK);
 	}

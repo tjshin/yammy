@@ -21,11 +21,12 @@
               f.btitle.focus()
               return false;
          }
-         if (f.bcontents.value == ""){
-              alert("내용을 입력하세요");
-              f.bcontents.focus();
-              return false;
+         if (CKEDITOR.instances['bcontents'].getData() == '') {
+             window.alert('내용을 입력해 주세요.');
+             CKEDITOR.instances['bcontents'].focus();
+             return false;
          }
+
     
 
  }

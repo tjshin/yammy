@@ -104,50 +104,7 @@ public class Utility {
 		return str.toString();
 
 	}
-	
-	public static String reviewrpaging2(int total, int nowPage, int recordPerPage, String col, String word, String url,
-			int nPage, int bbsno) {
-		int pagePerBlock = 5;
-		int totalPage = (int) (Math.ceil((double) total / recordPerPage));
-		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));
-		int nowGrp = (int) (Math.ceil((double) nPage / pagePerBlock));
-		int startPage = ((nowGrp - 1) * pagePerBlock) + 1;
-		int endPage = (nowGrp * pagePerBlock);
 
-		StringBuffer str = new StringBuffer();
-		str.append("<div style='text-align:center'>");
-		str.append("<ul class='pagination'> ");
-		int _nowPage = (nowGrp - 1) * pagePerBlock;
-
-		if (nowGrp >= 2) {
-			str.append("<li><a href='" + url + "?col=" + col + "&word=" + word + "&nowPage=" + nowPage + "&bbsno="
-					+ bbsno + "&nPage=" + _nowPage + "'>이전</a></li>");
-		}
-
-		for (int i = startPage; i <= endPage; i++) {
-			if (i > totalPage) {
-				break;
-			}
-
-			if (nPage == i) {
-				str.append("<li class='active'><a href=#>" + i + "</a></li>");
-			} else {
-				str.append("<li><a href='" + url + "?col=" + col + "&word=" + word + "&nowPage=" + nowPage + "&bbsno="
-						+ bbsno + "&nPage=" + i + "'>" + i + "</a></li>");
-			}
-		}
-
-		_nowPage = (nowGrp * pagePerBlock) + 1;
-		if (nowGrp < totalGrp) {
-			str.append("<li><a href='" + url + "?col=" + col + "&word=" + word + "&nowPage=" + nowPage + "&bbsno="
-					+ bbsno + "&nPage=" + _nowPage + "'>다음</a></li>");
-		}
-		str.append("</ul>");
-		str.append("</div>");
-
-		return str.toString();
-
-	}
 	
 
 	public static List<String> getDay() {
