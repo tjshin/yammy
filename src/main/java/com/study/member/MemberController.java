@@ -294,7 +294,6 @@ public class MemberController {
 			HttpServletRequest request, Model model) {
 
 		int cnt = service.loginCheck(map);
-
 		if (cnt > 0) {
 			String id = map.get("id");
 			MemberDTO dto = service.read(id);

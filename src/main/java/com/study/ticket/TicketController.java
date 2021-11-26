@@ -120,12 +120,13 @@ public class TicketController {
 		} else {
 
 			TicketDTO dto = service.detail(ticketno);
+			model.addAttribute("dto", dto);
 
 			if (dto.getId().equals(id)) {// 아이디 검사
 				return "/ticket/update";
-			} else
-				model.addAttribute("dto", dto);
-			return "/message/error";
+			} else {
+				return "/message/error";
+			}
 
 		}
 	}
