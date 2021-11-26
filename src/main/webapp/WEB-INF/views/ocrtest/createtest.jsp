@@ -75,7 +75,9 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">티켓 등록</h2>
+						<h2 class="page-title">OCR 실험실</h2><br>
+						<h2 class="page-title">test 성공 후 TicketController로 이식됐습니다.</h2><br>
+						<h2 class="page-title">매핑이 달라졌기 때문에 이 페이지에서는 에러가 발생합니다.</h2>
 					</div> <!-- /.col-md-6 -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->

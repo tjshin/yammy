@@ -48,6 +48,8 @@ public class OcrtestController {
 	}
 
 	// 출처: https://chung-develop.tistory.com/14 [춍춍 블로그]
+	// 현재 이 method는 테스트 성공 후 TicketController.java에 이식됐습니다.
+	// 해당 매핑은 더 이상 사용하지 않기 때문에, 실험실에서 구현 시 404 error가 발생됩니다.
 	@RequestMapping(value = "/admin/ocrtest", method = RequestMethod.POST)
 	public String getData(Model model, MultipartHttpServletRequest req) {
 
