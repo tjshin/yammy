@@ -36,6 +36,15 @@
        }
     
     
+     function Alldownload(){
+         var url = "${root }/excel/alldownload";
+         location.href = url;
+                 }
+     
+     
+     
+     
+     
      //checkbox 함수
  	$(function(){
 		var chkObj = document.getElementsByName("RowCheck");
@@ -132,6 +141,8 @@
 			<button type="submit" class="btn btn-default">검색</button>
 			<button type="button" class="btn btn-default" onclick="createM()">쪽지 보내기</button>
 			<button type="button" class="btn btn-danger" onclick="deleteValue();" >쪽지 삭제</button>
+		    <button type="button" class="btn" style ="background-color:green ;" onclick="Alldownload()">전 항목 엑셀 다운로드 </button>
+       
 			
 		</form>
 	

@@ -99,8 +99,14 @@ public class MessageServiceImpl implements MessageService {
 		// TODO Auto-generated method stub
 		return mapper.delete(messageno);
 	}
+	//------------------------------------------
+	@Override
+	public int exelTotal() {
+		// TODO Auto-generated method stub
+		return mapper.exelTotal();
+	}
 
-
+	//------------------------------------------
 
 	
 

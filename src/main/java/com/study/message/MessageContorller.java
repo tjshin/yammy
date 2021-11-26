@@ -35,6 +35,117 @@ public class MessageContorller {
 	private MessageService service;
 	
 	
+	//전체 엑셀
+	@RequestMapping(value="/excel/alldownload")
+    public void excelAllDownload(HttpServletResponse response) throws IOException {
+       
+		int total =service.exelTotal(); // messageno에서 가장 큰 값을 가져온다.
+		// System.out.println("total: " +total);
+		
+		MessageDTO[] dto =new MessageDTO[total]; 
+		
+		
+		for(int i = 0; i< total;i++) {
+			 dto[i] = service.read(i+1); //선택한 게시물 정보 가져오기
+		}
+		
+
+//  //테스트 
+//		for(int i = 0; i< total;i++) {
+//			 System.out.println(i+".dto ="+dto[i]);
+//		}
+//		System.out.println("receid ="+dto[0].getReceid());
+		
+		
+		
+	
+		
+		//workbook 생성
+        Workbook wb = new XSSFWorkbook();// Excel 2007 이상
+        
+        
+        Sheet sheet = wb.createSheet("첫번째 시트");
+        
+     // 컬럼 너비 설정
+        sheet.setColumnWidth(1, 5000);
+        sheet.setColumnWidth(2, 15000);
+        sheet.setColumnWidth(3, 5000);
+      // style ----
+    
+        // Cell 스타일 생성
+        CellStyle cellStyle = wb.createCellStyle();
+         
+        // 줄 바꿈
+        cellStyle.setWrapText(true);
+         
+      
+        
+        Row row = null;
+        Cell cell = null;
+        int rowNum = 0;
+             
+        // Header
+        row = sheet.createRow(rowNum++);
+     
+        
+        cell = row.createCell(0);
+        cell.setCellValue("받는사람");
+        
+        cell = row.createCell(1);
+        cell.setCellValue("보낸사람");
+        
+        cell = row.createCell(2);
+        cell.setCellValue("내용");
+        
+        cell = row.createCell(3);
+        cell.setCellValue("보낸시간");
+       
+       
+        
+        // Body
+		for(int i = 0; i< total;i++) {
+		  
+			
+			if( dto[i] == null) { //dto가 null 일 경우 
+				continue;
+			}
+			
+			else {
+				
+		  row = sheet.createRow(rowNum++);
+          cell = row.createCell(0);
+          cell.setCellValue(dto[i].getReceid()); // 받는사람
+          cell = row.createCell(1);
+          cell.setCellValue(dto[i].getSendid()); // 보낸사람
+          cell = row.createCell(2);
+          cell.setCellValue(dto[i].getMcontents()); // 내용
+          cell = row.createCell(3);
+          cell.setCellValue(dto[i].getMdate()); // 보낸시간
+			}
+	     }
+ 
+       
+		
+		// 컨텐츠 타입과 파일명 지정
+        LocalDate now = LocalDate.now();
+
+          
+        response.setContentType("ms-vnd/excel");
+//        response.setHeader("Content-Disposition", "attachment;filename=example.xls");
+        response.setHeader("Content-Disposition", "attachment;filename=message_"+now+".xlsx");
+
+        // Excel File Output
+        wb.write(response.getOutputStream());
+        wb.close();
+    }
+	
+	
+	
+	
+	
+	
+	
+	
 	//엑셀
 	@RequestMapping(value="/excel/download")
     public void excelDownload(HttpServletResponse response ,HttpServletRequest request) throws IOException {
