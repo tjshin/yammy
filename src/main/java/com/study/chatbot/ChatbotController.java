@@ -83,7 +83,8 @@ public class ChatbotController {
 				JSONObject data = (JSONObject) bubbles.get("data");
 				String description = "";
 				description = (String) data.get("description");
-				chatMessage = description;
+				String url2 = (String)data.get("url");  
+				chatMessage = description += "<br><a href='" + url2 + "' target='_blank'>" + url2 + "</a>";
 			} catch (Exception e) {
 				System.out.println("error");
 				e.printStackTrace();
