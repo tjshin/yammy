@@ -13,10 +13,7 @@ function fileRemove(index) {
 }
 
 //썸네일 미리보기.
-function onchangetest(targetObj, View_area) {
-	alert(targetObj);
-	alert(View_area);
-}
+
 function previewImage(targetObj, View_area) {
     var files=targetObj.files;
     fileArr=Array.prototype.slice.call(files);
@@ -58,10 +55,11 @@ function previewImage(targetObj, View_area) {
             var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
             if (!file.type.match(imageType))
                 continue;
-            // var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
-            // if (prevImg) {
-            //     preview.removeChild(prevImg);
-            // }
+	        var prevImg = document.getElementById("img_id_0"); //이전에 미리보기가 있다면 삭제
+	        console.log(prevImg);
+	        if (prevImg) {
+	            preview.removeChild(prevImg);
+	        }
  
             var span=document.createElement('span');
             span.id="img_id_" +i;
@@ -76,8 +74,8 @@ function previewImage(targetObj, View_area) {
             img.style.width='inherit';
             img.style.height='inherit';
             img.style.cursor='pointer';
-            const idx=i;
-            img.onclick=()=>fileRemove(idx);   //이미지를 클릭했을 때.
+            //const idx=i;
+            //img.onclick=()=>fileRemove(idx);   //이미지를 클릭했을 때.
             span.appendChild(img);
  
             if (window.FileReader) { // FireFox, Chrome, Opera 확인.

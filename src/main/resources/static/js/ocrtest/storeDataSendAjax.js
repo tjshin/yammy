@@ -16,8 +16,7 @@ function dataSubmit() {
 			//전송이 성공하면 해당 부분만 바뀌게 반응함
 			var start1 = fragment.indexOf('<div id="resultDiv">');
 			var end1 = fragment.indexOf('전송완료!');
-			var changetag1 = fragment.substring(start1, end1+15);			
-	        console.log(changetag1);	   			
+			var changetag1 = fragment.substring(start1, end1+15);		
 	        $("#resultDiv").replaceWith(changetag1);
 	        
 	        //OCR 결과를 textarea에 삽입
