@@ -75,22 +75,25 @@ public class TicketController {
 	  
 	  @PostMapping("/ticket/delete")
 	  public String delete(HttpServletRequest request, int ticketno) {
-	 
-	    int cnt = 0;
-	   
-	   cnt = service.delete(ticketno);
-	   
-	   
-	   String grade = (String)request.getSession().getAttribute("grade");
-	   System.out.println("1111grade:"+grade);
+	   	   
+	   int cnt = service.delete(ticketno);
+	   String mtest = request.getParameter("mtest");
 	  
-	   if(grade.equals("A")) {
-		    return "redirect:/ticket/list"; 
-	   }else {
-		   return "redirect:/member/mypage";
+	   if (mtest == "") {
+		   if (cnt>0) {
+			   return "redirect:/ticket/list"; 
+		   } else {
+			   return "/message/error";
+		   }
+		   
+	   } else {
+		   if (cnt>0) {
+			   return "redirect:/member/mypage"; 
+		   } else {
+			   return "/message/error";
+		   }		   
 	   }
-	   
-	 
+	   	 
 	  }
 	
 	
@@ -112,27 +115,23 @@ public class TicketController {
 
 		
 		String id = (String)session.getAttribute("id"); 
+		
 		if(id == null){
 			return "redirect:/member/login";
 		} else {
 		
 		TicketDTO dto = service.detail(ticketno);
-		
+		model.addAttribute("dto", dto);
 	
 		
 		if(dto.getId().equals(id)) {//아이디 검사
 			return "/ticket/update";
-		}else
-		model.addAttribute("dto", dto);
-		return "/message/error";
+		}else {
 		
+		return "/message/error";
+		}
 		}
 	}
-	
-	
-	
-	
-	
 	
 	@PostMapping("/ticket/updateFile")
 	public String updateFile(MultipartFile filenameMF, String oldfile, int ticketno, HttpServletRequest request)
@@ -183,11 +182,6 @@ public class TicketController {
 			
 		}
 	}
-	
-	
-	
-	
-	
 	
 	@GetMapping("/ticket/create")
 	  public String create(Model model, HttpSession session) {
