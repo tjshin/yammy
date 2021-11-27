@@ -379,7 +379,7 @@ ${mpaging}
 					
 					<a href="${root}/ticket/update/${tdto.ticketno}"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a>
 					<a href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img src="${root }/images/camera-retro-solid.svg" style="width:15px;"></a>
-					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
+					<a href="${root}/ticket/delete?ticketno=${tdto.ticketno}&mtest=y"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a>
 			</div>
             </div>
             </c:forEach>
