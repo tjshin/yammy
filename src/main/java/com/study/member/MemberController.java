@@ -16,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.study.utility.KISA_SHA256;
 import com.study.utility.Utility;
 
 @Controller
@@ -178,7 +180,19 @@ public class MemberController {
 
 	@PostMapping("/member/create")
 	public String create(MemberDTO dto) throws IOException {
-
+		
+		//암호화 시작
+		byte[] bytes = dto.getPassword().getBytes();
+		byte[] pszDigest = new byte[32];
+		
+		KISA_SHA256.SHA256_Encrpyt(bytes, bytes.length, pszDigest);
+		StringBuffer encrypted = new StringBuffer();
+		for (int i =0; i <pszDigest.length; i++) {
+			encrypted.append(String.format("%02x", pszDigest[i]));
+		}
+		dto.setPassword(encrypted.toString());
+		//암호화 끝
+		
 		String upDir = Member.getUploadDir();
 
 		String filename = Utility.saveFileSpring(dto.getFnameMF(), upDir);
@@ -280,7 +294,19 @@ public class MemberController {
 	@PostMapping("/member/login")
 	public String login(@RequestParam Map<String, String> map, HttpSession session, HttpServletResponse response,
 			HttpServletRequest request, Model model) {
-
+				
+		//암호화 시작
+		byte[] bytes = map.get("password").getBytes();
+		byte[] pszDigest = new byte[32];
+		
+		KISA_SHA256.SHA256_Encrpyt(bytes, bytes.length, pszDigest);
+		StringBuffer encrypted = new StringBuffer();
+		for (int i =0; i <pszDigest.length; i++) {
+			encrypted.append(String.format("%02x", pszDigest[i]));
+		}
+		map.put("password", encrypted.toString());
+		//암호화 끝
+		
 		int cnt = service.loginCheck(map);
 		if (cnt > 0) {
 			String id = map.get("id");
