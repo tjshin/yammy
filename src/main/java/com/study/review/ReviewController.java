@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.study.reviewlike.ReviewlikeService;
 import com.study.reviewreply.ReviewreplyService;
 import com.study.sikdang.SikdangDTO;
 import com.study.sikdang.SikdangService;
@@ -36,7 +37,11 @@ public class ReviewController {
 	
 	@Autowired
 	@Qualifier("com.study.reviewreply.ReviewreplyServiceImpl")
-	private ReviewreplyService reviewrservice;
+	private ReviewreplyService reviewreplyservice;
+	
+	@Autowired
+	@Qualifier("com.study.reviewlike.ReviewlikeServiceImpl")
+	private ReviewlikeService reviewlikeservice;
 	
 	@RequestMapping("/review/list")
 	public String reviewList(HttpServletRequest request) {
@@ -75,7 +80,8 @@ public class ReviewController {
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
 		//댓글 관련
-		request.setAttribute("reviewrservice", reviewrservice);
+		request.setAttribute("reviewreplyservice", reviewreplyservice);
+		request.setAttribute("reviewlikeservice", reviewlikeservice);
 		
 		return "/review/list";
 	}
@@ -105,7 +111,6 @@ public class ReviewController {
         map.put("nPage", nPage);
 
         model.addAllAttributes(map);
-        request.setAttribute("reviewrservice", reviewrservice);
 		//댓글 끝
 		return "/review/read";
 	}

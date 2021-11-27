@@ -19,10 +19,10 @@
 			value="/WEB-INF/views/index.jsp" />
 	</definition>
 
-	<definition name="/errorMsg" extends="main">
+	<definition name="/adminerror" extends="main">
 		<put-attribute name="title" value="에러 페이지"></put-attribute>
 		<put-attribute name="body"
-			value="/WEB-INF/views/error.jsp" />
+			value="/WEB-INF/views/member/error.jsp" />
 	</definition>
 
 

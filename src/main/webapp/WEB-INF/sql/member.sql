@@ -3,17 +3,19 @@ CREATE TABLE MEMBER (
        mname                VARCHAR2(10) NULL,
        nick                 VARCHAR2(16) NULL,
        email                VARCHAR2(50) NULL,
-       password             VARCHAR2(150) NULL,
+       password             VARCHAR2(500) NULL,
        address2             VARCHAR2(150) NULL,
        address1             VARCHAR2(150) NULL,
        postcode             VARCHAR2(7) NULL,
        phone                VARCHAR2(15) NULL,
        filename             VARCHAR2(100) NULL,
-       grade                CHAR(2) NULL,
+       grade                VARCHAR2(2) NULL,
        point                NUMBER(10) NULL,
        favteam              VARCHAR2(20) NULL,
        PRIMARY KEY (id)
 );
+
+alter table member modify password VARCHAR2(500);
 
 INSERT INTO member(id, mname, nick , email ,  password, address2,address1,
 		postcode, phone,filename, grade ,  point , favteam)

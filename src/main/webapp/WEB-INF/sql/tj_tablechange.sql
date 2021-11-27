@@ -21,3 +21,19 @@ add constraint allreviewdeleteforsikdang
     foreign key (sikid)
     references sikdang(sikid)
     on delete cascade;
+    
+alter table "ADMIN"."BBS" drop constraint "SYS_C005769";
+
+alter table bbs
+add constraint bbsdeleteformember
+    foreign key (id)
+    references member(id)
+    on delete cascade;
+    
+alter table "ADMIN"."REVIEWREPLY" drop constraint "SYS_C005800";
+
+alter table reviewreply
+add constraint allreviewreplydeleteformember
+    foreign key (id)
+    references member(id)
+    on delete cascade;

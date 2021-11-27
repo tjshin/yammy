@@ -83,8 +83,7 @@
 
 							<div class="blog-content">
 								<span class="meta-date">${dto.hdate }</span>
-								<c:set var="reviewrcount"
-									value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
+								
 								<span class="meta-author"> ${dto.nick }</span> <span>/</span>
 
 								<c:if test="${dto.stadium == 1}">

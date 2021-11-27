@@ -55,9 +55,9 @@ public class MemberController {
 		return "/home";
 	}
 
-	@GetMapping("/errorMsg")
+	@GetMapping("/adminerror")
 	public String error() {
-		return "/errorMsg";
+		return "/adminerror";
 	}
 
 	@GetMapping("/member/find")
@@ -334,17 +334,19 @@ public class MemberController {
 	}
 
 	@GetMapping("/member/update")
-	public String update(String id, HttpSession session, Model model) {
+	public String update(HttpSession session, Model model) {
 
+		String id = (String) session.getAttribute("id");
+		
 		if (id == null) {
-			id = (String) session.getAttribute("id");
+			return "redirect:/member/login";
+		} else {		
+			MemberDTO dto = service.read(id);
+	
+			model.addAttribute("dto", dto);
+	
+			return "/member/update";
 		}
-
-		MemberDTO dto = service.read(id);
-
-		model.addAttribute("dto", dto);
-
-		return "/member/update";
 	}
 
 	@PostMapping("/member/update")
@@ -375,8 +377,9 @@ public class MemberController {
 	@PostMapping("/member/updateFile")
 	public String updateFile(MultipartFile fnameMF, String oldfile, HttpSession session, HttpServletRequest request)
 			throws IOException {
-		String basePath = new ClassPathResource("/static/member").getFile().getAbsolutePath();
-
+		//String basePath = new ClassPathResource("/static/member").getFile().getAbsolutePath();
+		String basePath = Member.getUploadDir();
+		
 		if (oldfile != null && !oldfile.equals("member.jpg")) {
 			Utility.deleteFile(basePath, oldfile);
 		}
@@ -513,7 +516,7 @@ public class MemberController {
 			int sno = ((nowPage - 1) * recordPerPage) + 1;
 			int eno = nowPage * recordPerPage;
 
-			int trecordPerPage = 8;
+			int trecordPerPage = 4;
 			int tsno = ((nowPage - 1) * trecordPerPage) + 1;
 			int teno = nowPage * trecordPerPage;
 
