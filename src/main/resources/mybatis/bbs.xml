@@ -298,10 +298,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on b.id
 		=
 		member.id
-		where
+		
+	<where>
 		<![CDATA[
 		bcnt >= '1'
            ]]>
+			<choose>
+				<when test="col=='nick'">
+					and m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='btitle'">
+					and btitle like '%'||#{word}||'%'
+				</when>
+				<when test="col=='bcontents'">
+					and bcontents like '%'||#{word}||'%'
+				</when>
+				<when test="col=='title_content'">
+					and btitle like '%'||#{word}||'%'
+					or
+					bcontents like
+					'%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+
 		ORDER BY bbsno DESC
 
 		)
@@ -309,7 +329,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[       
        where r >= #{sno} and r <= #{eno}
          ]]>
-
 
 
 	</select>

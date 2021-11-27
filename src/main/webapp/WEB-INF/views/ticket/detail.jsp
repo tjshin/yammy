@@ -58,6 +58,7 @@ function deleteM(){
 
 		<br> <br>
 
+
 		<div class="row">
 		<div class="col-md-12">
 			<span> <img class="img-circle"
@@ -112,10 +113,11 @@ function deleteM(){
 					<br>
 					<br>
 					<br>
+					<ul>
 					<li style="font-size: 15px; color: #0C090A;">거래/양도 장소:
 						${dto.location}</li>
 					<li style="font-size: 15px; color: #0C090A;">경기 날짜:
-						${dto.gamedate}</li>
+						${dto.gamedate}</li></ul>
 
 
 

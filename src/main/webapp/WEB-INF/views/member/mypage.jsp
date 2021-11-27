@@ -67,7 +67,7 @@
         <div class="row" style="text-align:center">
         <div class="col-sm-12">
         <h3><span class="glyphicon glyphicon-user"></span></h3>
-        <img class="img-rounded" src="${root }/member/${mdto.filename}" style="width:200px"><br/><br/>
+        <img class="img-rounded" src="/member/storage/${mdto.filename}" style="width:200px"><br/><br/>
         <a href="/member/updateFile?oldfile=${mdto.filename}" class="main-button accent-color">사진 수정</a>
         <a href="/member/download?filename=${mdto.filename}" class="main-button accent-color">다운로드</a>
           <div class="caption">
@@ -205,22 +205,6 @@ ${mpaging}
         </div> <!-- /.row -->
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
         <div class="row">
             <div class="col-md-12">
@@ -295,7 +279,8 @@ ${mpaging}
 		]
     </td>
     <td>
-    <a href="${root }/review/read?hugino=${rdto.hugino}">${rdto.htitle}</a>
+    <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}" />
+    <a href="${root }/review/read?hugino=${rdto.hugino}${urlhelper}">${rdto.htitle}</a>
     
     </td>
     <td><a href="${rdto.sikurl }">${rdto.sikname }</a></td>
@@ -307,7 +292,7 @@ ${mpaging}
 								<c:if test="${rdto.star == 4}">★★★★</c:if>
 								<c:if test="${rdto.star == 5}">★★★★★</c:if>
     </td>
-    <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}" />
+    
     <td style="font-size:20px;"><a href="${root }/review/update?hugino=${rdto.hugino }${urlhelper}&mtest=y">
     <img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
     

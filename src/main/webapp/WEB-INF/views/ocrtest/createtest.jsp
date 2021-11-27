@@ -75,14 +75,16 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">티켓 등록</h2>
+						<h2 class="page-title">OCR 실험실</h2><br>
+						<h2 class="page-title">test 성공 후 TicketController로 이식됐습니다.</h2><br>
+						<h2 class="page-title">매핑이 달라졌기 때문에 이 페이지에서는 에러가 발생합니다.</h2>
 					</div> <!-- /.col-md-6 -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->
 		</div> <!-- /.parallax-overlay -->
 	</div> <!-- /.pageTitle -->
 	
-<div class="container" layout:fragment="content"><br/>	
+<div class="container"><br/>	
 
 	<form class="form-horizontal" 
         action="/ticket/create"
@@ -136,26 +138,26 @@
 		    </script>
 	        <div class="form-group">                
 	            <label class="control-label col-sm-2" for="filenameMF"
-	            	style="color:black;font-weight:bolder;">
-	                <img src="${root }/images/image-regular.svg"
-	                	style="width:100px;height:100px;cursor:pointer;">
-	                <br>티켓이미지
+	            	style="color:black;font-weight:bolder;">티켓 이미지 추가
 	            </label>
-	            <div class="col-sm-6" style="display:inline;">
+	            
+	            <div class="col-sm-8" style="display:inline;">
 	            	<input type="file" name="filenameMF" id="filenameMF"
-	            	onchange="previewImage(this, 'View_area')" style="display:none;" multiple>
+	            	onchange="previewImage(this, 'View_area')">
+	            	
 	            	<span id='View_area' style='position:relative;color:black;
 	            		border:0px solid black;'>
 	        		</span>
+	        		
+	        		<input type="button" class="btn" style="background:#FF6491;
+	            		color: #FFF2F6;" onclick="dataSubmit();" value="티켓 문자 인식">
+		        		            	
+	            	<br>
+	            	<div id="resultDiv">
+		            	<p>${log }</p></div>
+	        		<code id="snippet" class="snippet">※주의: 이미지는 한 장만 등록해주세요!</code><br>
+	        		<code id="snippet" class="snippet">※주의: 인식 결과에서 개인 정보(민감 정보)를 수정하세요!</code>
 	        	</div>
-	        	
-	        	<div style="align-content:center;width:100%;text-align:center;">
-	            	<input type="button" class="btn" style="background:#FF6491;
-	            		color: #FFF2F6;" onclick="dataSubmit();" value="전송하기">
-		        </div>
-		 
-		        <div id="resultDiv">
-		            <p>${log }</p></div>
 	        </div>
         
     	<div class="form-group">

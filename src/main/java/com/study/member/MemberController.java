@@ -16,30 +16,18 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.study.utility.Utility;
 
 @Controller
@@ -55,9 +43,9 @@ public class MemberController {
 		return "/home";
 	}
 
-	@GetMapping("/errorMsg")
+	@GetMapping("/adminerror")
 	public String error() {
-		return "/errorMsg";
+		return "/adminerror";
 	}
 
 	@GetMapping("/member/find")
@@ -294,7 +282,6 @@ public class MemberController {
 			HttpServletRequest request, Model model) {
 
 		int cnt = service.loginCheck(map);
-
 		if (cnt > 0) {
 			String id = map.get("id");
 			MemberDTO dto = service.read(id);
@@ -335,17 +322,19 @@ public class MemberController {
 	}
 
 	@GetMapping("/member/update")
-	public String update(String id, HttpSession session, Model model) {
+	public String update(HttpSession session, Model model) {
 
+		String id = (String) session.getAttribute("id");
+		
 		if (id == null) {
-			id = (String) session.getAttribute("id");
+			return "redirect:/member/login";
+		} else {		
+			MemberDTO dto = service.read(id);
+	
+			model.addAttribute("dto", dto);
+	
+			return "/member/update";
 		}
-
-		MemberDTO dto = service.read(id);
-
-		model.addAttribute("dto", dto);
-
-		return "/member/update";
 	}
 
 	@PostMapping("/member/update")
@@ -376,8 +365,9 @@ public class MemberController {
 	@PostMapping("/member/updateFile")
 	public String updateFile(MultipartFile fnameMF, String oldfile, HttpSession session, HttpServletRequest request)
 			throws IOException {
-		String basePath = new ClassPathResource("/static/member").getFile().getAbsolutePath();
-
+		//String basePath = new ClassPathResource("/static/member").getFile().getAbsolutePath();
+		String basePath = Member.getUploadDir();
+		
 		if (oldfile != null && !oldfile.equals("member.jpg")) {
 			Utility.deleteFile(basePath, oldfile);
 		}
@@ -514,7 +504,7 @@ public class MemberController {
 			int sno = ((nowPage - 1) * recordPerPage) + 1;
 			int eno = nowPage * recordPerPage;
 
-			int trecordPerPage = 8;
+			int trecordPerPage = 4;
 			int tsno = ((nowPage - 1) * trecordPerPage) + 1;
 			int teno = nowPage * trecordPerPage;
 

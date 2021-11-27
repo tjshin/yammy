@@ -10,7 +10,8 @@ public class Member {
 		String path = "";
 		if (File.separator.equals("\\")) {
 
-			path = "c:/AIstudy/deploy/yammy/member/storage/";
+
+			path = "C:/AIstudy/deploy/yammy/member/storage/";
 
 			System.out.println("Windows 10: " + path);
 

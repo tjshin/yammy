@@ -22,13 +22,24 @@
     </function> 
     
     <function>  
-        <description>댓글 갯수</description> 
-        <name>reviewrcount</name>  
+        <description>리뷰 댓글 갯수</description> 
+        <name>reviewreplycount</name>  
         <function-class>                   
             com.study.utility.Utility 
         </function-class> 
         <function-signature>    
-            int reviewrcount( int, com.study.reviewreply.ReviewreplyService ) 
+            int reviewreplycount( int, com.study.reviewreply.ReviewreplyService ) 
+        </function-signature> 
+    </function> 
+    
+    <function>  
+        <description>리뷰 추천수</description> 
+        <name>reviewlikecount</name>  
+        <function-class>                   
+            com.study.utility.Utility 
+        </function-class> 
+        <function-signature>    
+            int reviewlikecount( int, com.study.reviewlike.ReviewlikeService ) 
         </function-signature> 
     </function> 
     
