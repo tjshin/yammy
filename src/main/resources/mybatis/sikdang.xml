@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" resultType="com.study.sikdang.SikdangDTO">
 	select * from sikdang
+	order by nearsta, distance 
 </select>
 
 <select id="maplist" parameterType="int" resultType="com.study.sikdang.SikdangDTO">
