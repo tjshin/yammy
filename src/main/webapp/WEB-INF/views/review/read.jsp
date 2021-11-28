@@ -83,8 +83,7 @@
 
 							<div class="blog-content">
 								<span class="meta-date">${dto.hdate }</span>
-								<c:set var="reviewrcount"
-									value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
+								
 								<span class="meta-author"> ${dto.nick }</span> <span>/</span>
 
 								<c:if test="${dto.stadium == 1}">
@@ -231,7 +230,7 @@
 										<p>
 											<label for="hrecontents">댓글 쓰기</label>
 											<c:if test="${sessionScope.id == null }">
-												<textarea id="hrecontents" name="hrecontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
+												<textarea id="hrecontents" name="hrecontents" rows="5" readonly>댓글은 로그인 후 남길 수 있습니다.</textarea>
 											</c:if>
 											<c:if test="${sessionScope.id != null }">
 												<textarea id="hrecontents" name="hrecontents" rows="5"></textarea>

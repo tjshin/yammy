@@ -180,7 +180,7 @@
 								<p>
 									<label for="hrecontents">댓글 내용:</label>
 									<c:if test="${sessionScope.id == null }">
-										<textarea id="hrecontents" name="recontents" rows="5">댓글은 로그인 후 남길 수 있습니다.</textarea>
+										<textarea id="hrecontents" name="recontents" rows="5" readonly>댓글은 로그인 후 남길 수 있습니다.</textarea>
 									</c:if>
 									<c:if test="${sessionScope.id != null }">
 										<textarea id="hrecontents" name="recontents" rows="5"></textarea>

@@ -96,8 +96,10 @@
 
 							<div class="blog-content">
 								<span class="meta-date">${dto.hdate }</span>
-								<c:set var="reviewrcount" value="${util:reviewrcount(dto.hugino, reviewrservice) }" />
-								<span class="meta-comments">댓글: ${reviewrcount }</span>
+								<c:set var="replycnt" value="${util:reviewreplycount(dto.hugino, reviewreplyservice) }" />
+								<span class="meta-comments">댓글: ${replycnt }</span>
+								<c:set var="likecnt" value="${util:reviewlikecount(dto.hugino, reviewlikeservice) }" />
+								<span class="meta-comments">추천: ${likecnt }</span>
 								<span class="meta-author">닉네임: &nbsp;<a href="#">${dto.nick }</a></span>
 								<span>/</span>
 								

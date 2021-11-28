@@ -4,7 +4,7 @@ CREATE TABLE MEMBER (
        mname                VARCHAR2(10) NULL,
        nick                 VARCHAR2(16) NULL,
        email                VARCHAR2(50) NULL,
-       password             VARCHAR2(150) NULL,
+       password             VARCHAR2(500) NULL,
        address2             VARCHAR2(150) NULL,
        address1             VARCHAR2(150) NULL,
        postcode             VARCHAR2(7) NULL,
@@ -131,18 +131,6 @@ CREATE TABLE REPLY (
                              REFERENCES MEMBER, 
        FOREIGN KEY (bbsno)
                              REFERENCES BBS
-);
-
-
-CREATE TABLE REPLYLIKE (
-       recnt                NUMBER(10) NOT NULL,
-       reno                 NUMBER(10) NULL,
-       id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (recnt), 
-       FOREIGN KEY (reno)
-                             REFERENCES REPLY, 
-       FOREIGN KEY (id)
-                             REFERENCES MEMBER
 );
 
 

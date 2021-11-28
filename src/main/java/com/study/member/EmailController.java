@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.study.utility.KISA_SHA256;
+
 @Controller
 public class EmailController {
 	@Autowired
@@ -83,8 +85,20 @@ public class EmailController {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		System.out.println("id : "+id);
-		System.out.println("password : "+password);
+//		System.out.println("id : "+id);
+//		System.out.println("password : "+password);
+		
+		//암호화 시작
+		byte[] bytes = password.getBytes();
+		byte[] pszDigest = new byte[32];
+		
+		KISA_SHA256.SHA256_Encrpyt(bytes, bytes.length, pszDigest);
+		StringBuffer encrypted = new StringBuffer();
+		for (int i =0; i <pszDigest.length; i++) {
+			encrypted.append(String.format("%02x", pszDigest[i]));
+		}
+		password = encrypted.toString();
+		//암호화 끝
 		
 		Map<String, String> map = new HashMap();
 		map.put("id", id);

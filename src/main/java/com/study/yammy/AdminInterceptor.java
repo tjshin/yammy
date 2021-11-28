@@ -24,7 +24,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 
 		} else if (grade.length() != 0 && grade.compareTo("A") > 0) {
 
-			response.sendRedirect("/errorMsg");
+			response.sendRedirect("/adminerror");
 			return false;
 		} else {
 

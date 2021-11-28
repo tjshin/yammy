@@ -84,17 +84,22 @@ public class TicketController {
 	@PostMapping("/ticket/delete")
 	public String delete(HttpServletRequest request, int ticketno) {
 
-		int cnt = 0;
+		int cnt = service.delete(ticketno);
+		String mtest = request.getParameter("mtest");
 
-		cnt = service.delete(ticketno);
+		if (mtest == "") {
+			if (cnt > 0) {
+				return "redirect:/ticket/list";
+			} else {
+				return "/message/error";
+			}
 
-		String grade = (String) request.getSession().getAttribute("grade");
-		System.out.println("1111grade:" + grade);
-
-		if (grade.equals("A")) {
-			return "redirect:/ticket/list";
 		} else {
-			return "redirect:/member/mypage";
+			if (cnt > 0) {
+				return "redirect:/member/mypage";
+			} else {
+				return "/message/error";
+			}
 		}
 
 	}
@@ -115,18 +120,20 @@ public class TicketController {
 	public String update(@PathVariable("ticketno") int ticketno, HttpSession session, Model model) {
 
 		String id = (String) session.getAttribute("id");
+
 		if (id == null) {
 			return "redirect:/member/login";
 		} else {
 
 			TicketDTO dto = service.detail(ticketno);
+			model.addAttribute("dto", dto);
 
 			if (dto.getId().equals(id)) {// 아이디 검사
 				return "/ticket/update";
-			} else
-				model.addAttribute("dto", dto);
-			return "/message/error";
+			} else {
 
+				return "/message/error";
+			}
 		}
 	}
 
@@ -225,7 +232,7 @@ public class TicketController {
 		TicketDTO dto = service.detail(ticketno);
 		String ticketcontents = dto.getTicketcontents().replaceAll("\r\n", "<br>");
 		dto.setTicketcontents(ticketcontents);
-		
+
 		model.addAttribute("dto", dto);
 
 		System.out.println("service.detail(ticketno) = " + service.detail(ticketno));

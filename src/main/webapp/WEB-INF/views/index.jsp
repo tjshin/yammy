@@ -37,7 +37,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-header">
-						<h2 class="section-title">기능 소개</h2>
+						<h2 class="section-title"><img src="${root }/images/yammylogo.png" style="width">&nbsp;&nbsp; 소개</h2>
 						<p class="section-desc">사이트의 주요 기능들을 만나보세요.</p>
 					</div> <!-- /.section-header -->
 				</div> <!-- /.col-md-12 -->
@@ -54,13 +54,13 @@
 								<h3 class="portfolio-title">경기장을 중심으로 한 자유게시판</h3>
 							</div>
 							<div class="portfolio-expand">
-								<a class="fancybox" href="#" title="bbs">
+								<a class="fancybox" href="${root }/images/index/bbs.png" title="bbs">
 									<i class="fa fa-expand"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-					<img src="images/includes/project1.jpg" alt="bbs">
+					<img src="${root }/images/index/bbs.png" alt="bbs">
 				</div>
 			</div> <!-- /.item -->
 			<div class="item">
