@@ -116,7 +116,8 @@ public class ReviewController {
 		String sikid = request.getParameter("sikid");		
 		String id = (String)session.getAttribute("id");
 		dto.setSikid(sikid);
-		dto.setId(id);					
+		dto.setId(id);
+		dto.setStadium(service.detail(sikid).getNearsta());		
 				
 		if (service.create(dto) > 0) {
 			return "redirect:/review/list";			

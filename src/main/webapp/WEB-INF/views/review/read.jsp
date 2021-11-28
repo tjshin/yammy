@@ -114,12 +114,18 @@
 									<span>부산 사직</span>
 								</c:if>
 
-								<h3>${dto.htitle }</h3>
-								<div class="panel-heading"></div>
+								<h3>${dto.htitle }</h3>								
 								<div class="panel-body">
 									<p>${dto.hcontents }</p>
 									
 								</div>
+								<div class="panel-heading">
+								<h5>별점: <c:if test="${dto.star == 1}">★</c:if>
+										<c:if test="${dto.star == 2}">★★</c:if>
+										<c:if test="${dto.star == 3}">★★★</c:if>
+										<c:if test="${dto.star == 4}">★★★★</c:if>
+										<c:if test="${dto.star == 5}">★★★★★</c:if> 								
+								</h5></div>
 								
 			        						        			
 					        		

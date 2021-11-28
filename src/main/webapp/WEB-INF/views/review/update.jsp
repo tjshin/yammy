@@ -102,32 +102,7 @@
                 </div>
             </div>
             <hr>
-
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="stadium">지역 선택</label>
-                <div class="col-sm-5">
-                    <select class="form-control" name="stadium">
-                        <option value="1" <c:if test="${dto.stadium==1}"> selected </c:if>
-                            >잠실(LG/두산)</option>
-                        <option value="2" <c:if test="${dto.stadium==2}"> selected </c:if>
-                            >고척(키움)</option>
-                        <option value="3" <c:if test="${dto.stadium==3}"> selected </c:if>
-                            >인천(SSG)</option>
-                        <option value="4" <c:if test="${dto.stadium==4}"> selected </c:if>
-                            >수원(KT)</option>
-                        <option value="5" <c:if test="${dto.stadium==5}"> selected </c:if>
-                            >대전(한화)</option>
-                        <option value="6" <c:if test="${dto.stadium==6}"> selected </c:if>
-                            >광주(KIA)</option>
-                        <option value="7" <c:if test="${dto.stadium==7}"> selected </c:if>
-                            >대구(삼성)</option>
-                        <option value="8" <c:if test="${dto.stadium==8}"> selected </c:if>
-                            >창원(NC)</option>
-                        <option value="9" <c:if test="${dto.stadium==9}"> selected </c:if>
-                            >사직(롯데)</option>
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <label class="control-label col-sm-2" for="htitle">리뷰 제목</label>
                 <div class="col-sm-8">
