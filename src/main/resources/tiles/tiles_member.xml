@@ -23,6 +23,12 @@
 			value="/WEB-INF/views/member/find.jsp" />
 	</definition>
 	
+	<definition name="/member/findError" extends="main">
+		<put-attribute name="title" value="계정 찾기 에러"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/findError.jsp" />
+	</definition>	
+
 	<definition name="/member/checkEmail" extends="main">
 		<put-attribute name="title" value="계정 찾기"></put-attribute>
 		<put-attribute name="body"
@@ -52,14 +58,32 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/updateForm.jsp" />
 	</definition>
+	
+	<definition name="/admin/member/update" extends="main">
+		<put-attribute name="title" value="회원정보 수정"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/adminUpdate.jsp" />
+	</definition>
 
 	<definition name="/member/login" extends="main">
 		<put-attribute name="title" value="로그인"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/loginForm.jsp" />
 	</definition>
+	
+	<definition name="/member/loginError" extends="main">
+		<put-attribute name="title" value="로그인 에러"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/loginError.jsp" />
+	</definition>
+	
+	<definition name="/member/createError" extends="main">
+		<put-attribute name="title" value="회원가입 에러"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/createError.jsp" />
+	</definition>
 
-	<definition name="/member/read" extends="main">
+	<definition name="/admin/read" extends="main">
 		<put-attribute name="title" value="회원정보"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/read.jsp" />

@@ -47,16 +47,13 @@ function sendEmail(form){
 	var mname = form.mname.value;
 	var email = form.email.value;
 	
-	if(mname == ""){
-		alert("이름을 입력하세요.");
-		form.mname.focus();
-		return false;
-	}else if(email == ""){
+	if(email == ""){
 		alert("이메일을 입력하세요.");
 		form.email.focus();
 		return false;
-	}
 }
+
+
 </script>
 
 </head>
@@ -84,7 +81,7 @@ function sendEmail(form){
 								<div class="col-sm-offset-2 col-sm-6">
 								<label> 
 								<button class="btn btn-default">확인</button>
-								<button class="btn btn-default" onclick="history.back()">뒤로</button>
+								<button class="btn btn-default2" onclick="history.back()">뒤로</button>
 								</label>
 								</div>
 								<br /><br />

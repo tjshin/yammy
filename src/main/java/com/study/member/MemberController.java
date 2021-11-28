@@ -1,4 +1,4 @@
-package com.study.member;
+ package com.study.member;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -59,6 +59,7 @@ public class MemberController {
 	public String error() {
 		return "/errorMsg";
 	}
+
 
 	@GetMapping("/member/find")
 	public String find() {
@@ -190,7 +191,7 @@ public class MemberController {
 
 	@PostMapping("/member/create")
 	public String create(MemberDTO dto) throws IOException {
-
+		
 		String upDir = Member.getUploadDir();
 
 		String filename = Utility.saveFileSpring(dto.getFnameMF(), upDir);
@@ -203,11 +204,11 @@ public class MemberController {
 		} else {
 			dto.setFilename("member.jpg");
 		}
-
+		
 		if (service.create(dto) > 0) {
 			return "redirect:/";
-		} else {
-			return "/errorMsg";
+		}else{
+			return "/member/createError";
 		}
 	}
 
@@ -236,6 +237,23 @@ public class MemberController {
 
 		if (cnt > 0) {
 			map.put("str", "->'" + email + "' 은(는) 중복되어 사용할 수 없습니다.");
+		} else {
+			map.put("str", "->'" + email + "' 은(는) 사용 가능한 Email입니다.");
+		}
+
+		return map;
+	}
+	
+	@GetMapping(value = "/member/emailcheck2", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Map<String, String> emailcheck2(String email) {
+
+		int cnt = service.duplicatedEmail(email);
+
+		Map<String, String> map = new HashMap<String, String>();
+
+		if (cnt > 0) {
+			map.put("str", "이메일을 변경하지 않으셨습니다.");
 		} else {
 			map.put("str", "->'" + email + "' 은(는) 사용 가능한 Email입니다.");
 		}
@@ -329,8 +347,7 @@ public class MemberController {
 		if (cnt > 0) {
 			return "redirect:/";
 		} else {
-			model.addAttribute("msg", "아이디 또는 비밀번호를 잘못입력했거나 회원이 아닙니다. 회원가입 하세요");
-			return "/member/errorMsg";
+			return "/member/loginError";
 		}
 	}
 
@@ -347,20 +364,46 @@ public class MemberController {
 
 		return "/member/update";
 	}
+	
+	@GetMapping("/admin/member/update")
+	public String adminUpdate(String id, HttpSession session, Model model) {
+
+		if (id == null) {
+			id = (String) session.getAttribute("id");
+		}
+
+		MemberDTO dto = service.read(id);
+
+		model.addAttribute("dto", dto);
+
+		return "/admin/member/update";
+	}
 
 	@PostMapping("/member/update")
-	public String update(MemberDTO dto, Model model) {
+	public String update(MemberDTO dto, Model model, HttpSession session) {
 		int cnt = service.update(dto);
-
+		
 		if (cnt == 1) {
 			model.addAttribute("id", dto.getId());
-			return "redirect:/member/read";
+			return "redirect:/member/mypage";
+		} else {
+			return "/errorMsg";
+		}
+	}
+	
+	@PostMapping("/admin/member/update")
+	public String adminUpdate(MemberDTO dto, Model model, HttpSession session) {
+		int cnt = service.update(dto);
+		
+		if (cnt == 1) {
+			model.addAttribute("id", dto.getId());
+			return "redirect:/admin/read";
 		} else {
 			return "/errorMsg";
 		}
 	}
 
-	@GetMapping("/member/read")
+	@GetMapping("/admin/read")
 	public String read(String id, HttpSession session, Model model) {
 		if (id == null) {
 			id = (String) session.getAttribute("id");
@@ -370,7 +413,7 @@ public class MemberController {
 
 		model.addAttribute("dto", dto);
 
-		return "/member/read";
+		return "/admin/read";
 	}
 
 	@PostMapping("/member/updateFile")

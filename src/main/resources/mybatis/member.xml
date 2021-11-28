@@ -262,7 +262,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set phone =
 		#{phone},
 		nick = #{nick},
-		password = #{password},
 		email = #{email},
 		postcode = #{postcode},
 		address1 = #{address1},

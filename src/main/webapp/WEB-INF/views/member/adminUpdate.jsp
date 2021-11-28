@@ -139,7 +139,7 @@ function inCheck(f){
 	<div class="container"><br/>
         <label class="col-sm-offset-2 col-sm-15">( <span id="need">*</span> 필수입력사항)</label>
           <form class="form-horizontal" 
-                action="update"
+                action="/admin/member/update"
                 method="post"
                 name = 'frm'
                 onsubmit="return inCheck(this)"

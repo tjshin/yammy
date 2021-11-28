@@ -30,6 +30,17 @@
 		location.href = url;
 	}
 </script>
+
+<style>
+h2{
+	color:white;
+	font-weight:bold;
+}
+
+h6{
+	color:white;
+}
+</style>
 </head>
 <body>
 
@@ -37,12 +48,50 @@
 		<div class="parallax-overlay">
 			<div class="container pageTitle">
 				<div class="row">
-					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title"><a onClick="window.location.reload()" style="cursor: pointer;">게시판 목록</a></h2>
+					<div class="col-md-6 col-sm-10">
+				<c:choose>
+				<c:when test="${bbscate == 'jamsil'}">
+					<h2>잠실야구장 게시판
+					<a href="https://www.lgtwins.com"><img src="${root }/images/map/emblem_LG.png" style="width:70px;"></a>
+					<a href="https://www.doosanbears.com"><img src="${root }/images/map/emblem_OB.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'gocheok'}">
+					<h2>고척스카이돔 게시판
+					<a href="https://www.heroesbaseball.co.kr"><img src="${root }/images/map/emblem_WO.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'incheon'}">
+					<h2>인천SSG랜더스필드 게시판
+					<a href="http://www.ssglanders.com"><img src="${root }/images/map/emblem_SK.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'suwon'}">
+					<h2>수원KT위즈파크 게시판
+					<a href="https://www.ktwiz.co.kr"><img src="${root }/images/map/emblem_KT.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'daejeon'}">
+					<h2>한화생명이글스파크 게시판
+					<a href="https://www.hanwhaeagles.co.kr"><img src="${root }/images/map/emblem_HH.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'gwangju'}">
+					<h2>광주기아챔피언스필드 게시판
+					<a href="https://tigers.co.kr"><img src="${root }/images/map/emblem_HT.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'daegu'}">
+					<h2>대구삼성라이온즈파크 게시판
+					<a href="https://www.samsunglions.com"><img src="${root }/images/map/emblem_SS.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'changwon'}">
+					<h2>창원NC파크 게시판
+					<a href="https://www.ncdinos.com"><img src="${root }/images/map/emblem_NC.png" style="width:70px;"></a></h2>
+				</c:when>
+				<c:when test="${bbscate == 'busan'}">
+					<h2>사직야구장 게시판
+					<a href="http://www.giantsclub.com/html/"><img src="${root }/images/map/emblem_LT.png" style="width:70px;"></a></h2>
+				</c:when>
+			</c:choose>
+			<h6>(마크를 클릭하시면 해당 구단 홈페이지로 이동하실 수 있습니다.)</h6>
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 게시판 / 게시판 목록</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -54,39 +103,7 @@
 	</div>
 	<div class="container">
 
-		<a href='/bbs/list?bbscate=${bbscate}'> <c:choose>
-				<c:when test="${bbscate == 'jamsil'}">
-					<h2>잠실야구장 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'gocheok'}">
-					<h2>고척스카이돔 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'incheon'}">
-					<h2>인천SSG랜더스필드 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'suwon'}">
-					<h2>수원KT위즈파크 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'daejeon'}">
-					<h2>한화생명이글스파크 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'gwangju'}">
-					<h2>광주기아챔피언스필드 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'daegu'}">
-					<h2>대구삼성라이온즈파크 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'changwon'}">
-					<h2>창원NC파크 게시판</h2>
-				</c:when>
-				<c:when test="${bbscate == 'busan'}">
-					<h2>사직야구장 게시판</h2>
-				</c:when>
-				<c:otherwise>
-					<h2>bbscate : ${bbscate} 오류났다 고쳐라</h2>
-				</c:otherwise>
-			</c:choose>
-		</a> 
+		
 		<br>
 
 		<form class="form-inline" action="/bbs/list">
@@ -106,7 +123,8 @@
 					name="word" value="${word}"> <input type="hidden"
 					class="form-control" name="bbscate" value="${bbscate}">
 			</div>
-			<button type="submit" class="mainBtn">검색</button>
+			<button type="submit" class="btn btn-default">검색</button>&nbsp;
+			<a href="#" onClick="top.location='javascript:location.reload()'"><img src="${root }/images/refresh.svg" style="width:25px;"></a>
 
 		</form>
 
@@ -153,9 +171,9 @@
 
 		</div>
 		<div>
-			<button type="button" class="mainBtn"
+			<button type="button" class="btn btn-default"
 				onclick="location.href='/bbs/create?bbscate=${param.bbscate}'">등록</button>
-			<button type="button" class="mainBtn"
+			<button type="button" class="btn btn-default3"
 				onclick="location.href='../bbs/bestlist'">인기글</button>
 
 		</div>

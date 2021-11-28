@@ -73,7 +73,7 @@
             <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-8">
                 <button type="submit" class="btn btn-default">수정</button>
-                <button type="button" class="btn btn-default" 
+                <button type="button" class="btn btn-default2" 
                 onclick="history.back()">취소</button>
               </div>
             </div>
@@ -81,10 +81,6 @@
         
         </div>
 
-
-<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
 
 </body>
 </html>

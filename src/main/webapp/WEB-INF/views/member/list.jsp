@@ -30,7 +30,7 @@
 
 <script type="text/javascript">
 	function read(id) {
-		var url = "${root}/member/read";
+		var url = "${root}/admin/read";
 		url += "?id=" + id;
 
 		location.href = url;

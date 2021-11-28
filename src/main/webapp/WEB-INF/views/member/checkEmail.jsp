@@ -75,7 +75,7 @@ function checkCode(form){
 								<div class="col-sm-offset-2 col-sm-6">
 								<label> 
 								<button type="submit" class="btn btn-default">확인</button>
-								<button class="btn btn-default" onclick="history.back()">뒤로</button>
+								<button class="btn btn-default2" onclick="history.back()">뒤로</button>
 								</label>
 								</div>
 								<br /><br />

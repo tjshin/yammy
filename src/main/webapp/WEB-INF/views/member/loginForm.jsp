@@ -163,8 +163,7 @@
 													style="height: 40px; width: auto;">
 											</a>
 											</label><br /> <label>
-												<div class="g-signin2" data-onsuccess="onSignIn"
-													data-theme="dark"></div>
+												<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 											</label>
 										</div>
 									</div>

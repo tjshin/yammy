@@ -100,9 +100,6 @@
         </form>
         </div>
 
-		<!-- Scripts -->
-	<script src="js/min/plugins.min.js"></script>
-	<script src="js/min/medigo-custom.min.js"></script>
 	<script>
         function initialize() {
           var mapOptions = {
