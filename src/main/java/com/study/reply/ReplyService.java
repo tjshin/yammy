@@ -19,4 +19,10 @@ public interface ReplyService {
 
 	ReplyDTO read(int reno);
 
+	int admintotal(Map map);
+
+	List<ReplyDTO> adminlist(Map map);
+
+
+
 }

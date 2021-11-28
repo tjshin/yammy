@@ -94,7 +94,7 @@
 		   
 		    <tr>
 		    <td>${dto.hugireno}</td>
-		    <td><a href="${readurl}${dto.hugino}">${dto.hrecontents}</a></td>
+		    <td><a href="${readurl}${dto.hugino}${urlhelper}">${dto.hrecontents}</a></td>
 		    <td><a href="${root }/admin/member/list?col=id&word=${dto.id}">${dto.nick}(${dto.id})</a></td>
 		    <td>${dto.hredate }</td>
 		    <td>

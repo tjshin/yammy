@@ -108,7 +108,7 @@ function likeTotal() {
 				str += "border-radius: 50%;";
 				str += "width:100px;height:100px;'>";
 				str += likeimage + "</button>";
-				str += "<div class='like-count'>";;
+				str += "<div class='like-count'>";
 				str += "<h3 style='color:#000000;'>" + likeCnt + "</h3><br></div>";
 			$(".review-like").html(str);
 		});

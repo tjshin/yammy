@@ -42,6 +42,7 @@
       method="post"
       >
   <input type="hidden" name="ticketno" value="${param.ticketno}">
+  <input type="hidden" name="mtest" value="${param.mtest}">
   <div class="form-group">
   <p id="red" >삭제하면 복구할 수 없습니다.</p>
   

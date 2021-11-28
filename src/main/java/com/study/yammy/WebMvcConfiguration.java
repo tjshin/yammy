@@ -21,6 +21,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		// + Attachfile.getUploadDir());
 		registry.addResourceHandler("/member/storage/**").addResourceLocations("file:///" + Member.getUploadDir());
 		registry.addResourceHandler("/ticket/storage/**").addResourceLocations("file:///" + Ticket.getUploadDir());
+		
 	}
 
 }

@@ -24,11 +24,6 @@
 
 	}
 
-	function fileDown(filename) {
-		var url = "fileDown";
-		url += "?filename=" + filename;
-		location.href = url;
-	}
 </script>
 
 <style>
@@ -155,11 +150,11 @@ h6{
 						<tr>
 							<td>${dto.bbsno}</td>
 							<td>${dto.bcname}</td>
-							<td><a href="javascript:read('${dto.bbsno}')">${dto.btitle}</a></td>
+							<td><a href="javascript:read('${dto.bbsno}')">${dto.btitle}[${dto.rcnt}]</a></td>
 							<td>${dto.nick}</td>
 							<td>${dto.bdate}</td>
 							<td>${dto.bview}</td>
-							<td></td>
+							<td>${dto.bcnt}</td>
 
 						</tr>
 					</c:forEach>

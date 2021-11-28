@@ -119,21 +119,21 @@
         <div class="form-group">
         <label class="control-label col-sm-2" for="tickettitle" style="color: black; font-weight: bolder;">글 제목</label>
         <div class="col-sm-8">
-            <input type="text" name="tickettitle" id="tickettitle" class="form-control">
+            <input type="text" name="tickettitle" id="tickettitle" class="form-control" value="${dto.tickettitle}">
         </div>
         </div>
     
         <div class="form-group">
         <label class="control-label col-sm-2" for="ticketcontents" style="color: black; font-weight: bolder;">내용</label>
         <div class="col-sm-8">
-        <textarea rows="12" cols="7" id="ticketcontents" name="ticketcontents" class="form-control"></textarea>
+        <textarea rows="12" cols="7" id="ticketcontents" name="ticketcontents" class="form-control">${dto.ticketcontents}</textarea>
         </div>
         </div>
     
     	<div class="form-group">
             <label class="control-label col-sm-2" for="gamedate" style="color: black; font-weight: bolder;">경기 날짜</label>
         <div class="col-sm-6">
-            <input type="text" name="gamedate" id="gamedate" class="form-control">
+            <input type="text" name="gamedate" id="gamedate" class="form-control"  value="${dto.ticketdate}">
         </div>
         </div>
         
@@ -141,7 +141,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="location" style="color: black; font-weight: bolder;">거래/양도 장소</label>
         <div class="col-sm-6">
-            <input type="text" name="location" id="location" class="form-control">
+            <input type="text" name="location" id="location" class="form-control"  value="${dto.location}" >
         </div>
         </div>
         

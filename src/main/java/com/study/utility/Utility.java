@@ -7,12 +7,11 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.study.reviewlike.ReviewlikeService;
 import com.study.reviewreply.ReviewreplyService;
 
 public class Utility {
@@ -104,6 +103,8 @@ public class Utility {
 		return str.toString();
 
 	}
+
+	
 
 	public static List<String> getDay() {
 		List<String> list = new ArrayList<String>();
@@ -377,8 +378,11 @@ public class Utility {
 		return str.toString();
 	}
 
-	public static int reviewrcount(int hugino, ReviewreplyService reviewrservice) {
-		return reviewrservice.total(hugino);
+	public static int reviewreplycount(int hugino, ReviewreplyService reviewreplyservice) {
+		return reviewreplyservice.total(hugino);
+	}
+	public static int reviewlikecount(int hugino, ReviewlikeService reviewlikeservice) {
+		return reviewlikeservice.total(hugino);
 	}
 
 }

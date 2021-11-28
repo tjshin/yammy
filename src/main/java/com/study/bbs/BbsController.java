@@ -97,7 +97,7 @@ public class BbsController {
 		int total = service.total(map);
 
 		List<BbsDTO> list = service.list(map);
-		// System.out.print("값:"+list.get(0));
+		//System.out.print("값:"+list.get(0));
 		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다
@@ -107,7 +107,6 @@ public class BbsController {
 		request.setAttribute("word", word);
 		request.setAttribute("bbscate", bbscate);
 		request.setAttribute("paging", paging);
-		// 댓글
 		request.setAttribute("reservice", reservice);
 
 		return "/bbs/list";
@@ -216,6 +215,7 @@ public class BbsController {
 
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
+		String bbscate = Utility.checkNull(request.getParameter("bbscate"));
 
 		if (col.equals("total")) {
 			word = "";
@@ -226,7 +226,7 @@ public class BbsController {
 		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
-		int recordPerPage = 5;// 한페이지당 보여줄 레코드갯수
+		int recordPerPage = 10;// 한페이지당 보여줄 레코드갯수
 
 		// DB에서 가져올 순번-----------------
 		int sno = ((nowPage - 1) * recordPerPage) + 1;
@@ -237,28 +237,25 @@ public class BbsController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
+		map.put("bbscate", bbscate);
 		String url = "bestlist";
 
-		int total = service.total(map);
+		int total = service.besttotal(map);
 
 		List<BbsDTO> list = service.bestlist(map);
-		// System.out.print("값:"+list.get(0));
-		String paging = Utility.paging(total, nowPage, recordPerPage, col, word, url);
+		System.out.print("값:"+list.get(0));
+		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다
 		request.setAttribute("list", list);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
+		request.setAttribute("bbscate", bbscate);
 		request.setAttribute("paging", paging);
+		request.setAttribute("reservice", reservice);
 
 		return "/bbs/bestlist";
-	}
-
-	@GetMapping("/bbs/reed")
-	public String home() {
-
-		return "/bbs/reed";
 	}
 
 }

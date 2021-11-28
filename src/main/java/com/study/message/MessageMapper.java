@@ -28,8 +28,9 @@ public interface MessageMapper {
 	 MessageDTO read(int messageno);
 
 	 
-	 
-	 
+	 //------------------------------------------
+	 int exelTotal();
+	 //---------------------------------------------
 	 int total(Map map);
 	 int stotal(Map map);
 	 int rtotal(Map map);

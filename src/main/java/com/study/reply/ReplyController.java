@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.study.reviewreply.ReviewreplyDTO;
+import com.study.reply.ReplyDTO;
 import com.study.utility.Utility;
 
 @RestController
@@ -54,7 +54,7 @@ public class ReplyController {
 		int total = service.total(bbsno);
 		String url = "/bbs/read";
 		int recordPerPage = 5;
-		String paging = Utility.reviewrpaging(total, nowPage, recordPerPage, col, word, url, nPage, bbsno);
+		String paging = Utility.rpaging(total, nowPage, recordPerPage, col, word, url, nPage, bbsno);
 
 		return new ResponseEntity<>(paging, HttpStatus.OK);
 	}

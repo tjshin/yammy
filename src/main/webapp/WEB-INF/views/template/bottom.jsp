@@ -16,7 +16,7 @@
 							<li><a href="${root }/">Home</a></li>
 							<li><a href="https://github.com/tjshin/yammy" target="_blank">GitHub</a></li>
 							<li><a href="#">프로젝트 YAMMY</a></li>
-							<li><a href="#">팀 YAMMY</a></li>
+							<li><a href="#">팀 'no.2'</a></li>
 							<li><a href="https://www.ncloud.com/product/aiService/chatbot"
 									target="_blank">NAVER CLOVA</a></li>
 							<li><a href="https://apis.map.kakao.com/"

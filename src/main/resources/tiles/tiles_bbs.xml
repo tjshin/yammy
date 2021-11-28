@@ -22,13 +22,13 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/bbs/createform.jsp" />
 	</definition>
-	
+
 	<definition name="/bbs/delete" extends="main">
 		<put-attribute name="title" value="삭제페이지"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/bbs/deleteform.jsp" />
 	</definition>
-	
+
 	<definition name="/bbs/update" extends="main">
 		<put-attribute name="title" value="수정페이지"></put-attribute>
 		<put-attribute name="body"
@@ -40,5 +40,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/bbs/bestlist.jsp" />
 	</definition>
+	<definition name="/admin/bbs/reply/list" extends="main">
+		<put-attribute name="title" value="리뷰 댓글 DB 목록"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/bbs/listAll.jsp" />
+	</definition>
+
 
 </tiles-definitions>
