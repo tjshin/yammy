@@ -414,6 +414,7 @@ public class MemberController {
 		
 		if (cnt == 1) {
 			model.addAttribute("id", dto.getId());
+
 			return "redirect:/admin/member/list";
 		} else {
 			return "/errorMsg";
@@ -528,7 +529,6 @@ public class MemberController {
 
 		request.setAttribute("dto", dto);
 		return "/admin/member/delete";
-
 	}
 
 	@PostMapping("/admin/member/delete")
@@ -542,7 +542,28 @@ public class MemberController {
 		} else {
 			return "/errorMsg";
 		}
+	}
+	
+	@GetMapping("/member/delete")
+	public String memberDelete2(HttpServletRequest request) {
+		MemberDTO dto = service.read(request.getParameter("id"));
 
+		request.setAttribute("dto", dto);
+		return "/member/delete";
+	}
+
+	@PostMapping("/member/delete")
+	public String memberDeleteProc2(HttpServletRequest request, HttpSession session) {
+		String id = (String) request.getParameter("id");
+
+		int cnt = service.memberDelete(id);
+
+		if (cnt > 0) {
+			session.invalidate();
+			return "redirect:/";
+		} else {
+			return "/errorMsg";
+		}
 	}
 
 	@RequestMapping("/member/mypage")

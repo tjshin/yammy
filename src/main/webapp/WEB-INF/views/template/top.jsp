@@ -72,7 +72,7 @@
 			<li><a href="${root }/">Home</a></li>
 			<li><a href="#">구장별 게시판</a>
 				<ul>
-
+					<li><a href="${root }/bbs/bestlist"><img src="${root }/images/map/best.png" style="width:40px;">&nbsp;인기글</a></li>
 					<li><a href="${root }/bbs/list?bbscate=jamsil"><img src="${root }/images/map/emblem_LG.png" style="width:45px;"><img src="${root }/images/map/emblem_OB.png" style="width:45px;">잠실(LG/두산)</a></li>
 					<li><a href="${root }/bbs/list?bbscate=gocheok"><img src="${root }/images/map/emblem_WO.png" style="width:45px;">고척(키움)</a></li>
 					<li><a href="${root }/bbs/list?bbscate=incheon"><img src="${root }/images/map/emblem_SK.png" style="width:45px;">인천(SSG)</a></li>
@@ -118,7 +118,7 @@
 									class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
 							<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 							<li><a href="${root}/admin/message/list">전체 쪽지 목록</a></li>
-							<li><a href="${root}/admin/bbs/reply/list>전체 게시판 댓글 목록</a></li>
+							<li><a href="${root}/admin/bbs/reply/list">전체 게시판 댓글 목록</a></li>
 							<li><a href="${root }/admin/review/reply/list">전체 리뷰 댓글 목록</a></li>
 							<li><a href="${root }/admin/ocrtest">OCR 실험실</a></li>
 						</ul></li>
@@ -187,7 +187,7 @@
 
 									<li><a href="#">구장별 게시판</a>
 										<ul>
-
+											<li><a href="${root }/bbs/bestlist"><img src="${root }/images/map/best.png" style="width:40px;">&nbsp;인기글</a></li>
 											<li><a href="${root }/bbs/list?bbscate=jamsil"><img src="${root }/images/map/emblem_LG.png" style="width:45px;"><img src="${root }/images/map/emblem_OB.png" style="width:45px;">잠실(LG/두산)</a></li>
 											<li><a href="${root }/bbs/list?bbscate=gocheok"><img src="${root }/images/map/emblem_WO.png" style="width:45px;">고척(키움)</a></li>
 											<li><a href="${root }/bbs/list?bbscate=incheon"><img src="${root }/images/map/emblem_SK.png" style="width:45px;">인천(SSG)</a></li>
