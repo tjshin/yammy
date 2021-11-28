@@ -100,7 +100,7 @@
          </table>
          </form>
          <div style="text-align: center">
-         <a href="${root }/member/update?id=${dto.id}" class="btn btn-default">정보수정</a>
+         <a href="${root }/admin/member/update?id=${dto.id}" class="btn btn-default">정보수정</a>
          <a href="#" onclick="history.back()" class="btn btn-default2">회원목록</a>
          <a href="${root }/admin/member/delete?id=${dto.id}" class="btn btn-red">회원탈퇴</a>
          </div>
