@@ -61,7 +61,7 @@
       method="post"
       onsubmit="return checkIn(this)">
       
-      s
+      
         
       <input type="hidden" name="bbscate" value="${param.bbscate}">
    

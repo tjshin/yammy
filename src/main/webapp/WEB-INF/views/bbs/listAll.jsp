@@ -94,8 +94,8 @@
 		   
 		    <tr>
 		    <td>${dto.reno}</td>
-		    <td><a href="${readurl}${dto.bbsno}">${dto.recontents}</a></td>
-		    <td><a href="${root }/admin/bbs/list?col=id&word=${dto.id}">${dto.nick}(${dto.id})</a></td>
+		    <td><a href="${readurl}${dto.bbsno}${urlhelper}">${dto.recontents}</a></td>
+		    <td><a href="${root }/admin/member/list?col=id&word=${dto.id}">${dto.nick}(${dto.id})</a></td>
 		    <td>${dto.redate }</td>
 		    <td>
 		        <a href="${root }/admin/bbs/reply/delete?reno=${dto.reno}${urlhelper}">
