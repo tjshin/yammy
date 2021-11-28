@@ -107,6 +107,7 @@
 				    <tr>
 				    <th>상호명</th>
 				    <th>작성된 리뷰</th>
+				    <th>인접구장</th>
 				    <th>구장과의 거리(m)</th>
 				    </tr>
 				    </thead>
@@ -115,6 +116,7 @@
 				    <tr>				    
 				    <td>상호명 자리</td>
 				    <td>리뷰 목록 a태그</td>
+				    <td>구장 자리</td>
 				    <td>거리 자리</td>
 				    </tr>
 				 
@@ -164,15 +166,17 @@
 			    });	
 			    			    			    
 			    var infowindow = new kakao.maps.InfoWindow({
-			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:190px;">' +
+			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:220px;">' +
 			    				'<h5>' + arr[i+1] +'</h5>' + 
 			    				arr[i+3] + '<br>' + 
-			    				arr[i+4] + '<br>' +
+			    				arr[i+4] + '<br>' +			    				
 			    				arr[i+2] + '<br>' +			    				
 			    				'인접 구장과의 거리: ' + arr[i+8] + 'm<br>' + 			    				
 			    				'<a href="${root}/review/list?col=sikname&word=' +
 			    				arr[i+1] + '">' + 
-			    				'리뷰 보러가기</a>' +			    				
+			    				'리뷰 보러가기</a><br>' +			
+			    				'<a href="' + arr[i+5] + '">' + 
+			    				'카카오 지도 정보 보러가기</a>' +			
 			    				'</div>',
 			    	removable : true
 			    });

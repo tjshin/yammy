@@ -33,6 +33,10 @@ function showList() {
 				
 				str += "<tr><td>" + list[i].sikname + "</td>";
 				str += "<td>" + reviewsearch + list[i].sikname +"'>리뷰 보러가기</a>";
+				str += "<td>";
+				switch(list[i].nearsta){
+				}
+				str += "</td>";
 				str += "<td>" + list[i].distance + "</td></tr>"
 			}
 			listUL.html(str);
