@@ -59,4 +59,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where reno = #{reno}
 	</delete>
 	
+	<select id="admintotal" parameterType="Map" resultType="int">
+		select count(*)
+		from reply  inner join member m
+		on reply.id = m.id
+		<where>
+			<choose>
+				<when test="col=='nick'">
+					m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					reply.id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='recontents'">
+					recontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<select id="adminlist" parameterType="Map"
+		resultType="com.study.reply.ReplyDTO">
+		select reno, recontents, redate,
+		bbsno, id, nick, r
+		from (
+		select reno, recontents, redate,
+		bbsno, id, nick, rownum r
+		from (
+		select reno, recontents, redate,
+		bbsno, reply.id id, m.nick nick
+		from reply  inner join member m
+		on reply.id = m.id
+		<where>
+			<choose>
+				<when test="col=='nick'">
+					m.nick like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					reply.id like '%'||#{word}||'%'
+				</when>
+				<when test="col=='recontents'">
+					recontents like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+		order by reno desc
+		)
+		)
+		<![CDATA[
+		where r >= #{sno} and r <= #{eno}
+		]]>
+	</select>
+	
 </mapper>
