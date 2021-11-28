@@ -152,7 +152,19 @@
          </div>
          <button type="submit" class="btn btn-default" >검색</button><br/><br/>
        </form>
-                    
+                    <script type="text/javascript">
+	function read(bbsno) {
+		var url = "read";
+		url += "?bbscate=${bbscate}";
+		url += "&bbsno=" + bbsno;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";
+		location.href = url;
+
+	}
+
+</script>
                     
                      <table class="table table-striped">
    <thead>
@@ -177,7 +189,8 @@
 <c:otherwise>
    <c:forEach var="bdto" items="${bdto}"> 
    <tr>
-    <td>[${bdto.bcate}]   <a href="javascript:read('${bdto.bbsno}')">${bdto.btitle}</a>
+    <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}" />
+    <td><a href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">${bdto.btitle}</a>
     <c:if test="${util:newImg(fn:substring(bdto.bdate,0,10)) }">
          <img src="${pageContext.request.contextPath}/images/new.gif"> 
     </c:if>
