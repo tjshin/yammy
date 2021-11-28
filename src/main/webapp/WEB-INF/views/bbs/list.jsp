@@ -47,40 +47,40 @@ h6{
 				<c:choose>
 				<c:when test="${bbscate == 'jamsil'}">
 					<h2>잠실야구장 게시판
-					<a href="https://www.lgtwins.com"><img src="${root }/images/map/emblem_LG.png" style="width:70px;"></a>
-					<a href="https://www.doosanbears.com"><img src="${root }/images/map/emblem_OB.png" style="width:70px;"></a></h2>
+					<a href="https://www.lgtwins.com" target="_blank"><img src="${root }/images/map/emblem_LG.png" style="width:70px;"></a>
+					<a href="https://www.doosanbears.com" target="_blank"><img src="${root }/images/map/emblem_OB.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'gocheok'}">
 					<h2>고척스카이돔 게시판
-					<a href="https://www.heroesbaseball.co.kr"><img src="${root }/images/map/emblem_WO.png" style="width:70px;"></a></h2>
+					<a href="https://www.heroesbaseball.co.kr" target="_blank"><img src="${root }/images/map/emblem_WO.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'incheon'}">
 					<h2>인천SSG랜더스필드 게시판
-					<a href="http://www.ssglanders.com"><img src="${root }/images/map/emblem_SK.png" style="width:70px;"></a></h2>
+					<a href="http://www.ssglanders.com" target="_blank"><img src="${root }/images/map/emblem_SK.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'suwon'}">
 					<h2>수원KT위즈파크 게시판
-					<a href="https://www.ktwiz.co.kr"><img src="${root }/images/map/emblem_KT.png" style="width:70px;"></a></h2>
+					<a href="https://www.ktwiz.co.kr" target="_blank"><img src="${root }/images/map/emblem_KT.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'daejeon'}">
 					<h2>한화생명이글스파크 게시판
-					<a href="https://www.hanwhaeagles.co.kr"><img src="${root }/images/map/emblem_HH.png" style="width:70px;"></a></h2>
+					<a href="https://www.hanwhaeagles.co.kr" target="_blank"><img src="${root }/images/map/emblem_HH.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'gwangju'}">
 					<h2>광주기아챔피언스필드 게시판
-					<a href="https://tigers.co.kr"><img src="${root }/images/map/emblem_HT.png" style="width:70px;"></a></h2>
+					<a href="https://tigers.co.kr" target="_blank"><img src="${root }/images/map/emblem_HT.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'daegu'}">
 					<h2>대구삼성라이온즈파크 게시판
-					<a href="https://www.samsunglions.com"><img src="${root }/images/map/emblem_SS.png" style="width:70px;"></a></h2>
+					<a href="https://www.samsunglions.com" target="_blank"><img src="${root }/images/map/emblem_SS.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'changwon'}">
 					<h2>창원NC파크 게시판
-					<a href="https://www.ncdinos.com"><img src="${root }/images/map/emblem_NC.png" style="width:70px;"></a></h2>
+					<a href="https://www.ncdinos.com" target="_blank"><img src="${root }/images/map/emblem_NC.png" style="width:70px;"></a></h2>
 				</c:when>
 				<c:when test="${bbscate == 'busan'}">
 					<h2>사직야구장 게시판
-					<a href="http://www.giantsclub.com/html/"><img src="${root }/images/map/emblem_LT.png" style="width:70px;"></a></h2>
+					<a href="http://www.giantsclub.com/html/" target="_blank"><img src="${root }/images/map/emblem_LT.png" style="width:70px;"></a></h2>
 				</c:when>
 			</c:choose>
 			<h6>(마크를 클릭하시면 해당 구단 홈페이지로 이동하실 수 있습니다.)</h6>

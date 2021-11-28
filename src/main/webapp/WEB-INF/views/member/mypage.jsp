@@ -45,6 +45,26 @@ table, th, tr {
 td {
 	padding: 15px;
 }
+
+@media ( min-width :1000px) {
+	#board {
+		position: absolute;
+		top: 300px;
+		width: 700px;
+		left: 750px;
+		z-index: 1;
+	}
+}
+
+@media ( min-width :1000px) {
+	#review {
+		position: absolute;
+		top: 650px;
+		width: 700px;
+		left: 750px;
+		z-index: 1;
+	}
+}
 </style>
 
 </head>
@@ -71,7 +91,7 @@ td {
 	<!-- /.pageTitle -->
 
 	<div class="container">
-		<div class="row" style="text-align: center">
+		<div class="row" style="text-align: left">
 			<div class="col-sm-12">
 				<h3>
 					<span class="glyphicon glyphicon-user"></span>
@@ -86,7 +106,7 @@ td {
 					<p></p>
 
 
-					<table id="tbl" style="margin-left: auto; margin-right: auto;">
+					<table id="tbl">
 						<tr id="tr">
 							<td style="font-weight: bold;">ID</td>
 							<td>${mdto.id}</td>
@@ -132,206 +152,202 @@ td {
 		</div>
 
 
-
-		<div class="row">
+		<!--  게시물 목록  -->
+		<div class="row" id=board>
 			<div class="col-md-12">
+				<div class="blog-content">
+					<div class="sidebar">
+						<div class="sidebar-widget">
+							<h3 style="font-weight: bold">내가 작성한 게시물</h3>
 
-				<div class="post-blog"></div>
-				<!-- /.post-blog -->
+							<form class="form-inline" action="${root }/member/mypage">
+								<div class="form-group">
+									<select class="form-control" name="col">
+										<option value="btitle"
+											<c:if test= "${col=='btitle'}"> selected </c:if>>제목</option>
+										<option value="bcontents"
+											<c:if test= "${col=='bcontents'}"> selected </c:if>>내용</option>
+										<option value="btitle_bcontents"
+											<c:if test= "${col=='btitle_bcontents'}"> selected</c:if>>제목+내용</option>
+										<option value="total"
+											<c:if test= "${col=='total'}"> selected </c:if>>전체출력</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Enter 검색어"
+										name="bword" value="${bword}">
+								</div>
+								<button type="submit" class="btn btn-default">검색</button>
+								<br /> <br />
+							</form>
 
-				<div class="post-blog">
-					<div class="blog-content">
-						<h3 style="font-weight: bold">내가 작성한 게시물</h3>
+							<script></script>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>제목</th>
+										<th>등록 날짜</th>
+										<th>조회수</th>
+										<th>수정</th>
+										<th>삭제</th>
+									</tr>
+								</thead>
 
-						<form class="form-inline" action="${root }/member/mypage">
-							<div class="form-group">
-								<select class="form-control" name="col">
-									<option value="btitle"
-										<c:if test= "${col=='btitle'}"> selected </c:if>>제목</option>
-									<option value="bcontents"
-										<c:if test= "${col=='bcontents'}"> selected </c:if>>내용</option>
-									<option value="btitle_bcontents"
-										<c:if test= "${col=='btitle_bcontents'}"> selected</c:if>>제목+내용</option>
-									<option value="total"
-										<c:if test= "${col=='total'}"> selected </c:if>>전체출력</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Enter 검색어"
-									name="bword" value="${bword}">
-							</div>
-							<button type="submit" class="btn btn-default">검색</button>
-							<br /> <br />
-						</form>
-
-						<script></script>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>제목</th>
-									<th>등록 날짜</th>
-									<th>조회수</th>
-									<th>수정</th>
-									<th>삭제</th>
-								</tr>
-							</thead>
-
-							<tbody>
+								<tbody>
 
 
-								<c:choose>
+									<c:choose>
 
-									<c:when test="${empty bdto}">
-										<tr>
-											<td colspan="6">작성하신 글이 없습니다.</td>
-									</c:when>
-
-									<c:otherwise>
-										<c:forEach var="bdto" items="${bdto}">
+										<c:when test="${empty bdto}">
 											<tr>
+												<td colspan="6">작성하신 글이 없습니다.</td>
+										</c:when>
 
-												<td><a
-													href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">${bdto.btitle}</a>
-													<c:if test="${util:newImg(fn:substring(bdto.bdate,0,10)) }">
-														<img
-															src="${pageContext.request.contextPath}/images/new.gif">
-													</c:if></td>
-												<td>${bdto.bdate}</td>
-												<td>${bdto.bview}</td>
-												<td style="font-size: 20px;"><a
-													href="${root }/bbs/update?bbsno=${bdto.bbsno }"><img
-														src="${root }/images/edit-solid.svg" style="width: 15px;"></a></td>
-												<td style="font-size: 20px;"><a
-													href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img
-														src="${root }/images/trash-alt-solid.svg"
-														style="width: 13px;"></a></td>
-											</tr>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							</tbody>
+										<c:otherwise>
+											<c:forEach var="bdto" items="${bdto}">
+												<tr>
 
-						</table>
+													<td><a
+														href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">${bdto.btitle}</a>
+														<c:if
+															test="${util:newImg(fn:substring(bdto.bdate,0,10)) }">
+															<img
+																src="${pageContext.request.contextPath}/images/new.gif">
+														</c:if></td>
+													<td>${bdto.bdate}</td>
+													<td>${bdto.bview}</td>
+													<td style="font-size: 20px;"><a
+														href="${root }/bbs/update?bbsno=${bdto.bbsno }"><img
+															src="${root }/images/edit-solid.svg" style="width: 15px;"></a></td>
+													<td style="font-size: 20px;"><a
+														href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img
+															src="${root }/images/trash-alt-solid.svg"
+															style="width: 13px;"></a></td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</tbody>
+
+							</table>
 
 
-						${mpaging}
-
+							${mpaging}
+						</div>
 					</div>
 					<!-- /.blog-content -->
 				</div>
-				<!-- /.post-blog -->
-
+				<!-- /.col-md-12 -->
 			</div>
-			<!-- /.col-md-12 -->
-
+			<!--  side bar  -->
 		</div>
 		<!-- /.row -->
 
+		<!--  게시물 목록  -->
 
 
-		<div class="row">
+		<!--  리뷰 목록 -->
+
+		<div class="row" id=review>
 			<div class="col-md-12">
 
-				<div class="post-blog"></div>
-				<!-- /.post-blog -->
+				<div class="blog-content">
+					<br>
+					<br>
+					<br>
+					<h3 style="font-weight: bold">내가 작성한 리뷰</h3>
 
-				<div class="post-blog">
-					<div class="blog-content">
-						<h3 style="font-weight: bold">내가 작성한 리뷰</h3>
-
-						<form class="form-inline" action="${root }/member/mypage">
-							<div class="form-group">
-								<select class="form-control" name="col">
-									<option value="htitle"
-										<c:if test= "${col=='htitle'}"> selected </c:if>>제목</option>
-									<option value="hcontents"
-										<c:if test= "${col=='hcontents'}"> selected </c:if>>내용</option>
-									<option value="htitle_hcontents"
-										<c:if test= "${col=='htitle_hcontents'}"> selected</c:if>>제목+내용</option>
-									<option value="total"
-										<c:if test= "${col=='total'}"> selected </c:if>>전체출력</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Enter 검색어"
-									name="rword" value="${rword}">
-							</div>
-							<button type="submit" class="btn btn-default">검색</button>
-							<br /> <br />
-						</form>
-
-
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>경기장</th>
-									<th>제목</th>
-									<th>식당 이름</th>
-									<th>등록 날짜</th>
-									<th>내가 준 별점</th>
-									<th>수정</th>
-									<th>삭제</th>
-								</tr>
-							</thead>
-
-							<tbody>
+					<form class="form-inline" action="${root }/member/mypage">
+						<div class="form-group">
+							<select class="form-control" name="col">
+								<option value="htitle"
+									<c:if test= "${col=='htitle'}"> selected </c:if>>제목</option>
+								<option value="hcontents"
+									<c:if test= "${col=='hcontents'}"> selected </c:if>>내용</option>
+								<option value="htitle_hcontents"
+									<c:if test= "${col=='htitle_hcontents'}"> selected</c:if>>제목+내용</option>
+								<option value="total"
+									<c:if test= "${col=='total'}"> selected </c:if>>전체출력</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Enter 검색어"
+								name="rword" value="${rword}">
+						</div>
+						<button type="submit" class="btn btn-default">검색</button>
+						<br /> <br />
+					</form>
 
 
-								<c:choose>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>경기장</th>
+								<th>제목</th>
+								<th>식당 이름</th>
+								<th>등록 날짜</th>
+								<th>내가 준 별점</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
 
-									<c:when test="${empty rdto}">
+						<tbody>
+
+
+							<c:choose>
+
+								<c:when test="${empty rdto}">
+									<tr>
+										<td colspan="7">작성하신 리뷰가 없습니다.</td>
+								</c:when>
+
+								<c:otherwise>
+									<c:forEach var="rdto" items="${rdto}">
 										<tr>
-											<td colspan="7">작성하신 리뷰가 없습니다.</td>
-									</c:when>
+											<td>[ <c:if test="${rdto.stadium == 1}">서울 잠실</c:if> <c:if
+													test="${rdto.stadium == 2}">서울 고척</c:if> <c:if
+													test="${rdto.stadium == 3}">인천</c:if> <c:if
+													test="${rdto.stadium == 4}">수원</c:if> <c:if
+													test="${rdto.stadium == 5}">대전</c:if> <c:if
+													test="${rdto.stadium == 6}">광주</c:if> <c:if
+													test="${rdto.stadium == 7}">대구</c:if> <c:if
+													test="${rdto.stadium == 8}">창원</c:if> <c:if
+													test="${rdto.stadium == 9}">부산 사직</c:if> ]
+											</td>
+											<td><a
+												href="${root }/review/read?hugino=${rdto.hugino}${urlhelper}">${rdto.htitle}</a>
 
-									<c:otherwise>
-										<c:forEach var="rdto" items="${rdto}">
-											<tr>
-												<td>[ <c:if test="${rdto.stadium == 1}">서울 잠실</c:if> <c:if
-														test="${rdto.stadium == 2}">서울 고척</c:if> <c:if
-														test="${rdto.stadium == 3}">인천</c:if> <c:if
-														test="${rdto.stadium == 4}">수원</c:if> <c:if
-														test="${rdto.stadium == 5}">대전</c:if> <c:if
-														test="${rdto.stadium == 6}">광주</c:if> <c:if
-														test="${rdto.stadium == 7}">대구</c:if> <c:if
-														test="${rdto.stadium == 8}">창원</c:if> <c:if
-														test="${rdto.stadium == 9}">부산 사직</c:if> ]
-												</td>
-												<td><a
-													href="${root }/review/read?hugino=${rdto.hugino}${urlhelper}">${rdto.htitle}</a>
+											</td>
+											<td><a href="${rdto.sikurl }">${rdto.sikname }</a></td>
+											<td>${rdto.hdate}</td>
+											<td><c:if test="${rdto.star == 1}">★</c:if> <c:if
+													test="${rdto.star == 2}">★★</c:if> <c:if
+													test="${rdto.star == 3}">★★★</c:if> <c:if
+													test="${rdto.star == 4}">★★★★</c:if> <c:if
+													test="${rdto.star == 5}">★★★★★</c:if></td>
 
-												</td>
-												<td><a href="${rdto.sikurl }">${rdto.sikname }</a></td>
-												<td>${rdto.hdate}</td>
-												<td><c:if test="${rdto.star == 1}">★</c:if> <c:if
-														test="${rdto.star == 2}">★★</c:if> <c:if
-														test="${rdto.star == 3}">★★★</c:if> <c:if
-														test="${rdto.star == 4}">★★★★</c:if> <c:if
-														test="${rdto.star == 5}">★★★★★</c:if></td>
+											<td style="font-size: 20px;"><a
+												href="${root }/review/update?hugino=${rdto.hugino }${urlhelper}&mtest=y">
+													<img src="${root }/images/edit-solid.svg"
+													style="width: 15px;">
+											</a></td>
 
-												<td style="font-size: 20px;"><a
-													href="${root }/review/update?hugino=${rdto.hugino }${urlhelper}&mtest=y">
-														<img src="${root }/images/edit-solid.svg"
-														style="width: 15px;">
-												</a></td>
+											<td style="font-size: 20px;"><a
+												href="${root }/review/delete?hugino=${rdto.hugino }${urlhelper}&mtest=y">
+													<img src="${root }/images/trash-alt-solid.svg"
+													style="width: 13px;">
+											</a></td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</tbody>
 
-												<td style="font-size: 20px;"><a
-													href="${root }/review/delete?hugino=${rdto.hugino }${urlhelper}&mtest=y">
-														<img src="${root }/images/trash-alt-solid.svg"
-														style="width: 13px;">
-												</a></td>
-											</tr>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							</tbody>
-
-						</table>
-						${rpaging}
-					</div>
-					<!-- /.blog-content -->
+					</table>
+					${rpaging}
 				</div>
-				<!-- /.post-blog -->
+				<!-- /.blog-content -->
 			</div>
 			<!-- /.col-md-12 -->
 		</div>
@@ -340,11 +356,12 @@ td {
 
 
 
+		<!--  리뷰 목록 -->
 
 
 
 
-
+		<!-- 티켓 게시글  -->
 		<div class="row">
 			<div class="col-md-12">
 
@@ -429,7 +446,12 @@ td {
 				</div>
 			</div>
 		</div>
+	<div class="col-md-6 col-sm-6" style="margin-left:80%;">
+		<button class="btn btn-red" onclick="location.href='${root }/member/delete?id=${mdto.id}'">회원 탈퇴</button>
+		<button class="btn btn-default2" onclick="location.href='#top'">Top으로 이동</button>
+	</div><br/><br/>
 	</div>
+
 
 </body>
 </html>
