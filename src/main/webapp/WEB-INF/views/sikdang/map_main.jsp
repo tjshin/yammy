@@ -150,7 +150,7 @@
 		</script>
 		<script>
 			var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-			
+						
 			for (var i = 0; i < arr.length; i += 9) {			    
 			    var imageSize = new kakao.maps.Size(24, 35); 
 			    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
@@ -162,16 +162,13 @@
 			        image : markerImage,
 			        clickable: true
 			    });	
-			    
-			    var copycontent = arr[i+1]\narr[i+3]\narr[i+4]\narr[i+2];
-			    			    
+			    			    			    
 			    var infowindow = new kakao.maps.InfoWindow({
-			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:220px;">' +
+			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:190px;">' +
 			    				'<h5>' + arr[i+1] +'</h5>' + 
 			    				arr[i+3] + '<br>' + 
 			    				arr[i+4] + '<br>' +
-			    				arr[i+2] + '<br>' +
-			    				'<button onclick="copyToClipBoard()">연락처 복사</button><br>' +
+			    				arr[i+2] + '<br>' +			    				
 			    				'인접 구장과의 거리: ' + arr[i+8] + 'm<br>' + 			    				
 			    				'<a href="${root}/review/list?col=sikname&word=' +
 			    				arr[i+1] + '">' + 
@@ -187,12 +184,7 @@
 			    	};
 			    }			    
 			}
-
-		    function copyToClipBoard() {
-		    	copycontent.select();
-		    	document.execCommand('copy');
-		    	alert("복사 완료!");
-		    }
+		   
 		</script>
 		
 	</article>
