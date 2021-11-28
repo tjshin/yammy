@@ -50,4 +50,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.update(dto);
 	}
 
+	@Override
+	public int admintotal(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.admintotal(map);
+	}
+
+	@Override
+	public List<ReplyDTO> adminlist(Map map) {
+		// TODO Auto-generated method stub
+		return mapper.adminlist(map);
+	}
+
 }
