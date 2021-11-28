@@ -58,7 +58,7 @@ td {
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">${mdto.mname}님의 마이페이지</h2>
+						<h2 class="page-title">${mdto.mname}님의마이페이지</h2>
 					</div>
 					<!-- /.col-md-6 -->
 
@@ -67,7 +67,6 @@ td {
 			</div>
 			<!-- /.container -->
 		</div>
-		<!-- /.parallax-overlay -->
 	</div>
 	<!-- /.pageTitle -->
 
@@ -78,8 +77,8 @@ td {
 					<span class="glyphicon glyphicon-user"></span>
 				</h3>
 				<img class="img-rounded" src="/member/storage/${mdto.filename}"
-					style="width: 200px"><br />
-				<br /> <a href="/member/updateFile?oldfile=${mdto.filename}"
+					style="width: 200px"><br /> <br /> <a
+					href="/member/updateFile?oldfile=${mdto.filename}"
 					class="main-button accent-color">사진 수정</a> <a
 					href="/member/download?filename=${mdto.filename}"
 					class="main-button accent-color">다운로드</a>
@@ -162,8 +161,7 @@ td {
 									name="bword" value="${bword}">
 							</div>
 							<button type="submit" class="btn btn-default">검색</button>
-							<br />
-							<br />
+							<br /> <br />
 						</form>
 
 						<script></script>
@@ -192,13 +190,12 @@ td {
 										<c:forEach var="bdto" items="${bdto}">
 											<tr>
 
-												<td>[${bdto.bcate}] <a
-													href="javascript:read('${bdto.bbsno}')">${bdto.btitle}</a>
+												<td><a
+													href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">${bdto.btitle}</a>
 													<c:if test="${util:newImg(fn:substring(bdto.bdate,0,10)) }">
 														<img
 															src="${pageContext.request.contextPath}/images/new.gif">
-													</c:if>
-												</td>
+													</c:if></td>
 												<td>${bdto.bdate}</td>
 												<td>${bdto.bview}</td>
 												<td style="font-size: 20px;"><a
@@ -260,8 +257,7 @@ td {
 									name="rword" value="${rword}">
 							</div>
 							<button type="submit" class="btn btn-default">검색</button>
-							<br />
-							<br />
+							<br /> <br />
 						</form>
 
 
@@ -379,8 +375,7 @@ td {
 							<button class="btn btn-default">검색</button>
 							<button class="btn btn-default2" type="button"
 								onclick="location.href='${root }/ticket/create'">등록</button>
-							<br />
-							<br />
+							<br /> <br />
 						</form>
 						<br />
 
@@ -408,9 +403,11 @@ td {
 											</a>
 
 											<div>
-												<li><b>${tdto.stadium}</b></li>
-												<li>${tdto.tickettitle}</li> <a
-													href="${root}/ticket/update/${tdto.ticketno}"><img
+												<ul>
+													<li><b>${tdto.stadium}</b></li>
+													<li>${tdto.tickettitle}</li>
+												</ul>
+												<a href="${root}/ticket/update/${tdto.ticketno}"><img
 													src="${root }/images/edit-solid.svg" style="width: 15px;"></a>
 												<a
 													href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img
@@ -424,35 +421,9 @@ td {
 									</c:forEach>
 								</div>
 								<br />
-
-								<div class="row">
-									<c:forEach var="tdto" begin="4" end="7" items="${tdto}">
-										<div class="col-sm-3">
-
-											<a href="${root }/ticket/detail?ticketno=${tdto.ticketno}">
-												<img src="/ticket/storage/${tdto.filename}"
-												class="img-rounded" width="236" height="306">
-											</a>
-											<div class="txt_line">
-
-												<li><b>${tdto.stadium}</b></li>
-												<li>${tdto.tickettitle}</li> <a
-													href="${root}/ticket/update/${tdto.ticketno}"><img
-													src="${root }/images/edit-solid.svg" style="width: 15px;"></a>
-												<a
-													href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img
-													src="${root }/images/camera-retro-solid.svg"
-													style="width: 15px;"></a> <a
-													href="${root}/ticket/delete?ticketno=${tdto.ticketno}"><img
-													src="${root }/images/trash-alt-solid.svg"
-													style="width: 13px;"></a>
-
-											</div>
-										</div>
-									</c:forEach>
-								</div>
-        ${tpaging}
-        </c:otherwise>
+								
+					        ${tpaging}
+					        </c:otherwise>
 						</c:choose>
 					</div>
 				</div>
