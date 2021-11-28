@@ -448,7 +448,6 @@ td {
 		</div>
 	<div class="col-md-6 col-sm-6" style="margin-left:80%;">
 		<button class="btn btn-red" onclick="location.href='${root }/member/delete?id=${mdto.id}'">회원 탈퇴</button>
-		<button class="btn btn-default2" onclick="location.href='#top'">Top으로 이동</button>
 	</div><br/><br/>
 	</div>
 
