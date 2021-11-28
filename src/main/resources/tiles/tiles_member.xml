@@ -89,7 +89,7 @@
 			value="/WEB-INF/views/member/createError.jsp" />
 	</definition>
 
-	<definition name="/admin/read" extends="main">
+	<definition name="/admin/member/read" extends="main">
 		<put-attribute name="title" value="회원정보"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/read.jsp" />

@@ -414,23 +414,23 @@ public class MemberController {
 		
 		if (cnt == 1) {
 			model.addAttribute("id", dto.getId());
-			return "redirect:/admin/member/read";
+
+			return "redirect:/admin/member/list";
 		} else {
 			return "/errorMsg";
 		}
 	}
 
-	@GetMapping("/admin/read")
-	public String read(String id, HttpSession session, Model model) {
-		if (id == null) {
-			id = (String) session.getAttribute("id");
-		}
-
+	@GetMapping("/admin/member/read")
+	public String read(HttpServletRequest request, Model model) {
+		
+		String id = request.getParameter("id");
+		
 		MemberDTO dto = service.read(id);
 
 		model.addAttribute("dto", dto);
 
-		return "/admin/read";
+		return "/admin/member/read";
 	}
 
 	@PostMapping("/member/updateFile")
