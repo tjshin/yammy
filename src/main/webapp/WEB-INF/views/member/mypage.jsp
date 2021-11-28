@@ -151,7 +151,6 @@ td {
 			</div>
 		</div>
 
-
 		<!--  게시물 목록  -->
 		<div class="row" id=board>
 			<div class="col-md-12">
@@ -238,6 +237,7 @@ td {
 					<!-- /.blog-content -->
 				</div>
 				<!-- /.col-md-12 -->
+
 			</div>
 			<!--  side bar  -->
 		</div>
@@ -252,9 +252,7 @@ td {
 			<div class="col-md-12">
 
 				<div class="blog-content">
-					<br>
-					<br>
-					<br>
+					<br> <br> <br>
 					<h3 style="font-weight: bold">내가 작성한 리뷰</h3>
 
 					<form class="form-inline" action="${root }/member/mypage">
@@ -447,9 +445,15 @@ td {
 			</div>
 		</div>
 
-
-		<!-- 티켓 게시글  -->
+		<div class="col-md-6 col-sm-6" style="margin-left: 80%;">
+			<button class="btn btn-red"
+				onclick="location.href='${root }/member/delete?id=${mdto.id}'">회원
+				탈퇴</button>
+		</div>
+		<br />
+		<br />
 	</div>
+
 
 </body>
 </html>

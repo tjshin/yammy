@@ -64,7 +64,7 @@ public class EmailController {
 
 		return "/member/checkEmail";
 	}else {
-		return "/erroMsg";
+		return "/member/findError";
 		}
 	}
 	

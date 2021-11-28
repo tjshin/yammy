@@ -46,7 +46,7 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">게시글 조회></h2>
+						<h2 class="page-title">게시글 조회</h2>
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
@@ -178,12 +178,12 @@
 						<div class="row">
 							<div class="col-md-12">
 								<p>
-									<label for="hrecontents">댓글 내용:</label>
+									<label for="recontents">댓글 내용:</label>
 									<c:if test="${sessionScope.id == null }">
-										<textarea id="hrecontents" name="recontents" rows="5" readonly>댓글은 로그인 후 남길 수 있습니다.</textarea>
+										<textarea id="recontents" name="recontents" rows="5" readonly>댓글은 로그인 후 남길 수 있습니다.</textarea>
 									</c:if>
 									<c:if test="${sessionScope.id != null }">
-										<textarea id="hrecontents" name="recontents" rows="5"></textarea>
+										<textarea id="recontents" name="recontents" rows="5"></textarea>
 									</c:if>
 
 								</p>

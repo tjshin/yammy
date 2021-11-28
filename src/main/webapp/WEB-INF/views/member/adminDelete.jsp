@@ -43,7 +43,7 @@
 			form.check.focus();
 			return false;
 		} else {
-			alert("탈퇴 처리 되었습니다. 안녕히 가십시오.");
+			alert("${dto.nick} 님이 탈퇴되었습니다.");
 			form.submit();
 		}
 	}
@@ -81,10 +81,10 @@
 	<!-- /.pageTitle -->
     <section class="cta clearfix">
 	<div class="container">
-		<form class="form-horizontal" action="/member/delete"
-			method="post" id="form">
+		<form class="form-horizontal" action="/admin/member/delete"
+			method="post" id="form" onsubmit="idCheck()">
 			<input type="hidden" name="id" value="${dto.id}"> <br />
-			<p id="red">탈퇴하시면 작성하신 모든 글이 삭제되며 복구하실 수 없습니다.</p>
+			<p id="red">탈퇴시키면 복구할 수 없습니다.</p>
 			<input type="text" class="form-control" style="width: 30%; margin-left:34%;"
 				id="check" name="check"
 				placeholder="'delete ${dto.nick }' (을)를 입력하세요."><br />
