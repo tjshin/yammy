@@ -20,8 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.study.reviewlike.ReviewlikeService;
 import com.study.reviewreply.ReviewreplyService;
 import com.study.sikdang.SikdangDTO;
-import com.study.sikdang.SikdangService;
-import com.study.utility.Distance;
 import com.study.utility.Utility;
 
 @Controller
@@ -30,10 +28,6 @@ public class ReviewController {
 	@Autowired
 	@Qualifier("com.study.review.ReviewServiceImpl")
 	private ReviewService service;
-	
-	@Autowired
-	@Qualifier("com.study.sikdang.SikdangServiceImpl")
-	private SikdangService sikdangservice;
 	
 	@Autowired
 	@Qualifier("com.study.reviewreply.ReviewreplyServiceImpl")
@@ -122,55 +116,9 @@ public class ReviewController {
 		String sikid = request.getParameter("sikid");		
 		String id = (String)session.getAttribute("id");
 		dto.setSikid(sikid);
-		dto.setId(id);
-		
-		//거리 계산
-		SikdangDTO sdto = sikdangservice.read(sikid);
-		String cox = sdto.getCox();
-		String coy = sdto.getCoy();
-		double dcox = Double.parseDouble(cox);
-		double dcoy = Double.parseDouble(coy);
-		double stax = 0;
-		double stay = 0;		
-		int stadium = dto.getStadium();
-		sdto.setNearsta(stadium);
-		
-		switch(stadium) {
-			case 1: stay = 37.5121513808403;
-					stax = 127.071909507224;					
-					break;//잠실
-			case 2: stay = 37.4982338495579;
-					stax = 126.867104761712;
-					break;//고척
-			case 3: stay = 37.436998685442084;
-					stax = 126.69327612453377;
-					break;//인천
-			case 4: stay = 37.2997302532973;
-					stax = 127.009772045935;
-					break;//수원
-			case 5: stay = 36.3170804578898;
-					stax = 127.429163729933;
-					break;//대전
-			case 6: stay = 35.16820922209541;
-					stax = 126.88911206152956;
-					break;//광주
-			case 7: stay = 35.8410595632468;
-					stax = 128.681659448344;
-					break;//대구
-			case 8: stay = 35.22242918856418;
-					stax = 128.58209037232203;
-					break;//창원
-			case 9: stay = 35.1940192576625;
-					stax = 129.061550650471;
-					break;//사직
-		}
-		
-		double stadist = Distance.distance(stay, stax, dcoy, dcox);
-		sdto.setDistance(stadist);		
+		dto.setId(id);					
 				
 		if (service.create(dto) > 0) {
-			sikdangservice.distance(sdto);
-			sikdangservice.nearsta(sdto);
 			return "redirect:/review/list";			
 		} else {
 			return "/review/error";

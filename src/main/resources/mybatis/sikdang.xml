@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	sikid, sikname, sikphone, roadadd,
 	jibunadd, sikurl, cox, coy, distance, nearsta)
 	values(#{sikid}, #{sikname}, #{sikphone}, #{roadadd},
-	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, 0, 0)
+	#{jibunadd}, #{sikurl}, #{cox}, #{coy}, #{distance}, #{nearsta})
 </insert>
 
 <select id="checkId" parameterType="String" resultType="int">
@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" resultType="com.study.sikdang.SikdangDTO">
 	select * from sikdang
+	order by nearsta, distance 
 </select>
 
 <select id="maplist" parameterType="int" resultType="com.study.sikdang.SikdangDTO">
@@ -110,17 +111,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			on s.sikid = jt.sikid
 	where s.sikid = #{sikid}
 </select>
-
-<update id="distance" parameterType="com.study.sikdang.SikdangDTO">
-	update sikdang
-	set distance = #{distance}
-	where sikid = #{sikid}
-</update>
-
-<update id="nearsta" parameterType="com.study.sikdang.SikdangDTO">
-	update sikdang
-	set nearsta = #{nearsta}
-	where sikid = #{sikid}
-</update>
     
 </mapper>

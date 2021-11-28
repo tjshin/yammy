@@ -20,10 +20,6 @@ public interface SikdangService {
 	int delete(String sikid);
 
 	SikdangDTO read(String sikid);
-	
-	int distance(SikdangDTO sdto);
-
-	int nearsta(SikdangDTO sdto);
 
 	List<SikdangDTO> maplist(int nearsta);
 

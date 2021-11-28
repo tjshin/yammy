@@ -33,6 +33,39 @@ function showList() {
 				
 				str += "<tr><td>" + list[i].sikname + "</td>";
 				str += "<td>" + reviewsearch + list[i].sikname +"'>리뷰 보러가기</a>";
+				str += "<td>";
+				switch(list[i].nearsta){
+					case 1:
+						str += "잠실야구장";
+						break;
+					case 2:
+						str += "고척스카이돔";
+						break;
+					case 3:
+						str += "인천SSG랜더스필드";
+						break;
+					case 4:
+						str += "수원케이티위즈파크";
+						break;
+					case 5:
+						str += "한화생명이글스파크";
+						break;
+					case 6:
+						str += "광주기아챔피언스필드";
+						break;
+					case 7:
+						str += "대구삼성라이온즈파크";
+						break;
+					case 8:
+						str += "창원NC파크";
+						break;
+					case 9:
+						str += "사직야구장";
+						break;
+					default:
+					 break;
+				}
+				str += "</td>";
 				str += "<td>" + list[i].distance + "</td></tr>"
 			}
 			listUL.html(str);

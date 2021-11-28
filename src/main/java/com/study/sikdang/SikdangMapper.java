@@ -21,10 +21,6 @@ public interface SikdangMapper {
 
 	SikdangDTO read(String sikid);
 	
-	int distance(SikdangDTO sdto);
-
-	int nearsta(SikdangDTO sdto);
-
 	List<SikdangDTO> maplist(int nearsta);
 
 }

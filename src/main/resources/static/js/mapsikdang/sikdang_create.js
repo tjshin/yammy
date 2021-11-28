@@ -118,6 +118,109 @@ function displayPlaces(places) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
+	
+	// 각 항목 별로 모든 구장과의 거리를 계산 시작!
+	var jamsilline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(37.5121513808403, 127.071909507224),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var gocheokline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(37.4982338495579, 126.867104761712),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var incheonline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(37.436998685442084, 126.69327612453377),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var suwonline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(37.2997302532973, 127.009772045935),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var daejeonline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(36.3170804578898, 127.429163729933),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var gwangjuline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(35.16820922209541, 126.88911206152956),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var daeguline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(35.8410595632468, 128.681659448344),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var changwonline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(35.22242918856418, 128.58209037232203),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var sajikline = new kakao.maps.Polyline({
+		path: [
+			new kakao.maps.LatLng(35.1940192576625, 129.061550650471),
+			new kakao.maps.LatLng(places.y, places.x)
+		]
+	});
+	var lengthlist = [
+		jamsilline.getLength(),
+		gocheokline.getLength(),
+		incheonline.getLength(),
+		suwonline.getLength(),
+		daejeonline.getLength(),
+		gwangjuline.getLength(),
+		daeguline.getLength(),
+		changwonline.getLength(),
+		sajikline.getLength(),
+	];
+	// 계산된 거리를 배열에 담은 후 최소값 구한다
+	var minlength = Math.min.apply(null, lengthlist);
+	// 최소값을 switch 조건문에 넣고 인접구장을 번호로 리턴
+	switch(minlength) {
+		case jamsilline.getLength():
+			var nearsta = 1;
+			break;
+		case gocheokline.getLength():
+			nearsta = 2;
+			break;
+		case incheonline.getLength():
+			nearsta = 3;
+			break;
+		case suwonline.getLength():
+			nearsta = 4;
+			break;
+		case daejeonline.getLength():
+			nearsta = 5;
+			break;
+		case gwangjuline.getLength():
+			nearsta = 6;
+			break;
+		case daeguline.getLength():
+			nearsta = 7;
+			break;
+		case changwonline.getLength():
+			nearsta = 8;
+			break;
+		case sajikline.getLength():
+			nearsta = 9;
+			break;
+		default:
+			break;
+	}
+//	console.log('가까운 구장과의 거리:' + minlength);
+//	console.log('가까운 구장 번호:' + nearsta);
 
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
@@ -144,6 +247,8 @@ function getListItem(index, places) {
       '<input type="hidden" name="sikurl" value="' + places.place_url + '">' +
       '<input type="hidden" name="cox" value="' + places.x + '">' +
       '<input type="hidden" name="coy" value="' + places.y + '">' +
+      '<input type="hidden" name="distance" value="' + minlength + '">' +
+      '<input type="hidden" name="nearsta" value="' + nearsta + '">' +
       '<button class="mainBtn">' + places.place_name +
       ' DB 생성하기</button></form>';
 
