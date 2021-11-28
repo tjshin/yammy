@@ -12,11 +12,14 @@ public interface ReplyMapper {
 	int total(int bbsno);
 
 	List<ReplyDTO> list(Map map);
-	
+
 	int delete(int reno);
 
 	ReplyDTO read(int reno);
 
 	int update(ReplyDTO dto);
-	
+
+	int admintotal(Map map);
+
+	List<ReplyDTO> adminlist(Map map);
 }

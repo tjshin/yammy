@@ -118,7 +118,7 @@
 									class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
 							<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 							<li><a href="${root}/admin/message/list">전체 쪽지 목록</a></li>
-							<li><a href="#">전체 게시판 댓글 목록</a></li>
+							<li><a href="${root}/admin/bbs/reply/list>전체 게시판 댓글 목록</a></li>
 							<li><a href="${root }/admin/review/reply/list">전체 리뷰 댓글 목록</a></li>
 							<li><a href="${root }/admin/ocrtest">OCR 실험실</a></li>
 						</ul></li>
@@ -239,7 +239,7 @@
 															class="glyphicon glyphicon-list"></span> 회원 목록</a></li>
 													<li><a href="${root}/admin/sikdang/list">맛집 목록</a></li>
 													<li><a href="${root}/admin/message/list">전체 쪽지 목록</a></li>
-													<li><a href="#">전체 게시판 댓글 목록</a></li>
+													<li><a href="${root}/admin/bbs/reply/list">전체 게시판 댓글 목록</a></li>
 													<li><a href="${root }/admin/review/reply/list">전체 리뷰 댓글 목록</a></li>
 													<li><a href="${root }/admin/ocrtest">OCR 실험실</a></li>
 												</ul></li>
