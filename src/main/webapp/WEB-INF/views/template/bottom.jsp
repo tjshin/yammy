@@ -4,6 +4,39 @@
 <head>
 <meta charset="UTF-8">
 <title>footer</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function() {
+	  $(window).scroll(function() {
+	    if ($(this).scrollTop() > 250) {
+	      $('#topBtn').fadeIn();
+	    } else {
+	      $('#topBtn').fadeOut();
+	    }
+	  });
+
+	  $("#topBtn").click(function() {
+	    $('html, body').animate({
+	      scrollTop : 0
+	    }, 400);
+	    return false;
+	  });
+	});
+</script>
+
+<style>
+#topBtn { 
+position: fixed; /* 포지션 고정 */
+right: 40px;
+bottom: 100px; /* 밑에서 100px */ 
+display: none; /* 보여지지 없음 - 기본적으로 안보여지게 */ 
+z-index: 9999; /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
+
+ }
+
+
+</style>
+
 </head>
 <body>
 
@@ -11,6 +44,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
+			
+				    <a id="topBtn" class="main-button accent-color" href="#">▲TOP</a>
+				
 					<nav class="footer-nav clearfix">
 						<ul class="footer-menu">
 							<li><a href="${root }/">Home</a></li>
