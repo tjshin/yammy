@@ -161,15 +161,18 @@
 			        title : arr[i+1],
 			        image : markerImage,
 			        clickable: true
-			    });
+			    });	
 			    
+			    var copycontent = arr[i+1]\narr[i+3]\narr[i+4]\narr[i+2];
+			    			    
 			    var infowindow = new kakao.maps.InfoWindow({
-			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:180px;">' +
+			    	content : '<div style="padding:5px;font-size:14px;width:240px;height:220px;">' +
 			    				'<h5>' + arr[i+1] +'</h5>' + 
 			    				arr[i+3] + '<br>' + 
 			    				arr[i+4] + '<br>' +
 			    				arr[i+2] + '<br>' +
-			    				'인접 구장과의 거리: ' + arr[i+8] + 'm<br>' + 
+			    				'<button onclick="copyToClipBoard()">연락처 복사</button><br>' +
+			    				'인접 구장과의 거리: ' + arr[i+8] + 'm<br>' + 			    				
 			    				'<a href="${root}/review/list?col=sikname&word=' +
 			    				arr[i+1] + '">' + 
 			    				'리뷰 보러가기</a>' +			    				
@@ -182,8 +185,14 @@
 			    	return function() {
 			    		infowindow.open(map, marker);
 			    	};
-			    }
+			    }			    
 			}
+
+		    function copyToClipBoard() {
+		    	copycontent.select();
+		    	document.execCommand('copy');
+		    	alert("복사 완료!");
+		    }
 		</script>
 		
 	</article>
