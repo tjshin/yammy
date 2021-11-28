@@ -120,13 +120,65 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="bbs" parameterType="Map"
 		resultType="com.study.member.BbsDTO">
-		select bbsno, bcate, btitle, id, bview, to_char(bdate, 'yyyy-mm-dd')
-		bdate, r
-		from(
-		select bbsno, bcate, btitle, id, bview, bdate, rownum r
+			select bbsno, btitle, id, to_char(bdate,'yyyy-mm-dd HH24:MI:SS')
+		bdate, bview, bcontents, bcname ,bcnt, r, bbscate,rcnt
 		from (
-		select bbsno, bcate, btitle, id, bview, bdate
-		from bbs
+		select
+		bbsno, btitle,
+        id,
+		bdate, bview, bcontents, bcname ,bcnt, rownum r,
+		bbscate,rcnt
+		from (
+		select
+		b.bbsno bbsno ,
+		btitle,
+		b.id, bdate,
+		bview, bcontents,
+		bcategory.bcatename
+		as bcname, bcnt,bbscate,rcnt
+
+		from bbs b
+
+		inner join
+		(select
+		inb.bbsno, count(bcnt) bcnt
+
+
+		from bbs inb
+
+		left join
+		bbslike
+		on inb.bbsno =
+		bbslike.bbsno
+
+		group by
+		inb.bbsno) bjt
+		on b.bbsno =
+		bjt.bbsno
+
+
+		inner join
+		(select inb2.bbsno, count(reno) rcnt
+		from bbs inb2
+
+		left
+		join
+		reply
+		on
+		inb2.bbsno = reply.bbsno
+
+		group by inb2.bbsno)
+		bjt2
+
+		on
+		b.bbsno =
+		bjt2.bbsno
+
+
+		inner join
+		bcategory
+		on b.bcate =
+		bcategory.bcate
 
 		<where>
 			id = #{id}

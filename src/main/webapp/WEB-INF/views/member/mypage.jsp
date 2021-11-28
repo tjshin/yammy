@@ -169,9 +169,11 @@
                      <table class="table table-striped">
    <thead>
     <tr>
+    <th>머릿말</th>
     <th>제목</th>
     <th>등록 날짜</th>
     <th>조회수</th>
+    <th>추천수</th>
     <th>수정</th>
     <th>삭제</th>
     </tr>
@@ -189,16 +191,45 @@
 <c:otherwise>
    <c:forEach var="bdto" items="${bdto}"> 
    <tr>
-    <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}" />
-    <td><a href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">${bdto.btitle}</a>
-    <c:if test="${util:newImg(fn:substring(bdto.bdate,0,10)) }">
-         <img src="${pageContext.request.contextPath}/images/new.gif"> 
-    </c:if>
-    </td>
+   <td>${bdto.bcname}</td>
+    <c:set var="urlhelper" value="&col=${col}&word=${rword}&nowPage=${nowPage}"/>
+    <td><a href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">[ <c:choose>
+				<c:when test="${bdto.bbscate == 'jamsil'}">
+					잠실야구장 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'gocheok'}">
+					고척스카이돔 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'incheon'}">
+					인천SSG랜더스필드 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'suwon'}">
+					수원KT위즈파크 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'daejeon'}">
+					한화생명이글스파크 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'gwangju'}">
+					광주기아챔피언스필드 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'daegu'}">
+					대구삼성라이온즈파크 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'changwon'}">
+					창원NC파크 게시판
+				</c:when>
+				<c:when test="${bdto.bbscate == 'busan'}">
+					사직야구장 게시판
+				</c:when>
+				<c:otherwise>
+					bbscate : ${bdto.bbscate} 오류났다 고쳐라
+				</c:otherwise>
+			</c:choose>] ${bdto.btitle}[${bdto.rcnt}]</a></td>
     <td>${bdto.bdate}</td>
     <td>${bdto.bview}</td>
-    <td style="font-size:20px;"><a href="${root }/bbs/update?bbsno=${bdto.bbsno }"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
-    <td style="font-size:20px;"><a href="${root }/bbs/delete?bbsno=${bdto.bbsno }"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
+    <td>${bdto.bcnt}</td>
+    <td style="font-size:20px;"><a href="${root }/bbs/update?bbsno=${bdto.bbsno }${urlhelper}&mtest=y"><img src="${root }/images/edit-solid.svg" style="width:15px;"></a></td>
+    <td style="font-size:20px;"><a href="${root }/bbs/delete?bbsno=${bdto.bbsno }${urlhelper}&mtest=y"><img src="${root }/images/trash-alt-solid.svg" style="width:13px;"></a></td>
    </tr>
    </c:forEach>
    </c:otherwise>

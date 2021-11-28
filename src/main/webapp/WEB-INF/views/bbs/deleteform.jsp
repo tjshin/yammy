@@ -50,6 +50,7 @@
 					<form class="form-horizontal" action="./delete" method="post">
 						<input type="hidden" name="bbsno" value="${param.bbsno}">
 						<input type="hidden" name="bbscate" value="${param.bbscate}">
+						<input type='hidden' name="mtest" value="${param.mtest}">
 
 						<p id="red" class="col-sm-offset-3 col-sm-6">삭제하면 복구할 수 없습니다</p>
 					

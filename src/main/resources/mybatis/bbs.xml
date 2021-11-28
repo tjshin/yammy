@@ -23,18 +23,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.study.bbs.BbsDTO">
 	
         	select bbsno, btitle, nick, to_char(bdate,'yyyy-mm-dd HH24:MI:SS')
-		bdate, bview, bcontents, bcname ,bcnt, r,rcnt
+		bdate, bview, bcontents, bcname ,bcnt, r, rcnt ,bbscate
 		from (
 		select bbsno, btitle,
 		nick,rcnt,
-		bdate, bview, bcontents, bcname ,bcnt, rownum r
+		bdate, bview, bcontents, bcname ,bcnt, rownum r,bbscate
 		from (
 		select
 		b.bbsno bbsno ,
 		btitle,
 		member.nick nick, bdate, bview, bcontents,
 		bcategory.bcatename
-		as bcname, bcnt, rcnt
+		as bcname, bcnt, rcnt, bbscate
 
 		from bbs b
 
