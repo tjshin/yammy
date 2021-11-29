@@ -6,11 +6,6 @@
 <meta charset="UTF-8">
 <title>ticket create</title>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
 <script type="text/JavaScript">
         
  function checkIn(f){
@@ -53,15 +48,6 @@
  function goBack(){
      window.history.back();
              }
-
-
- 
- $( function() { 
-	 $( "#gamedate" ).datepicker({
-		 dateFormat: "yy-mm-dd"
-	 }); 
-  });
-
 
 
 </script>
@@ -161,7 +147,7 @@
     	<div class="form-group">
             <label class="control-label col-sm-2" for="gamedate" style="color: black; font-weight: bolder;">경기 날짜</label>
         <div class="col-sm-6">
-            <input type="text" name="gamedate" id="gamedate" class="form-control">
+            <input type="date" name="gamedate" id="gamedate" class="form-control">
         </div>
         </div>
         

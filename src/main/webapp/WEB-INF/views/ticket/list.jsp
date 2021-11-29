@@ -13,14 +13,14 @@
 <title>Insert title here</title>
 	<style type="text/css">
 
-
-		.txt_line {
+  .txt_line {
+			width: 200px;
+ 			white-space : nowrap; 
+ 			overflow: hidden; 
+  			text-overflow: ellipsis;
 			
-			white-space : nowrap; 
-			overflow: hidden; 
-			text-overflow: ellipsis;
 
-  }
+   }
 	</style>
 </head>
 
@@ -89,16 +89,23 @@
             
 			
             
-       		<div class ="txt_line">
+       		<div class ="col-sm-13">
 
 					<br>
+					<ul>
 					<li><b>${dto.stadium} </b> </li>
 					<li><b>경기 날짜 : ${dto.gamedate} </b></li>
-					<p style="margin-left:22px;">${dto.tickettitle}</p>
+					</ul>
+					
+		
+					<div class= "txt_line" style="margin-left:22px;">${dto.tickettitle}</div>
+					<br>
 					<p style ="color: #ff8c00; font-size:15px; text-align:right; margin-right:20px;"><span style="color:grey;">작성자 : </span>${dto.nick}</p>
 					
 			</div>
+			
             </div>
+            
             </c:forEach>
         </div>
         
@@ -110,13 +117,19 @@
             <img src="/ticket/storage/${dto.filename}" class="img-rounded"  width="236" height="290">
             </a>
             
-           <div class ="txt_line">
+          <div class ="col-sm-13">
+
 					<br>
-				    <li><b>${dto.stadium} </b> </li>
-					<li><b>경기 일자: ${dto.gamedate} </b> <br></li>
-					<p style="margin-left:22px;"> ${dto.tickettitle} </p>
+					<ul>
+					<li><b>${dto.stadium} </b> </li>
+					<li><b>경기 날짜 : ${dto.gamedate} </b></li>
+					</ul>
+					
+		
+					<div class= "txt_line" style="margin-left:22px;">${dto.tickettitle}</div>
+					<br>
 					<p style ="color: #ff8c00; font-size:15px; text-align:right; margin-right:20px;"><span style="color:grey;">작성자 : </span>${dto.nick}</p>
-			
+					
 			</div>
             </div>
             </c:forEach>
