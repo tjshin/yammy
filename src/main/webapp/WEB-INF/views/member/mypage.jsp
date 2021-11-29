@@ -51,7 +51,7 @@ td {
 		position: absolute;
 		top: 300px;
 		width: 700px;
-		left: 750px;
+		left: 950px;
 		z-index: 1;
 	}
 }
@@ -61,7 +61,7 @@ td {
 		position: absolute;
 		top: 650px;
 		width: 700px;
-		left: 750px;
+		left: 950px;
 		z-index: 1;
 	}
 }
@@ -395,7 +395,7 @@ td {
 		<!-- 티켓 게시글  -->
 		<div class="row">
 			<div class="col-md-12">
-
+				<br><br>
 				<div class="post-blog"></div>
 				<!-- /.post-blog -->
 
