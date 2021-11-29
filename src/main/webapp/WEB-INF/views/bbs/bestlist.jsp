@@ -32,11 +32,10 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title"><a onClick="window.location.reload()" style="cursor: pointer;">인기글 게시판</a></h2>
+						<h2 class="page-title">인기글 게시판</h2>
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 게시판 / 인기글 목록</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -45,11 +44,8 @@
 			<!-- /.container -->
 		</div>
 		<!-- /.parallax-overlay -->
-	</div>
+	</div><br/>
 	<div class="container">
-
-<h2>인기글 게시판</h2>
-
 		<form class="form-inline" action="/bbs/bestlist">
 			<div class="form-group">
 				<select class="form-control" name="col">
@@ -67,7 +63,8 @@
 					name="word" value="${word}"> <input type="hidden"
 					class="form-control" name="bbscate" value="${bbscate}">
 			</div>
-			<button type="submit" class="mainBtn">검색</button>
+			<button type="submit" class="btn btn-default">검색</button>&nbsp;
+			<a href="#" onClick="top.location='javascript:location.reload()'"><img src="${root }/images/refresh.svg" style="width:25px;"></a>
 
 		</form>
 

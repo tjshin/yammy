@@ -57,6 +57,8 @@ public class SikdangController {
 		dto.setSikurl(request.getParameter("sikurl"));
 		dto.setCox(request.getParameter("cox"));
 		dto.setCoy(request.getParameter("coy"));
+		dto.setDistance(Double.parseDouble(request.getParameter("distance")));
+		dto.setNearsta(Integer.parseInt(request.getParameter("nearsta")));
 		
 		model.addAttribute("sdto", dto);
 		

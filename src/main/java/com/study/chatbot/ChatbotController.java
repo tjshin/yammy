@@ -83,6 +83,7 @@ public class ChatbotController {
 				JSONObject data = (JSONObject) bubbles.get("data");
 				String description = "";
 				description = (String) data.get("description");
+
 				String url2 = (String)data.get("url");
 				chatMessage = description;
 				if(url2 != null) {

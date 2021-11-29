@@ -46,7 +46,7 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">게시글 조회></h2>
+						<h2 class="page-title">게시글 조회</h2>
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">

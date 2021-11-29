@@ -29,50 +29,45 @@
 <script>
 	function inCheck(f) {
 		if (f.id.value.length == 0) {
-			alert("아이디를 입력하세요");
+			alert("아이디를 입력하세요.");
 			f.id.focus();
 			return false;
 		}
-		if (f.passwd.value.length == 0) {
-			alert("비번을 입력하세요");
-			f.passwd.focus();
+		if (f.password.value.length == 0) {
+			alert("패스워드를 입력하세요.");
+			f.password.focus();
 			return false;
 		}
-		if (f.repasswd.value.length == 0) {
-			alert("비번확인을 입력하세요");
-			f.repasswd.focus();
+		if (f.repassword.value.length == 0) {
+			alert("패스워드 확인을 입력하세요.");
+			f.repassword.focus();
 			return false;
 		}
-		if (f.passwd.value != f.repasswd.value) {
-			alert("비번과 비번확인이 일치하지 않습니다.");
-			f.passwd.value = "";
-			f.repasswd.value = "";
-			f.passwd.focus();
+		if (f.password.value != f.repassword.value) {
+			alert("패스워드와 패스워드 확인이 일치하지 않습니다.");
+			f.password.value = "";
+			f.repassword.value = "";
+			f.password.focus();
 			return false;
 		}
 		if (f.mname.value.length == 0) {
-			alert("이름을 입력하세요");
+			alert("이름을 입력하세요.");
 			f.mname.focus();
 			return false;
 		}
 		if (f.nick.value.length == 0) {
-			alert("닉네임을 입력하세요");
+			alert("닉네임을 입력하세요.");
 			f.nick.focus();
 			return false;
 		}
 		if (f.tel.value.length == 0) {
-			alert("전화번호를 입력하세요");
+			alert("전화번호를 입력하세요.");
 			f.tel.focus();
 			return false;
 		}
 		if (f.email.value.length == 0) {
-			alert("이메일을 입력하세요");
+			alert("이메일을 입력하세요.");
 			f.email.focus();
-			return false;
-		}
-		if (f.job.selectedIndex == 0) {
-			alert("직업을 선택하세요.");
-			f.job.focus();
 			return false;
 		}
 	}
@@ -195,7 +190,7 @@
 	<div class="container">
 		<br /> <label class="col-sm-offset-2 col-sm-15">( <span id="need">*</span> 필수입력사항)</label> <br />
 
-		<form class="form-horizontal" action="create" method="post" name='frm'
+		<form class="form-horizontal" action="/member/create" method="post" name='frm'
 			enctype="multipart/form-data" onsubmit="return inCheck(this)">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="fnameMF">사진</label>
@@ -214,7 +209,7 @@
 				<button type="button" class="btn btn-default" style="width:100px;"
 					onclick="idCheck(document.frm.id.value)">ID 중복확인</button><br/>
 					<div style="margin-left:215px; height:35px; font-size:12px;">아이디는 영문과 숫자만을 포함해 15자 내로 입력해 주시기 바랍니다.</div>
-				<div id="idcheck"></div>
+				<div id="idcheck" style="margin-left:215px;"></div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="passwd"><span
@@ -247,9 +242,9 @@
 				</div>
 				<button type="button" class="btn btn-default" style="width:125px;"
 					onclick="nickCheck(document.frm.nick.value)">닉네임 중복확인</button>
-				<div id="nickcheck"></div>
 			</div>
 			<div style="margin-left:195px; height:35px; font-size:12px;">닉네임은 영문,한문과 숫자만을 포함해 7자 내로 입력해 주시기 바랍니다.</div>
+			<div id="nickcheck" style="margin-left:195px;"></div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone"><span
 					id="need">*</span>전화번호</label>
@@ -266,7 +261,7 @@
 
 				<button type="button" class="btn btn-default" style="width:120px;"
 					onclick="emailCheck(document.frm.email.value)">Email 중복확인</button>
-				<div id="emailcheck"></div>
+				<div id="emailcheck" style="margin-left:215px;"></div>
 
 			</div>
 			<div class="form-group">

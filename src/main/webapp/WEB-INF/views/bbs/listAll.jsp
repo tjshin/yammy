@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
-<c:set var="readurl" value="${root}/review/read?hugino=" />
+<c:set var="readurl" value="${root}/bbs/read?bbsno=" />
 <c:set var="urlhelper" value="&col=${col }&word=${word }&nowPage=${nowPage }"/>
 
 <!DOCTYPE html>
@@ -19,11 +19,11 @@
 			<div class="container pageTitle">
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
-						<h2 class="page-title">리뷰 댓글 DB 목록</h2>
+						<h2 class="page-title">게시판 댓글 DB 목록</h2>
 					</div> <!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
 
-						<span class="page-location">Home / 리뷰 댓글 DB 목록</span>
+						<span class="page-location">Home / 게시판 댓글 DB 목록</span>
 
 					</div> <!-- /.col-md-6 -->
 				</div> <!-- /.row -->
@@ -51,14 +51,14 @@
 
 		<br>
 
-		<form class="form-inline" method="post" action="${root}/admin/review/reply/list">
+		<form class="form-inline" method="post" action="${root}/admin/bbs/reply/list">
 			<div class="form-group">
 				<select class="form-control" name="col">
 					<option value="nick" <c:if test="${col=='nick'}"> selected </c:if>
 						>닉네임</option>
 					<option value="id" <c:if test="${col=='id'}"> selected </c:if>
 						>작성자 ID</option>
-					<option value="hrecontents" <c:if test="${col=='hrecontents'}"> selected </c:if>
+					<option value="recontents" <c:if test="${col=='recontents'}"> selected </c:if>
 						>내용</option>
 					<option value="total" <c:if test="${col=='total'}"> selected </c:if>
 						>전체출력</option>
@@ -93,12 +93,12 @@
 		    <c:forEach var="dto" items="${adminlist}"> 
 		   
 		    <tr>
-		    <td>${dto.hugireno}</td>
-		    <td><a href="${readurl}${dto.hugino}${urlhelper}">${dto.hrecontents}</a></td>
+		    <td>${dto.reno}</td>
+		    <td><a href="${readurl}${dto.bbsno}${urlhelper}">${dto.recontents}</a></td>
 		    <td><a href="${root }/admin/member/list?col=id&word=${dto.id}">${dto.nick}(${dto.id})</a></td>
-		    <td>${dto.hredate }</td>
+		    <td>${dto.redate }</td>
 		    <td>
-		        <a href="${root }/admin/review/reply/delete?hugireno=${dto.hugireno}${urlhelper}">
+		        <a href="${root }/admin/bbs/reply/delete?reno=${dto.reno}${urlhelper}">
 		        <img src="${root }/images/trash-alt-solid.svg"
 		        alt="DB에서 삭제합니다."
 		        style="width:20px;height:20px;"></a>
