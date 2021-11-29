@@ -100,7 +100,7 @@ public class BbsController {
 		int total = service.total(map);
 
 		List<BbsDTO> list = service.list(map);
-		//System.out.print("값:"+list.get(0));
+		// System.out.print("값:"+list.get(0));
 		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다
@@ -170,7 +170,8 @@ public class BbsController {
 	}
 
 	@PostMapping("/bbs/delete")
-	public String delete(int bbsno, BbsDTO dto, HttpServletRequest request, HttpSession session,RedirectAttributes redirect) {
+	public String delete(int bbsno, BbsDTO dto, HttpServletRequest request, HttpSession session,
+			RedirectAttributes redirect) {
 		String bbscate = request.getParameter("bbscate");
 		dto.setBbscate(bbscate);
 		Map map = new HashMap();
@@ -179,12 +180,12 @@ public class BbsController {
 		String str = "redirect:/bbs/list?bbscate=";
 		str += bbscate;
 
-		if(service.delete(bbsno) > 0) {
-			if(request.getParameter("mtest") == "") {
+		if (service.delete(bbsno) > 0) {
+			if (request.getParameter("mtest") == "") {
 				redirect.addAttribute("col", request.getParameter("col"));
 				redirect.addAttribute("word", request.getParameter("word"));
 				redirect.addAttribute("nowPage", request.getParameter("nowPage"));
-				
+
 				return str;
 			} else {
 				return "redirect:/member/mypage";
@@ -193,8 +194,6 @@ public class BbsController {
 			return "/review/error";
 		}
 	}
-		
-
 
 	// update
 	@GetMapping("/bbs/update")
@@ -214,27 +213,29 @@ public class BbsController {
 	}
 
 	@PostMapping("/bbs/update")
-	public String update(BbsDTO dto, HttpServletRequest request, HttpSession session,RedirectAttributes redirect)throws IOException {
+	public String update(BbsDTO dto, HttpServletRequest request, HttpSession session, RedirectAttributes redirect)
+			throws IOException {
 		String bbscate = request.getParameter("bbscate");
 		dto.setBbscate(bbscate);
 
-			if (service.update(dto) > 0) {
-				if(request.getParameter("mtest") == "") {
-					redirect.addAttribute("col", request.getParameter("col"));
-					redirect.addAttribute("word", request.getParameter("word"));
-					redirect.addAttribute("nowPage", request.getParameter("nowPage"));
-					return "redirect:/review/list";
-				} else {			
-					return "redirect:/member/mypage";
-				}
-			} else {
-		
-		String str = "redirect:/bbs/list?bbscate=";
-		str += bbscate;
+		if (service.update(dto) > 0) {
+			if (request.getParameter("mtest") == "") {
+				redirect.addAttribute("col", request.getParameter("col"));
+				redirect.addAttribute("word", request.getParameter("word"));
+				redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+				String str = "redirect:/bbs/list?bbscate=";
+				str += bbscate;
 
-		return str;
+				return str;
+			} else {
+				return "redirect:/member/mypage";
+			}
+		} else {
+
+			return "/bbs/error";
+		}
 	}
-	}
+
 	@RequestMapping("/bbs/bestlist")
 	public String bestlist(HttpServletRequest request) {
 
@@ -268,7 +269,7 @@ public class BbsController {
 		int total = service.besttotal(map);
 
 		List<BbsDTO> list = service.bestlist(map);
-		//System.out.print("값:"+list.get(0));
+		// System.out.print("값:"+list.get(0));
 		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다

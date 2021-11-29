@@ -28,7 +28,7 @@ function showList() {
 
       for (var i = 0; i < list.length ; i++) {
 		
-        str += "<d0iv class='media' data-reno='" + list[i].reno + "'>";
+        str += "<div class='media' data-reno='" + list[i].reno + "'>";
         
         if(sessionid != null && sessionid == list[i].id) {
 			str += deleteButton;

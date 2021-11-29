@@ -46,37 +46,30 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-				<h2>게시글 삭제</h2>
-					<form class="form-horizontal" action="./delete" method="post">
+					<h2>게시글 삭제</h2>
+					<form class="form-horizontal" action="/bbs/delete" method="post">
 						<input type="hidden" name="bbsno" value="${param.bbsno}">
 						<input type="hidden" name="bbscate" value="${param.bbscate}">
 						<input type='hidden' name="mtest" value="${param.mtest}">
 
 						<p id="red" class="col-sm-offset-3 col-sm-6">삭제하면 복구할 수 없습니다</p>
-					
-					<br><br>
+
+						<br>
+						<br>
 						<div class="form-group">
-								<button class="mainBtn" type="submit">삭제</button>
-								<button class="mainBtn" type="reset" onclick="goback();">
-									취소</button>
-							
+							<button class="mainBtn" type="submit">삭제</button>
+							<button class="mainBtn" type="reset" onclick="goback();">
+								취소</button>
+
 						</div>
-								</div>
-					<!-- /.col-md-6 -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
-		</div>
-		<!-- /.parallax-overlay -->
-	</div>
-	<!-- /.pageTitle -->
-						
-						
+
+
+
+
+					</form>
 				</div>
 			</div>
 		</div>
-		</from>
 	</section>
 </body>
 </html>

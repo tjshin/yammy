@@ -81,6 +81,7 @@
 		<form class="form-horizontal" action="/bbs/update" method="post"
 			onsubmit="return checkIn(this)">
 
+			<input type="hidden" name="mtest" value="${param.mtest}">
 			<input type="hidden" name="bbscate" value="${dto.bbscate}">
 			<input type="hidden" name="bbsno" value="${dto.bbsno}">
 			<input type="hidden" name="nick" value="${dto.nick}">

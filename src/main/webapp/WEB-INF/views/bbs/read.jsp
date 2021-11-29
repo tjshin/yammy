@@ -74,7 +74,7 @@
 					</h3>
 
 					<div align="right">
-						<span class='nickname' title=''>${dto.nick}<span></span> <span
+						<span class='nickname' title=''>${dto.nick}</span> <span
 							class="gall_date" title="2021-11-03 22:35:02">${dto.bdate}</span>
 					</div>
 					<div align="right">
@@ -208,8 +208,7 @@
 		<!-- /.row -->
 	</div>
 	<!-- /.col-md-8 -->
-	</div>
-	</div>
+	
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
