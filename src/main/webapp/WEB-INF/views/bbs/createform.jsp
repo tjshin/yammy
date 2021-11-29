@@ -59,12 +59,10 @@
 <form class="form-horizontal" 
       action="create"
       method="post"
-      onsubmit="return checkIn(this)">
-      
-      
-        
-      <input type="hidden" name="bbscate" value="${param.bbscate}">
-   
+      onsubmit="return checkIn(this)">      
+
+   <input type="hidden" name="bbscate" value="${param.bbscate}">
+   <input type='hidden' name="mtest" value="${param.mtest}">
    <a href='/bbs/list?bbscate=${param.bbscate}'>
    	<c:choose>
 			<c:when test="${param.bbscate == 'jamsil'}"><h2>잠실야구장 게시판</h2></c:when>

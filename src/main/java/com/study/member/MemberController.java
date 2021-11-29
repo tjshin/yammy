@@ -487,7 +487,6 @@ public class MemberController {
 
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
-
 		if (col.equals("total")) {
 			word = "";
 		}
@@ -636,12 +635,13 @@ public class MemberController {
 			request.setAttribute("mpaging", bpaging);
 			request.setAttribute("rpaging", rpaging);
 			request.setAttribute("tpaging", tpaging);
-
+			
 			MemberDTO mdto = service.mypage(id);
 			List<BbsDTO> bdto = service.bbs(bmap);
 			List<ReviewDTO> rdto = service.review(rmap);
 			List<TicketDTO> tdto = service.ticket(tmap);
-
+			
+			
 			model.addAttribute("mdto", mdto);
 			model.addAttribute("bdto", bdto);
 			model.addAttribute("rdto", rdto);

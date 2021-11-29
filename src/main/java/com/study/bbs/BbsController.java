@@ -1,5 +1,6 @@
 package com.study.bbs;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.bbslike.BbslikeService;
 import com.study.notice.NoticeDTO;
 import com.study.reply.ReplyDTO;
 import com.study.reply.ReplyService;
 import com.study.reply.ReplyServiceImpl;
+import com.study.review.ReviewDTO;
 import com.study.utility.Utility;
 
 @Controller
@@ -167,19 +170,31 @@ public class BbsController {
 	}
 
 	@PostMapping("/bbs/delete")
-	public String delete(int bbsno, BbsDTO dto, HttpServletRequest request, HttpSession session) {
+	public String delete(int bbsno, BbsDTO dto, HttpServletRequest request, HttpSession session,RedirectAttributes redirect) {
 		String bbscate = request.getParameter("bbscate");
 		dto.setBbscate(bbscate);
 		Map map = new HashMap();
 		map.put("bbsno", bbsno);
 
-		int cnt = 0;
-		service.delete(bbsno);
 		String str = "redirect:/bbs/list?bbscate=";
 		str += bbscate;
 
-		return str;
+		if(service.delete(bbsno) > 0) {
+			if(request.getParameter("mtest") == "") {
+				redirect.addAttribute("col", request.getParameter("col"));
+				redirect.addAttribute("word", request.getParameter("word"));
+				redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+				
+				return str;
+			} else {
+				return "redirect:/member/mypage";
+			}
+		} else {
+			return "/review/error";
+		}
 	}
+		
+
 
 	// update
 	@GetMapping("/bbs/update")
@@ -199,17 +214,27 @@ public class BbsController {
 	}
 
 	@PostMapping("/bbs/update")
-	public String update(BbsDTO dto, HttpServletRequest request, HttpSession session) {
+	public String update(BbsDTO dto, HttpServletRequest request, HttpSession session,RedirectAttributes redirect)throws IOException {
 		String bbscate = request.getParameter("bbscate");
 		dto.setBbscate(bbscate);
 
-		service.update(dto);
+			if (service.update(dto) > 0) {
+				if(request.getParameter("mtest") == "") {
+					redirect.addAttribute("col", request.getParameter("col"));
+					redirect.addAttribute("word", request.getParameter("word"));
+					redirect.addAttribute("nowPage", request.getParameter("nowPage"));
+					return "redirect:/review/list";
+				} else {			
+					return "redirect:/member/mypage";
+				}
+			} else {
+		
 		String str = "redirect:/bbs/list?bbscate=";
 		str += bbscate;
 
 		return str;
 	}
-
+	}
 	@RequestMapping("/bbs/bestlist")
 	public String bestlist(HttpServletRequest request) {
 
@@ -243,7 +268,7 @@ public class BbsController {
 		int total = service.besttotal(map);
 
 		List<BbsDTO> list = service.bestlist(map);
-		System.out.print("값:"+list.get(0));
+		//System.out.print("값:"+list.get(0));
 		String paging = Utility.paging2(total, nowPage, recordPerPage, col, word, bbscate);
 
 		// request에 Model사용 결과 담는다

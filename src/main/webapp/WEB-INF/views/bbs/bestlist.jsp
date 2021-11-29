@@ -79,8 +79,8 @@
 						<th>제목</th>
 						<th>글쓴이</th>
 						<th>날짜</th>
-						<th>조회</th>
-						<th>추천</th>
+						<th>조회수</th>
+						<th>추천수</th>
 					</tr>
 				</thead>
 
