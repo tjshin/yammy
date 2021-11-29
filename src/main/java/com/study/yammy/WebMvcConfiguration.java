@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.study.member.Member;
 import com.study.ticket.Ticket;
+import com.study.utility.Ckpath;
 
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
@@ -21,6 +22,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		// + Attachfile.getUploadDir());
 		registry.addResourceHandler("/member/storage/**").addResourceLocations("file:///" + Member.getUploadDir());
 		registry.addResourceHandler("/ticket/storage/**").addResourceLocations("file:///" + Ticket.getUploadDir());
+		registry.addResourceHandler("/ckstorage/**").addResourceLocations("file:///" + Ckpath.getUploadDir());
 		
 	}
 
