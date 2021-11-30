@@ -50,7 +50,6 @@
 					</div>
 					<!-- /.col-md-6 -->
 					<div class="col-md-6 col-sm-6 text-right">
-						<span class="page-location">Home / 경기장 게시판 / 게시글 조회</span>
 					</div>
 					<!-- /.col-md-6 -->
 				</div>
@@ -127,16 +126,16 @@
 			<br>
 			<div class="col-md-12">
 
-				<button type="button" class="mainBtn" onclick="listM()">목록</button>
+				<button type="button" class="btn btn-default" onclick="listM()">목록</button>
 
 
 				<c:if test="${sessionScope.id !=null }">
-					<button type="button" class="mainBtn"
+					<button type="button" class="btn btn-default"
 						onclick="location.href='/bbs/create?bbscate=${param.bbscate}'">등록</button>
 				</c:if>
 				<c:if test="${sessionScope.id !=null  && sessionScope.id == dto.id}">
-					<button type="button" class="mainBtn" onclick="updateM()">수정</button>
-					<button type="button" class="mainBtn" onclick="deleteM()">삭제</button>
+					<button type="button" class="btn btn-default" onclick="updateM()">수정</button>
+					<button type="button" class="btn btn-red" onclick="deleteM()">삭제</button>
 				</c:if>
 			</div>
 		</div>
@@ -172,7 +171,6 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="comment-form">
-					<h3>댓글 남기기</h3>
 					<div class="widget-inner">
 
 						<div class="row">
@@ -192,8 +190,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<c:if test="${sessionScope.id != null }">
-									<input class="mainBtn" type="button" name="submit"
-										value="댓글 등록" id="mainBtn">
+									<button class="btn btn-default" type="button" name="submit"
+										value="댓글 등록" id="mainBtn">댓글 등록</button>
 								</c:if>
 							</div>
 						</div>

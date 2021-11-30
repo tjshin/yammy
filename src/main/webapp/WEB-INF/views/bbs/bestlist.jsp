@@ -9,8 +9,7 @@
 <head>
 <title>인기글 게시판</title>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
 <script type="text/javascript">
 	function read(bbsno) {
@@ -24,6 +23,17 @@
 
 	}
 </script>
+
+  <style>
+  table{
+   text-align:center;
+   margin-left:20px;
+  }
+  
+  th{
+   text-align:center;
+  }
+  </style>
 </head>
 <body>
 
@@ -66,12 +76,10 @@
 			<button type="submit" class="btn btn-default">검색</button>&nbsp;
 			<a href="#" onClick="top.location='javascript:location.reload()'"><img src="${root }/images/refresh.svg" style="width:25px;"></a>
 
-		</form>
+		</form><br/>
 
 		<div class="row">
-
-
-			<table class="table table-striped">
+       <table class="table table-striped">
 				<thead>
 					<tr>
 						<th>글번호</th>

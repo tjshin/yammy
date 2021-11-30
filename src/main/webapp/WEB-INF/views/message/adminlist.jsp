@@ -140,8 +140,8 @@
 
 			<button type="submit" class="btn btn-default">검색</button>
 			<button type="button" class="btn btn-default" onclick="createM()">쪽지 보내기</button>
-			<button type="button" class="btn btn-danger" onclick="deleteValue();" >쪽지 삭제</button>
-		    <button type="button" class="btn" style ="background-color:green ;" onclick="Alldownload()">전 항목 엑셀 다운로드 </button>
+			<button type="button" class="btn btn-red" onclick="deleteValue();" >쪽지 삭제</button>
+		    <button type="button" class="btn" style ="background-color:green; color:white; 	font-size: 14px; font-family:'Raleway', 'sans-serif'" onclick="Alldownload()">전 항목 엑셀 다운로드 </button>
        
 			
 		</form>

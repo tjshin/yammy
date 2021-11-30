@@ -223,36 +223,16 @@ td {
 													<td><a
 														href="${root }/bbs/read?bbsno=${bdto.bbsno}${urlhelper}">[
 															<c:choose>
-																<c:when test="${bdto.bbscate == 'jamsil'}">
-					잠실야구장 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'gocheok'}">
-					고척스카이돔 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'incheon'}">
-					인천SSG랜더스필드 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'suwon'}">
-					수원KT위즈파크 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'daejeon'}">
-					한화생명이글스파크 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'gwangju'}">
-					광주기아챔피언스필드 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'daegu'}">
-					대구삼성라이온즈파크 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'changwon'}">
-					창원NC파크 게시판
-				</c:when>
-																<c:when test="${bdto.bbscate == 'busan'}">
-					사직야구장 게시판
-				</c:when>
-																<c:otherwise>
-					bbscate : ${bdto.bbscate} 오류났다 고쳐라
-				</c:otherwise>
+																<c:when test="${bdto.bbscate == 'jamsil'}">잠실야구장 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'gocheok'}">고척스카이돔 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'incheon'}">인천SSG랜더스필드 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'suwon'}">수원KT위즈파크 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'daejeon'}">한화생명이글스파크 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'gwangju'}">광주기아챔피언스필드 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'daegu'}">대구삼성라이온즈파크 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'changwon'}">창원NC파크 게시판</c:when>
+																<c:when test="${bdto.bbscate == 'busan'}">사직야구장 게시판</c:when>
+																<c:otherwise>bbscate : ${bdto.bbscate} 오류났다 고쳐라</c:otherwise>
 															</c:choose>] ${bdto.btitle}[${bdto.rcnt}]
 													</a></td>
 													<td>${bdto.bdate}</td>

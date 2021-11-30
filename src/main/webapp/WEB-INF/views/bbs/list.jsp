@@ -27,14 +27,25 @@
 </script>
 
 <style>
-h2{
+  h2{
 	color:white;
 	font-weight:bold;
-}
+  }
 
-h6{
+  h6{
 	color:white;
-}
+  }
+
+
+  table{
+   text-align:center;
+   margin-left:20px;
+  }
+  
+  th{
+   text-align:center;
+  }
+
 </style>
 </head>
 <body>
@@ -121,7 +132,7 @@ h6{
 			<button type="submit" class="btn btn-default">검색</button>&nbsp;
 			<a href="#" onClick="top.location='javascript:location.reload()'"><img src="${root }/images/refresh.svg" style="width:25px;"></a>
 
-		</form>
+		</form><br/>
 
 		<div class="row">
 
