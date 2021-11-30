@@ -151,10 +151,10 @@
 			</c:forEach>		  
 		</script>
 		<script>
-			var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+			var imageSrc = "https://cdn-icons-png.flaticon.com/512/3170/3170733.png";
 						
 			for (var i = 0; i < arr.length; i += 9) {			    
-			    var imageSize = new kakao.maps.Size(24, 35); 
+			    var imageSize = new kakao.maps.Size(32, 32); 
 			    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 			    
 			    var marker = new kakao.maps.Marker({

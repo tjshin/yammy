@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <title>footer</title>
 
-
 <script>
 $(function() {
 	  $(window).scroll(function() {
