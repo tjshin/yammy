@@ -16,9 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Kakao {
 	public static MemberDTO kakaoLogin(String code) {
-
 		RestTemplate rt = new RestTemplate();
-
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 

@@ -21,13 +21,10 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		if (grade.length() != 0 && grade.compareTo("A") <= 0) {
 			System.out.println("접속 권한 있음 : " + grade);
 			return true;
-
 		} else if (grade.length() != 0 && grade.compareTo("A") > 0) {
-
 			response.sendRedirect("/adminerror");
 			return false;
 		} else {
-
 			response.sendRedirect("/member/login");
 			return false;
 		}
