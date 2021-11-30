@@ -79,6 +79,7 @@ function displayPlaces(places) {
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다 
+//            console.log(places[i]);
        		
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -235,8 +236,7 @@ function getListItem(index, places) {
 	}
 //	console.log('가까운 구장과의 거리:' + minlength);
 //	console.log('가까운 구장 번호:' + nearsta);
-		
-
+	
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div id="sikdanglist'+ (index+1) + '" class="info">' +
