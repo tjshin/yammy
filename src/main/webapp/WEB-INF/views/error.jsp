@@ -381,11 +381,11 @@
 				<div class="col-md-12">
 
 
-					<h2>잘못된 접근입니다 404</h2>
+					<h2>잘못된 접근입니다. (404 Error)</h2>
 
 					<div class="form-group">
 						<div>
-							<button class="mainBtn" type="reset" onclick="goback();">
+							<button class="btn btn-default" type="reset" onclick="goback();">
 								돌아가기</button>
 
 						</div>
@@ -403,17 +403,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
+			
+				    <a id="topBtn" class="main-button accent-color" href="#">▲TOP</a>
+				
 					<nav class="footer-nav clearfix">
 						<ul class="footer-menu">
 							<li><a href="${root }/">Home</a></li>
-							<li><a href="https://github.com/tjshin/yammy"
-								target="_blank">GitHub</a></li>
+							<li><a href="https://github.com/tjshin/yammy" target="_blank">GitHub</a></li>
 							<li><a href="#">프로젝트 YAMMY</a></li>
-							<li><a href="#">팀 'no.2'</a></li>
-							<li><a
-								href="https://www.ncloud.com/product/aiService/chatbot"
-								target="_blank">NAVER CLOVA</a></li>
-							<li><a href="https://apis.map.kakao.com/" target="_blank">kakaomap</a></li>
+							<li><a href="${root }/no2">팀 'no.2'</a></li>
+							<li><a href="https://www.ncloud.com/product/aiService/chatbot"
+									target="_blank">NAVER CLOVA</a></li>
+							<li><a href="https://apis.map.kakao.com/"
+									target="_blank">kakaomap</a></li>
 						</ul>
 						<!-- /.footer-menu -->
 					</nav>
@@ -424,8 +426,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-md-12">
-					<p class="copyright-text">Copyright &copy; 2021 K-Digital
-						Training project team 2 "YAMMY"</p>
+					<p class="copyright-text">Copyright &copy; 2021 K-Digital Training project team 2 "YAMMY"</p>
 					<nav class="footer-nav clearfix">
 						<ul class="footer-menu">
 							<li>|</li>
@@ -447,7 +448,6 @@
 		<!-- /.container -->
 	</footer>
 	<!-- /.site-footer -->
-
 </body>
 
 </html>
