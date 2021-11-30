@@ -46,25 +46,36 @@ td {
 	padding: 15px;
 }
 
-@media ( min-width :1000px) {
+@media ( min-width :1300px) {
 	#board {
 		position: absolute;
-		top: 300px;
+		top: 200px;
+		
 		width: 700px;
-		left: 950px;
+		left: 1050px;
 		z-index: 1;
 	}
 }
 
-@media ( min-width :1000px) {
+@media ( min-width :1300px) {
 	#review {
 		position: absolute;
 		top: 650px;
 		width: 700px;
-		left: 950px;
-		z-index: 1;
+		left: 1050px;
+		z-index: 2;
 	}
 }
+
+
+.txt_line {
+			width: 200px;
+ 			white-space : nowrap; 
+ 			overflow: hidden; 
+  			text-overflow: ellipsis;
+			
+
+   }
 </style>
 
 </head>
@@ -282,8 +293,8 @@ td {
 		<!--  리뷰 목록 -->
 
 		<div class="row" id=review>
+		
 			<div class="col-md-12">
-
 				<div class="blog-content">
 					<br> <br> <br>
 					<h3 style="font-weight: bold">내가 작성한 리뷰</h3>
@@ -450,13 +461,19 @@ td {
 												class="img-rounded" width="236" height="306">
 											</a>
 
-											<div>
+											<div class ="col-sm-13">
 												<ul>
 													<li><b>${tdto.stadium}</b></li>
-													<li>${tdto.tickettitle}</li>
+													
 												</ul>
+												<div class= "txt_line" style="margin-left:22px;">${tdto.tickettitle}</div>
+												
+												</div>
+												
+											<div>
 												<a href="${root}/ticket/update/${tdto.ticketno}"><img
 													src="${root }/images/edit-solid.svg" style="width: 15px;"></a>
+												
 												<a
 													href="${root}/ticket/updateFile/${tdto.ticketno}/${tdto.filename}"><img
 													src="${root }/images/camera-retro-solid.svg"
@@ -464,6 +481,7 @@ td {
 													href="${root}/ticket/delete?ticketno=${tdto.ticketno}&mtest=y"><img
 													src="${root }/images/trash-alt-solid.svg"
 													style="width: 13px;"></a>
+												
 											</div>
 										</div>
 									</c:forEach>
