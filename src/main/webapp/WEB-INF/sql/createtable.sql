@@ -2,7 +2,7 @@
 CREATE TABLE MEMBER (
        id                   VARCHAR2(50) NOT NULL,
        mname                VARCHAR2(10) NULL,
-       nick                 VARCHAR2(16) NULL,
+       nick                 VARCHAR2(20) NULL,
        email                VARCHAR2(50) NULL,
        password             VARCHAR2(500) NULL,
        address2             VARCHAR2(150) NULL,
@@ -49,47 +49,15 @@ CREATE TABLE REVIEW (
 );
 
 
-CREATE TABLE REVIEWREPLY (
-       hugireno             NUMBER(10) NOT NULL,
-       hrecontents          VARCHAR2(300) NULL,
-       hredate              DATE NULL,
-       hugino               NUMBER(10) NOT NULL,
-       id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (hugireno), 
+CREATE TABLE REVIEWLIKE (
+       hugilike             NUMBER(10) NOT NULL,
+       hugino               NUMBER(10) NULL,
+       id                   VARCHAR2(50) NULL,
+       PRIMARY KEY (hugilike), 
        FOREIGN KEY (id)
                              REFERENCES MEMBER, 
        FOREIGN KEY (hugino)
                              REFERENCES REVIEW
-);
-
-
-CREATE TABLE NOTICE (
-       noticeno             NUMBER(10) NOT NULL,
-       ntitle               VARCHAR2(500) NULL,
-       ncontents            VARCHAR2(4000) NULL,
-       nview                NUMBER(5) NULL,
-       ndate                DATE NULL,
-       id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (noticeno), 
-       FOREIGN KEY (id)
-                             REFERENCES MEMBER
-);
-
-
-CREATE TABLE MESSAGE (
-       messageno            NUMBER(10) NOT NULL,
-       mcontents            VARCHAR2(4000) NULL,
-       rconfirm             VARCHAR2(2) DEFAULT Y NOT NULL,
-       sconfirm             VARCHAR2(2) DEFAULT Y NOT NULL,
-       meticketno           NUMBER(10) NULL,
-       receid               VARCHAR2(50) NOT NULL,
-       mdate                DATE NULL,
-       sendid               VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (messageno), 
-       FOREIGN KEY (receid)
-                             REFERENCES MEMBER, 
-       FOREIGN KEY (sendid)
-                             REFERENCES MEMBER
 );
 
 
@@ -100,6 +68,22 @@ CREATE TABLE BCATEGORY (
        PRIMARY KEY (bcate), 
        FOREIGN KEY (bcate)
                              REFERENCES BCATEGORY
+);
+
+
+CREATE TABLE TICKET (
+       ticketno             NUMBER(10) NOT NULL,
+       tickettitle          VARCHAR2(500) NULL,
+       ticketdate           DATE NULL,
+       gamedate             VARCHAR2(20) NULL,
+       location             VARCHAR2(100) NULL,
+       stadium              VARCHAR2(50) NULL,
+       ticketcontents       VARCHAR2(4000) NULL,
+       filename             VARCHAR2(100) NULL,
+       id                   VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (ticketno), 
+       FOREIGN KEY (id)
+                             REFERENCES MEMBER
 );
 
 
@@ -120,6 +104,18 @@ CREATE TABLE BBS (
 );
 
 
+CREATE TABLE BBSLIKE (
+       bcnt                 NUMBER(10) NOT NULL,
+       bbsno                NUMBER(10) NULL,
+       id                   VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (bcnt), 
+       FOREIGN KEY (bbsno)
+                             REFERENCES BBS, 
+       FOREIGN KEY (id)
+                             REFERENCES MEMBER
+);
+
+
 CREATE TABLE REPLY (
        reno                 NUMBER(10) NOT NULL,
        bbsno                NUMBER(10) NOT NULL,
@@ -134,39 +130,43 @@ CREATE TABLE REPLY (
 );
 
 
-CREATE TABLE BBSLIKE (
-       bcnt                 NUMBER(10) NOT NULL,
-       bbsno                NUMBER(10) NULL,
+CREATE TABLE MESSAGE (
+       messageno            NUMBER(10) NOT NULL,
+       mcontents            VARCHAR2(4000) NULL,
+       rconfirm             VARCHAR2(2) DEFAULT Y NOT NULL,
+       sconfirm             VARCHAR2(2) DEFAULT Y NOT NULL,
+       meticketno           NUMBER(10) NULL,
+       receid               VARCHAR2(50) NOT NULL,
+       mdate                DATE NULL,
+       sendid               VARCHAR2(50) NOT NULL,
+       PRIMARY KEY (messageno), 
+       FOREIGN KEY (receid)
+                             REFERENCES MEMBER, 
+       FOREIGN KEY (sendid)
+                             REFERENCES MEMBER
+);
+
+
+CREATE TABLE NOTICE (
+       noticeno             NUMBER(10) NOT NULL,
+       ntitle               VARCHAR2(500) NULL,
+       ncontents            VARCHAR2(4000) NULL,
+       nview                NUMBER(5) NULL,
+       ndate                DATE NULL,
        id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (bcnt), 
-       FOREIGN KEY (bbsno)
-                             REFERENCES BBS, 
+       PRIMARY KEY (noticeno), 
        FOREIGN KEY (id)
                              REFERENCES MEMBER
 );
 
 
-CREATE TABLE TICKET (
-       ticketno             NUMBER(10) NOT NULL,
-       tickettitle          VARCHAR2(500) NULL,
-       ticketdate           DATE NULL,
-       gamedate             VARCHAR2(20) NULL,
-       location             VARCHAR2(100) NULL,
-       stadium              VARCHAR2(50) NULL,
-       ticketcontents       VARCHAR2(4000) NULL,
-       filename             VARCHAR2(100) NULL,
+CREATE TABLE REVIEWREPLY (
+       hugireno             NUMBER(10) NOT NULL,
+       hrecontents          VARCHAR2(300) NULL,
+       hredate              DATE NULL,
+       hugino               NUMBER(10) NOT NULL,
        id                   VARCHAR2(50) NOT NULL,
-       PRIMARY KEY (ticketno), 
-       FOREIGN KEY (id)
-                             REFERENCES MEMBER
-);
-
-
-CREATE TABLE REVIEWLIKE (
-       hugilike             NUMBER(10) NOT NULL,
-       hugino               NUMBER(10) NULL,
-       id                   VARCHAR2(50) NULL,
-       PRIMARY KEY (hugilike), 
+       PRIMARY KEY (hugireno), 
        FOREIGN KEY (id)
                              REFERENCES MEMBER, 
        FOREIGN KEY (hugino)

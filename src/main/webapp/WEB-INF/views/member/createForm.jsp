@@ -243,7 +243,7 @@
 				<button type="button" class="btn btn-default" style="width:125px;"
 					onclick="nickCheck(document.frm.nick.value)">닉네임 중복확인</button>
 			</div>
-			<div style="margin-left:195px; height:35px; font-size:12px;">닉네임은 영문,한문과 숫자만을 포함해 7자 내로 입력해 주시기 바랍니다.</div>
+			<div style="margin-left:195px; height:35px; font-size:12px;">닉네임은 영문,한문과 숫자만을 포함해 6자 내로 입력해 주시기 바랍니다.</div>
 			<div id="nickcheck" style="margin-left:195px;"></div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone"><span
