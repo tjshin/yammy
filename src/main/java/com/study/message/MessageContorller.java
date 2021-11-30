@@ -40,25 +40,13 @@ public class MessageContorller {
     public void excelAllDownload(HttpServletResponse response) throws IOException {
        
 		int total =service.exelTotal(); // messageno에서 가장 큰 값을 가져온다.
-		// System.out.println("total: " +total);
-		
+	
 		MessageDTO[] dto =new MessageDTO[total]; 
 		
 		
 		for(int i = 0; i< total;i++) {
 			 dto[i] = service.read(i+1); //선택한 게시물 정보 가져오기
 		}
-		
-
-//  //테스트 
-//		for(int i = 0; i< total;i++) {
-//			 System.out.println(i+".dto ="+dto[i]);
-//		}
-//		System.out.println("receid ="+dto[0].getReceid());
-		
-		
-		
-	
 		
 		//workbook 생성
         Workbook wb = new XSSFWorkbook();// Excel 2007 이상
@@ -124,8 +112,6 @@ public class MessageContorller {
 			}
 	     }
  
-       
-		
 		// 컨텐츠 타입과 파일명 지정
         LocalDate now = LocalDate.now();
 
