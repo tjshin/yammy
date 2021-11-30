@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                <p id="red">잘못된 계정을 입력하셨습니다.</p>
+                <p id="red">계정 혹은 비밀번호가 일치하지 않습니다.</p>
 					<div class="form-group">
 						<div>
 							<button class="btn btn-default2" type="reset" onclick="goback();">뒤로</button>   
