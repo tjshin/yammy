@@ -161,7 +161,9 @@
 		<div class="container">
 			<div class="row" style="text-align:center;">
 				<div>
-					<span class="testimonial-team">Motto</span><br/><br/>
+					<span class="testimonial-team"><a href="${root }/no2">Team 'no.2'</a></span><br/><br/>
+					<span>no.1 개발자를 꿈꾸는 사람들이 모여 Team 'no.2'. </span><br/><br/><br/>
+					<h1>Our Motto</h1>
 					<br/>
 				</div>
 			</div>

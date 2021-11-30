@@ -188,7 +188,7 @@ public class MemberController {
 	@PostMapping("/member/create")
 	public String create(MemberDTO dto) throws IOException {
 		
-
+		//System.out.println("입력 비밀번호: " + dto.getPassword());
 		//암호화 시작
 		byte[] bytes = dto.getPassword().getBytes();
 		byte[] pszDigest = new byte[32];
@@ -200,6 +200,7 @@ public class MemberController {
 		}
 		dto.setPassword(encrypted.toString());
 		//암호화 끝
+		//System.out.println("암호화 결과: " + encrypted.toString());
 		
 
 		String upDir = Member.getUploadDir();
