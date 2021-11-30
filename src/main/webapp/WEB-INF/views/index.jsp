@@ -161,8 +161,8 @@
 		<div class="container">
 			<div class="row" style="text-align:center;">
 				<div>
-					<span class="testimonial-team">Team 'no.2'</span><br/><br/>
-					<span>no.1 개발자를 꿈꾸는 사람들이 모여 Team 'no.2'. </span><br/><br/>
+					<span class="testimonial-team">Motto</span><br/><br/>
+					<br/>
 				</div>
 			</div>
 			<div class="row">
@@ -171,25 +171,28 @@
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">TaeJin Shin</span>
-								<p class="testimonial-description">커멘트1</p>
+								<p class="testimonial-description">게으른 내 모습을 부끄러워하는 사람이 되자.</p>
 							</div>
 						</div>
-						<div class="testimonial">
-							<div class="testimonial-content">
-								<span class="testimonial-author">ChangSeok Park</span>
-								<p class="testimonial-description">커멘트2</p>
-							</div>
-						</div>
+
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">JongBin Oh</span>
-								<p class="testimonial-description">커멘트3</p>
+								<p class="testimonial-description">남을 비교하지 말고 어제의 나를 비교하자.</p>
 							</div>
 						</div>
+						
+						<div class="testimonial">
+							<div class="testimonial-content">
+								<span class="testimonial-author">ChangSeok Park</span>
+								<p class="testimonial-description">생각만 하다가 끝내지 말고 움직이자.</p>
+							</div>
+						</div>
+
 						<div class="testimonial">
 							<div class="testimonial-content">
 								<span class="testimonial-author">JooYoung Kim</span>
-								<p class="testimonial-description">커멘트4</p>
+								<p class="testimonial-description">정직과 배려.</p>
 							</div>
 						</div>
 					</div> <!-- /.bxslider -->

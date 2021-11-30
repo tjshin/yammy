@@ -44,6 +44,12 @@ public class MemberController {
 
 		return "/home";
 	}
+	
+	@GetMapping("/no2")
+	public String no2() {
+
+		return "/no2";
+	}
 
 	@GetMapping("/adminerror")
 	public String error() {

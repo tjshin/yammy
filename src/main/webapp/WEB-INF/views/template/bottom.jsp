@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@ z-index: 9999; /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니
 							<li><a href="${root }/">Home</a></li>
 							<li><a href="https://github.com/tjshin/yammy" target="_blank">GitHub</a></li>
 							<li><a href="#">프로젝트 YAMMY</a></li>
-							<li><a href="#">팀 'no.2'</a></li>
+							<li><a href="${root }/no2">팀 'no.2'</a></li>
 							<li><a href="https://www.ncloud.com/product/aiService/chatbot"
 									target="_blank">NAVER CLOVA</a></li>
 							<li><a href="https://apis.map.kakao.com/"
