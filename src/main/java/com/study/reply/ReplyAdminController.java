@@ -60,7 +60,6 @@ public class ReplyAdminController {
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
-		//?Œ“ê¸? ê´?? ¨
 		
 		return "/admin/bbs/reply/list";
 	}
