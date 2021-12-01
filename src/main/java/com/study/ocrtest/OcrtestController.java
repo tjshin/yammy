@@ -69,7 +69,8 @@ public class OcrtestController {
 			if (multipartFileList.size() > 0) {
 				for (MultipartFile file : multipartFileList) {
 					file.transferTo(new File(
-							"c:/AIstudy/deploy/yammy/ocrtest/storage/" + File.separator + file.getOriginalFilename()));
+//						"c:/AIstudy/deploy/yammy/ocrtest/storage/" + File.separator + file.getOriginalFilename()));
+						"/home/ubuntu/deploy/yammy/ocrtest/storage/" + File.separator + file.getOriginalFilename()));
 				}
 			}
 		} catch (Exception e) {
@@ -82,7 +83,8 @@ public class OcrtestController {
 		String fname = multipartFileList.get(0).getOriginalFilename();
 		String apiURL = "https://2a7f5555eea34169a70f8e594ed26aa4.apigw.ntruss.com/custom/v1/12651/5dc46286e953b77555a1884ae751e26e1e1a57a5478e9c740b873f0173841bbc/general";
 		String secretKey = "UGF4Q2JFUnVySHNndXBpY3JMUlppaVBQV3phcWppZnQ=";
-		String imageFile = "C:\\AIstudy\\deploy\\yammy\\ocrtest\\storage\\" + fname;
+//		String imageFile = "C:\\AIstudy\\deploy\\yammy\\ocrtest\\storage\\" + fname;
+		String imageFile = "/home/ubuntu/deploy/yammy/ocrtest/storage/" + fname;
 		// System.out.println(imageFile);
 
 		try {

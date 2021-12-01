@@ -17,7 +17,8 @@
 	Configure the location of uploaded files. See the following article for more details:
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
-	<baseDir>C:\AIstudy\deploy\yammy\ckstorage</baseDir>
+<!-- 	<baseDir>C:\AIstudy\deploy\yammy\ckstorage</baseDir> -->
+	<baseDir>/home/ubuntu/deploy/yammy/ckstorage/</baseDir>
 	<baseURL>/ckstorage</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>

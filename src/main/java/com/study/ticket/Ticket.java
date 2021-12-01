@@ -15,7 +15,7 @@ public class Ticket {
             
         } else {
             // System.out.println("Linux");
-            path = "/home/ubuntu/deploy/yammy/contents/storage/";
+            path = "/home/ubuntu/deploy/yammy/ticket/storage/";
         }
         
         return path;
