@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -161,7 +162,7 @@ public class OcrtestController {
 			ocrresult += "============================" + System.lineSeparator();
 			;
 			// response 로부터 필요한 값만 substring 끝!!!!!!!!
-
+			
 			model.addAttribute("ocrresult", ocrresult);
 		} catch (Exception e) {
 			System.out.println(e);

@@ -295,7 +295,8 @@ public class TicketController {
 	}
 
 	// 이미지를 비동기로 임시 저장 후 OCR 인식
-	@RequestMapping(value = "/ticket/create/ocr", method = RequestMethod.POST)
+	@RequestMapping(value = "/ticket/create/ocr",
+			method = RequestMethod.POST)
 	public String getOcrData(Model model, MultipartHttpServletRequest req) {
 
 		// get image file.
@@ -364,9 +365,9 @@ public class TicketController {
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
 			if (responseCode == 200) {
-				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
 			} else {
-				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "UTF-8"));
 			}
 			String inputLine;
 			StringBuffer response = new StringBuffer();

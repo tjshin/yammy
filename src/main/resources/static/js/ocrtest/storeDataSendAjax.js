@@ -13,6 +13,7 @@ function dataSubmit() {
 	        enctype:'multipart/form-data',
 	        type:"POST"
 	    }).done(function (fragment) {
+			console.log(fragment);	
 			//전송이 성공하면 해당 부분만 바뀌게 반응함
 			var start1 = fragment.indexOf('<div id="resultDiv">');
 			var end1 = fragment.indexOf('전송완료!');
