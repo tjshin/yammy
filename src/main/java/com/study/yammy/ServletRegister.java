@@ -21,5 +21,5 @@ public class ServletRegister {
 		registrationBean.setInitParameters(params);
 		registrationBean.setLoadOnStartup(1);
 		return registrationBean;
-	}
+	}	
 }
