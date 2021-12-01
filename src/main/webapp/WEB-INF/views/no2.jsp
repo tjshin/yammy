@@ -38,7 +38,7 @@
 					<div class="col-md-5 col-sm-5" style="margin-right:50px;">
 						<div class="team-member">
 							<div class="thumb-post">
-								<img src="${root }/images/no2/태진.png" alt="" style="width:300px; margin-left:50px;">
+								<img src="${root }/images/no2/tj.png" alt="" style="width:300px; margin-left:50px;">
 								<span class="member-role"><a href="https://github.com/tjshin" target="_blank">&nbsp;tjshin&nbsp;</a></span>
 							</div>
 							<div class="member-content">
@@ -54,7 +54,7 @@
 					<div class="col-md-5 col-sm-5">
 						<div class="team-member">
 							<div class="thumb-post">
-								<img src="${root }/images/no2/종빈.png" alt="" style="width:300px; margin-left:50px;">
+								<img src="${root }/images/no2/jb.png" alt="" style="width:300px; margin-left:50px;">
 								<span class="member-role"><a href="https://github.com/ohjongbin" target="_blank">&nbsp;ohjongbin&nbsp;</a></span>
 							</div>
 							<div class="member-content">
@@ -76,7 +76,7 @@
 					<div class="col-md-5 col-sm-5" style="margin-right:50px;">
 						<div class="team-member">
 							<div class="thumb-post">
-								<img src="${root }/images/no2/창석.png" alt="" style="width:300px; margin-left:50px;">
+								<img src="${root }/images/no2/cs.png" alt="" style="width:300px; margin-left:50px;">
 								<span class="member-role"><a href="https://github.com/MC910820" target="_blank">&nbsp;MC910820&nbsp;</a></span>
 							</div>
 							<div class="member-content">
@@ -92,7 +92,7 @@
 					<div class="col-md-5 col-sm-5">
 						<div class="team-member">
 							<div class="thumb-post">
-								<img src="${root }/images/no2/주영.png" alt="" style="width:300px; margin-left:50px;">
+								<img src="${root }/images/no2/jy.png" alt="" style="width:300px; margin-left:50px;">
 								<span class="member-role"><a href="https://github.com/sign1064" target="_blank">&nbsp;sign1064&nbsp;</a></span>
 							</div>
 							<div class="member-content">
