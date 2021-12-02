@@ -33,10 +33,10 @@ config.removeButtons = 'Underline,Subscript,Superscript';
 config.format_tags = 'p;h1;h2;h3;pre';
 // Simplify the dialog windows.
 config.removeDialogTabs = 'image:advanced;link:advanced';
-config.filebrowserBrowseUrl = "../ckfinder/ckfinder.html";
-config.filebrowserFlashBrowseUrl = "../ckfinder/ckfinder.html?type=Flash";
-config.filebrowserUploadUrl = "../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files";
-config.filebrowserImageUploadUrl = "../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images";
-config.filebrowserFlashUploadUrl = "../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash";
+config.filebrowserBrowseUrl = "/ckfinder/ckfinder.html";
+config.filebrowserFlashBrowseUrl = "/ckfinder/ckfinder.html?type=Flash";
+config.filebrowserUploadUrl = "/ckfinder/connector?command=QuickUpload&type=Files";
+config.filebrowserImageUploadUrl = "/ckfinder/connector?command=QuickUpload&type=Images";
+config.filebrowserFlashUploadUrl = "/ckfinder/connector?command=QuickUpload&type=Flash";
 	
 };
