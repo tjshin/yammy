@@ -152,7 +152,7 @@
 
 										<div class="form-inline">
 											<label> <a
-												href="https://kauth.kakao.com/oauth/authorize?client_id=b39f6433b5558171ad972ddc2bea324a&redirect_uri=http://localhost:8000/member/login/kakao/callback&response_type=code">
+												href="https://kauth.kakao.com/oauth/authorize?client_id=b39f6433b5558171ad972ddc2bea324a&redirect_uri=http://18.117.238.34/member/login/kakao/callback&response_type=code">
 													<img src="${root }/images/kakao_login_button.jpg"
 													style="height: 40px; width: auto;">
 											</a>
