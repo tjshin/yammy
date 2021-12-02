@@ -8,9 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="templatemo">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"
@@ -24,15 +22,11 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600"
 	rel="stylesheet">
-<link rel="stylesheet" href="bootstrap/bootstrap.css">
-<link rel="stylesheet" href="css/misc.css">
-<link rel="stylesheet" href="css/blue-scheme.css">
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
+
 <script>
 
 function checkPassword(form){
