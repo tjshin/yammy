@@ -12,8 +12,11 @@
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
 
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id"
-	content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
+<!-- 8000포트 -->
+<!-- <meta name="google-signin-client_id" -->
+<!-- 	content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com"> -->
+<!-- 8222포트 -->
+<meta name="google-signin-client_id" content="332073699109-q71gi43006verdot0so1op1sm8pa7kjr.apps.googleusercontent.com"> 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <title>top test</title>
@@ -410,7 +413,9 @@
 						<ul class="footer-menu">
 							<li><a href="${root }/">Home</a></li>
 							<li><a href="https://github.com/tjshin/yammy" target="_blank">GitHub</a></li>
-							<li><a href="#">프로젝트 YAMMY</a></li>
+							<li><a
+							href="https://drive.google.com/file/d/1LFY45T0ft2RmzVLVF4O7MhEw6RAx1v7s/view?usp=sharing"
+							target="_blank">프로젝트 YAMMY</a></li>
 							<li><a href="${root }/no2">팀 'no.2'</a></li>
 							<li><a href="https://www.ncloud.com/product/aiService/chatbot"
 									target="_blank">NAVER CLOVA</a></li>

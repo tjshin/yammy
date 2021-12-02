@@ -12,8 +12,11 @@
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1">
 
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id"
-	content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com">
+<!-- 8000포트 -->
+<!-- <meta name="google-signin-client_id" -->
+<!-- 	content="403080930715-vace0dgrftjiuv9liu4u7qf1vf3v1u1t.apps.googleusercontent.com"> -->
+<!-- 8222포트 -->
+<meta name="google-signin-client_id" content="332073699109-q71gi43006verdot0so1op1sm8pa7kjr.apps.googleusercontent.com"> 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <title>top test</title>

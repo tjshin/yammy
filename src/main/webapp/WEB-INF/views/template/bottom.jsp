@@ -52,7 +52,9 @@ z-index: 9999; /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니
 						<ul class="footer-menu">
 							<li><a href="${root }/">Home</a></li>
 							<li><a href="https://github.com/tjshin/yammy" target="_blank">GitHub</a></li>
-							<li><a href="#">프로젝트 YAMMY</a></li>
+							<li><a
+							href="https://drive.google.com/file/d/1LFY45T0ft2RmzVLVF4O7MhEw6RAx1v7s/view?usp=sharing"
+							target="_blank">프로젝트 YAMMY</a></li>
 							<li><a href="${root }/no2">팀 'no.2'</a></li>
 							<li><a href="https://www.ncloud.com/product/aiService/chatbot"
 									target="_blank">NAVER CLOVA</a></li>
