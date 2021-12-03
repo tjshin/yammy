@@ -23,7 +23,7 @@ public class Kakao {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("grant_type", "authorization_code");
 		params.add("client_id", "b39f6433b5558171ad972ddc2bea324a");
-		params.add("redirect_uri", "http://18.117.238.34/member/login/kakao/callback");
+		params.add("redirect_uri", "http://18.221.91.212/member/login/kakao/callback");
 		params.add("code", code);
 
 		HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
