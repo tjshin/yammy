@@ -56,7 +56,7 @@
          <table class="table table-bordered">
          <tr>
              <td colspan="2" style="text-align: center">
-                 <img src="${root }/member/${dto.filename}" 
+                 <img src="/home/ubuntu/deploy/yammy/member/storage/${dto.filename }" 
                  width="250px" height="250px" class="img-rounded" >
              </td>
          </tr>

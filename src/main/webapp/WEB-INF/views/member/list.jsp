@@ -9,9 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>회원 목록</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="templatemo">
+
 
 <link
 	href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700itali"
@@ -19,13 +17,9 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600"
 	rel="stylesheet">
-<link rel="stylesheet" href="bootstrap/bootstrap.css">
-<link rel="stylesheet" href="css/misc.css">
-<link rel="stylesheet" href="css/blue-scheme.css">
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
+
+
 
 
 <script type="text/javascript">
@@ -87,7 +81,7 @@
 			<table class="table table-bordered">
 				<tr>
 					<td rowspan="6" class="col-sm-2"><img
-						src="${root }/member/${dto.filename}" class="img-rounded"
+						src="/home/ubuntu/deploy/yammy/member/storage/${dto.filename }" class="img-rounded"
 						width="200px" height="230px"></td>
 					<th class="col-sm-2">아이디</th>
 					<td class="col-sm-8"><a href="javascript:read('${dto.id}')">${dto.id}</a></td>
