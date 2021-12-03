@@ -56,7 +56,7 @@ function checkCode(form){
 		<div class="parallax-overlay">
 			<div class="container home-intro-content">
 				<h2>Email 본인 확인</h2>
-				<h4>입력하신 메일로 받으신 6자리 코드를 입력해 주세요.</h4>
+				<h4 style="color:white">입력하신 메일로 받으신 6자리 코드를 입력해 주세요.</h4>
 				<br />
 				<div class="row">
 					<div class="col-md-12">

@@ -58,7 +58,7 @@ function checkPassword(form){
 		<div class="parallax-overlay">
 			<div class="container home-intro-content">
 
-				<h4>${dto.mname } 님의 아이디는 "${dto.id }"입니다</h4><br/>
+				<h4 style="color:white;">${dto.mname } 님의 아이디는 "${dto.id }"입니다</h4><br/>
 				
 				<div class="row">
 					<div class="col-md-12">
